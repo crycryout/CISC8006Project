@@ -12,9 +12,13 @@ export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
 
 RUN_ID=R0001
 BOOK=data/pg19/test/10146.txt
+if [ -e "runs/${RUN_ID}" ] && [ "${ALLOW_RESMOKE:-0}" != "1" ]; then
+  echo "runs/${RUN_ID} already exists (refusing to overwrite; set ALLOW_RESMOKE=1 to rerun into it)" >&2
+  exit 1
+fi
 mkdir -p "runs/${RUN_ID}"
-{ echo "host=$(hostname)"; nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv,noheader;
-  echo "started=$(date -u +%Y-%m-%dT%H:%M:%SZ)"; } > "runs/${RUN_ID}/metadata.json"
+python scripts/write_metadata.py --run_id "$RUN_ID" --phase start 2>/dev/null || true
+trap 'python scripts/write_metadata.py --run_id "$RUN_ID" --phase end 2>/dev/null || true' EXIT
 
 echo "== [1/3] cache-index oracle (CPU, independent) =="
 python audit/cache_index_test.py

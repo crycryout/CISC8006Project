@@ -1,4 +1,20 @@
-host=stluo-gpu03
-NVIDIA H800 PCIe, 580.173.02, 81559 MiB
-NVIDIA H800 PCIe, 580.173.02, 81559 MiB
-started=2026-09-05T08:00:38Z
+{
+  "run_id": "R0001",
+  "hostname": "stluo-gpu03",
+  "gpus": [
+    {
+      "name": "NVIDIA H800 PCIe",
+      "driver": "580.173.02",
+      "memory_mb": 81559
+    },
+    {
+      "name": "NVIDIA H800 PCIe",
+      "driver": "580.173.02",
+      "memory_mb": 81559
+    }
+  ],
+  "git_commit": "fbdc9e67f3a7e09f493c45ff08f87186bf5fce3f",
+  "started_at": "2026-09-05T08:00:38Z",
+  "ended_at": null,
+  "note": "format_note: converted on 2026-09-05 from the original shell key=value file whose full content was 'host=stluo-gpu03 / NVIDIA H800 PCIe, 580.173.02, 81559 MiB (x2) / started=2026-09-05T08:00:38Z'. ended_at was not recorded by the original script; per-arm wall-clock durations are in runs/R0001/{window,streaming}/result.json (elapsed_seconds). git_commit taken from result.json (HEAD at launch). Values unchanged, nothing reconstructed."
+}

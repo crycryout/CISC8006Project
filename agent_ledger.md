@@ -12,6 +12,6 @@ Rules: `agent_policy.md`. Humans verify every consequential output.
 
 ## Pending / open items for the team
 
-- [ ] Fill team member names in `submission/week3_submission.md` before the 2026-09-06 23:59 portal deadline (registered submitter posts it).
+- [ ] Fill team member names in `submission/week3_submission.md` before the 2026-09-06 23:59 portal deadline (registered submitter posts it). After submitting, flip the "not yet submitted" status lines in `claim.md` / `submission/week3_submission.md` / `README.md` to the actual timestamp.
 - [ ] Human review of claim_map.md draft before treating it as team position in office hour (Wed 2026-09-09 14:00–15:00, N21-2001f).
-- [ ] After smoke test: human sanity-check that window arm actually degrades after overflow on ≥1 book before locking max-tokens-per-book.
+- [ ] Human sanity-check the harness mechanics and the throughput estimate behind `max_tokens_per_book = 16384`. The token cap is selected **solely from the compute ceiling** (`compute_budget.md`) and must not depend on the observed window-vs-streaming NLL gap. `max_tokens_per_book` was frozen on 2026-09-05 on compute grounds only; any future change needs a compute-based (not performance-based) justification and a documented rescope.

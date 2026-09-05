@@ -21,9 +21,13 @@
 | Long runs interrupted (shared box) | medium | lost runs | per-run checkpointless but restartable design; book-level granularity; registry logs partial status |
 | 10 books × 2 arms exceed ceiling | medium | forced rescope | preregistered fallback: reduce book count before final reproduction with documented approval |
 
-## GPU-hour budget sketch
+## GPU-hour budget — measured (R0001, 2026-09-05)
 
-Filled from measured smoke-test throughput in `compute_budget.md` (R0001). Order of magnitude check at paper-typical settings: a 2.8B fp16 model decodes ~1k token/s per book sequentially on one H800 when memory-bound with tiny batches; 10 books × 2 arms × ≤ 20k scored tokens ⇒ ≲ 7 GPU-hours, comfortably inside the 20 GPU-hour ceiling. **This estimate is provisional until R0001 measures realized throughput.**
+Measured throughput of the official token-by-token evaluation semantics on Pythia-2.8B fp16, 1× H800:
+
+- window `0+1024`: **32.2 tok/s**; streaming `4+1020`: **31.2 tok/s** (per-step eviction included; dominated by launch/Python overhead, GPU mostly idle, 6.9 GB peak).
+
+Full primary pass (10 books × 2 arms × 16,384 tokens) ≈ **2.9 GPU-h**; worst case incl. sensitivity arms and diagnosis reruns ≈ 12.5 GPU-h — inside the 20 GPU-h ceiling with margin. Details and freeze decision: `compute_budget.md`.
 
 ## Scope discipline
 

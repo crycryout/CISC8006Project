@@ -2,9 +2,9 @@
 
 **Status: DRAFT.** Instructor review (7–13 Sept) is ongoing; this map must not be treated as frozen until the claim freeze on 2026-09-13. Any instructor-requested change is documented in the revision log below.
 
-**Maps to central claim (v1):**
+**Maps to central claim (v1.1):**
 
-> On a fixed PG19 evaluation using Pythia-2.8B and a 1024-token KV-cache budget, StreamingLLM, which retains four initial attention-sink tokens together with recent tokens, achieves lower long-sequence perplexity than pure window attention after the cache begins evicting old tokens.
+> On a fixed PG19 evaluation using Pythia-2.8B and a 1024-token KV-cache budget, StreamingLLM retaining four initial attention-sink tokens together with recent tokens achieves lower post-overflow token negative log-likelihood (and therefore lower perplexity under the same aggregation) than pure window attention.
 
 ## 1. Assumptions
 
@@ -27,7 +27,7 @@ Secondary/reference arms (not part of the primary comparison): full cache no-evi
 
 - **Source:** PG19 **test** split (DeepMind, via Hugging Face `deepmind/pg19`, parquet files checksummed in `data_manifest.md`).
 - **Preregistration:** 10 book IDs selected **before any method-performance look**, recorded and frozen in `data_manifest.md`; identical token ranges per book for both arms.
-- **Scoring region:** prediction steps ≥ 1025 (post-overflow: the official implementation evicts *after* each forward, so step 1025 is the first prediction made under an already-evicted cache) on a fixed max-tokens-per-book cap (frozen before final runs; smoke-test-driven, see `compute_budget.md`).
+- **Scoring region:** NLL-array indices `idx ≥ 1025`, where `nlls[idx]` scores the prediction of token `idx+1` (post-overflow: the official implementation evicts *after* each forward, so step 1025 is the first prediction made under an already-evicted cache; indexing convention in `protocol.md` §3), on a fixed max-tokens-per-book cap (frozen before final runs on compute grounds only, see `compute_budget.md`).
 - **Never** select books by observed method performance.
 
 ## 4. Metrics

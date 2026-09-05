@@ -23,7 +23,7 @@
 
 Formula: `GPU-h = books × 2 arms × max_tokens_per_book / tokens_per_second / 3600`.
 
-- **Chosen cap: `max_tokens_per_book = 16384`** (⇒ 15,359 scored positions/book, 13,657 more than the smoke).
+- **Chosen cap: `max_tokens_per_book = 16384`** (⇒ 15,358 scored NLL indices per book: 16384 tokens → 16383-entry `nlls` array → indices 1025..16382; 12,288 more than the smoke's 3,070).
 - 10 books × 2 arms × 16,384 tokens @ ~31.7 tok/s ⇒ **≈ 2.89 GPU-h per full pass**.
 - Sensitivity arms (sink ∈ {1,2,8}, 3-book subset) ≈ 0.43 + 0.43×2/10 ≈ 0.86 GPU-h.
 - Diagnosis reruns reserve: 3 full passes ≈ 8.7 GPU-h.

@@ -13,11 +13,11 @@ An auditable research pipeline:
 
 We never optimize for a positive result. A negative or null result is acceptable when the protocol is fixed, uncertainty is reported, discrepancies are diagnosed, and artifacts are auditable.
 
-## Central claim (v1, submitted 2026-09-06)
+## Central claim (v1.1 — ready for submission, due 2026-09-06 23:59; not yet submitted as of 2026-09-05)
 
-> On a fixed PG19 evaluation using Pythia-2.8B and a 1024-token KV-cache budget, StreamingLLM, which retains four initial attention-sink tokens together with recent tokens, achieves lower long-sequence perplexity than pure window attention after the cache begins evicting old tokens.
+> On a fixed PG19 evaluation using Pythia-2.8B and a 1024-token KV-cache budget, StreamingLLM retaining four initial attention-sink tokens together with recent tokens achieves lower post-overflow token negative log-likelihood (and therefore lower perplexity under the same aggregation) than pure window attention.
 
-Full specification and decision rule: [`claim.md`](claim.md).
+The claim metric (token NLL; perplexity strictly derived) is identical to the preregistered primary metric and decision rule — no ambiguity. Full specification: [`claim.md`](claim.md).
 
 ## Repository layout
 
