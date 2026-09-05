@@ -4,6 +4,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 source .venv/bin/activate
+export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1  # model cached; skip network checks
 
 RUN_ID="${1:?usage: run_reproduction.sh <RUN_ID> [max_tokens]}"
 MAXTOK="${2:-16384}"   # TODO: freeze default after R0001 (compute_budget.md)

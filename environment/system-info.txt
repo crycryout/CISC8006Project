@@ -1,0 +1,8 @@
+# Generated 2026-09-05T06:27:46Z
+NVIDIA H800 PCIe, 580.173.02, 81559 MiB
+NVIDIA H800 PCIe, 580.173.02, 81559 MiB
+Python 3.10.12
+Linux 5.15.0-131-generic x86_64 GNU/Linux
+torch 2.14.0+cu130
+transformers 4.33.0
+huggingface_hub 0.25.2

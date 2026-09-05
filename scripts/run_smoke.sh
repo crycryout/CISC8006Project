@@ -6,6 +6,9 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 source .venv/bin/activate
+# Model + tokenizer are fully cached; offline flags stop from_pretrained from
+# issuing slow network checks that can stall the run for minutes.
+export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
 
 RUN_ID=R0001
 BOOK=data/pg19/test/10146.txt

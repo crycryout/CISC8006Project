@@ -1,0 +1,16 @@
+{
+  "config": null,
+  "run_id": "R0000-harnesscheck",
+  "method": "streaming",
+  "model": "EleutherAI/pythia-160m",
+  "model_revision": "50f5173d932e8e61f858120bcb800b97af589f46",
+  "book_files": [
+    "data/pg19/test/10146.txt"
+  ],
+  "sink_tokens": 4,
+  "recent_tokens": 1020,
+  "max_tokens_per_book": 4096,
+  "min_scored_idx": null,
+  "precision": "fp16",
+  "output_dir": null
+}

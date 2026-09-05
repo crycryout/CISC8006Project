@@ -23,5 +23,7 @@ export -f download_one; export URL DIR SIZE CHUNK
 seq 0 $((N-1)) | xargs -P "$C" -I{} bash -c 'download_one {}'
 
 echo "parts complete: $(ls "$DIR" | wc -l)"
-TOTAL=$(du -sb "$DIR" | awk '{print $1}')
-echo "bytes on disk: $TOTAL / $SIZE"
+TOTAL=$(find "$DIR" -name 'part_*' -printf '%s\n' | awk '{s+=$1} END{print s}')
+echo "bytes on disk (files only): $TOTAL / $SIZE"
+# NOTE: caller MUST verify sha256 of the assembled file; per-part sizes can
+# match while content is corrupted (duplicate-append on reconnect).
