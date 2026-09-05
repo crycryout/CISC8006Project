@@ -1,0 +1,17 @@
+# Environment specification (no conda on this host; actual venv via python3 -m venv)
+# Reproduce with:
+#   python3 -m venv --without-pip .venv
+#   curl -sSL https://bootstrap.pypa.io/get-pip.py | .venv/bin/python
+#   .venv/bin/pip install -r environment/pip-freeze.txt
+name: cisc8006
+channels: []
+dependencies: []
+# Key pins (see pip-freeze.txt for the full closure):
+#   python 3.10.12 (system)      # official intent was 3.8; 3.10 is the closest available on this host
+#   torch 2.14.0+cu130           # newest that supports H800 sm_90; official intent was any torch
+#   transformers 4.33.0          # == official repo pin (required: StartRecentKVCache touches
+#                                #    legacy tuple past_key_values internals)
+#   huggingface_hub 0.25.2       # compatibility pin: transformers<4.34 breaks with hub>=0.26
+#                                #    (cached_download removal); download-layer only, no numerical effect
+#   numpy 1.26.4                 # transformers 4.33 predates numpy-2 ABI
+#   accelerate 0.21.0, sentencepiece 0.2.1, pyyaml

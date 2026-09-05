@@ -1,0 +1,68 @@
+{
+  "selection_rule": "first 10 test-split books in dataset order with tokenized length >= 4096 (pinned tokenizer)",
+  "model_revision": "2a259cdd96a4beb1cdf467512e3904197345f6a9",
+  "min_tokens": 4096,
+  "frozen_at": "2026-09-05",
+  "books": [
+    {
+      "file": "test/10146.txt",
+      "book_id": "10146",
+      "title": "Reminiscences of Pioneer Days in St. Paul by Frank Moore",
+      "token_length": 59202
+    },
+    {
+      "file": "test/10321.txt",
+      "book_id": "10321",
+      "title": "Dragon's blood by Henry Milner Rideout",
+      "token_length": 86765
+    },
+    {
+      "file": "test/10356.txt",
+      "book_id": "10356",
+      "title": "Travels in Morocco Volume 2 by James Richardson",
+      "token_length": 79278
+    },
+    {
+      "file": "test/10762.txt",
+      "book_id": "10762",
+      "title": "Impressions of Theophrastus Such by George Eliot",
+      "token_length": 79624
+    },
+    {
+      "file": "test/12204.txt",
+      "book_id": "12204",
+      "title": "Odd Craft Part 4: Bill's Lapse by W.W. Jacobs",
+      "token_length": 7141
+    },
+    {
+      "file": "test/15562.txt",
+      "book_id": "15562",
+      "title": "The S. W. F. Club by Caroline E. Jacobs",
+      "token_length": 60020
+    },
+    {
+      "file": "test/22424.txt",
+      "book_id": "22424",
+      "title": "Frank Merriwell Down South by Burt L. Standish",
+      "token_length": 120422
+    },
+    {
+      "file": "test/24553.txt",
+      "book_id": "24553",
+      "title": "Critical Miscellanies (Vol. 2 of 3) by John Morley",
+      "token_length": 30166
+    },
+    {
+      "file": "test/2544.txt",
+      "book_id": "2544",
+      "title": "From Sand Hill to Pine by Bret Harte",
+      "token_length": 89516
+    },
+    {
+      "file": "test/25646.txt",
+      "book_id": "25646",
+      "title": "Child's Health Primer For Primary Classes by Jane Andrews",
+      "token_length": 26000
+    }
+  ]
+}

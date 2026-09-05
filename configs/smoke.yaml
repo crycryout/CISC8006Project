@@ -1,0 +1,11 @@
+# Smoke test (R0001): tiny deterministic run — pipeline viability + throughput measurement.
+# One book, 4096 tokens => 3071 scored positions (idx >= 1025). ~2-4 min/arm expected.
+run_id: R0001
+model: EleutherAI/pythia-2.8b
+model_revision: 2a259cdd96a4beb1cdf467512e3904197345f6a9
+book_files:
+  - data/pg19/test/10146.txt   # first preregistered book (dataset order, >=4096 tokens)
+sink_tokens: null              # set by run_smoke.sh per arm
+recent_tokens: null
+max_tokens_per_book: 4096
+precision: fp16

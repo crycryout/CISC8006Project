@@ -1,0 +1,11 @@
+# Primary method arm B — StreamingLLM. Budget 1024.
+run_id: R0002-streaming
+model: EleutherAI/pythia-2.8b
+model_revision: 2a259cdd96a4beb1cdf467512e3904197345f6a9
+method: streaming
+sink_tokens: 4
+recent_tokens: 1020
+max_tokens_per_book: 16384   # TODO: freeze after R0001 throughput measurement (compute_budget.md)
+precision: fp16
+book_files:                  # TODO: filled from audit/book_list.json by freeze_book_list.py
+  - data/pg19/test/10146.txt

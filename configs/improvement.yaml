@@ -1,0 +1,8 @@
+# Improvement portfolio placeholder — H1/H2/H3 (SKILL §12). Not activated before Week 10.
+# Do NOT run before the reproduction protocol is frozen.
+run_id: null
+method: null                 # h1_adaptive_sink | h2_sink_selection | h3_anchor_refresh
+sink_tokens: null
+recent_tokens: null
+max_tokens_per_book: null
+precision: fp16

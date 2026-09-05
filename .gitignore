@@ -1,0 +1,16 @@
+# env & caches
+.venv/
+__pycache__/
+*.pyc
+.cache/
+
+# data (checksummed in environment/data_checksums.txt; re-download via scripts)
+data/pg19/test/
+data/pg19/metadata.csv
+
+# run artifacts: keep result/config/summary logs, drop bulky traces >1MB
+runs/**/position_nll.json
+runs/**/*.log.tmp
+
+# OS
+.DS_Store
