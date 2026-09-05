@@ -7,25 +7,31 @@
 | Date | Run | GPU-time | Purpose |
 |---|---|---|---|
 | 2026-09-05 | R0000-setup | ~0 GPU-h (CPU/network only) | pins, downloads, environment |
-| 2026-09-05 | R0001 smoke | *(fill from result.json)* | viability + tokens/s measurement |
+| 2026-09-05 | R0000-harnesscheck | 0.03 GPU-h (2×48 s @160m) | harness validation, small model |
+| 2026-09-05 | R0001 smoke | 0.07 GPU-h (127 s + 131 s) | viability + tokens/s measurement (2.8B) |
 
-## Measured throughput (R0001)
+## Measured throughput (R0001, Pythia-2.8B fp16, 1× H800, token-by-token decode + per-step eviction)
 
-*(filled after smoke — fields below are placeholders until then)*
-
-| Arm | tokens/s (decode, 1×H800, fp16, Pythia-2.8B) | GPU-h per 16k-token book |
+| Arm | tokens/s | GPU-h per 16,384-token book |
 |---|---|---|
-| window `0+1024` | *(measured)* | *(measured)* |
-| streaming `4+1020` | *(measured)* | *(measured)* |
+| window `0+1024` | 32.2 | 0.141 |
+| streaming `4+1020` | 31.2 | 0.146 |
+
+(Throughput is dominated by per-step Python/launch overhead of the official token-by-token evaluation semantics, not by GPU compute — both arms sit at 6.9 GB / 80 GB memory, 0% idle-heavy.)
 
 ## Extrapolation to the full protocol
 
 Formula: `GPU-h = books × 2 arms × max_tokens_per_book / tokens_per_second / 3600`.
 
-- 10 books × 2 arms × 16,384 tokens at 100 tok/s ⇒ ≈ **0.91 GPU-h** per full pass.
-- Sensitivity arms (sink ∈ {1,2,8} on a 3-book subset) add ≈ 25% of a full pass.
-- Diagnosis reruns (SKILL §11) reserve: 3× full pass.
-- Total worst case ≈ 5 full passes ⇒ well within the 20 GPU-hour ceiling. **Placeholder numbers; replace with measured values after R0001.**
+- **Chosen cap: `max_tokens_per_book = 16384`** (⇒ 15,359 scored positions/book, 13,657 more than the smoke).
+- 10 books × 2 arms × 16,384 tokens @ ~31.7 tok/s ⇒ **≈ 2.89 GPU-h per full pass**.
+- Sensitivity arms (sink ∈ {1,2,8}, 3-book subset) ≈ 0.43 + 0.43×2/10 ≈ 0.86 GPU-h.
+- Diagnosis reruns reserve: 3 full passes ≈ 8.7 GPU-h.
+- Grand total worst case ≈ **12.5 GPU-h — inside the 20 GPU-hour ceiling** with margin.
+
+## Decision (frozen after R0001, 2026-09-05)
+
+Keep 10 books @ 16,384 tokens/book for the primary comparison. No rescope needed.
 
 ## Decision points
 

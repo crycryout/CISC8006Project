@@ -5,7 +5,16 @@ model_revision: 2a259cdd96a4beb1cdf467512e3904197345f6a9
 method: window
 sink_tokens: 0
 recent_tokens: 1024
-max_tokens_per_book: 16384   # TODO: freeze after R0001 throughput measurement (compute_budget.md)
+max_tokens_per_book: 16384   # frozen after R0001 (compute_budget.md)
 precision: fp16
-book_files:                  # TODO: filled from audit/book_list.json by freeze_book_list.py
+book_files:                  # frozen from audit/book_list.json
   - data/pg19/test/10146.txt
+  - data/pg19/test/10321.txt
+  - data/pg19/test/10356.txt
+  - data/pg19/test/10762.txt
+  - data/pg19/test/12204.txt
+  - data/pg19/test/15562.txt
+  - data/pg19/test/22424.txt
+  - data/pg19/test/24553.txt
+  - data/pg19/test/2544.txt
+  - data/pg19/test/25646.txt

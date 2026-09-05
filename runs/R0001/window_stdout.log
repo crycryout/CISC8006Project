@@ -1,0 +1,19 @@
+/home/renjie/CISC8006Project/.venv/lib/python3.10/site-packages/huggingface_hub/file_download.py:1142: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/home/renjie/CISC8006Project/.venv/lib/python3.10/site-packages/transformers/utils/generic.py:311: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/home/renjie/CISC8006Project/.venv/lib/python3.10/site-packages/transformers/utils/generic.py:311: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/home/renjie/CISC8006Project/.venv/lib/python3.10/site-packages/huggingface_hub/file_download.py:1142: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+StartRecentKVCache: 0, 1024
+{
+  "run_id": "R0001",
+  "method": "window",
+  "mean_nll": 5.4505791664123535,
+  "perplexity": 232.89300537109375,
+  "scored_tokens": 3070,
+  "peak_gpu_memory_mb": 6912,
+  "elapsed_seconds": 127.32,
+  "tokens_per_second_overall": 32.17
+}

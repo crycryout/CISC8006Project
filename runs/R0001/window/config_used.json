@@ -1,0 +1,16 @@
+{
+  "config": null,
+  "run_id": "R0001",
+  "method": "window",
+  "model": "EleutherAI/pythia-2.8b",
+  "model_revision": "2a259cdd96a4beb1cdf467512e3904197345f6a9",
+  "book_files": [
+    "data/pg19/test/10146.txt"
+  ],
+  "sink_tokens": 0,
+  "recent_tokens": 1024,
+  "max_tokens_per_book": 4096,
+  "min_scored_idx": null,
+  "precision": "fp16",
+  "output_dir": null
+}

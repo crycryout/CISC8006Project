@@ -57,13 +57,15 @@ python audit/cache_index_test.py   # cache-index oracle (no GPU needed)
 
 | Date | Gate | Status |
 |---|---|---|
-| 2026-09-06 23:59 | Paper + central claim submission | **submitted text in `submission/week3_submission.md`** |
+| 2026-09-06 23:59 | Paper + central claim submission | text ready in `submission/week3_submission.md` (fill team names, portal submit) |
 | 2026-09-07..13 | Instructor review; refine claim on request | in progress |
-| 2026-09-09 | Week-4 claim-map draft | `claim_map.md` (draft) |
+| 2026-09-09 | Week-4 claim-map draft | ✅ `claim_map.md` (draft) |
 | 2026-09-13 | Paper/claim freeze | pending |
-| 2026-09-16 | Week-5: protocol + agent policy + harness smoke | pending |
-| 2026-09-23 | Week-6: locked env + provenance + baseline | pending |
+| 2026-09-16 | Week-5: protocol + agent policy + harness smoke | early: `run_smoke.sh`, oracle, policy, env locks in place; protocol.md to finalize |
+| 2026-09-23 | Week-6: locked env + provenance + baseline | pending (first full pass = R0002, ≈2.9 GPU-h) |
 | 2026-09-30 | Week-7: pass/rescope gate | pending |
+
+**R0001 smoke (2026-09-05, Pythia-2.8B @ H800):** window NLL 5.451 / ppl 232.9 vs streaming NLL 5.292 / ppl 198.8 on PG19 book 10146 (3,070 scored tokens) — the attention-sink gap is directionally present at claim scale. See `runs/R0001/` + `figures/r0001_nll_vs_position.png`. Not a claim verdict: that requires the 10-book paired CI (R0002).
 
 ## Team
 

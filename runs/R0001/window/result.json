@@ -1,0 +1,72 @@
+{
+  "run_id": "R0001",
+  "git_commit": "fbdc9e67f3a7e09f493c45ff08f87186bf5fce3f",
+  "method": "window",
+  "model": "EleutherAI/pythia-2.8b",
+  "model_revision": "2a259cdd96a4beb1cdf467512e3904197345f6a9",
+  "tokenizer_revision": "2a259cdd96a4beb1cdf467512e3904197345f6a9",
+  "dataset": "pg19-test",
+  "book_ids": [
+    "10146"
+  ],
+  "cache_budget": 1024,
+  "sink_tokens": 0,
+  "recent_tokens": 1024,
+  "precision": "fp16",
+  "min_scored_idx": 1025,
+  "scored_tokens": 3070,
+  "mean_nll": 5.4505791664123535,
+  "perplexity": 232.89300537109375,
+  "peak_gpu_memory_mb": 6912,
+  "elapsed_seconds": 127.32,
+  "tokens_per_second_overall": 32.17,
+  "per_book": [
+    {
+      "book_id": "10146",
+      "tokenized_length": 4096,
+      "scored_tokens": 3070,
+      "mean_nll_all_positions": 4.619311809539795,
+      "mean_nll_scored": 5.4505791664123535,
+      "ppl_scored": 232.89300537109375,
+      "mean_nll_by_128tok_bin": [
+        1.8663064241409302,
+        2.429802417755127,
+        2.492044687271118,
+        2.1550679206848145,
+        2.052135467529297,
+        2.0175724029541016,
+        2.2149953842163086,
+        1.8127515316009521,
+        4.678483009338379,
+        5.507915496826172,
+        5.01533317565918,
+        5.694199085235596,
+        5.5495452880859375,
+        6.033729553222656,
+        6.263589859008789,
+        5.734673500061035,
+        5.5035400390625,
+        5.484991073608398,
+        5.770149230957031,
+        5.36384391784668,
+        5.253528118133545,
+        5.541313171386719,
+        5.3562211990356445,
+        5.238014221191406,
+        5.370086669921875,
+        5.692607879638672,
+        5.2456817626953125,
+        5.170360565185547,
+        5.321364402770996,
+        5.178549766540527,
+        5.313358306884766,
+        5.503129482269287
+      ]
+    }
+  ],
+  "semantics": {
+    "eviction": "official StartRecentKVCache, eviction after forward",
+    "position_ids": "implicit (transformers GPT-NeoX: start at past length)",
+    "harness": "scripts/eval_ppl.py mirroring examples/eval_long_ppl.py"
+  }
+}

@@ -8,7 +8,7 @@
 |---|---|
 | Name | `EleutherAI/pythia-2.8b` |
 | HF revision (commit) | `2a259cdd96a4beb1cdf467512e3904197345f6a9` |
-| Weight SHA256 | `ab496f1c3fd79e3c749a9d5414136a2c8e4224f94eecb261970315cdb0f813fe` (model.safetensors, 5,653,685,360 B) |
+| Weight SHA256 | `ab496f1c3fd79e3c749a9d5414136a2c8e4224f94eecb261970315cdb0f813fe` (model.safetensors, 5,684,693,096 B — hub-verified on download, independently re-hashed locally) |
 | Parameters | 2.8B; fp16 runtime ≈ 5.6 GB |
 | Local cache | `~/.cache/huggingface/hub/models--EleutherAI--pythia-2.8b` |
 | Secondary (harness validation only) | `EleutherAI/pythia-160m` @ `50f5173d932e8e61f858120bcb800b97af589f46` |
