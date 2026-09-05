@@ -57,7 +57,7 @@ Any such outcome is reported as-is; a diagnosis follows the SKILL §11 order (to
 | T1 | Scale gap: 2.8B + few-thousand-token books vs paper's 4M tokens may shrink the window-vs-streaming gap toward zero | false negative (inconclusive) | preregistered decision rule accepts inconclusive; record gap-vs-position slope as secondary evidence |
 | T2 | Position-ID mismatch between arms after eviction (implicit positions restart from cache length) | confound favoring either arm | cache-index + position-id oracle (`audit/`); pos-shift variant as secondary evidence |
 | T3 | Official code expects `transformers==4.33.0` legacy KV tuple; newer stacks change cache internals | breaks eviction silently | pin 4.33.0; compatibility changes isolated in dedicated commits with logs |
-| T4 | fp16 numerics on H800 differ from paper hardware (A100) | noise in NLL | same precision both arms; paired design; record GPU/driver in every run |
+| T4 | fp16 numerics on H800 differ from the paper's stated hardware (A6000 for its efficiency benchmarks, §4.5; the paper does not state hardware for its PG19 perplexity runs) | noise in NLL | same precision both arms; paired design; record GPU/driver in every run |
 | T5 | PG19 preprocessing/concatenation drift (whitespace, book headers) | shifts absolute NLL | frozen tokenization path; checksummed local parquet; same tokens both arms |
 | T6 | Book selection bias | false positive | preregistered book list frozen before performance looks |
 | T7 | Scoring-region leakage (scoring pre-overflow warm-up tokens) inflates apparent equivalence | false negative | mask all steps < 1025 in the scorer |
