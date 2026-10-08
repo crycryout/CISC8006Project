@@ -2,17 +2,19 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 target="${1:-.venv-verified}"
+python_binary="${CISC_SYSTEM_PYTHON:-python3.10}"
 requirements_file=environment/requirements.txt
 if [[ -f environment/verified-pip-freeze.txt ]]; then
   requirements_file=environment/verified-pip-freeze.txt
 fi
 if [[ ! -e "$target/bin/python" ]]; then
   if command -v uv >/dev/null; then
-    uv venv --python python3 "$target"
+    uv venv --python "$python_binary" "$target"
   else
-    python3 -m venv --without-pip "$target"
+    "$python_binary" -m venv --without-pip "$target"
   fi
 fi
+"$target/bin/python" -c 'import sys; assert sys.version_info[:2] == (3, 10), "Python 3.10 is required; use a fresh target directory with CISC_SYSTEM_PYTHON pointing to Python 3.10"'
 if command -v uv >/dev/null; then
   uv pip install --python "$target/bin/python" pip
   uv pip install --python "$target/bin/python" torch==2.14.0+cu130 --index-url https://download.pytorch.org/whl/cu130
