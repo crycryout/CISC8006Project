@@ -19,5 +19,6 @@ Machine events: `experiments/registry.jsonl`. Historical Markdown preserved in `
 | recovery-retry-20261009 | diagnostic / 0 | completed | `77189031` | 146.157 / 0.040599 | `runs/recovery-retry-20261009` |
 | smoke-cpu-a29b6758c903 | smoke / 0 | completed | `6a915de5` | 4.200 / 0.000000 | `runs/smoke-cpu-a29b6758c903` |
 | smoke-cpu-clean-checkout-20261009 | smoke / 0 | completed | `5e81fdea` | 5.754 / 0.000000 | `runs/smoke-cpu-clean-checkout-20261009` |
+| smoke-cpu-ca8f7f22e8f0 | smoke / 0 | completed | `4e54a2a8` | 4.125 / 0.000000 | `runs/smoke-cpu-ca8f7f22e8f0` |
 
 Spent/reserved charge: 0.578634 GPU-h. Budget includes historical0.25h plus0.02h conservative prior uninstrumented H800-fixture reserve. New attempts use whole-process wall-clock timing. Costs are not separately metered. Failed attempts remain visible and never enter claim inference.

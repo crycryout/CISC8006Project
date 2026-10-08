@@ -1,0 +1,13 @@
+{
+  "verified_at": "2026-10-08T16:31:10.306321+00:00",
+  "status": "pass",
+  "slide_count": 12,
+  "all_slides_have_speaker_notes": true,
+  "report_deck_hashes_match": true,
+  "all_plot_table_provenance_hashes_match": true,
+  "visual_checks": [
+    "PDF page1 rendered and inspected",
+    "diagnostic KV chart rendered and inspected"
+  ],
+  "pptx_visual_rendering": "not performed; presentation structure checked"
+}

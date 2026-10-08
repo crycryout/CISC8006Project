@@ -73,5 +73,9 @@
   {
     "run_id": "smoke-cpu-clean-checkout-20261009",
     "validation_status": "valid_cpu_fixture"
+  },
+  {
+    "run_id": "smoke-cpu-ca8f7f22e8f0",
+    "validation_status": "valid_cpu_fixture"
   }
 ]

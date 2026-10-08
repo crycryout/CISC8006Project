@@ -1,0 +1,27 @@
+{
+  "verified_at": "2026-10-08T16:31:10.295348+00:00",
+  "command": "bash scripts/release_check.sh",
+  "actual_exit_code": 2,
+  "expected_exit_code": 2,
+  "reason": "genuine scientific/human approval requirements still pending",
+  "observed": {
+    "checked_at": "2026-10-08T16:29:59.306627+00:00",
+    "engineering_missing": [],
+    "scientific_human_pending": [
+      "reproduction",
+      "pilots",
+      "improvement",
+      "actual decision: reproduction_v2",
+      "actual decision: pilots_h1_h2",
+      "actual decision: selected_improvement",
+      "actual decision: final_freeze",
+      "actual feasible budget / exemption decision",
+      "selected method core ablations / controls",
+      "human evidence: audit/peer_audit/signed_review.md",
+      "human evidence: CONTRIBUTIONS_verified.md"
+    ],
+    "final_ready": false,
+    "spent_or_reserved_gpu_hours": 0.5786337181645084,
+    "ceiling_gpu_hours": 20.0
+  }
+}

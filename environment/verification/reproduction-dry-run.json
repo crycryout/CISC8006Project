@@ -297,7 +297,7 @@
       "config_sha256": "91795bad6f7acb8faa70fb2277e0e54e66d372e0e0ffb8cce99b2717309ddde6"
     }
   ],
-  "spent_or_reserved_gpu_hours": 0.6003278460868428,
+  "spent_or_reserved_gpu_hours": 0.5786337181645084,
   "estimated_new_gpu_hours": 10.750003563822105,
   "ceiling_gpu_hours": 20.0,
   "approval": "scientific decision pending: reproduction_v2; see docs/protocol_amendments.md",
