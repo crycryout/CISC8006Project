@@ -1,0 +1,9 @@
+{
+  "verified_at": "2026-10-08T16:20:49.571223+00:00",
+  "validation_status": "valid",
+  "manifest_sha256": "e657c2d35066f5d59ecba70c17bac6222625790297c5b0e0566b112ff2794bf1",
+  "test_books": 10,
+  "dev_books": 3,
+  "test_input_tokens": 154597,
+  "test_scored_tokens": 144337
+}

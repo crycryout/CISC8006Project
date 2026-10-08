@@ -119,11 +119,11 @@
     },
     {
       "path": "results/completion.json",
-      "sha256": "31560e02d546b21f5bcdc4be62453dde305f93abbad51b1e33f9a8aebcff11e0"
+      "sha256": "0618e493576cc0dc11de300019e13fff9180fa2696a570e3159dba64780a7d4f"
     },
     {
       "path": "results/diagnostics/comparison.csv",
-      "sha256": "0489315e23377e356e356efbee825d4ade44a423f993ded4199aedd6eb89a8fe"
+      "sha256": "5eab0462e218c27158af3b13f8d7940e67631e3c3a39c83c3eb44501a50de1f3"
     },
     {
       "path": "results/diagnostics/scorer_comparison.json",
@@ -131,7 +131,7 @@
     },
     {
       "path": "results/diagnostics/summary.json",
-      "sha256": "ec7bf0be4315a19a59f085780a22bf56adc7cc47264c0720e6c50e4031c00058"
+      "sha256": "12e2e9beeed4d75b81f411636a3b1453524d3c8638888779544c399a337b4b89"
     },
     {
       "path": "results/final_input_manifest.json",
@@ -147,7 +147,7 @@
     },
     {
       "path": "results/run_validation.json",
-      "sha256": "3a027c713983e9e2a7ab304de8ec747a0fc86fea9bdea7a0707482665102f8e7"
+      "sha256": "68b9794c4a5e6659aa672eab5d56634f645001e8041f12147dc2ed3bbb01ffc1"
     },
     {
       "path": "figures/.gitkeep",
@@ -159,7 +159,7 @@
     },
     {
       "path": "figures/diagnostic_kv_bytes.png",
-      "sha256": "1848f7764f2955f9618ee94173d18edc8466cfd9257da6320c86a7fca7f6b9d2"
+      "sha256": "2873be80d208567d43ea5cad5d8b89690a6e52a54b3d34a603490cd75ab65903"
     },
     {
       "path": "figures/diagnostic_nll_vs_position.csv",

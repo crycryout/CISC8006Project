@@ -2,7 +2,7 @@
 
 当前为技术审核候选包，**尚未完成正式复现、改进评测或最终课程 freeze**。状态入口：[TASK_STATUS.md](TASK_STATUS.md)；必须的人类决定：[review_packet.md](docs/review_packet.md)。执行分支 `codex/h800-course-completion-20261008`，原有实验保持原样。
 
-已验证：原10本书、独立 RoPE/attention/K/V/logit fixtures、完整模型2×2诊断、失败保留、逐位置无损输出和重建脚本。修正版单本 smoke 的 window/StreamingLLM NLL=3.051129/2.223681，3070 scored；不是10本书结论。科学门槛和真实审批由发布检查区分。
+已验证：55项 CPU/H800 测试、干净 checkout 安装与13份资产恢复、原10本书、完整模型2×2诊断、失败重试保留、逐位置无损输出和重建脚本。修正版单本 smoke 的 window/StreamingLLM NLL=3.051129/2.223681，3070 scored；不是10本书结论。科学门槛和真实审批由发布检查区分。
 
 ## Install and verify
 
@@ -26,6 +26,6 @@
 
 Primary统计是书级等权seed配对NLL差；micro pooled PPL为secondary。输入 cap16384，短书12204保留7141，scored start1025，每组144337 scored。预算是eviction后1024，forward可见1025。实际3个模型seed不等于bootstrap seed，也不把10本变成30个独立样本。
 
-仓库的20 GPU-h默认上限继续生效。实测修正路径约24.192 predictions/s，原完整任务估算至少21.06h且还没计 calibration/retry，必须先获得可行的真实预算/豁免决定。GPU0每晚01:30改MIG、09:00恢复；launcher拒绝越过01:20的jobs。GPU1现有MIG不调整。
+仓库的20 GPU-h默认上限继续生效。实测修正路径约24.192 predictions/s，当前完整任务估算21.186h且还没计 calibration/未来retry，必须先获得可行的真实预算/豁免决定。GPU0每晚01:30改MIG、09:00恢复；launcher拒绝越过01:20的jobs。GPU1现有MIG不调整。
 
 Pinned官方 raw-K pos-shift 是faithful baseline修复，不是原创improvement。三个候选、两pilot和一个完整改进按[方案](docs/improvement_hypotheses.md)准备；没有编造结果。论文位置机制、Fig3/Fig5和独立书reset的差异见[paper comparison](docs/paper_comparison.md)。AI、人类角色、许可证和数据来源见 `AI_USAGE.md`、`CONTRIBUTIONS.md`、`LICENSES.md`、`SECURITY.md`。

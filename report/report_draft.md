@@ -20,7 +20,7 @@ Primary estimand: seed-paired per-book NLL deltas averaged within book, then ave
 
 ## Measured 2 by 2 diagnostic
 
-D-W0-20261008: NLL 5.450578; D-S0-20261008: NLL 5.292458; D-W1-20261008: NLL 3.051129; D-S1-20261008: NLL 2.223681. Each run uses one historically exposed smoke book, 4096 inputs and 3070 scored positions. Faithful positions change both absolute losses and the method gap. This local effect diagnoses the old implementation; it cannot establish a ten-book population conclusion or million-token stability. Position NLL arrays, KV traces, launch source hashes and costs are preserved.
+D-W0-20261008: NLL 5.450578; D-S0-20261008: NLL 5.292458; D-W1-20261008: NLL 3.051129; D-S1-20261008: NLL 2.223681. Each run uses one historically exposed smoke book, 4096 inputs and 3070 scored positions. Faithful positions change both absolute losses and the method gap. Actual retained K+V bytes plateau480MiB in legacy and320MiB in faithful positions, matching between methods within each position policy. This local effect diagnoses the old implementation; it cannot establish a ten-book population conclusion, systems speedup or million-token stability. Position NLL arrays, KV traces, launch source hashes and costs are preserved.
 
 ## Reproduction status and paper comparison
 
@@ -36,7 +36,7 @@ Compare valid H1/H2 pilots against faithful fixed-four StreamingLLM. Acceptable 
 
 ## Compute, provenance and reproducibility
 
-Current spent/reserved charge is 0.578634 GPU-hours, including conservative historical accounting. The measured slowest faithful throughput is 24.192 predictions/s. The initial required default plan estimate is at least 21.06 GPU-hours, above the enforced 20-hour ceiling before calibration/retry overhead. A concrete budget decision is required. Source commit is captured at launch; every attempt has a unique ID, status, selected GPU UUID, checksum inventory and per-book recovery. CPU smoke runs without weights. Public pinned assets restore separately. GPU0 has a scheduled MIG change at 01:30/09:00 Asia/Macao; the launcher checks execution windows.
+Current spent/reserved charge is 0.578634 GPU-hours, including conservative historical accounting. The measured slowest faithful throughput is 24.192 predictions/s. The required default plan estimate is 21.186 GPU-hours, above the enforced 20-hour ceiling before calibration/future retry overhead. A concrete budget decision is required. Source commit is captured at launch; every attempt has a unique ID, status, selected GPU UUID, checksum inventory and per-book recovery. Fresh Python3.10.12 checkout installation matches all dependency pins, restores thirteen public text assets and passes53 CPU fixtures. Model weights and split lists were rehashed from the public HF cache. GPU0 has a scheduled MIG change at 01:30/09:00 Asia/Macao; the launcher checks execution windows.
 
 ## Limitations, AI reflection and human delivery
 

@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-10-08T16:16:07.448654+00:00",
+  "built_at": "2026-10-08T16:26:48.557143+00:00",
   "state": "review_candidate",
   "command": [
     "/home/renjie/CISC8006Project/.venv-verified/bin/python",
@@ -8,15 +8,15 @@
   "artifacts": [
     {
       "path": "report/report_draft.md",
-      "sha256": "6140c5dff6f828842c5856f900b8b66a991d44bb063b2579a5be319e84c5eaff"
+      "sha256": "28944edb2cb07dea3ccd6d132e52eb11576c6441eb53e13aa1ac96452c0b8d34"
     },
     {
       "path": "report/report_draft.pdf",
-      "sha256": "b477bd4eb958f4aa1fc49d4e7f5a310c67a5c5142074ed579df2a991c72f8ee6"
+      "sha256": "4efc57f6502ed555fcc4de9dbb764d2b329ecb38c858983e537301cc61ca5897"
     },
     {
       "path": "presentation/defense_draft.pptx",
-      "sha256": "8ec7ff358d49435d29666957adc5f749543aba0e379bd5707b43d6eb0c40c78b"
+      "sha256": "871ded6ff33161587cf0ce09a0420f411578eed2664b289636f440c117c222cc"
     }
   ],
   "input_manifest_sha256": "1f908539518bd157992141cf3b1c74176a60cf9f707d7c2d6820cea5d1745cac"

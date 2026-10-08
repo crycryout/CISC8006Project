@@ -65,5 +65,13 @@
     "validation_status": "valid",
     "books": 2,
     "result_sha256": "faab3a885051914ca687097a799651f1149e2e9760ceae024f913ec805bd0a35"
+  },
+  {
+    "run_id": "smoke-cpu-a29b6758c903",
+    "validation_status": "valid_cpu_fixture"
+  },
+  {
+    "run_id": "smoke-cpu-clean-checkout-20261009",
+    "validation_status": "valid_cpu_fixture"
   }
 ]

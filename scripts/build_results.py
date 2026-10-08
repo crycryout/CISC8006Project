@@ -50,7 +50,7 @@ def build_diagnostics(paths):
         directory=ROOT/Path(path).parent
         validate_run(directory)
         result=json.loads((ROOT/path).read_text()); contract=result["contract"]
-        rows.append(dict(run_id=result["run_id"],method=result["method"],position_policy=contract["position_policy"],scorer_precision=contract["scorer_precision"],book_ids=";".join(result["book_ids"]),scored_tokens=result["scored_tokens"],macro_book_nll=result["macro_book_nll"],micro_token_ppl=result["micro_token_ppl"],predictions_per_second=result["predictions_per_second"],peak_gpu_memory_mb=result["peak_gpu_memory_mb"],source_commit=result["git_commit"],result_sha256=file_hash(ROOT/path)))
+        rows.append(dict(run_id=result["run_id"],method=result["method"],position_policy=contract["position_policy"],scorer_precision=contract["scorer_precision"],book_ids=";".join(result["book_ids"]),scored_tokens=result["scored_tokens"],macro_book_nll=result["macro_book_nll"],micro_token_ppl=result["micro_token_ppl"],predictions_per_second=result["predictions_per_second"],peak_gpu_memory_mb=result["peak_gpu_memory_mb"],retained_kv_plateau_bytes=max(x["kv_bytes"] for x in result["per_book"][0]["cache_trace"]),source_commit=result["git_commit"],result_sha256=file_hash(ROOT/path)))
         items[result["run_id"]]=[(directory,result)]
     write_csv(out/"comparison.csv",rows)
     write_json(out/"summary.json",dict(validation_status="valid",claim_status=None,purpose="single exposed smoke-book2×2 diagnostic; not formal reproduction",runs=rows))
@@ -62,11 +62,17 @@ def build_diagnostics(paths):
         ax.plot([x["step"] for x in trace],[x["retained_length"] for x in trace],label=label)
     ax.set(xlabel="prediction step",ylabel="retained KV positions",ylim=(0,1100)); ax.legend(fontsize=7); fig.tight_layout(); fig.savefig(ROOT/"figures/diagnostic_cache_plateau.png",dpi=180); plt.close(fig)
     first=next(iter(items.values()))[0][1]["per_book"][0]["cache_trace"]
+    lengths=lambda trace:[(x["step"],x["retained_length"]) for x in trace]
+    if any(lengths(entries[0][1]["per_book"][0]["cache_trace"])!=lengths(first) for entries in items.values()):
+        raise ValueError("diagnostic arms differ in actual retained length; shared-length figure is invalid")
     fig,ax=plt.subplots(figsize=(7,3.5)); ax2=ax.twinx()
     ax.plot([x["step"] for x in first],[x["retained_length"] for x in first],color="navy",label="retained length")
-    ax2.plot([x["step"] for x in first],[x["kv_bytes"]/1024**2 for x in first],color="gray",linestyle="--",label="measured KV MiB")
+    for label,entries in items.items():
+        trace=entries[0][1]["per_book"][0]["cache_trace"]
+        ax2.plot([x["step"] for x in trace],[x["kv_bytes"]/1024**2 for x in trace],linestyle="--",label=label+" KV MiB")
     ax.set(xlabel="prediction step",ylabel="retained KV positions"); ax2.set_ylabel("tensor K+V bytes (MiB)")
-    ax.set_title("All four arms retain the same length and bytes; forward peak is 1025",fontsize=9)
+    ax2.legend(fontsize=7,loc="lower right")
+    ax.set_title("Same retained length; measured legacy480MiB / faithful320MiB",fontsize=9)
     fig.tight_layout(); fig.savefig(ROOT/"figures/diagnostic_kv_bytes.png",dpi=180); plt.close(fig)
     return dict(state="diagnostic_complete",runs=[r["run_id"] for r in rows])
 

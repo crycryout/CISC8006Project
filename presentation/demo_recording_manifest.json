@@ -1,0 +1,32 @@
+{
+  "recorded_at": "2026-10-08T16:17:18.428070+00:00",
+  "artifact_kind": "actual_agent_terminal_session_and_video_replay",
+  "source_commit": "6a915de53a98e2b57f0449682a2f8b8198cf8d26",
+  "git_dirty_at_launch": false,
+  "command": [
+    "bash",
+    "scripts/demo.sh"
+  ],
+  "exit_code": 0,
+  "runtime_seconds": 4.434470651205629,
+  "demo_script_sha256": "3956985afe9297f29f93603cee9dd44b96edafe01b2d33e2087d0f9229d802a9",
+  "diagnostic_result_sha256": "ea903b2374e6c90d0243b98c9b352a92d65e8693f6a3ee534b87b8f5e66f08c2",
+  "human_rehearsal": "pending; this is not a member defense or peer review",
+  "artifacts": [
+    {
+      "path": "presentation/demo_recording/session.cast",
+      "sha256": "72eab74d2301bb6964f2926786d5cf1cfb96a7c18310b8a32784ec4c1f8b736d",
+      "bytes": 981
+    },
+    {
+      "path": "presentation/demo_recording/session.mp4",
+      "sha256": "76987f8a715b553e93ddbdd408af81e9840dbc9534c09156a2a3de796a7a3b2e",
+      "bytes": 45896
+    },
+    {
+      "path": "presentation/demo_recording/stdout.log",
+      "sha256": "4f153e45c8d83fa811388258cd6c0ba93fe562ecebda9b2b6756787ec44451be",
+      "bytes": 430
+    }
+  ]
+}

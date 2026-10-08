@@ -1,0 +1,3 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+AssertionError: Python 3.10 is required; use a fresh target directory with CISC_SYSTEM_PYTHON pointing to Python 3.10

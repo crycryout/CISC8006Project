@@ -1,0 +1,9 @@
+{
+  "verified_at": "2026-10-08T16:21:25.544746+00:00",
+  "status": "pass",
+  "fully_pinned_package_sets_equal": true,
+  "expected_lock_sha256": "9a35972f29ec9c7357ae76c34bf479426ef407b4d42a8cc6b4f03903cc271d93",
+  "actual_freeze_sha256": "9a35972f29ec9c7357ae76c34bf479426ef407b4d42a8cc6b4f03903cc271d93",
+  "cpu_run": "smoke-cpu-clean-checkout-20261009",
+  "agent_verification_only": true
+}

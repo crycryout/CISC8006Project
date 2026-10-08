@@ -1,0 +1,13 @@
+Using CPython 3.12.14
+warning: The requested interpreter resolved to Python 3.12.14, which is incompatible with the project's Python requirement: `==3.10.*` (from `project.requires-python`)
+Creating virtual environment at: .venv-clean
+Activate with: source .venv-clean/bin/activate
+Using Python 3.12.14 environment at: .venv-clean
+Resolved 1 package in 378ms
+Installed 1 package in 15ms
+ + pip==26.2.1
+Using Python 3.12.14 environment at: .venv-clean
+Resolved 29 packages in 2.53s
+Downloading triton (235.4MiB)
+Downloading torch (528.9MiB)
+Terminated

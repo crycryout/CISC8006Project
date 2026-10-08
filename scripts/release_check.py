@@ -53,6 +53,24 @@ def main():
     required=["TASK_STATUS.md","AI_USAGE.md","CONTRIBUTIONS.md","LICENSES.md","SECURITY.md","data/assets_manifest.json","experiments/registry.jsonl","results/build_provenance.json","report/report_draft.pdf","presentation/defense_draft.pptx","audit/peer_audit/README.md"]
     for rel in required:
         if not (ROOT/rel).is_file(): missing.append(rel)
+    clean_path=ROOT/"environment/verification/clean-checkout.json"
+    if clean_path.exists():
+        clean=json.loads(clean_path.read_text())
+        if clean.get("status")!="pass" or clean.get("assets_manifest_sha256")!=file_hash(ROOT/"data/assets_manifest.json"):
+            missing.append("clean checkout status / asset contract")
+        for rel,digest in clean.get("installation_files_sha256",{}).items():
+            if file_hash(ROOT/rel)!=digest: missing.append("clean checkout installation source changed: "+rel)
+    demo_path=ROOT/"presentation/demo_recording_manifest.json"
+    if demo_path.exists():
+        demo=json.loads(demo_path.read_text())
+        if demo.get("exit_code")!=0 or demo.get("demo_script_sha256")!=file_hash(ROOT/"scripts/demo.sh"):
+            missing.append("successful recording of current demo script")
+        if demo.get("diagnostic_result_sha256")!=file_hash(ROOT/"runs/D-S1-20261008/result.json"):
+            missing.append("demo diagnostic changed since recording")
+        for artifact in demo.get("artifacts",[]):
+            path=Path(artifact["path"])
+            if path.is_absolute() or ".." in path.parts or not (ROOT/path).is_file() or file_hash(ROOT/path)!=artifact["sha256"]:
+                missing.append("demo artifact checksum: "+str(path))
     scan=secret_scan()
     if scan["status"]!="pass": missing.append("secret scan review")
     if spent()>ceiling(): missing.append("GPU ceiling exceeded")
