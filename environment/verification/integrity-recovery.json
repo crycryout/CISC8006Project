@@ -1,0 +1,9 @@
+{
+  "verified_at": "2026-10-08T15:52:45.958476+00:00",
+  "historical_hashes_unchanged": true,
+  "files": 16,
+  "failed_run_preserved": true,
+  "completed_first_book": "10146",
+  "second_book_not_fabricated": true,
+  "spent_or_reserved_gpu_hours": 0.5169945127535094
+}

@@ -1,0 +1,28 @@
+[
+  {
+    "run_id": "D-W0-20261008",
+    "validation_status": "valid",
+    "books": 1,
+    "result_sha256": "9bf8ddb2edf5c1d8372c93e2eb289edd31791aa911550785e5cdac73ea365166"
+  },
+  {
+    "run_id": "smoke-cpu-a-20261008",
+    "validation_status": "valid_cpu_fixture"
+  },
+  {
+    "run_id": "smoke-cpu-b-20261008",
+    "validation_status": "valid_cpu_fixture"
+  },
+  {
+    "run_id": "D-S0-20261008",
+    "validation_status": "valid",
+    "books": 1,
+    "result_sha256": "4383a4485fe5c0b8740b9a28cb2a5c413a64ae33691b087a53caddb79a4ef708"
+  },
+  {
+    "run_id": "D-W1-20261008",
+    "validation_status": "valid",
+    "books": 1,
+    "result_sha256": "31c825d25ea7a0fbb6b9dd4957015e94f34ccead737b57b1e3b925b44cf90402"
+  }
+]

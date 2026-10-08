@@ -1,0 +1,187 @@
+{
+  "command": [
+    "/home/renjie/CISC8006Project/.venv-verified/bin/python",
+    "scripts/build_results.py"
+  ],
+  "input_runs": {
+    "diagnostics": [
+      "runs/D-W0-20261008/result.json",
+      "runs/D-S0-20261008/result.json",
+      "runs/D-W1-20261008/result.json",
+      "runs/D-S1-20261008/result.json"
+    ],
+    "reproduction": {
+      "baseline": [
+        "runs/R-v2-20261008-window-s0/result.json",
+        "runs/R-v2-20261008-window-s1/result.json",
+        "runs/R-v2-20261008-window-s2/result.json"
+      ],
+      "candidate": [
+        "runs/R-v2-20261008-streaming-s0/result.json",
+        "runs/R-v2-20261008-streaming-s1/result.json",
+        "runs/R-v2-20261008-streaming-s2/result.json"
+      ],
+      "split": "test"
+    },
+    "pilots": {
+      "streaming": [
+        "runs/P-v2-20261008-streaming-s0/result.json",
+        "runs/P-v2-20261008-streaming-s1/result.json",
+        "runs/P-v2-20261008-streaming-s2/result.json"
+      ],
+      "h1_adaptive_sink": [
+        "runs/P-v2-20261008-h1_adaptive_sink-s0/result.json",
+        "runs/P-v2-20261008-h1_adaptive_sink-s1/result.json",
+        "runs/P-v2-20261008-h1_adaptive_sink-s2/result.json"
+      ],
+      "h2_sink_selection": [
+        "runs/P-v2-20261008-h2_sink_selection-s0/result.json",
+        "runs/P-v2-20261008-h2_sink_selection-s1/result.json",
+        "runs/P-v2-20261008-h2_sink_selection-s2/result.json"
+      ]
+    },
+    "improvement": null,
+    "ablations": {
+      "h1_calibration_control": {
+        "baseline": [
+          "runs/P-v2-20261008-streaming-s0/result.json",
+          "runs/P-v2-20261008-streaming-s1/result.json",
+          "runs/P-v2-20261008-streaming-s2/result.json"
+        ],
+        "candidate": [
+          "runs/A-h1-v2-20261008-calibration_control-s0/result.json",
+          "runs/A-h1-v2-20261008-calibration_control-s1/result.json",
+          "runs/A-h1-v2-20261008-calibration_control-s2/result.json"
+        ],
+        "split": "dev"
+      },
+      "h1_fixed_sink": {
+        "baseline": [
+          "runs/P-v2-20261008-streaming-s0/result.json",
+          "runs/P-v2-20261008-streaming-s1/result.json",
+          "runs/P-v2-20261008-streaming-s2/result.json"
+        ],
+        "candidate": [
+          "runs/A-h1-v2-20261008-fixed_sink-s0/result.json",
+          "runs/A-h1-v2-20261008-fixed_sink-s1/result.json",
+          "runs/A-h1-v2-20261008-fixed_sink-s2/result.json"
+        ],
+        "split": "dev"
+      },
+      "h2_h2_forced_prefix": {
+        "baseline": [
+          "runs/P-v2-20261008-streaming-s0/result.json",
+          "runs/P-v2-20261008-streaming-s1/result.json",
+          "runs/P-v2-20261008-streaming-s2/result.json"
+        ],
+        "candidate": [
+          "runs/A-h2-v2-20261008-h2_forced_prefix-s0/result.json",
+          "runs/A-h2-v2-20261008-h2_forced_prefix-s1/result.json",
+          "runs/A-h2-v2-20261008-h2_forced_prefix-s2/result.json"
+        ],
+        "split": "dev"
+      },
+      "h2_random_anchors": {
+        "baseline": [
+          "runs/P-v2-20261008-streaming-s0/result.json",
+          "runs/P-v2-20261008-streaming-s1/result.json",
+          "runs/P-v2-20261008-streaming-s2/result.json"
+        ],
+        "candidate": [
+          "runs/A-h2-v2-20261008-random_anchors-s0/result.json",
+          "runs/A-h2-v2-20261008-random_anchors-s1/result.json",
+          "runs/A-h2-v2-20261008-random_anchors-s2/result.json"
+        ],
+        "split": "dev"
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "results/ablations/h1_calibration_control/status.json",
+      "sha256": "e4e5a1c6d0992a4367f090bccba89a37b4bd0b28e7a00706f18f39b155bd546a"
+    },
+    {
+      "path": "results/ablations/h1_fixed_sink/status.json",
+      "sha256": "3042cceb87ed2746aedb59ea482e4ba776716c3457215aa6ff83408635fe9ed8"
+    },
+    {
+      "path": "results/ablations/h2_h2_forced_prefix/status.json",
+      "sha256": "c9ead4fe0fda5a5398b0b8d22a26c5713e55739fd8c0ae63146b1536edb2aa74"
+    },
+    {
+      "path": "results/ablations/h2_random_anchors/status.json",
+      "sha256": "6796983a9b935078e7f3f9b6288a2847084b5d82493265abaf0a8e1e0dc8db88"
+    },
+    {
+      "path": "results/claim_to_artifact.csv",
+      "sha256": "ea115d5b694aa121aa377fed8dba7d862b635a05fd89dcf00e5f9db78feb4be2"
+    },
+    {
+      "path": "results/completion.json",
+      "sha256": "31560e02d546b21f5bcdc4be62453dde305f93abbad51b1e33f9a8aebcff11e0"
+    },
+    {
+      "path": "results/diagnostics/comparison.csv",
+      "sha256": "0489315e23377e356e356efbee825d4ade44a423f993ded4199aedd6eb89a8fe"
+    },
+    {
+      "path": "results/diagnostics/scorer_comparison.json",
+      "sha256": "40a2a3e1f31b139ba3eff3f51bb2e81a22e5c9e35c33afa84c982905fd9bbde4"
+    },
+    {
+      "path": "results/diagnostics/summary.json",
+      "sha256": "ec7bf0be4315a19a59f085780a22bf56adc7cc47264c0720e6c50e4031c00058"
+    },
+    {
+      "path": "results/final_input_manifest.json",
+      "sha256": "1f908539518bd157992141cf3b1c74176a60cf9f707d7c2d6820cea5d1745cac"
+    },
+    {
+      "path": "results/pilots/status.json",
+      "sha256": "53c2a8a3bb41a4915e15c014ef21cf410c79913a1de7a0e09a0492d5188038b1"
+    },
+    {
+      "path": "results/reproduction/status.json",
+      "sha256": "85fa777b66f670472ba8518c5143e600041e0b22691acdb1fc7e062d0321f8b5"
+    },
+    {
+      "path": "results/run_validation.json",
+      "sha256": "3a027c713983e9e2a7ab304de8ec747a0fc86fea9bdea7a0707482665102f8e7"
+    },
+    {
+      "path": "figures/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "figures/diagnostic_cache_plateau.png",
+      "sha256": "f0cafa7017ed8be233db2361146a82319fc66acde22a0faae13474c74186b6ec"
+    },
+    {
+      "path": "figures/diagnostic_kv_bytes.png",
+      "sha256": "1848f7764f2955f9618ee94173d18edc8466cfd9257da6320c86a7fca7f6b9d2"
+    },
+    {
+      "path": "figures/diagnostic_nll_vs_position.csv",
+      "sha256": "cf8f0bdbd8c0cd903a9377ecdab5ff1a2fdc81ca0bcb7f5b1f2b40280cc9bba4"
+    },
+    {
+      "path": "figures/diagnostic_nll_vs_position.png",
+      "sha256": "f08d141ca4681ea19be98f09ba7e2e407dd08227923c0567a247ad99ecafa6f7"
+    },
+    {
+      "path": "figures/r0000_harnesscheck_nll_vs_position.png",
+      "sha256": "0896194caf137689d47a01ac5eda5f052729e90971308440d809a2e70a11c206"
+    },
+    {
+      "path": "figures/r0001_nll_vs_position.png",
+      "sha256": "446ebf05592b4021e166faf7e00eb689bfe68b2cdea3e24ec2e9d95d002c2e45"
+    }
+  ],
+  "aggregation": "equal-book512-step bins starting1025; late-bin book coverage CSV",
+  "parameters": {
+    "bin_size": 512,
+    "bootstrap_seed": 0,
+    "n_boot": 10000
+  }
+}

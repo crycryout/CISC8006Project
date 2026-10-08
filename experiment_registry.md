@@ -1,9 +1,21 @@
-# Experiment Registry
+# Experiment registry
 
-One row per consequential run. Template: `templates/experiment-registry.md`. Never overwrite a run directory.
+Machine events: `experiments/registry.jsonl`. Historical Markdown preserved in `docs/legacy_experiment_registry.md`; legacy outputs are diagnostic only. No row claims a final reproduction verdict.
 
-| Run ID | Date | Git commit | Config | Command | Hardware | Result path | Status | Purpose | Conclusion |
-|--------|------|-----------|--------|---------|----------|-------------|--------|---------|------------|
-| R0000-setup | 2026-09-05 | (pre-first-commit) | — | manual: clone/pin official repo, venv build, model+PG19 download | stluo-gpu03, 1× H800 PCIe 80GB | `environment/`, `data_manifest.md` | done | Pin official code, environment, model, dataset for auditable reproduction | Official repo pinned @ 2e50426; transformers==4.33.0 stack viable on H800; model+data cached locally |
-| R0000-harnesscheck | 2026-09-05 | `2c895ed` | (CLI flags in `runs/R0000-harnesscheck/*/config_used.json`) | `scripts/eval_ppl.py` ×2 arms, pythia-160m, book 10146, 4096 tokens | stluo-gpu03, 1× H800 PCIe 80GB | `runs/R0000-harnesscheck/` | done | Validate harness end-to-end on the small model before touching the claim model | Both arms ran (85 tok/s @160m); window NLL 5.583 vs streaming 5.499 on scored region — sink benefit directionally observable already; NOT a claim-scale result |
-| R0001 | 2026-09-05 | `fbdc9e6` | `configs/smoke.yaml` | `bash scripts/run_smoke.sh` | stluo-gpu03, 1× H800 PCIe 80GB | `runs/R0001/` | done | Tiny smoke: verify Pythia-2.8B + PG19 + NLL pipeline runs and measure tokens/s | Pipeline runs at 32 tok/s (window) / 31 tok/s (streaming), 6.9 GB peak; window NLL 5.451 vs streaming 5.292 on book 10146 — sink gap directionally present at claim scale; 10-book × 16k protocol ⇒ ≈2.9 GPU-h/pass, inside ceiling |
+| Run | Phase / seed | State | Source commit | Wall seconds / GPU-h | Artifact |
+|---|---|---|---|---|---|
+| D-W0-20261008 | diagnostic / 0 | completed | `77189031` | 171.079 / 0.047522 | `runs/D-W0-20261008` |
+| smoke-cpu-a-20261008 | smoke / 0 | completed | `77189031` | 3.558 / 0.000000 | `runs/smoke-cpu-a-20261008` |
+| smoke-cpu-b-20261008 | smoke / 0 | completed | `77189031` | 3.719 / 0.000000 | `runs/smoke-cpu-b-20261008` |
+| D-S0-20261008 | diagnostic / 0 | completed | `77189031` | 170.733 / 0.047426 | `runs/D-S0-20261008` |
+| D-W1-20261008 | diagnostic / 0 | completed | `77189031` | 193.477 / 0.053744 | `runs/D-W1-20261008` |
+| D-S1-20261008 | diagnostic / 0 | completed | `77189031` | 197.385 / 0.054829 | `runs/D-S1-20261008` |
+| scorer-legacy-20261008 | diagnostic / 0 | completed | `77189031` | 74.648 / 0.020735 | `runs/scorer-legacy-20261008` |
+| recovery-failed-20261008 | diagnostic / 0 | failed | `77189031` | 75.530 / 0.020981 | `runs/recovery-failed-20261008` |
+| fixtures-h800-11f7e21a9a8a | smoke / 0 | completed | `77189031` | 6.328 / 0.001758 | `runs/fixtures-h800-11f7e21a9a8a` |
+| R0000-harnesscheck | legacy_smoke / None | legacy_recorded | `2c895ed8` | 96.140 / included in legacy reserve | `runs/R0000-harnesscheck` |
+| R0001 | legacy_smoke / None | legacy_recorded | `fbdc9e67` | 258.700 / included in legacy reserve | `runs/R0001` |
+| smoke-gpu-clean-s1-20261008 | smoke / 1 | completed | `77189031` | 75.744 / 0.021040 | `runs/smoke-gpu-clean-s1-20261008` |
+| recovery-retry-20261009 | diagnostic / 0 | completed | `77189031` | 146.157 / 0.040599 | `runs/recovery-retry-20261009` |
+
+Spent/reserved charge: 0.578634 GPU-h. Budget includes historical0.25h plus0.02h conservative prior uninstrumented H800-fixture reserve. New attempts use whole-process wall-clock timing. Costs are not separately metered. Failed attempts remain visible and never enter claim inference.

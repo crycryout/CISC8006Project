@@ -1,0 +1,24 @@
+protocol_id: reproduction-v2-candidate
+estimated_predictions_per_second: 24.192010683941557
+setup_seconds: 60
+selected_gpu: 0
+config_overrides: {}
+preconditions:
+- environment/verification/assets.json
+- results/diagnostics/summary.json
+- results/pilots/comparison.csv
+matrix_id: A-h2-v2-20261008
+phase: ablation
+split: dev
+methods:
+  h2_forced_prefix:
+    sink_tokens: 4
+    recent_tokens: 1020
+  random_anchors:
+    sink_tokens: 4
+    recent_tokens: 1020
+seeds:
+- 0
+- 1
+- 2
+cap: 8192

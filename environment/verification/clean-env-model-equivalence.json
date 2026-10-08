@@ -1,0 +1,11 @@
+{
+  "verified_at": "2026-10-08T16:06:59.724946+00:00",
+  "comparison": "fresh locked environment seed1 versus original prepared environment seed0 on identical faithful prefix",
+  "input_tokens": 1200,
+  "scored_tokens": 174,
+  "bitwise_equal_all_nll": true,
+  "max_abs_delta": 0.0,
+  "new_run": "smoke-gpu-clean-s1-20261008",
+  "reference_run": "D-S1-20261008",
+  "purpose": "numerical environment regression; not a deterministic-seed exemption"
+}

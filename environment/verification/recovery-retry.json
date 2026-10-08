@@ -1,0 +1,13 @@
+{
+  "verified_at": "2026-10-08T16:14:30.970836+00:00",
+  "historical_hashes_unchanged": true,
+  "failed_attempt_checksum_inventory_unchanged": true,
+  "first_book_bitwise_equal_on_retry": true,
+  "failed_parent": "recovery-failed-20261008",
+  "retry_run": "recovery-retry-20261009",
+  "retry_completed_books": [
+    "10146",
+    "10321"
+  ],
+  "status": "pass"
+}

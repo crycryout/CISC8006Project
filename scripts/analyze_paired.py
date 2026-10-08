@@ -8,6 +8,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from src.io_utils import file_hash, write_json
 from src.paired import analyze_pairs
+from scripts.validate_runs import validate_run
 
 
 def main():
@@ -25,6 +26,7 @@ def main():
     windows=[json.loads(Path(x).read_text()) for x in a.window]
     streams=[json.loads(Path(x).read_text()) for x in a.streaming]
     try:
+        for path in a.window+a.streaming: validate_run(Path(path).parent)
         for r in windows+streams:
             if r['contract']['assets_manifest_sha256']!=file_hash(a.manifest): raise ValueError('manifest digest mismatch')
         out=analyze_pairs(windows,streams,manifest,a.split,not a.diagnostic,a.bootstrap_seed,a.n_boot)

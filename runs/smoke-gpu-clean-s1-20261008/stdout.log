@@ -1,0 +1,11 @@
+StartRecentKVCache: 4, 1020
+{"run_id": "smoke-gpu-clean-s1-20261008", "book": "10146", "step": 0}
+{"book": "10146", "nll": 1.9763936986714778, "scored": 174}
+{
+  "run_id": "smoke-gpu-clean-s1-20261008",
+  "macro_book_nll": 1.9763936986714778,
+  "micro_token_nll": 1.9763936986714778,
+  "scored_tokens": 174,
+  "elapsed_seconds": 47.463187742978334,
+  "predictions_per_second": 25.26168293821308
+}

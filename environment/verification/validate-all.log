@@ -1,0 +1,69 @@
+[
+  {
+    "run_id": "D-W0-20261008",
+    "validation_status": "valid",
+    "books": 1,
+    "result_sha256": "9bf8ddb2edf5c1d8372c93e2eb289edd31791aa911550785e5cdac73ea365166"
+  },
+  {
+    "run_id": "smoke-cpu-a-20261008",
+    "validation_status": "valid_cpu_fixture"
+  },
+  {
+    "run_id": "smoke-cpu-b-20261008",
+    "validation_status": "valid_cpu_fixture"
+  },
+  {
+    "run_id": "D-S0-20261008",
+    "validation_status": "valid",
+    "books": 1,
+    "result_sha256": "4383a4485fe5c0b8740b9a28cb2a5c413a64ae33691b087a53caddb79a4ef708"
+  },
+  {
+    "run_id": "D-W1-20261008",
+    "validation_status": "valid",
+    "books": 1,
+    "result_sha256": "31c825d25ea7a0fbb6b9dd4957015e94f34ccead737b57b1e3b925b44cf90402"
+  },
+  {
+    "run_id": "D-S1-20261008",
+    "validation_status": "valid",
+    "books": 1,
+    "result_sha256": "ea903b2374e6c90d0243b98c9b352a92d65e8693f6a3ee534b87b8f5e66f08c2"
+  },
+  {
+    "run_id": "scorer-legacy-20261008",
+    "validation_status": "valid",
+    "books": 1,
+    "result_sha256": "9bc7383ad49cc71068140531ced82bfbc844d106c9781ff0f193686f0e36d907"
+  },
+  {
+    "run_id": "recovery-failed-20261008",
+    "validation_status": "invalid_failed_attempt_preserved",
+    "error": "RuntimeError: injected failure for recovery verification"
+  },
+  {
+    "run_id": "fixtures-h800-11f7e21a9a8a",
+    "validation_status": "valid_accounted_fixture"
+  },
+  {
+    "run_id": "R0000-harnesscheck",
+    "validation_status": "legacy_evidence_only_not_v2"
+  },
+  {
+    "run_id": "R0001",
+    "validation_status": "legacy_evidence_only_not_v2"
+  },
+  {
+    "run_id": "smoke-gpu-clean-s1-20261008",
+    "validation_status": "valid",
+    "books": 1,
+    "result_sha256": "202a1e3b8a63c3fe9d412c570fced9eaba0b6d97267f8feb1b35869895ca2400"
+  },
+  {
+    "run_id": "recovery-retry-20261009",
+    "validation_status": "valid",
+    "books": 2,
+    "result_sha256": "faab3a885051914ca687097a799651f1149e2e9760ceae024f913ec805bd0a35"
+  }
+]

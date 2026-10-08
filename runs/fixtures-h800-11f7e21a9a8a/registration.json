@@ -1,0 +1,49 @@
+{
+  "run_id": "fixtures-h800-11f7e21a9a8a",
+  "phase": "smoke",
+  "status": "planned",
+  "registered_at": "2026-10-08T15:50:21.381308+00:00",
+  "protocol_id": "reproduction-v2-candidate",
+  "config_sha256": "c678d6a66ae382de755ef1bd2f8e0a6106e7d8a1bc89c10d17700457dbfd003b",
+  "data_manifest_sha256": "e657c2d35066f5d59ecba70c17bac6222625790297c5b0e0566b112ff2794bf1",
+  "model_revision": "2a259cdd96a4beb1cdf467512e3904197345f6a9",
+  "seed": 0,
+  "hardware": {
+    "uuid": "GPU-92d5af20-d2aa-3a17-8bf5-866a22db81f1",
+    "name": "NVIDIA H800 PCIe",
+    "driver": "580.173.02",
+    "visible_devices": "0",
+    "allocated_devices": 1
+  },
+  "gpu_uuid": "GPU-92d5af20-d2aa-3a17-8bf5-866a22db81f1",
+  "environment_id": "h800-torch214-transformers433",
+  "command": [
+    "/home/renjie/CISC8006Project/.venv-verified/bin/python",
+    "scripts/run_tests.py"
+  ],
+  "runtime_seconds": null,
+  "gpu_hours": null,
+  "reserved_gpu_hours": 0.05,
+  "cost": "not separately metered; allocated one device times wall seconds",
+  "artifact_path": "runs/fixtures-h800-11f7e21a9a8a",
+  "parent_run_id": null,
+  "exit_code": null,
+  "numerical_source_sha256": "a3dc190cf62e9a2d86b0a54ed9946944a3cfa94bce7c99b214c9fc2e39955fc6",
+  "numerical_files_sha256": {
+    "scripts/eval_ppl.py": "c10e12bcbf907ac442f2e33ab7f275dbe4679867d51390d50d6f12682f22882c",
+    "src/__init__.py": "e6fb816305c005460089f77e9ef15dc3eafbfe7ba7fdcec04aeec9f184ca2db7",
+    "src/approvals.py": "e0a057680c99d70e8de586a3b0cf5e798d1589ac3a15c7537225421fa5b930a9",
+    "src/cache_policy.py": "c204aa5bc198ada0d3052eb66e8390276191c32e6abe9de301bad637c037c461",
+    "src/config.py": "94254acf9af5c40fbb051fa99b86481bb7d099065c3f11a1e49436a5cb9e5ad6",
+    "src/io_utils.py": "249907c8464ddf4a4d81792129c64be3c6f1da85d623d9c79abe1e3261d6250a",
+    "src/metrics.py": "4229785fb01e98a87cc3e780aa830a955d6521e6fd3844bf77b9c7d80d124aed",
+    "src/paired.py": "2c845a01ab69fb0b1a5aac3a9927921763a5fbe4074837d47091d039312121e5",
+    "src/position_policy.py": "734cfc7f380e5dd717fb4e3a01688ca5ea2d37d414dda104021fa80f65e22161",
+    "src/run_store.py": "7f25ceb584c97b57fe19b569231858858b7decb65adcef4cf1812a7fb5f23f33",
+    "third_party/streaming-llm/streaming_llm/kv_cache.py": "9264553f7046c026b02848fc192710e6d737cb7e08aa45a01ddf43d59ea6e8fb",
+    "third_party/streaming-llm/streaming_llm/pos_shift/modify_gpt_neox.py": "1fc2e537b752d2a14ce442030ef047593ee7e590261ba0094996bc2209c7b3b5"
+  },
+  "git_commit": "77189031bef89f292934b1cdab8e687b0aae6e49",
+  "git_dirty": true,
+  "tracked_diff_sha256": "0e549d1e1b96cf429c69ffe925f099e68af0b25daad504bc5203793859316d49"
+}

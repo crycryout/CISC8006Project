@@ -1,43 +1,11 @@
-# Reproduction Protocol
+# Reproduction protocol v2 candidate
 
-**Status: SKELETON — Week 5 deliverable (due 2026-09-16).**
-This file becomes the frozen protocol only after instructor review completes (claim freeze 2026-09-13). Sections marked *(measured)* are filled from R0001+.
+Status: technically implemented; **human protocol review and required instructor approval pending**. Machine contract: `configs/protocol_v2.yaml`. Approval facts: `docs/approval_status.md`; amendment: `docs/protocol_amendments.md`. Original protocol remains at Git `48e57c6:protocol.md`.
 
-## 1. Arms
+1. Use Pythia2.8B and tokenizer at revision `2a259cdd96a4beb1cdf467512e3904197345f6a9`, fp16 forward, eager GPT-NeoX attention, fp32 cross-entropy; no sampling or training. Raw-K patch is the unmodified pinned official implementation, applied to every attention layer of both arms. Set actual model seeds0/1/2, deterministic algorithms, TF32 off, CUBLAS_WORKSPACE_CONFIG=:4096:8 and one Torch host thread; record versions/backend/driver/selected device.
+2. Preserve all original 10 PG19 test books in manifest order. Tokenize raw UTF8 text with pinned defaults (`add_special_tokens=True`); no manual BOS/EOS or concatenation. Cap each at min(original length,16384); 12204 remains7141. Reset cache and calibration per book. Verify text, token, tokenizer, weight and split-list hashes. The historically exposed smoke book10146 remains in the test set and is disclosed.
+3. Window retains0+1024; StreamingLLM retains4+1020. Feed input x[i] and score x[i+1], then evict. The retained cache is≤1024; forward may see1025. First scored step is1025, predicting target x[1026]. Scored count is max(T−1026,0): each full book15358, short book6115, total144337 per method/seed. Do not alter this boundary to force a preferred result.
+4. Primary per-book mean NLL → paired candidate-minus-baseline delta → average corresponding seeds within each book → equal-book mean and 10000 percentile bootstrap resamples over 10 book clusters, bootstrap RNG seed0. Report supported if upper95% bound<0; not_supported if lower>0; inconclusive if crossing/touching0. Invalid contracts produce no claim status. Single-book smoke/diagnostics never produce a final verdict. Secondary: micro_token_nll/PPL and macro_derived_ppl (exp book-average NLL), position bins with n_books, actual KV bytes, peak GPU memory and end-to-end cost.
+5. Run matrix only after approval. All attempts, including loading, failed runs and retries, count against20 GPU-h. Budget reservations and hard wall-clock limits protect the ceiling; no seed exemption is assumed. New IDs for retries; original outputs immutable. Correctness precedes formal reproduction, then preregistered validation pilots, real method selection, full test evaluation and controls. GPU0's actual cron switches MIG at01:30; launcher refuses jobs crossing01:20 and resumes after09:00. GPU1's existing MIG topology is left in place.
 
-| Arm | sink_tokens | recent_tokens | Total KV budget |
-|---|---|---|---|
-| A window | 0 | 1024 | 1024 |
-| B streaming | 4 | 1020 | 1024 |
-
-## 2. Fixed factors (both arms)
-
-Model `EleutherAI/pythia-2.8b` @ revision *(pin in data_manifest.md)*; default tokenizer; fp16; same PG19 test books (preregistered list, `data_manifest.md`); same max tokens per book *(frozen after R0001, see compute_budget.md)*; same scored region (first scored NLL-array index = 1025, defined precisely in §3); same scorer code; same GPU (1× H800 PCIe 80GB, driver pinned in environment/system-info.txt).
-
-## 3. Procedure per book
-
-**Indexing convention (used everywhere — protocol, code, analysis):** with teacher forcing, step `idx` feeds token `idx` and scores the prediction of token `idx+1`, i.e. `nlls[idx] = −log P(token_{idx+1} | tokens ≤ idx, arm-specific KV cache)`. The array `nlls` has length `tokens−1`; `idx` runs from 0. **First scored index = `min_scored_idx = cache_budget + 1 = 1025`**: eviction happens *after* each forward pass, so step 1025 is the first prediction made under an already-evicted cache. Scored set = `{nlls[idx] : idx ≥ 1025}`.
-
-1. Tokenize full book text with the frozen path (no truncation at tokenization time).
-2. Feed tokens sequentially with teacher forcing, `use_cache=True`, one token per step (official evaluation semantics, `third_party/streaming-llm/examples/eval_long_ppl.py`).
-3. After each step, apply arm-specific eviction (`StartRecentKVCache`): A keeps latest 1024; B keeps {0..3} ∪ latest 1020.
-4. Record per-position NLL of the next token; scored region = steps ≥ 1025 (first prediction made under an already-evicted cache; see `scripts/eval_ppl.py` "off-by-one note").
-
-## 4. Aggregation
-
-Per-book mean NLL over scored positions → paired `ΔNLL_B−A` per book → paired mean, bootstrap 95% CI (10,000 resamples over books) → decision per `claim.md` §Decision rule.
-
-## 5. Secondary measurements
-
-- NLL vs position (binned) per arm
-- sink-count sensitivity {0,1,2,4,8} on a fixed book subset
-- KV-length trace + peak GPU memory (constant-budget verification)
-- optional: decode latency vs processed length
-
-## 6. Diagnostics plan
-
-If outcome deviates from expectation, follow SKILL §11 order: tokenizer/revision → PG19 preprocessing → cache indices/position IDs → precision → NLL masking → chunking → library drift → hardware. One factor per diagnostic run; new run ID each time.
-
-## 7. Agent-use policy
-
-See `agent_policy.md` (due in full at Week 5 alongside this protocol).
+Independent verification: `tests/test_contract_metrics.py`, `tests/test_position_reference.py`, `tests/test_immutable_store.py`. Diagnose in order: pinned assets/tokenization → scoring/member/position correctness → scorer/precision/backend/environment → scale/model explanations. Each diagnostic gets new evidence and a unique ID. The project does not reproduce paper absolute PPL, million-token stability, recomputation speedup or downstream quality. See `docs/paper_comparison.md` for deviations and paper figure mapping.

@@ -1,0 +1,32 @@
+{
+  "model": "EleutherAI/pythia-2.8b",
+  "model_revision": "2a259cdd96a4beb1cdf467512e3904197345f6a9",
+  "precision": "fp16",
+  "scorer_precision": "fp32",
+  "position_policy": "legacy_implicit",
+  "run_id": "D-S0-20261008",
+  "method": "streaming",
+  "book_files": [
+    "data/pg19/test/10146.txt"
+  ],
+  "sink_tokens": 4,
+  "recent_tokens": 1020,
+  "max_tokens_per_book": 4096,
+  "min_scored_idx": 1025,
+  "output_dir": null,
+  "seed": 0,
+  "phase": "diagnostic",
+  "protocol_id": "reproduction-v2-candidate",
+  "assets_manifest": "data/assets_manifest.json",
+  "manifest_split": "test",
+  "asset_root": "data/pg19",
+  "offline": true,
+  "device": "cuda",
+  "calibration_start": 64,
+  "calibration_end": 512,
+  "selection_threshold": 0.9,
+  "max_gpu_seconds": 900,
+  "parent_run_id": null,
+  "environment_id": "h800-torch214-transformers433",
+  "inject_failure_after_book": null
+}

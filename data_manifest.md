@@ -13,13 +13,9 @@
 | Local cache | `~/.cache/huggingface/hub/models--EleutherAI--pythia-2.8b` |
 | Secondary (harness validation only) | `EleutherAI/pythia-160m` @ `50f5173d932e8e61f858120bcb800b97af589f46` |
 
-## Tokenizer
+## Tokenizer and portable hash contract
 
-Same repository as model (GPT-NeoX BPE, `tokenizer.json` 2,113,710 B), revision pinned with the model. No custom preprocessing; `tokenizer(text, return_tensors="pt")` exactly as official evaluation code.
-
-## Tokenizer
-
-Same repository as model (GPT-NeoX BPE, `tokenizer.json` + `tokenizer_config.json`), revision pinned with the model. No custom preprocessing; `tokenizer(text, return_tensors="pt")` exactly as official evaluation code.
+Same pinned revision. `add_special_tokens=True`, no manually inserted BOS/EOS. `data/assets_manifest.json` records every model/tokenizer file and source text hash, full token length and capped token IDs hash (int64 little-endian). `data/dev_manifest.json` freezes independent validation IDs1022/11155/13089 before losses. Reverify with `scripts/verify_assets.py`; source cache can move using HF_HOME and --asset-root.
 
 ## Dataset — PG19 test split
 
@@ -28,7 +24,7 @@ Same repository as model (GPT-NeoX BPE, `tokenizer.json` + `tokenizer_config.jso
 | Source | `deepmind/pg19` official split lists (HF dataset repo rev `4d28bd77e66947ad3835cf78ed7aaeb4dd87ad8b`), raw books from the original DeepMind GCS bucket `storage.googleapis.com/deepmind-gutenberg/` |
 | Local copy | 100/100 test books + metadata.csv under `data/pg19/` (git-ignored; SHA256 of every file in `environment/data_checksums.txt`) |
 | Why raw .txt | the HF dataset is script-based (removed from modern `datasets`); the script fetches exactly these GCS .txt files, so we fetch them directly — identical text, fully auditable |
-| Split rationale | test split matches the paper's PG19 evaluation; never used for any tuning |
+| Split rationale | test split matches the paper; book10146 was exposed in historical smoke. No improvement parameter selection on test. |
 | Preprocessing | none beyond tokenizer defaults; no book concatenation |
 
 ## Preregistered book list (frozen BEFORE any method-performance look)

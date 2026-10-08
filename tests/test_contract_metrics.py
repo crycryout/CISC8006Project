@@ -1,5 +1,7 @@
 import copy
 import math
+import hashlib
+import numpy as np
 import pytest
 import torch
 import yaml
@@ -52,7 +54,7 @@ def test_states(deltas,status): assert bootstrap(deltas)["claim_status"]==status
 def fixture_result(seed=0,method="window"):
     manifest=dict(model="m",model_revision="r",tokenizer_revision="r",test_books=[dict(book_id=str(i),text_sha256="text"+str(i),full_token_length=16384,input_tokens=16384,token_cap=16384,token_ids_sha256="tok"+str(i)) for i in range(2)])
     contract=dict(model="m",model_revision="r",tokenizer_revision="r",assets_manifest_sha256="manifest",precision="fp16",scorer_precision="fp32",position_policy="cache_relative",cache_budget=1024,min_scored_idx=1025,max_tokens_per_book=16384,add_special_tokens=True,eviction="after_forward",environment_id="env",numerical_source_sha256="source",protocol_id="test",seed=seed,split="test",determinism=dict(enabled=True))
-    books=[dict(b,scored_tokens=15358,mean_nll_scored=2.0,sum_nll_scored=2.0*15358,ppl_scored=math.exp(2),scored_mask_sha256="mask") for b in manifest["test_books"]]
+    books=[dict(b,scored_tokens=15358,mean_nll_scored=2.0,sum_nll_scored=2.0*15358,ppl_scored=math.exp(2),scored_mask_sha256=hashlib.sha256((np.arange(16383)>=1025).tobytes()).hexdigest()) for b in manifest["test_books"]]
     r=dict(run_id=f"{method}-{seed}",schema_version=2,method=method,status="completed",validation_status="valid",contract=contract,contract_sha256=object_hash(contract),book_ids=[b["book_id"] for b in books],per_book=books,**aggregate(books))
     return r,manifest
 

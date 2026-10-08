@@ -1,0 +1,9 @@
+{
+  "status": "pending",
+  "reviewer": null,
+  "evidence": null,
+  "approved_ceiling_gpu_hours": 20,
+  "deterministic_single_pass_exemption": false,
+  "exemption_scope": [],
+  "note": "Default three-seed full plan exceeds20h by measured projection. No exception active."
+}

@@ -1,0 +1,18 @@
+Collecting wheel==0.45.1
+  Downloading wheel-0.45.1-py3-none-any.whl.metadata (2.3 kB)
+Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
+Installing collected packages: wheel
+Successfully installed wheel-0.45.1
+Obtaining file:///home/renjie/CISC8006Project
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: cisc8006-streaming-audit
+  Building editable for cisc8006-streaming-audit (pyproject.toml): started
+  Building editable for cisc8006-streaming-audit (pyproject.toml): finished with status 'done'
+  Created wheel for cisc8006-streaming-audit: filename=cisc8006_streaming_audit-0.2.0-0.editable-py3-none-any.whl size=4296 sha256=80e61938fb2c88545a450f2da020893f646901963409db6b1bb465b03989a44c
+  Stored in directory: /tmp/pip-ephem-wheel-cache-2nazvoi1/wheels/09/47/de/bdf4ab3c3b2136ca36941b78ded97692c4009d6434def6f503
+Successfully built cisc8006-streaming-audit
+Installing collected packages: cisc8006-streaming-audit
+Successfully installed cisc8006-streaming-audit-0.2.0

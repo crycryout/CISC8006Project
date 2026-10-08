@@ -1,0 +1,15 @@
+# Three preregistered candidate hypotheses
+
+All cards are hypotheses, not measured improvements. Main reproduction and human approval precede pilot execution. Parameters are fixed before development losses; original test books are never used for selection.
+
+| Card | Mechanism, falsifiable prediction | Algorithm and controls | Cost / failure / role |
+|---|---|---|---|
+| H1 | Early prefix attention concentration differs by book; a causal choice of sink count lowers post-overflow macro NLL versus fixed4. If selection usually equals4 or loss/cost worsens, prediction fails. | Queries64–511, sum all layers/heads over first8; smallest k in {1,2,4,8} covering 90% mass; nonfinite/near-zero fallback4; freeze within book before eviction. Fixed4 with identical attention collection and forced4 identity fixture; fixed2 development ablation. | Retained1024; all calibration/selection time and total peak memory counted. Thresholds runtime≤1.10× and peak≤1.10× baseline. Pilot1. |
+| H2 | Useful early attention anchors need not be positions0–3; causal attention-selected anchors improve macro NLL versus fixed4. Zero/negative benefit or lost stability falsifies usefulness. | Queries64–511 over first64; protect0 + highest-mass3 of positions1–63; ties earlier; chronological order; deduplicate recent tokens and fill budget. Forced0–3 correctness/control; random3+0 with actual three seeds. | Same cache-relative position policy, retained1024. Calibration tensor/time extra. Same 1.10 cost thresholds. Pilot2. |
+| H3 | If a profiler shows material cat/allocation cost, preallocated rolling KV reduces end-to-end latency at unchanged logits/NLL. No material profiler contribution or no measured gain falsifies motivation. | Preallocation must handle both attention-internal cat and eviction; logical RoPE order must stay correct. Controls: original cat, preallocated plus gather, complete ring. | Candidate only; profiler diagnosis pending. Not implemented or benchmarked. Optional 12–24 human hours; no GPU budget allocation. |
+
+Measured position/scorer diagnostics are inputs to faithful baseline construction, not evidence that H1/H2 attention proxies work. Prefix concentration has not been measured on development data yet. `src/cache_policy.py` implements both causal candidates and controls; `tests/test_position_reference.py` tests member order, ties/fallback and forced-prefix behavior. Full test inference waits for pilot selection.
+
+Development manifest is fixed without NLL selection in `data/dev_manifest.json`. Baseline+H1+H2 × seeds0,1,2 process the same three books and scored positions; all failed and negative attempts remain in the registry. No future targets, future losses or cross-book calibration are used in choosing anchors.
+
+Random-anchor control resets its RNG to the recorded seed per book, so the same early-position offsets are used across books within a seed. Three distinct seeds produce distinct anchor sets. This is a fixed random-position control, not evidence of three independent book samples.

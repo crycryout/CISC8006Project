@@ -1,0 +1,15 @@
+{
+  "verified_at": "2026-10-08T15:55:27.446894+00:00",
+  "python": "3.10.12",
+  "torch": "2.14.0+cu130",
+  "transformers": "4.33.0",
+  "pip_check_exit_code": 0,
+  "editable_install": "successful; environment/verification/package-install.log",
+  "failed_attempts_preserved": [
+    "ensurepip missing",
+    "pip requested from Torch-only index",
+    "uv NumPy transfer interrupted after stalled download"
+  ],
+  "repair": "user-level uv torch install; pip cached dependencies; no host packages or driver change",
+  "environment_lock_sha256": "9a35972f29ec9c7357ae76c34bf479426ef407b4d42a8cc6b4f03903cc271d93"
+}

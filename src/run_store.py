@@ -7,6 +7,7 @@ import subprocess
 import sys
 import time
 from src.io_utils import file_hash, now, object_hash, write_json
+from src.approvals import ceiling
 
 ROOT=Path(__file__).resolve().parents[1]
 REGISTRY=ROOT/"experiments/registry.jsonl"
@@ -22,7 +23,9 @@ def states(registry=REGISTRY):
 
 def spent(registry=REGISTRY):
     rows=states(registry).values()
-    return 0.25+sum(r.get("gpu_hours") or (r.get("reserved_gpu_hours",0) if r["status"] in {"planned","running"} else 0) for r in rows)
+    # Prior direct pytest GPU fixtures lacked whole-process timing. Reserve72s
+    # conservatively, separate from the historical0.25h model-loading reserve.
+    return 0.25+0.02+sum(r.get("gpu_hours") or (r.get("reserved_gpu_hours",0) if r["status"] in {"planned","running"} else 0) for r in rows)
 
 
 def event(row,registry=REGISTRY):
@@ -56,6 +59,7 @@ class Tee:
 class RunStore:
     def __init__(self,cfg,hardware=None,registry=REGISTRY):
         self.cfg=cfg; self.registry=registry; self.directory=Path(cfg.get("output_dir") or ROOT/"runs"/cfg["run_id"])
+        launch_git=git_snapshot()
         self.directory.mkdir(parents=True,exist_ok=False)
         self.t0=time.perf_counter()
         src_hash,src_files=numerical_source()
@@ -65,7 +69,7 @@ class RunStore:
             gpu_uuid=(hardware or {}).get("uuid"),environment_id=cfg["environment_id"],command=[sys.executable]+sys.argv,
             runtime_seconds=None,gpu_hours=None,reserved_gpu_hours=cfg["max_gpu_seconds"]/3600 if cfg["device"]=="cuda" else 0,
             cost="not separately metered; allocated one device times wall seconds",artifact_path=str(self.directory.relative_to(ROOT)) if self.directory.is_relative_to(ROOT) else str(self.directory),
-            parent_run_id=cfg["parent_run_id"],exit_code=None,numerical_source_sha256=src_hash,numerical_files_sha256=src_files,**git_snapshot())
+            parent_run_id=cfg["parent_run_id"],exit_code=None,numerical_source_sha256=src_hash,numerical_files_sha256=src_files,**launch_git)
         write_json(self.directory/"config_used.json",cfg)
         write_json(self.directory/"registration.json",self.row)
         # A task-local lock serializes budget reservations; never changes another user's GPU state.
@@ -73,10 +77,11 @@ class RunStore:
         with open(self.registry.with_suffix(".lock"),"a") as lock:
             fcntl.flock(lock,fcntl.LOCK_EX)
             if cfg["run_id"] in states(self.registry): raise ValueError("run ID already registered")
-            if spent(self.registry)+self.row["reserved_gpu_hours"]>20:
-                self.row.update(status="failed",exit_code=2,runtime_seconds=0,gpu_hours=0,error="20 GPU-h reservation exceeded")
+            limit=ceiling()
+            if spent(self.registry)+self.row["reserved_gpu_hours"]>limit:
+                self.row.update(status="failed",exit_code=2,runtime_seconds=0,gpu_hours=0,error=f"{limit:g} GPU-h reservation exceeded")
                 write_json(self.directory/"metadata.json",self.row); event(self.row,self.registry)
-                raise ValueError("20 GPU-h reservation exceeded")
+                raise ValueError(f"{limit:g} GPU-h reservation exceeded")
             event(self.row,self.registry)
         self.row.update(status="running",started_at=now())
         write_json(self.directory/"metadata.json",self.row); event(self.row,self.registry)

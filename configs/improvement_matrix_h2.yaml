@@ -1,0 +1,21 @@
+protocol_id: reproduction-v2-candidate
+estimated_predictions_per_second: 24.192010683941557
+setup_seconds: 60
+selected_gpu: 0
+config_overrides: {}
+preconditions:
+- environment/verification/assets.json
+- results/diagnostics/summary.json
+- results/pilots/comparison.csv
+matrix_id: I-h2-v2-20261008
+phase: improvement
+split: test
+methods:
+  h2_sink_selection:
+    sink_tokens: 4
+    recent_tokens: 1020
+seeds:
+- 0
+- 1
+- 2
+cap: 16384

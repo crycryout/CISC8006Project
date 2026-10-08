@@ -1,0 +1,230 @@
+The virtual environment was not created successfully because ensurepip is not
+available.  On Debian/Ubuntu systems, you need to install the python3-venv
+package using the following command.
+
+    apt install python3.10-venv
+
+You may need to use sudo with that command.  After installing the python3-venv
+package, recreate your virtual environment.
+
+Failing command: /home/renjie/CISC8006Project/.venv-verified/bin/python3
+
+Using Python 3.10.12 environment at: .venv-verified
+  × No solution found when resolving dependencies:
+  ╰─▶ Because pip was not found in the package registry and you require pip,
+      we can conclude that your requirements are unsatisfiable.
+Using Python 3.10.12 environment at: .venv-verified
+Resolved 1 package in 331ms
+Installed 1 package in 15ms
+ + pip==26.2.1
+Using Python 3.10.12 environment at: .venv-verified
+Resolved 29 packages in 7.22s
+Downloading nvidia-cudnn-cu13 (527.5MiB)
+Downloading nvidia-nccl-cu13 (206.0MiB)
+Downloading networkx (1.6MiB)
+Downloading cuda-bindings (6.4MiB)
+Downloading triton (235.2MiB)
+Downloading torch (528.9MiB)
+Downloading nvidia-cublas (403.5MiB)
+Downloading nvidia-cusparselt-cu13 (162.3MiB)
+ Downloaded networkx
+ Downloaded triton
+ Downloaded cuda-bindings
+ Downloaded torch
+ Downloaded nvidia-cublas
+ Downloaded nvidia-nccl-cu13
+ Downloaded nvidia-cusparselt-cu13
+ Downloaded nvidia-cudnn-cu13
+Prepared 9 packages in 10m 33s
+Installed 29 packages in 120ms
+ + cuda-bindings==13.3.1
+ + cuda-pathfinder==1.6.0
+ + cuda-toolkit==13.0.3.0
+ + filelock==3.32.3
+ + fsspec==2026.7.0
+ + jinja2==3.1.6
+ + markupsafe==3.0.3
+ + mpmath==1.3.0
+ + networkx==3.4.2
+ + nvidia-cublas==13.1.1.3
+ + nvidia-cuda-cupti==13.0.85
+ + nvidia-cuda-nvrtc==13.0.88
+ + nvidia-cuda-runtime==13.0.96
+ + nvidia-cudnn-cu13==9.24.0.43
+ + nvidia-cufft==12.0.0.61
+ + nvidia-cufile==1.15.1.6
+ + nvidia-curand==10.4.0.35
+ + nvidia-cusolver==12.0.4.66
+ + nvidia-cusparse==12.6.3.3
+ + nvidia-cusparselt-cu13==0.8.1
+ + nvidia-nccl-cu13==2.30.7
+ + nvidia-nvjitlink==13.3.33
+ + nvidia-nvshmem-cu13==3.4.5
+ + nvidia-nvtx==13.0.85
+ + setuptools==78.1.0
+ + sympy==1.14.0
+ + torch==2.14.0+cu130
+ + triton==3.8.0
+ + typing-extensions==4.16.0
+Using Python 3.10.12 environment at: .venv-verified
+Resolved 64 packages in 5.89s
+Downloading matplotlib (8.3MiB)
+Downloading reportlab (1.9MiB)
+Downloading lxml (5.1MiB)
+Downloading transformers (7.3MiB)
+Downloading tokenizers (7.4MiB)
+Downloading numpy (17.4MiB)
+Downloading kiwisolver (1.6MiB)
+Downloading fonttools (5.0MiB)
+Downloading pillow (6.6MiB)
+ Downloaded kiwisolver
+ Downloaded reportlab
+ Downloaded fonttools
+ Downloaded lxml
+ Downloaded pillow
+ Downloaded transformers
+ Downloaded tokenizers
+ Downloaded matplotlib
+Collecting transformers==4.33.0 (from -r environment/requirements.txt (line 1))
+  Using cached transformers-4.33.0-py3-none-any.whl.metadata (119 kB)
+Collecting huggingface-hub==0.25.2 (from -r environment/requirements.txt (line 2))
+  Using cached huggingface_hub-0.25.2-py3-none-any.whl.metadata (13 kB)
+Collecting numpy==1.26.4 (from -r environment/requirements.txt (line 3))
+  Using cached numpy-1.26.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (61 kB)
+Collecting accelerate==0.21.0 (from -r environment/requirements.txt (line 4))
+  Using cached accelerate-0.21.0-py3-none-any.whl.metadata (17 kB)
+Collecting tokenizers==0.13.3 (from -r environment/requirements.txt (line 5))
+  Using cached tokenizers-0.13.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)
+Collecting safetensors==0.8.0 (from -r environment/requirements.txt (line 6))
+  Using cached safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)
+Collecting PyYAML==6.0.3 (from -r environment/requirements.txt (line 7))
+  Using cached pyyaml-6.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting pytest==8.4.2 (from -r environment/requirements.txt (line 8))
+  Downloading pytest-8.4.2-py3-none-any.whl.metadata (7.7 kB)
+Collecting matplotlib==3.10.7 (from -r environment/requirements.txt (line 9))
+  Downloading matplotlib-3.10.7-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (11 kB)
+Collecting reportlab==4.4.4 (from -r environment/requirements.txt (line 10))
+  Downloading reportlab-4.4.4-py3-none-any.whl.metadata (1.7 kB)
+Collecting python-pptx==1.0.2 (from -r environment/requirements.txt (line 11))
+  Using cached python_pptx-1.0.2-py3-none-any.whl.metadata (2.5 kB)
+Requirement already satisfied: filelock in ./.venv-verified/lib/python3.10/site-packages (from transformers==4.33.0->-r environment/requirements.txt (line 1)) (3.32.3)
+Collecting packaging>=20.0 (from transformers==4.33.0->-r environment/requirements.txt (line 1))
+  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting regex!=2019.12.17 (from transformers==4.33.0->-r environment/requirements.txt (line 1))
+  Downloading regex-2026.9.29-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+Collecting requests (from transformers==4.33.0->-r environment/requirements.txt (line 1))
+  Using cached requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting tqdm>=4.27 (from transformers==4.33.0->-r environment/requirements.txt (line 1))
+  Downloading tqdm-4.70.1-py3-none-any.whl.metadata (57 kB)
+Requirement already satisfied: fsspec>=2023.5.0 in ./.venv-verified/lib/python3.10/site-packages (from huggingface-hub==0.25.2->-r environment/requirements.txt (line 2)) (2026.7.0)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in ./.venv-verified/lib/python3.10/site-packages (from huggingface-hub==0.25.2->-r environment/requirements.txt (line 2)) (4.16.0)
+Collecting psutil (from accelerate==0.21.0->-r environment/requirements.txt (line 4))
+  Using cached psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl.metadata (22 kB)
+Requirement already satisfied: torch>=1.10.0 in ./.venv-verified/lib/python3.10/site-packages (from accelerate==0.21.0->-r environment/requirements.txt (line 4)) (2.14.0+cu130)
+Collecting exceptiongroup>=1 (from pytest==8.4.2->-r environment/requirements.txt (line 8))
+  Using cached exceptiongroup-1.3.1-py3-none-any.whl.metadata (6.7 kB)
+Collecting iniconfig>=1 (from pytest==8.4.2->-r environment/requirements.txt (line 8))
+  Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting pluggy<2,>=1.5 (from pytest==8.4.2->-r environment/requirements.txt (line 8))
+  Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting pygments>=2.7.2 (from pytest==8.4.2->-r environment/requirements.txt (line 8))
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting tomli>=1 (from pytest==8.4.2->-r environment/requirements.txt (line 8))
+  Downloading tomli-2.5.0-py3-none-any.whl.metadata (10 kB)
+Collecting contourpy>=1.0.1 (from matplotlib==3.10.7->-r environment/requirements.txt (line 9))
+  Using cached contourpy-1.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.5 kB)
+Collecting cycler>=0.10 (from matplotlib==3.10.7->-r environment/requirements.txt (line 9))
+  Using cached cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.22.0 (from matplotlib==3.10.7->-r environment/requirements.txt (line 9))
+  Downloading fonttools-4.65.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (125 kB)
+Collecting kiwisolver>=1.3.1 (from matplotlib==3.10.7->-r environment/requirements.txt (line 9))
+  Using cached kiwisolver-1.5.1-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl.metadata (5.2 kB)
+Collecting pillow>=8 (from matplotlib==3.10.7->-r environment/requirements.txt (line 9))
+  Using cached pillow-12.3.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.1 kB)
+Collecting pyparsing>=3 (from matplotlib==3.10.7->-r environment/requirements.txt (line 9))
+  Using cached pyparsing-3.3.3-py3-none-any.whl.metadata (5.9 kB)
+Collecting python-dateutil>=2.7 (from matplotlib==3.10.7->-r environment/requirements.txt (line 9))
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting charset-normalizer (from reportlab==4.4.4->-r environment/requirements.txt (line 10))
+  Downloading charset_normalizer-3.5.2-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+Collecting XlsxWriter>=0.5.7 (from python-pptx==1.0.2->-r environment/requirements.txt (line 11))
+  Using cached xlsxwriter-3.2.9-py3-none-any.whl.metadata (2.7 kB)
+Collecting lxml>=3.1.0 (from python-pptx==1.0.2->-r environment/requirements.txt (line 11))
+  Downloading lxml-6.1.3-cp310-cp310-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (3.3 kB)
+Collecting six>=1.5 (from python-dateutil>=2.7->matplotlib==3.10.7->-r environment/requirements.txt (line 9))
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Requirement already satisfied: setuptools>=77.0.3 in ./.venv-verified/lib/python3.10/site-packages (from torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (78.1.0)
+Requirement already satisfied: sympy>=1.13.3 in ./.venv-verified/lib/python3.10/site-packages (from torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (1.14.0)
+Requirement already satisfied: networkx>=2.5.1 in ./.venv-verified/lib/python3.10/site-packages (from torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (3.4.2)
+Requirement already satisfied: jinja2 in ./.venv-verified/lib/python3.10/site-packages (from torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (3.1.6)
+Requirement already satisfied: cuda-toolkit==13.0.3 in ./.venv-verified/lib/python3.10/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (13.0.3.0)
+Requirement already satisfied: cuda-bindings<14,>=13.0.3 in ./.venv-verified/lib/python3.10/site-packages (from torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (13.3.1)
+Requirement already satisfied: nvidia-cudnn-cu13==9.24.0.43 in ./.venv-verified/lib/python3.10/site-packages (from torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (9.24.0.43)
+Requirement already satisfied: nvidia-cusparselt-cu13==0.8.1 in ./.venv-verified/lib/python3.10/site-packages (from torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (0.8.1)
+Requirement already satisfied: nvidia-nccl-cu13==2.30.7 in ./.venv-verified/lib/python3.10/site-packages (from torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (2.30.7)
+Requirement already satisfied: nvidia-nvshmem-cu13==3.4.5 in ./.venv-verified/lib/python3.10/site-packages (from torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (3.4.5)
+Requirement already satisfied: triton~=3.8.0 in ./.venv-verified/lib/python3.10/site-packages (from torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (3.8.0)
+Requirement already satisfied: nvidia-nvjitlink<14,>=13.0.88 in ./.venv-verified/lib/python3.10/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (13.3.33)
+Requirement already satisfied: nvidia-cuda-cupti==13.0.85.* in ./.venv-verified/lib/python3.10/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (13.0.85)
+Requirement already satisfied: nvidia-cufile==1.15.1.6.* in ./.venv-verified/lib/python3.10/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (1.15.1.6)
+Requirement already satisfied: nvidia-cufft==12.0.0.61.* in ./.venv-verified/lib/python3.10/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (12.0.0.61)
+Requirement already satisfied: nvidia-nvtx==13.0.85.* in ./.venv-verified/lib/python3.10/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (13.0.85)
+Requirement already satisfied: nvidia-cuda-nvrtc==13.0.88.* in ./.venv-verified/lib/python3.10/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (13.0.88)
+Requirement already satisfied: nvidia-cublas==13.1.1.3.* in ./.venv-verified/lib/python3.10/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (13.1.1.3)
+Requirement already satisfied: nvidia-cusolver==12.0.4.66.* in ./.venv-verified/lib/python3.10/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (12.0.4.66)
+Requirement already satisfied: nvidia-cusparse==12.6.3.3.* in ./.venv-verified/lib/python3.10/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (12.6.3.3)
+Requirement already satisfied: nvidia-cuda-runtime==13.0.96.* in ./.venv-verified/lib/python3.10/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (13.0.96)
+Requirement already satisfied: nvidia-curand==10.4.0.35.* in ./.venv-verified/lib/python3.10/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (10.4.0.35)
+Requirement already satisfied: cuda-pathfinder>=1.4.2 in ./.venv-verified/lib/python3.10/site-packages (from cuda-bindings<14,>=13.0.3->torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (1.6.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./.venv-verified/lib/python3.10/site-packages (from sympy>=1.13.3->torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.venv-verified/lib/python3.10/site-packages (from jinja2->torch>=1.10.0->accelerate==0.21.0->-r environment/requirements.txt (line 4)) (3.0.3)
+Collecting idna<4,>=2.5 (from requests->transformers==4.33.0->-r environment/requirements.txt (line 1))
+  Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting urllib3<3,>=1.26 (from requests->transformers==4.33.0->-r environment/requirements.txt (line 1))
+  Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting certifi>=2023.5.7 (from requests->transformers==4.33.0->-r environment/requirements.txt (line 1))
+  Using cached certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Using cached transformers-4.33.0-py3-none-any.whl (7.6 MB)
+Using cached huggingface_hub-0.25.2-py3-none-any.whl (436 kB)
+Using cached tokenizers-0.13.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (7.8 MB)
+Using cached numpy-1.26.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (18.2 MB)
+Using cached accelerate-0.21.0-py3-none-any.whl (244 kB)
+Using cached safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (516 kB)
+Using cached pyyaml-6.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (770 kB)
+Downloading pytest-8.4.2-py3-none-any.whl (365 kB)
+Downloading matplotlib-3.10.7-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (8.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.7/8.7 MB 81.2 kB/s  0:01:46
+Downloading reportlab-4.4.4-py3-none-any.whl (2.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 136.2 kB/s  0:00:15
+Using cached python_pptx-1.0.2-py3-none-any.whl (472 kB)
+Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+Using cached contourpy-1.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (325 kB)
+Using cached cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Using cached exceptiongroup-1.3.1-py3-none-any.whl (16 kB)
+Downloading fonttools-4.65.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.3/5.3 MB 77.9 kB/s  0:01:16
+Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Using cached kiwisolver-1.5.1-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.6 MB)
+Downloading lxml-6.1.3-cp310-cp310-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (5.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.3/5.3 MB 55.7 kB/s  0:01:27
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Using cached pillow-12.3.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (6.9 MB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 70.2 kB/s  0:00:18
+Using cached pyparsing-3.3.3-py3-none-any.whl (126 kB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading regex-2026.9.29-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (797 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 797.6/797.6 kB 130.5 kB/s  0:00:07
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading tomli-2.5.0-py3-none-any.whl (14 kB)
+Downloading tqdm-4.70.1-py3-none-any.whl (80 kB)
+Using cached xlsxwriter-3.2.9-py3-none-any.whl (175 kB)
+Downloading charset_normalizer-3.5.2-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (271 kB)
+Using cached psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl (155 kB)
+Using cached requests-2.34.2-py3-none-any.whl (73 kB)
+Downloading idna-3.20-py3-none-any.whl (69 kB)
+Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+Using cached certifi-2026.7.22-py3-none-any.whl (136 kB)
+Installing collected packages: tokenizers, XlsxWriter, urllib3, tqdm, tomli, six, safetensors, regex, PyYAML, pyparsing, pygments, psutil, pluggy, pillow, packaging, numpy, lxml, kiwisolver, iniconfig, idna, fonttools, exceptiongroup, cycler, charset-normalizer, certifi, requests, reportlab, python-pptx, python-dateutil, pytest, contourpy, matplotlib, huggingface-hub, transformers, accelerate
+
+Successfully installed PyYAML-6.0.3 XlsxWriter-3.2.9 accelerate-0.21.0 certifi-2026.7.22 charset-normalizer-3.5.2 contourpy-1.3.2 cycler-0.12.1 exceptiongroup-1.3.1 fonttools-4.65.0 huggingface-hub-0.25.2 idna-3.20 iniconfig-2.3.1 kiwisolver-1.5.1 lxml-6.1.3 matplotlib-3.10.7 numpy-1.26.4 packaging-26.3 pillow-12.3.0 pluggy-1.6.0 psutil-7.2.2 pygments-2.21.0 pyparsing-3.3.3 pytest-8.4.2 python-dateutil-2.9.0.post0 python-pptx-1.0.2 regex-2026.9.29 reportlab-4.4.4 requests-2.34.2 safetensors-0.8.0 six-1.17.0 tokenizers-0.13.3 tomli-2.5.0 tqdm-4.70.1 transformers-4.33.0 urllib3-2.8.0

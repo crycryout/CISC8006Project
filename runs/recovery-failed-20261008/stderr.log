@@ -1,0 +1,14 @@
+/home/renjie/CISC8006Project/.venv/lib/python3.10/site-packages/huggingface_hub/file_download.py:1142: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/home/renjie/CISC8006Project/.venv/lib/python3.10/site-packages/transformers/utils/generic.py:311: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/home/renjie/CISC8006Project/.venv/lib/python3.10/site-packages/transformers/utils/generic.py:311: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/home/renjie/CISC8006Project/.venv/lib/python3.10/site-packages/huggingface_hub/file_download.py:1142: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/home/renjie/CISC8006Project/scripts/eval_ppl.py", line 127, in main
+    try: run(cfg,store)
+  File "/home/renjie/CISC8006Project/scripts/eval_ppl.py", line 82, in run
+    if cfg['inject_failure_after_book'] is not None and len(per_book)==cfg['inject_failure_after_book']: raise RuntimeError('injected failure for recovery verification')
+RuntimeError: injected failure for recovery verification

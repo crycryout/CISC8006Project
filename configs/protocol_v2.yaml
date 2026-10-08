@@ -1,0 +1,17 @@
+protocol_id: reproduction-v2-candidate
+approval_status: pending
+assets_manifest: data/assets_manifest.json
+asset_root: data/pg19
+position_policy: cache_relative
+scorer_precision: fp32
+precision: fp16
+cache_budget: 1024
+min_scored_idx: 1025
+primary_estimand: paired_macro_delta_nll
+seeds:
+- 0
+- 1
+- 2
+bootstrap_seed: 0
+n_boot: 10000
+ceiling_gpu_hours: 20

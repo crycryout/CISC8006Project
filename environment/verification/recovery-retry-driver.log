@@ -1,0 +1,23 @@
+/home/renjie/CISC8006Project/.venv-verified/lib/python3.10/site-packages/huggingface_hub/file_download.py:1142: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/home/renjie/CISC8006Project/.venv-verified/lib/python3.10/site-packages/transformers/utils/generic.py:311: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/home/renjie/CISC8006Project/.venv-verified/lib/python3.10/site-packages/transformers/utils/generic.py:311: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/home/renjie/CISC8006Project/.venv-verified/lib/python3.10/site-packages/huggingface_hub/file_download.py:1142: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+StartRecentKVCache: 4, 1020
+{"run_id": "recovery-retry-20261009", "book": "10146", "step": 0}
+{"book": "10146", "nll": 1.9763936986714778, "scored": 174}
+StartRecentKVCache: 4, 1020
+{"run_id": "recovery-retry-20261009", "book": "10321", "step": 0}
+{"book": "10321", "nll": 3.406208950874629, "scored": 174}
+{
+  "run_id": "recovery-retry-20261009",
+  "macro_book_nll": 2.6913013247730535,
+  "micro_token_nll": 2.6913013247730535,
+  "scored_tokens": 348,
+  "elapsed_seconds": 118.35651473235339,
+  "predictions_per_second": 20.260819655113533
+}
+{"run_id": "recovery-retry-20261009", "status": "completed", "gpu_hours": 0.040599188326676895}

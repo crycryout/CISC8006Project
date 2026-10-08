@@ -1,0 +1,12 @@
+{
+  "state": "pending",
+  "missing": [
+    "runs/R-v2-20261008-window-s0/result.json",
+    "runs/R-v2-20261008-window-s1/result.json",
+    "runs/R-v2-20261008-window-s2/result.json",
+    "runs/R-v2-20261008-streaming-s0/result.json",
+    "runs/R-v2-20261008-streaming-s1/result.json",
+    "runs/R-v2-20261008-streaming-s2/result.json"
+  ],
+  "claim_status": null
+}

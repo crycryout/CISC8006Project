@@ -1,0 +1,27 @@
+protocol_id: reproduction-v2-candidate
+estimated_predictions_per_second: 24.192010683941557
+setup_seconds: 60
+selected_gpu: 0
+config_overrides: {}
+preconditions:
+- environment/verification/assets.json
+- results/diagnostics/summary.json
+- results/reproduction/paired_result.json
+matrix_id: P-v2-20261008
+phase: pilot
+split: dev
+methods:
+  streaming:
+    sink_tokens: 4
+    recent_tokens: 1020
+  h1_adaptive_sink:
+    sink_tokens: 4
+    recent_tokens: 1020
+  h2_sink_selection:
+    sink_tokens: 4
+    recent_tokens: 1020
+seeds:
+- 0
+- 1
+- 2
+cap: 8192

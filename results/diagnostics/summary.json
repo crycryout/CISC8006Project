@@ -1,0 +1,63 @@
+{
+  "validation_status": "valid",
+  "claim_status": null,
+  "purpose": "single exposed smoke-book2\u00d72 diagnostic; not formal reproduction",
+  "runs": [
+    {
+      "run_id": "D-W0-20261008",
+      "method": "window",
+      "position_policy": "legacy_implicit",
+      "scorer_precision": "fp32",
+      "book_ids": "10146",
+      "scored_tokens": 3070,
+      "macro_book_nll": 5.450577736883166,
+      "micro_token_ppl": 232.89267773744618,
+      "predictions_per_second": 28.524992658640187,
+      "peak_gpu_memory_mb": 6912.8974609375,
+      "source_commit": "77189031bef89f292934b1cdab8e687b0aae6e49",
+      "result_sha256": "9bf8ddb2edf5c1d8372c93e2eb289edd31791aa911550785e5cdac73ea365166"
+    },
+    {
+      "run_id": "D-S0-20261008",
+      "method": "streaming",
+      "position_policy": "legacy_implicit",
+      "scorer_precision": "fp32",
+      "book_ids": "10146",
+      "scored_tokens": 3070,
+      "macro_book_nll": 5.292458268578228,
+      "micro_token_ppl": 198.83160661417796,
+      "predictions_per_second": 28.577702949896175,
+      "peak_gpu_memory_mb": 6912.8974609375,
+      "source_commit": "77189031bef89f292934b1cdab8e687b0aae6e49",
+      "result_sha256": "4383a4485fe5c0b8740b9a28cb2a5c413a64ae33691b087a53caddb79a4ef708"
+    },
+    {
+      "run_id": "D-W1-20261008",
+      "method": "window",
+      "position_policy": "cache_relative",
+      "scorer_precision": "fp32",
+      "book_ids": "10146",
+      "scored_tokens": 3070,
+      "macro_book_nll": 3.0511289979536267,
+      "micro_token_ppl": 21.139197065442676,
+      "predictions_per_second": 24.65684440071214,
+      "peak_gpu_memory_mb": 6445.80322265625,
+      "source_commit": "77189031bef89f292934b1cdab8e687b0aae6e49",
+      "result_sha256": "31c825d25ea7a0fbb6b9dd4957015e94f34ccead737b57b1e3b925b44cf90402"
+    },
+    {
+      "run_id": "D-S1-20261008",
+      "method": "streaming",
+      "position_policy": "cache_relative",
+      "scorer_precision": "fp32",
+      "book_ids": "10146",
+      "scored_tokens": 3070,
+      "macro_book_nll": 2.2236811565931265,
+      "micro_token_ppl": 9.241286953096795,
+      "predictions_per_second": 24.192010683941557,
+      "peak_gpu_memory_mb": 6445.80322265625,
+      "source_commit": "77189031bef89f292934b1cdab8e687b0aae6e49",
+      "result_sha256": "ea903b2374e6c90d0243b98c9b352a92d65e8693f6a3ee534b87b8f5e66f08c2"
+    }
+  ]
+}

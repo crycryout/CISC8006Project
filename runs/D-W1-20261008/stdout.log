@@ -1,0 +1,12 @@
+StartRecentKVCache: 0, 1024
+{"run_id": "D-W1-20261008", "book": "10146", "step": 0}
+{"run_id": "D-W1-20261008", "book": "10146", "step": 2048}
+{"book": "10146", "nll": 3.0511289979536267, "scored": 3070}
+{
+  "run_id": "D-W1-20261008",
+  "macro_book_nll": 3.0511289979536267,
+  "micro_token_nll": 3.0511289979536267,
+  "scored_tokens": 3070,
+  "elapsed_seconds": 166.07964642392471,
+  "predictions_per_second": 24.65684440071214
+}

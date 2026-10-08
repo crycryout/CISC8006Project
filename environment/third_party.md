@@ -14,9 +14,9 @@
 ### What we use from it
 
 - `streaming_llm/kv_cache.py` — `StartRecentKVCache` (arm implementations A/B)
-- `examples/eval_long_ppl.py` — reference evaluation semantics (token-by-token teacher forcing, NLL accumulation); our harness in `scripts/eval_ppl.py` mirrors this flow with local parquet data loading and scored-region masking
-- `streaming_llm/pos_shift/modify_gpt_neox.py` — secondary pos-shift variant only
+- `examples/eval_long_ppl.py` — reference evaluation semantics (token-by-token teacher forcing, NLL accumulation); our harness in `scripts/eval_ppl.py` mirrors this flow with local raw text data loading and scored-region masking
+- `streaming_llm/pos_shift/modify_gpt_neox.py` — candidate primary raw-K/cache-relative implementation in both arms
 
 ### Local modifications
 
-**None** to any file under `third_party/streaming-llm/`. Any future compatibility patch is applied as a separate, documented commit touching only `third_party/`, with the failing log preserved (SKILL §7-B).
+**None** to any file under `third_party/streaming-llm/`. Any future compatibility patch is applied as a separate, documented commit touching only `third_party/`, with the failing log preserved (see `docs/protocol_amendments.md`).

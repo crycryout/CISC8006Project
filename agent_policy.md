@@ -1,41 +1,9 @@
-# AI-Use Policy
+# AI-use policy
 
-**Course:** CISC8006 — team project
-**Principle:** AI tools accelerate evidence production; **humans own every consequential decision**. Every output that can change scientific evidence is logged in `agent_ledger.md` with a human accept/modify/reject/escalate decision and a verification step.
+AI assists code, independent fixtures, analysis, diagnostics and drafts. Humans own consequential scientific decisions. Real decisions and verification evidence belong in `agent_ledger.md` and `AI_USAGE.md`; agent tests are explicitly agent verification, not human review.
 
-## Allowed AI assistance
+Human decisions include claim/model/dataset/tier changes, freezing or rescoping protocols, compatibility changes with numerical impact, endorsing a scientific conclusion, improvement selection and final submission. Missing approval blocks only dependent scientific execution/publication; independent fixes, evidence and review materials continue under the owner's instruction to execute the plan.
 
-- Explaining the paper and its figures
-- Implementing harness code, unit tests, analysis scripts
-- Debugging (including proposing hypotheses for discrepancies)
-- Ablation brainstorming
-- Adversarial review of our own claims and code
+Course requirements call for substantive critical review; it may accept, modify, reject or escalate an AI proposal. No mandatory fabricated rejection or retroactive signature. Log date, exposed tool/model/version (unknown=not exposed), delegated task, proposal, actual reviewer/decision or pending, verification and source/run/artifact links. Preserve representative redacted prompts/outputs. Historical ledger entries are historical statements, not proof of new approvals.
 
-## Not delegable (human-only decisions)
-
-- Selecting/changing the central claim, primary metric, dataset, model family, reproduction tier
-- Freezing or rescoping the protocol
-- Approving a compatibility change that may alter numerical behavior
-- Signing off a reproduction conclusion (recovered / not recovered / inconclusive)
-- Choosing which improvement hypothesis advances (must follow preregistered criteria)
-
-## Stop conditions (SKILL §17)
-
-Any of the following halts work pending instructor approval:
-
-- primary metric changes; dataset changes; model family changes; tier changes
-- cache-budget change for the primary claim
-- compute ceiling must be exceeded
-- evaluation would need hidden/private APIs or inaccessible data
-- a compatibility change may alter the algorithm
-- the target claim is no longer falsifiable
-
-## Logging rules
-
-- Log **only** interactions that can change scientific evidence (code, analysis, interpretation), not routine Q&A
-- Each ledger entry: date; tool/model; delegated task; AI proposal; human decision (accept/modify/reject/escalate); verification; evidence link (commit + run ID)
-- The course requires evidence of human ownership: at least one **genuine, documented rejection** of an AI suggestion. We do not fabricate rejections to satisfy the rubric; if a rejection exists it will appear in the ledger with its reasoning.
-
-## Provenance of this repository
-
-Initial scaffold (directory layout, claim/claim-map drafts, harness skeleton, smoke test, audit tests) was AI-generated under human instruction on 2026-09-05; the human reviewed the claim text and approved submission. See `agent_ledger.md` entry E0001.
+Use only public authorized APIs/assets, never print private keys or credentials. Do not exceed20 GPU-h, select improvement hyperparameters on test, overwrite failed/negative runs or pretend bootstrap seeds are model repeats. When scope/budget/algorithm approval is needed, first prepare concrete amendment and evidence, request the actual decision, and continue independent work. See `docs/protocol_amendments.md` and `docs/approval_decisions.json`.

@@ -1,0 +1,7 @@
+*.pdf binary
+*.pptx binary
+*.npz binary
+*.png binary
+*.mp4 binary
+# Preserve actual process logs, including the terminal's whitespace.
+*.log -whitespace

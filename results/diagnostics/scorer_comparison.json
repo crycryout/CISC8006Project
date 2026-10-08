@@ -1,0 +1,11 @@
+{
+  "purpose": "same faithful forward; legacy-fp16 versus fp32 cross-entropy",
+  "input_tokens": 1200,
+  "scored_tokens": 174,
+  "legacy_scored_nll": 1.976471546737627,
+  "fp32_scored_nll": 1.9763936986714778,
+  "mean_scored_delta": 7.784806614930355e-05,
+  "max_abs_per_position_delta": 0.0068912506103515625,
+  "mean_abs_per_position_delta": 0.0003683574298363379,
+  "verdict": "descriptive scorer diagnostic, no claim status"
+}

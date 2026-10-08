@@ -1,0 +1,11 @@
+fixtures-h800-11f7e21a9a8a: exit=0, whole-process GPU charge=0.001758h
+.......................................................                  [100%]
+=============================== warnings summary ===============================
+.venv-verified/lib/python3.10/site-packages/transformers/utils/generic.py:311
+.venv-verified/lib/python3.10/site-packages/transformers/utils/generic.py:311
+  /home/renjie/CISC8006Project/.venv-verified/lib/python3.10/site-packages/transformers/utils/generic.py:311: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+    torch.utils._pytree._register_pytree_node(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+55 passed, 2 warnings in 5.24s
+

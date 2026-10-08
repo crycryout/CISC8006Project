@@ -20,3 +20,6 @@ runs/**/*.log.tmp
 # OS
 .DS_Store
 .pytest_cache/
+experiments/*.lock
+*.egg-info/
+build/

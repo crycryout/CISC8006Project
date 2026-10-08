@@ -1,0 +1,5 @@
+{
+  "validation_status": "invalid",
+  "error": "RuntimeError: injected failure for recovery verification",
+  "claim_status": null
+}
