@@ -1,205 +1,139 @@
-#!/usr/bin/env python
-"""Evaluation harness (v0) — CISC8006 StreamingLLM reproduction.
-
-Mirrors the official evaluation semantics of
-third_party/streaming-llm/examples/eval_long_ppl.py (token-by-token teacher
-forcing, `StartRecentKVCache` eviction after every step, fp16, implicit
-position ids), with three auditable differences:
-
-  1. data source  : local PG19 test .txt files (checksummed in data_manifest.md)
-                    instead of `load_dataset("pg19", ...)` — the text content is
-                    identical (PG19 books are raw .txt on GCS; the HF script
-                    wraps exactly those files);
-  2. scored region: per-position NLLs are recorded for ALL positions and the
-                    scored mask is applied at aggregation time (default: only
-                    positions whose prediction was made under an already-evicted
-                    cache, i.e. step index >= cache_budget + 1 = 1025;
-                    see README "off-by-one note");
-  3. outputs      : machine-readable result.json (course schema) + per-position
-                    NLL trace for NLL-vs-position plots.
-
-Off-by-one note (official semantics): eviction happens AFTER the forward pass.
-Step idx runs on cache length idx, sees idx+1 positions, then the cache is
-evicted to <= budget. The first prediction made *under an evicted cache* is
-therefore step 1025 (predicting token 1026) for budget 1024. Both arms share
-this semantics; it matches the official implementation exactly.
-
-Usage:
-  python scripts/eval_ppl.py --config configs/smoke.yaml
-  (or explicit CLI overrides; config values are overridden by CLI flags)
-"""
-
-import argparse
+#!/usr/bin/env python3
+"""Token-by-token teacher forcing with immutable, verified schema-v2 outputs."""
 import json
+import math
 import os
+from pathlib import Path
+import random
+import signal
 import subprocess
 import sys
 import time
-
-import torch
-import yaml
-from torch.nn import CrossEntropyLoss
-from transformers import AutoModelForCausalLM, AutoTokenizer
-
-REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(REPO_ROOT, "third_party", "streaming-llm"))
-
-from streaming_llm.kv_cache import StartRecentKVCache  # noqa: E402
+import traceback
+os.environ.setdefault('CUBLAS_WORKSPACE_CONFIG',':4096:8')
+ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))
+from src.config import parse_config
+from src.io_utils import file_hash, object_hash, write_json
+from src.approvals import require_approval
+from src.run_store import RunStore, Tee
 
 
-def parse_args():
-    p = argparse.ArgumentParser()
-    # CLI flags take precedence over the config file; unset flags fall back to
-    # the config, then to the default. Required-ness is validated after merge.
-    p.add_argument("--config", type=str, default=None)
-    p.add_argument("--run_id", type=str, default=None)
-    p.add_argument("--method", type=str, default=None, choices=["window", "streaming"])
-    p.add_argument("--model", type=str, default="EleutherAI/pythia-2.8b")
-    p.add_argument("--model_revision", type=str, default="2a259cdd96a4beb1cdf467512e3904197345f6a9")
-    p.add_argument("--book_files", type=str, nargs="+", default=None, help="path(s) to PG19 .txt")
-    p.add_argument("--sink_tokens", type=int, default=None)
-    p.add_argument("--recent_tokens", type=int, default=None)
-    p.add_argument("--max_tokens_per_book", type=int, default=None)
-    p.add_argument("--min_scored_idx", type=int, default=None,
-                   help="default: cache_budget+1 (=1025); see off-by-one note")
-    p.add_argument("--precision", type=str, default="fp16", choices=["fp16", "bf16", "fp32"])
-    p.add_argument("--output_dir", type=str, default=None, help="default runs/<run_id>/<method>")
-    args = p.parse_args()
-
-    if args.config:
-        with open(args.config) as f:
-            cfg = yaml.safe_load(f) or {}
-        for k, v in cfg.items():
-            if getattr(args, k, None) is None and v is not None:
-                setattr(args, k, v)
-
-    missing = [f for f in ("run_id", "method", "book_files", "sink_tokens",
-                           "recent_tokens", "max_tokens_per_book")
-               if getattr(args, f) in (None, [])]
-    if missing:
-        p.error(f"missing required arguments (CLI or config): {', '.join('--' + m for m in missing)}")
-    return args
+def prepare_inputs(cfg):
+    import numpy as np
+    from transformers import AutoTokenizer
+    from scripts.prepare_data import token_hash
+    manifest=json.loads(Path(cfg['assets_manifest']).read_text())
+    if cfg['model']!=manifest['model'] or cfg['model_revision']!=manifest['model_revision']: raise ValueError('model not in verified manifest')
+    expected={b['book_id']:b for b in manifest[cfg['manifest_split']+'_books']}
+    files=cfg['book_files']
+    if cfg['phase'] in {'reproduction','pilot','improvement','ablation'} and [Path(p).stem for p in files]!=list(expected): raise ValueError('scientific phase requires complete frozen book set')
+    tokenizer=AutoTokenizer.from_pretrained(cfg['model'],revision=cfg['model_revision'],local_files_only=cfg['offline'])
+    data=[]
+    for path in files:
+        book=expected.get(Path(path).stem)
+        if book is None or file_hash(path)!=book['text_sha256']: raise ValueError(f'unknown or altered text: {path}')
+        full=tokenizer(Path(path).read_text(encoding='utf-8'),add_special_tokens=True)['input_ids']
+        if len(full)!=book['full_token_length']: raise ValueError(f'token length changed: {path}')
+        ids=np.asarray(full[:cfg['max_tokens_per_book']],dtype='<i8')
+        if len(ids)<=1026: raise ValueError('zero-scored book')
+        digest=token_hash(ids)
+        if cfg['max_tokens_per_book']==book['token_cap'] and digest!=book['token_ids_sha256']: raise ValueError('frozen token hash changed')
+        data.append((book,ids,digest))
+    return manifest,data
 
 
-def git_commit():
-    try:
-        return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=REPO_ROOT, text=True).strip()
-    except subprocess.CalledProcessError:
-        return "uncommitted"
+def hardware(device):
+    if device=='cpu': return dict(device='cpu',allocated_devices=0)
+    selected=os.environ.get('CUDA_VISIBLE_DEVICES','0')
+    if ',' in selected: raise ValueError('one explicitly selected GPU per job required')
+    output=subprocess.check_output(['nvidia-smi','-i',selected,'--query-gpu=uuid,name,driver_version','--format=csv,noheader'],text=True).strip().split(', ')
+    return dict(uuid=output[0],name=output[1],driver=output[2],visible_devices=selected,allocated_devices=1)
 
 
-def load_text_tokens(tokenizer, path, max_tokens):
-    with open(path, encoding="utf-8") as f:
-        text = f.read()
-    enc = tokenizer(text, return_tensors="pt")
-    return enc.input_ids[:, :max_tokens]
+def run(cfg,store):
+    import numpy as np
+    import torch
+    from transformers import AutoModelForCausalLM
+    from src.position_policy import apply_position_policy
+    from src.cache_policy import RetentionPolicy
+    from src.metrics import aggregate, token_nll
+    from scripts.prepare_data import token_hash
+    random.seed(cfg['seed']); np.random.seed(cfg['seed']); torch.manual_seed(cfg['seed']); torch.cuda.manual_seed_all(cfg['seed'])
+    torch.set_num_threads(1)
+    torch.backends.cuda.matmul.allow_tf32=False; torch.backends.cudnn.allow_tf32=False
+    torch.backends.cudnn.benchmark=False
+    torch.use_deterministic_algorithms(True)
+    dtype={'fp16':torch.float16,'bf16':torch.bfloat16,'fp32':torch.float32}[cfg['precision']]
+    manifest,data=prepare_inputs(cfg)
+    # Rehash weights and tokenizer before the first GPU allocation.
+    from huggingface_hub import hf_hub_download
+    for name,expected in manifest['model_files'].items():
+        p=hf_hub_download(cfg['model'],name,revision=cfg['model_revision'],local_files_only=cfg['offline'])
+        if file_hash(p)!=expected['sha256']: raise ValueError(f'model/tokenizer hash mismatch: {name}')
+    model=AutoModelForCausalLM.from_pretrained(cfg['model'],revision=cfg['model_revision'],torch_dtype=dtype,local_files_only=cfg['offline']).to(cfg['device']).eval()
+    layers=apply_position_policy(model,cfg['position_policy'])
+    determinism=dict(enabled=True,tf32=False,cudnn_benchmark=False,torch_threads=1,cublas_workspace=os.environ['CUBLAS_WORKSPACE_CONFIG'],attention_backend='GPTNeoXAttention eager',torch=torch.__version__,transformers=__import__('transformers').__version__,cuda=torch.version.cuda)
+    contract=dict(model=cfg['model'],model_revision=cfg['model_revision'],tokenizer_revision=manifest['tokenizer_revision'],assets_manifest_sha256=file_hash(cfg['assets_manifest']),precision=cfg['precision'],scorer_precision=cfg['scorer_precision'],position_policy=cfg['position_policy'],cache_budget=1024,min_scored_idx=1025,max_tokens_per_book=cfg['max_tokens_per_book'],add_special_tokens=True,eviction='after_forward',environment_id=cfg['environment_id'],numerical_source_sha256=store.row['numerical_source_sha256'],protocol_id=cfg['protocol_id'],seed=cfg['seed'],split=cfg['manifest_split'],determinism=determinism)
+    per_book=[]
+    if cfg['device']=='cuda': torch.cuda.reset_peak_memory_stats()
+    evaluation_t0=time.perf_counter()
+    for book,ids,digest in data:
+        if cfg['inject_failure_after_book'] is not None and len(per_book)==cfg['inject_failure_after_book']: raise RuntimeError('injected failure for recovery verification')
+        book_t0=time.perf_counter(); calibration_seconds=0.0
+        tensor=torch.tensor(ids,device=cfg['device']).unsqueeze(0)
+        losses=torch.empty(len(ids)-1,device=cfg['device'],dtype=torch.float32)
+        policy=RetentionPolicy(cfg['method'],cfg['sink_tokens'],1024,cfg['seed'],cfg['calibration_start'],cfg['calibration_end'],cfg['selection_threshold'])
+        past=None; traces=[]; max_forward=0; max_retained=0; max_kv=0
+        with torch.no_grad():
+            for step in range(len(ids)-1):
+                if time.perf_counter()-store.t0>cfg['max_gpu_seconds']: raise TimeoutError('run time reservation exhausted')
+                collect=policy.needs_attention(step); ct=time.perf_counter()
+                out=model(tensor[:,step:step+1],past_key_values=past,use_cache=True,output_attentions=collect)
+                losses[step]=token_nll(out.logits.reshape(1,-1),tensor[:,step+1],cfg['scorer_precision'])[0]
+                if collect:
+                    policy.observe(step,out.attentions); calibration_seconds+=time.perf_counter()-ct
+                forward=out.past_key_values[0][0].shape[2]; max_forward=max(max_forward,forward)
+                past=policy.evict(out.past_key_values,step)
+                retained=past[0][0].shape[2]; kv=sum(k.numel()*k.element_size()+v.numel()*v.element_size() for k,v in past)
+                max_retained=max(max_retained,retained); max_kv=max(max_kv,kv)
+                if step%128==0 or step in {1023,1024,1025,len(ids)-2}: traces.append(dict(step=step,forward_length=forward,retained_length=retained,kv_bytes=kv))
+                if step%2048==0: print(json.dumps(dict(run_id=cfg['run_id'],book=book['book_id'],step=step)),flush=True)
+        if cfg['device']=='cuda': torch.cuda.synchronize()
+        nll=losses.cpu().numpy(); mask=np.arange(len(nll))>=1025; scored=nll[mask].astype(np.float64)
+        if not np.isfinite(nll).all(): raise ValueError('nonfinite raw NLL')
+        nll_sum=float(scored.sum()); mean=nll_sum/len(scored)
+        row=dict(book_id=book['book_id'],input_tokens=len(ids),tokenized_length=len(ids),scored_tokens=len(scored),text_sha256=book['text_sha256'],token_ids_sha256=digest,scored_mask_sha256=__import__('hashlib').sha256(mask.tobytes()).hexdigest(),sum_nll_scored=nll_sum,mean_nll_scored=mean,ppl_scored=math.exp(mean),mean_nll_all_positions=float(nll.astype(np.float64).mean()),runtime_seconds=time.perf_counter()-book_t0,calibration_seconds=calibration_seconds,selection=policy.summary(),max_forward_length=max_forward,max_retained_length=max_retained,max_kv_bytes=max_kv,attention_layers=layers,cache_trace=traces)
+        directory=store.directory/'books'/book['book_id']; directory.mkdir(parents=True,exist_ok=False)
+        np.savez_compressed(directory/'position_nll.npz',nll=nll,input_ids=ids,scored_mask=mask)
+        write_json(directory/'metrics.json',row); per_book.append(row)
+        write_json(store.directory/'progress.json',dict(status='running',completed_books=[b['book_id'] for b in per_book]))
+        print(json.dumps(dict(book=book['book_id'],nll=mean,scored=len(scored))),flush=True)
+    elapsed=time.perf_counter()-evaluation_t0
+    result=dict(schema_version=2,run_id=cfg['run_id'],status='completed',validation_status='valid',phase=cfg['phase'],method=cfg['method'],git_commit=store.row['git_commit'],contract=contract,contract_sha256=object_hash(contract),book_ids=[b['book_id'] for b in per_book],per_book=per_book,**aggregate(per_book),elapsed_seconds=elapsed,predictions_per_second=sum(b['input_tokens']-1 for b in per_book)/elapsed,peak_gpu_memory_mb=torch.cuda.max_memory_allocated()/1024**2 if cfg['device']=='cuda' else None,claim_status=None)
+    write_json(store.directory/'result.json',result)
+    print(json.dumps({k:result[k] for k in ('run_id','macro_book_nll','micro_token_nll','scored_tokens','elapsed_seconds','predictions_per_second')},indent=2))
 
 
 def main():
-    args = parse_args()
-    budget = args.sink_tokens + args.recent_tokens
-    assert budget == 1024, f"primary-comparison budget must be 1024, got {budget}"
-    min_scored = args.min_scored_idx if args.min_scored_idx is not None else budget + 1
-
-    out_dir = args.output_dir or os.path.join(REPO_ROOT, "runs", args.run_id, args.method)
-    os.makedirs(out_dir, exist_ok=True)
-
-    device = "cuda"
-    dtype = {"fp16": torch.float16, "bf16": torch.bfloat16, "fp32": torch.float32}[args.precision]
-
-    tokenizer = AutoTokenizer.from_pretrained(args.model, revision=args.model_revision)
-    model = AutoModelForCausalLM.from_pretrained(
-        args.model, revision=args.model_revision, torch_dtype=dtype
-    ).to(device)
-    model.eval()
-
-    kv_cache = StartRecentKVCache(
-        start_size=args.sink_tokens, recent_size=args.recent_tokens, k_seq_dim=2, v_seq_dim=2
-    )
-    loss_fn = CrossEntropyLoss(reduction="none")
-
-    per_book = []
-    all_pos_nll = {}
-    t0 = time.perf_counter()
-    torch.cuda.reset_peak_memory_stats()
-
-    for book_path in args.book_files:
-        input_ids = load_text_tokens(tokenizer, book_path, args.max_tokens_per_book)
-        seq_len = input_ids.size(1)
-        past = None
-        nlls = torch.zeros(seq_len - 1)
-        with torch.no_grad():
-            for idx in range(seq_len - 1):
-                x = input_ids[:, idx: idx + 1].to(device)
-                out = model(x, past_key_values=past, use_cache=True)
-                logits = out.logits.view(-1, model.config.vocab_size)
-                past = out.past_key_values
-                label = input_ids[:, idx + 1: idx + 2].to(logits.device).view(-1)
-                nlls[idx] = loss_fn(logits, label).item()
-                past = kv_cache(past)
-
-        scored = nlls[min_scored:]
-        book_id = os.path.splitext(os.path.basename(book_path))[0]
-        per_book.append(
-            {
-                "book_id": book_id,
-                "tokenized_length": int(seq_len),
-                "scored_tokens": int(scored.numel()),
-                "mean_nll_all_positions": float(nlls.mean()),
-                "mean_nll_scored": float(scored.mean()),
-                "ppl_scored": float(torch.exp(scored.mean())),
-                "mean_nll_by_128tok_bin": [
-                    float(b.mean()) for b in torch.split(nlls, 128) if b.numel()
-                ],
-            }
-        )
-        all_pos_nll[book_id] = [float(v) for v in nlls]
-
-    elapsed = time.perf_counter() - t0
-    total_scored = sum(b["scored_tokens"] for b in per_book)
-    mean_nll = float(sum(b["mean_nll_scored"] * b["scored_tokens"] for b in per_book) / max(total_scored, 1))
-
-    result = {
-        "run_id": args.run_id,
-        "git_commit": git_commit(),
-        "method": args.method,
-        "model": args.model,
-        "model_revision": args.model_revision,
-        "tokenizer_revision": args.model_revision,
-        "dataset": "pg19-test",
-        "book_ids": [b["book_id"] for b in per_book],
-        "cache_budget": budget,
-        "sink_tokens": args.sink_tokens,
-        "recent_tokens": args.recent_tokens,
-        "precision": args.precision,
-        "min_scored_idx": min_scored,
-        "scored_tokens": total_scored,
-        "mean_nll": mean_nll,
-        "perplexity": float(torch.exp(torch.tensor(mean_nll))),
-        "peak_gpu_memory_mb": int(torch.cuda.max_memory_allocated() / 1024**2),
-        "elapsed_seconds": round(elapsed, 2),
-        "tokens_per_second_overall": round(
-            sum(b["tokenized_length"] for b in per_book) / elapsed, 2
-        ),
-        "per_book": per_book,
-        "semantics": {
-            "eviction": "official StartRecentKVCache, eviction after forward",
-            "position_ids": "implicit (transformers GPT-NeoX: start at past length)",
-            "harness": "scripts/eval_ppl.py mirroring examples/eval_long_ppl.py",
-        },
-    }
-
-    with open(os.path.join(out_dir, "result.json"), "w") as f:
-        json.dump(result, f, indent=2)
-    with open(os.path.join(out_dir, "position_nll.json"), "w") as f:
-        json.dump(all_pos_nll, f)
-    with open(os.path.join(out_dir, "config_used.json"), "w") as f:
-        json.dump(vars(args), f, indent=2)
-
-    print(json.dumps({k: result[k] for k in
-                      ["run_id", "method", "mean_nll", "perplexity", "scored_tokens",
-                       "peak_gpu_memory_mb", "elapsed_seconds", "tokens_per_second_overall"]}, indent=2))
+    cfg=parse_config(); require_approval(cfg['phase'],cfg['method'])
+    store=RunStore(cfg,hardware(cfg['device']))
+    original_out,original_err=sys.stdout,sys.stderr
+    sys.stdout=Tee(original_out,store.directory/'stdout.log'); sys.stderr=Tee(original_err,store.directory/'stderr.log')
+    def timeout(*_): raise TimeoutError('external termination / hard budget timeout')
+    signal.signal(signal.SIGTERM,timeout)
+    signal.signal(signal.SIGALRM,timeout); signal.alarm(cfg['max_gpu_seconds'])
+    code=0; error=None
+    try: run(cfg,store)
+    except BaseException as exc:
+        code=1; error=f'{type(exc).__name__}: {exc}'; traceback.print_exc()
+        write_json(store.directory/'failure.json',dict(validation_status='invalid',error=error,claim_status=None))
+    finally:
+        signal.alarm(0); sys.stdout.flush(); sys.stderr.flush()
+        sys.stdout.stream.close(); sys.stderr.stream.close(); sys.stdout,sys.stderr=original_out,original_err
+        row=store.finish(code,error)
+        print(json.dumps(dict(run_id=cfg['run_id'],status=row['status'],gpu_hours=row['gpu_hours'])))
+    return code
 
 
-if __name__ == "__main__":
-    main()
+if __name__=='__main__': sys.exit(main())

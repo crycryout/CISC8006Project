@@ -8,7 +8,7 @@ Remote synchronized baseline: `48e57c6`; audit baseline: `a3ffaf0`.
 |---|---|---|
 | WP0 | complete | `docs/wp0_inventory.json`; clean initial tree; all historical hashes saved |
 | WP1 | in progress | Existing Python 3.10 / torch 2.14.0+cu130 / Transformers 4.33.0 imports and pip check pass; clean installation and asset verification next |
-| WP2 | pending | P0-01–06 confirmed against current source; independent fixtures required |
+| WP2 | in progress | 48 CPU/H800 fixtures pass (`environment/verification/fixtures-first.log`); full-model diagnostic next |
 | WP3 | pending | Immutable evaluator, structured registration and failure recovery required |
 | WP4–7 | pending | Technical prerequisites and real scientific review; no formal conclusion yet |
 

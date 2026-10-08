@@ -1,0 +1,11 @@
+transformers==4.33.0
+huggingface-hub==0.25.2
+numpy==1.26.4
+accelerate==0.21.0
+tokenizers==0.13.3
+safetensors==0.8.0
+PyYAML==6.0.3
+pytest==8.4.2
+matplotlib==3.10.7
+reportlab==4.4.4
+python-pptx==1.0.2

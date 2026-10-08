@@ -1,0 +1,164 @@
+{
+  "schema_version": 2,
+  "created_at": "2026-10-08T15:05:22.862487+00:00",
+  "model": "EleutherAI/pythia-2.8b",
+  "model_revision": "2a259cdd96a4beb1cdf467512e3904197345f6a9",
+  "tokenizer_revision": "2a259cdd96a4beb1cdf467512e3904197345f6a9",
+  "add_special_tokens": true,
+  "token_hash_encoding": "int64 little-endian C order",
+  "dataset_revision": "4d28bd77e66947ad3835cf78ed7aaeb4dd87ad8b",
+  "asset_root_hint": "data/pg19",
+  "model_files": {
+    "config.json": {
+      "sha256": "fe1a9b9550935517588c98f89df24db7d7eadf4c4a00dd32e127a2d4585e9827",
+      "bytes": 571
+    },
+    "tokenizer.json": {
+      "sha256": "c24618a1b3e6a38167beff1c72cffd126c3a66254347304b50547d12c5f25624",
+      "bytes": 2113710
+    },
+    "tokenizer_config.json": {
+      "sha256": "70e38394e494931c6f773ba41e19460dd4436526b852207367f04341b4066d3f",
+      "bytes": 396
+    },
+    "special_tokens_map.json": {
+      "sha256": "6f50ab5a5a509a1c309d6171f339b196a900dc9c99ad0408ff23bb615fdae7ad",
+      "bytes": 99
+    },
+    "model.safetensors": {
+      "sha256": "ab496f1c3fd79e3c749a9d5414136a2c8e4224f94eecb261970315cdb0f813fe",
+      "bytes": 5684693096
+    }
+  },
+  "split_lists": {
+    "test": {
+      "sha256": "c84c08139695f3312df83239a1a41e7b9cde1baf7c08bfcf230ae09eaaf18d8c"
+    },
+    "validation": {
+      "sha256": "e66d9f76a39a7a73a62270e98395c9532d306ecd2b7a10ae4098dcdd133d179b"
+    }
+  },
+  "test_selection": "unchanged audit/book_list.json",
+  "dev_selection": "first three pinned validation entries with >=8192 tokens; no loss-based selection",
+  "test_books": [
+    {
+      "book_id": "10146",
+      "file": "test/10146.txt",
+      "text_sha256": "f8dd4334fd8d422cd2f9153ffbff9b097611569592d7ca09fc6fe7881336d331",
+      "full_token_length": 59202,
+      "input_tokens": 16384,
+      "token_ids_sha256": "c3b09f6e84926cf3c857560301c86ea35aec898ce76b3e6c7a2b41453fb25c1e",
+      "token_cap": 16384
+    },
+    {
+      "book_id": "10321",
+      "file": "test/10321.txt",
+      "text_sha256": "fedcb2723c2ad091f76d45eb98efd810977e7b906f6fd8cbd815734d1e90c456",
+      "full_token_length": 86765,
+      "input_tokens": 16384,
+      "token_ids_sha256": "2fa0c096af8bee0468e6bfa4ae1b6a05f25dec09760b3f963204a0e38c988ec1",
+      "token_cap": 16384
+    },
+    {
+      "book_id": "10356",
+      "file": "test/10356.txt",
+      "text_sha256": "af4b57d358448588adbc6da962cad655bf586ae746dba21f62e956d36d97c88e",
+      "full_token_length": 79278,
+      "input_tokens": 16384,
+      "token_ids_sha256": "0aecb49598f6dcf578d6132f4fcbe2555a16171436cec0321fc02b32a0f82414",
+      "token_cap": 16384
+    },
+    {
+      "book_id": "10762",
+      "file": "test/10762.txt",
+      "text_sha256": "fcc71b161311d4854a078f8cdda6e4381542536167145f6dfdda84bcad256d5f",
+      "full_token_length": 79624,
+      "input_tokens": 16384,
+      "token_ids_sha256": "cbf6813ec22e5d641867dff5493058f43cac09a05939cce76fc432c9b68df195",
+      "token_cap": 16384
+    },
+    {
+      "book_id": "12204",
+      "file": "test/12204.txt",
+      "text_sha256": "e1c79655be744bc89fd291f84b77ddb1819d117f2bba142373f94d5ab309d0d0",
+      "full_token_length": 7141,
+      "input_tokens": 7141,
+      "token_ids_sha256": "231181ec25c7e273221b52638bd298e95fbec7f998cb2f51c6c5874cf82378aa",
+      "token_cap": 16384
+    },
+    {
+      "book_id": "15562",
+      "file": "test/15562.txt",
+      "text_sha256": "90eae481a404688312d407918b07e649643ce6c934a16ad31040614221673ca1",
+      "full_token_length": 60020,
+      "input_tokens": 16384,
+      "token_ids_sha256": "450c745a6557e1062d80d95cba1c5c248a6b1bc80763182823370b0ae5282305",
+      "token_cap": 16384
+    },
+    {
+      "book_id": "22424",
+      "file": "test/22424.txt",
+      "text_sha256": "a3475140ed4763614c11c4f2e486e468ae5620bf539877bf769e16710d808a0d",
+      "full_token_length": 120422,
+      "input_tokens": 16384,
+      "token_ids_sha256": "2e870b3193e9d97edb704e9f3746cae6f3f6ffa64574efc77031f14722708e8e",
+      "token_cap": 16384
+    },
+    {
+      "book_id": "24553",
+      "file": "test/24553.txt",
+      "text_sha256": "b188fef90522bd12a523906162d9c3df9987e662025183e3a14e731d866a831a",
+      "full_token_length": 30166,
+      "input_tokens": 16384,
+      "token_ids_sha256": "065c0b788f7b8addd5257550028056ba23b2e42fe7f93f7636666b04dda70c70",
+      "token_cap": 16384
+    },
+    {
+      "book_id": "2544",
+      "file": "test/2544.txt",
+      "text_sha256": "0c79ceaf5bcc208b8c924037613c2c7fb1606de21ec8d99d5c446a516c4af787",
+      "full_token_length": 89516,
+      "input_tokens": 16384,
+      "token_ids_sha256": "4995decd3952269c03ecd7d022d482a764c1e80e82e960b491524ec8781c50cb",
+      "token_cap": 16384
+    },
+    {
+      "book_id": "25646",
+      "file": "test/25646.txt",
+      "text_sha256": "04af5d410857dab7b4ef5a90d43bff622450b4bc9ee9abfc578487203f423d64",
+      "full_token_length": 26000,
+      "input_tokens": 16384,
+      "token_ids_sha256": "d7f6265cd28f3d73fdb2324154a3f0c473df834b599b28845b90370ae7906191",
+      "token_cap": 16384
+    }
+  ],
+  "dev_books": [
+    {
+      "book_id": "1022",
+      "file": "validation/1022.txt",
+      "text_sha256": "008528d5f55bce57538fa475e8cbe504d48424f1b4a702c6d7de5e5935e6cc5b",
+      "full_token_length": 16707,
+      "input_tokens": 8192,
+      "token_ids_sha256": "278603ef4556fe7c9341c289351569d180fb17d869eb01eb1e5c54430d347fba",
+      "token_cap": 8192
+    },
+    {
+      "book_id": "11155",
+      "file": "validation/11155.txt",
+      "text_sha256": "2df49972f98e3eae8c4ee551be35921a1553366b2ef90a66665c18686a9b598e",
+      "full_token_length": 123980,
+      "input_tokens": 8192,
+      "token_ids_sha256": "1d243f236ef7a1bc1ebcb8b3e68c282fe68a23243b6d0c67ba74b66275e97126",
+      "token_cap": 8192
+    },
+    {
+      "book_id": "13089",
+      "file": "validation/13089.txt",
+      "text_sha256": "a3eb3813dd81bf2ec2694c9de68f27624b586f73f15156ab06d6efb10a4d44ca",
+      "full_token_length": 128187,
+      "input_tokens": 8192,
+      "token_ids_sha256": "0131bdf08c153c61a57ead9fb6980063420c4eb29865056319e6a678394fc42b",
+      "token_cap": 8192
+    }
+  ]
+}
