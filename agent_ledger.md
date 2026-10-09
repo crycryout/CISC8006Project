@@ -25,3 +25,12 @@ Rules: `agent_policy.md`. Humans verify every consequential output.
 | E0007 | 2026-10-08 | Codex / GPT-6 | Rebuild scripts, report/deck/demo/peer packet and release checks | Review candidate explicitly distinguishes missing formal science and human ownership | Human report review, peer audit and freeze pending | PDF rendered/read;12 slides with notes; exact result/config/raw hashes | `submission/deliverables_manifest.json`; `audit/peer_audit/`; `AI_USAGE.md` |
 
 These entries do not authenticate historical accept assertions or supply new instructor/member signatures. Actual future reviewer decisions should add dated evidence; do not silently convert pending into accepted.
+
+## Owner-authorized execution, actual dated evidence
+
+| ID | Date | Agent / task | Proposal or action | Actual decision / verification | Evidence |
+|---|---|---|---|---|---|
+| E0008 |2026-10-09|Codex based on GPT-6; exact serving build not exposed / resource and protocol execution|Keep actual seeds0/1/2 and original data; use three existing matched H800 MIG instances; apply the frozen pilot rule automatically|User explicitly instructed “不需要审批，H800的GPU资源随便用”; owner waiver only, no teacher or peer signature; GPU0 other project and topology preserved|`docs/execution_authorization.md`; frozen numerical SHA `a6dbe103…`; actual67-pin clean installation and57 CPU checks at source624b022|
+| E0009 |2026-10-09|Codex / complete main comparison and independent reconstruction|Run six original10-book/three-seed arms; reconstruct all NPZ losses, per-book deltas and book-bootstrap CI|All six actual attempts validate; ΔNLL−0.7217558173,95% CI [−0.7590835293,−0.6858373358], supported; each method's seed arrays bitwise identical; agent engineering verification, human critical review still pending|Window sourceaa76de1 / streaming6181538; main evidence commite491d74; `environment/verification/main-raw-reconstruction.json`;64 indexed diagnostic/main book artifacts|
+
+Two development candidates, selected full test and controls remain in progress at this checkpoint. Later entries must use their actual measured outcomes. No failed/negative attempt, original smoke or historical reviewer assertion is replaced.
