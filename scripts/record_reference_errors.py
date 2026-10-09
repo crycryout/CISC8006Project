@@ -53,7 +53,9 @@ def main():
     if [pid for pid in active_pids(hardware["uuid"]) if pid!=os.getpid()]:
         raise RuntimeError("selected instance is occupied; run after the study finishes")
     rid="reference-errors-h800-"+uuid.uuid4().hex[:12]
-    cfg=dict(DEFAULTS,run_id=rid,phase="smoke",device="cuda",max_gpu_seconds=180)
+    cfg=dict(DEFAULTS,run_id=rid,phase="smoke",device="cuda",max_gpu_seconds=180,
+             model="fixture/GPTNeoX-three-layer",model_revision="random-initialization-seed17",seed=17,
+             cache_budget=8,max_tokens_per_book=29,fixture_source="tests/test_position_reference.py")
     store=RunStore(cfg,hardware); code=0; error=None
     rows=[]
     try:
