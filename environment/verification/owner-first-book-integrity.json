@@ -1,0 +1,34 @@
+{
+  "verified_at": "2026-10-09T06:28:26.738618+00:00",
+  "purpose": "completed first book integrity check; not final reproduction conclusion",
+  "rows": [
+    {
+      "seed": 0,
+      "book": "10146",
+      "mean_nll": 3.0544324157796967,
+      "scored": 15358,
+      "max_forward": 1025,
+      "max_retained": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "seed": 1,
+      "book": "10146",
+      "mean_nll": 3.0544324157796967,
+      "scored": 15358,
+      "max_forward": 1025,
+      "max_retained": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "seed": 2,
+      "book": "10146",
+      "mean_nll": 3.0544324157796967,
+      "scored": 15358,
+      "max_forward": 1025,
+      "max_retained": 1024,
+      "kv_bytes": 335544320
+    }
+  ],
+  "all_three_actual_seed_position_arrays_bitwise_equal": true
+}

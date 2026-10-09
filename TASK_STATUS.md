@@ -1,25 +1,19 @@
 # H800 execution status
 
-## Resumed execution2026-10-09
+Step 2 of 4: formal reproduction is running. Steps correspond to repair/inventory → main reproduction → pilots/full/controls → verified delivery. The user explicitly waived procedural approvals and authorized unrestricted H800 resources on 2026-10-09. Evidence: `docs/execution_authorization.md`. No teacher approval or peer signature is invented.
 
-User explicitly waived procedural approvals and authorized unrestricted H800 resources. The former20 GPU-h ceiling is superseded (`docs/execution_authorization.md`); no teacher/peer approval is invented. All actual seeds0/1/2 remain.59 CPU/MIG fixtures pass. Formal jobs now use matched existing H800 GPU1 2g.20gb instances per seed with identical hardware class, calibration/scoring/source contracts. GPU0's existing CVPR task, MIG topology and nightly cron remain intact. Reproduction is being launched; pilots → preregistered selection → full improvement → selected controls → report/deck/final technical package follow autonomously. T_final and genuine human course activities remain unknown/separately recorded.
+Branch: `codex/h800-course-completion-20261008`. Updated remote baseline: `48e57c6`; original audit baseline: `a3ffaf0`. T_final, actual roster and final course template are unknown. Prior pre-authorization checkpoint is retained in `docs/historical_task_status_before_owner_execution.md`.
 
-Historical checkpoint before the explicit new authorization follows:
-
-Execution started2026-10-08; latest evidence timestamps are UTC in JSON. T_final: **pending; requested from owner**. Branch: `codex/h800-course-completion-20261008`; remote baseline48e57c6, original audit baselinea3ffaf0.
-
-| Package | Actual state | Evidence / unresolved requirement |
+| Package | Actual state | Evidence |
 |---|---|---|
-| WP0 | complete | Commit07e1b88; inventory and all original run hashes unchanged; no hidden formal experiments or approval receipts located |
-| WP1 | complete | Fresh detached checkout5e81fde installs exact pinned packages and editable repo;53 CPU fixtures pass;13 public texts restored into empty asset root and all model/text/token hashes match; interpreter failure/repair logs retained |
-| WP2 | technical verification complete |55 independent CPU/H800 fixtures; every-layer raw-K/attention/logits, two CPU smokes,2×2 model and scorer diagnostics; human scientific review pending |
-| WP3 | complete | Immutable unique IDs, launch commit/diff/numerical hashes, append-only events, selected GPU, whole-process cost, NPZ/mask reconstruction, real second-book fault preserves first |
-| WP4–7 | formal science pending; technical deliverables prepared | Protocol/matrices,3 hypothesis cards,H1/H2/control code, strict analysis, plots/report/deck/demo/peer packet; real approval/budget/selection/full experiments and human delivery remain |
+| WP0–WP3 | complete | Inventory `docs/wp0_inventory.json`; all16 historical file hashes unchanged. Configuration/scoring/raw-K/every-layer references verified;59 actual CPU/H800 checks; immutable runs and failure recovery preserve evidence |
+| WP4 | running | Three matched H800 GPU1 MIG2g.20gb seed workers; `configs/reproduction_matrix.yaml`; six registered main arms, original10 books and actual seeds0/1/2; no final verdict before complete raw validation |
+| WP5 | preregistered; automatically follows WP4 | Three hypothesis cards; nine baseline/H1/H2 development runs; IDs1022/11155/13089 selected without losses; fixed rule delegated by owner, immutable proposal SHA recorded before full test |
+| WP6 | automatically follows measured selection | Three full selected-method runs against compatible main fixed-four outputs; six selected-family development controls; per-book choices, uncertainty and whole-process cost retained |
+| WP7 | technical preparation verified; final scientific artifacts await runs | New clean checkout624b022 matches all67 dependency pins,57 CPU tests and13 asset hashes; report/deck/detailed tables/plots/raw audit/demo/freeze tooling; real peer review and individual course activities separately pending |
 
-Gate A technical checks pass but approval criterion pending. Gates B/C pending scientific runs. Gate D engineering checks pass: clean-checkout setup/assets/fixtures and raw-run reconstruction verified, recorded terminal demo available; review candidate only, final tag pending. Gate E drafts/packets prepared, actual members/reviews/defense/submission pending. No final completion or course-compliance claim.
+The running study is supervised by `scripts/complete_study.py --attach-reproduction`, study ID `owner-h800-20261009`. Read-only progress: `.venv-verified/bin/python scripts/study_status.py`; checkpoint/event log: `experiments/studies/owner-h800-20261009/state.json` and `experiments/study_events.jsonl`. Do not launch duplicate IDs or edit the frozen numerical source `a6dbe103b2e9416295807cd481a9ff1660fbfede9c26b68e7db65d230e6229ef` during execution.
 
-Budget is20 GPU-h by default, all attempts included. Current charge0.578634h; slowest faithful path24.192 predictions/s makes the required full plan21.185925h before calibration/future retries; actual required review is `docs/review_packet.md`. No waiver or larger ceiling is active. Historical0.25h and prior uninstrumented fixture0.02h are explicit conservative reserves, not measured timings. New attempts have whole-process accounting.
+Resource ceiling is explicitly unlimited; accounting still includes loading, failures and conservative historical0.27h reserves. Full-GPU/MIG device-instance wall-hours are not normalized full-GPU billing. Three existing GPU1 instances pair methods on the same UUID per seed and share the same30-SM hardware class. GPU0's other project, MIG topology, cron, driver and services remain unchanged. Actual full-H800/MIG diagnostic outputs were not bitwise identical and are never mixed in a formal pair.
 
-GPU0 available as a full H800 at inspection; actual root cron changes it at01:30/09:00 Asia/Macao. GPU1 has existing MIG instances and is not a second full available card. Other users, topology and drivers remain unmodified.
-
-Next dependent action: real review of v2 protocol, H1/H2 pilot plan and feasible budget/exemption in `docs/review_packet.md`; actual T_final/roster/templates also pending. The engineering package is ready for review; missing approval is not replaced with an agent signature.
+After measured science completes, reconstruct all NPZ statistics, verify final report/deck and record the current source-linked CPU demo. `bash scripts/release_check.sh --technical` seals a scientific/engineering manifest when checks pass. The default check separately reports missing genuine human course facts. No agent-generated signature, contribution, personal defense or course submission receipt substitutes for them.

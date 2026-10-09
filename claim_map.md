@@ -1,6 +1,6 @@
-# Claim Map — Week 4 Draft
+# Claim map and evidence scope
 
-**Status: v2 candidate; actual instructor review/freeze evidence pending.** Original map preserved in Git at `48e57c6`; current amendment is `docs/protocol_amendments.md`.
+**Status: v2 scientific execution authorized by the explicit user waiver; actual teacher review/portal receipt is not evidenced.** Original map preserved in Git at `48e57c6`; current amendment and hardware contract are in `docs/protocol_amendments.md`. Final measured status is read from `results/reproduction/summary.json` after strict complete pairing.
 
 **Maps to central claim (v1.1):**
 
@@ -57,11 +57,11 @@ Any such outcome is reported as-is; diagnosis follows `protocol.md` (tokenizer/r
 | T1 | Scale gap: 2.8B + few-thousand-token books vs paper's 4M tokens may shrink the window-vs-streaming gap toward zero | false negative (inconclusive) | preregistered decision rule accepts inconclusive; record gap-vs-position slope as secondary evidence |
 | T2 | Wrong relative Q/K distances after eviction even when current position IDs match | confound favoring either arm | cache-index + position-id oracle (`audit/`); independent raw-K/attention/logit fixtures and 2×2 position diagnostic |
 | T3 | Official code expects `transformers==4.33.0` legacy KV tuple; newer stacks change cache internals | breaks eviction silently | pin 4.33.0; compatibility changes isolated in dedicated commits with logs |
-| T4 | fp16 numerics on H800 differ from the paper's stated hardware (A6000 for its efficiency benchmarks, §4.5; the paper does not state hardware for its PG19 perplexity runs) | noise in NLL | same forward/scorer precision both arms; paired design; record GPU/driver in every run |
+| T4 | fp16 numerics differ across hardware classes (paper's A6000 efficiency experiments; PG19 hardware unspecified; full H800 versus MIG diagnostic not bitwise identical) | noise in NLL | same precision and same MIG UUID within each seed pair; matched30-SM class across seeds; record GPU/driver |
 | T5 | PG19 preprocessing/concatenation drift (whitespace, book headers) | shifts absolute NLL | frozen tokenization path; checksummed original raw text; same tokens both arms |
 | T6 | Book selection bias | false positive | preregistered book list frozen before performance looks |
 | T7 | Scoring-region leakage (scoring pre-overflow warm-up tokens) inflates apparent equivalence | false negative | mask all steps < 1025 in the scorer |
-| T8 | Compute ceiling forces < 10 books | wider CI | reduce book count **before** final reproduction, document approved rescope |
+| T8 | Per-run resource timeout or failure leaves incomplete evidence | invalid comparison | user removed total ceiling; retain hard timeouts, preserve failures, retry with new IDs; no book-count reduction or intersection |
 
 ## Revision log
 

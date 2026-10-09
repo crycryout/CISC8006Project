@@ -1,0 +1,53 @@
+{
+  "checked_at": "2026-10-09T07:11:17.766182+00:00",
+  "status": "pass",
+  "scope": "finished book artifacts of three running window attempts; not a formal complete-run verdict",
+  "completed_shared_books": 5,
+  "books": [
+    {
+      "book_id": "10146",
+      "seed_0_1_2_bitwise_identical": true,
+      "raw_sha256": [
+        "0523e86e27a5cfc44c9764d664978e1b47cf0f3205be606c7c46c5b18de202cf",
+        "0523e86e27a5cfc44c9764d664978e1b47cf0f3205be606c7c46c5b18de202cf",
+        "0523e86e27a5cfc44c9764d664978e1b47cf0f3205be606c7c46c5b18de202cf"
+      ]
+    },
+    {
+      "book_id": "10321",
+      "seed_0_1_2_bitwise_identical": true,
+      "raw_sha256": [
+        "f8ccc5420978b5e3ae7db65ed4e078723f0dc63f6f0bf6e850e8ef13156c399f",
+        "f8ccc5420978b5e3ae7db65ed4e078723f0dc63f6f0bf6e850e8ef13156c399f",
+        "f8ccc5420978b5e3ae7db65ed4e078723f0dc63f6f0bf6e850e8ef13156c399f"
+      ]
+    },
+    {
+      "book_id": "10356",
+      "seed_0_1_2_bitwise_identical": true,
+      "raw_sha256": [
+        "2beba8686bf30f04d744dd7b99c3ab6f2ab47627685f7ded0d2f2246226b573b",
+        "2beba8686bf30f04d744dd7b99c3ab6f2ab47627685f7ded0d2f2246226b573b",
+        "2beba8686bf30f04d744dd7b99c3ab6f2ab47627685f7ded0d2f2246226b573b"
+      ]
+    },
+    {
+      "book_id": "10762",
+      "seed_0_1_2_bitwise_identical": true,
+      "raw_sha256": [
+        "7053825eb650800fa0548060deb8fa21a95075e0e9ec141cbeacd2fd00a82a16",
+        "7053825eb650800fa0548060deb8fa21a95075e0e9ec141cbeacd2fd00a82a16",
+        "7053825eb650800fa0548060deb8fa21a95075e0e9ec141cbeacd2fd00a82a16"
+      ]
+    },
+    {
+      "book_id": "12204",
+      "seed_0_1_2_bitwise_identical": true,
+      "raw_sha256": [
+        "535525dda1df5f67209aa559b2ba44f78028bf7ba15d5311613cef5b38989764",
+        "535525dda1df5f67209aa559b2ba44f78028bf7ba15d5311613cef5b38989764",
+        "535525dda1df5f67209aa559b2ba44f78028bf7ba15d5311613cef5b38989764"
+      ]
+    }
+  ]
+}

@@ -1,13 +1,14 @@
 # Approval facts
 
-Reviewed repository and local artifacts on 2026-10-08; no instructor receipt or current protocol approval was located. Historical ledger assertions are preserved, not independently authenticated.
+On 2026-10-09 the user explicitly instructed: “不需要审批，H800的GPU资源随便用”. The current scientific workflow is authorized, including automatic application of the frozen pilot-selection rule and resource use without the old 20 GPU-hour ceiling. Evidence: [execution_authorization.md](execution_authorization.md). No instructor receipt or independent peer signature has been located; historical assertions remain unauthenticated.
 
 | Decision | Actual state | Evidence |
 |---|---|---|
 | Code repair, fixtures, diagnostics, setup and draft deliverables | authorized by owner | Current request to execute plan §9 |
 | Original claim portal submission / instructor review | pending evidence | Historical files still say not submitted; no receipt |
-| Reproduction v2: cache-relative RoPE, fp32 scorer, explicit macro estimand, three seeds | pending scientific review | Concrete amendment and diagnostics will be prepared before requesting decision |
-| H1/H2 pilots and method selection | pending | Requires preregistration and real team decision |
-| 20 GPU-h ceiling | conservative enforced ceiling | `claim.md`, execution plan §6; no expansion authorized |
+| Reproduction v2: cache-relative RoPE, fp32 scorer, explicit macro estimand, three seeds | execution authorized by user; procedural approval waived | `execution_authorization.md`, `approval_decisions.json` |
+| H1/H2 pilots and method selection | execution authorized; frozen selection rule delegated | `execution_authorization.md`, immutable pilot proposal once completed |
+| Resource ceiling | old 20h limit superseded by explicit unrestricted authorization | `budget_decision.json`; all actual failed/successful costs still recorded |
+| Scientific artifact freeze | authorized after measured scientific and engineering checks pass | `approval_decisions.json`; human course activities separately recorded |
 
-No teacher approval, deterministic-seed exemption, member signature or peer audit is inferred from a code commit or from the owner's instruction to implement this plan. Missing approval blocks its dependent scientific execution/release; independent engineering continues.
+The owner instruction is recorded as a waiver, never as teacher approval. All actual seeds 0/1/2 remain required. No member signature, peer audit, course receipt or personal defense is inferred from agent execution. These human facts do not block the explicitly authorized scientific work; they remain separately marked pending.

@@ -39,6 +39,8 @@ def plot_positions(results,path):
         ax.plot(xs,[np.mean(curves[x]) for x in xs],label=label)
         for x in xs: coverage.append(dict(method=label,first_step=x,mean_book_bin_nll=float(np.mean(curves[x])),n_book_seed_pairs=len(curves[x]),n_books=len({b["book_id"] for _,r in items for b in r["per_book"] if b["input_tokens"]-1>x})))
     ax.set(xlabel="prediction step (scored region begins at 1025)",ylabel="equal-book mean bin NLL (nats)")
+    counts=sorted({row["n_books"] for row in coverage})
+    ax.set_title("Book coverage per bin: "+" to ".join(map(str,counts))+" (exact coverage in companion CSV)",fontsize=9)
     ax.legend(); fig.tight_layout(); fig.savefig(path,dpi=180); plt.close(fig)
     write_csv(path.with_suffix(".csv"),coverage)
 
@@ -85,6 +87,31 @@ def load_runs(paths):
     return records
 
 
+def plot_cache(items,path):
+    import matplotlib.pyplot as plt
+    fig,axes=plt.subplots(1,2,figsize=(9,3.5)); rows=[]
+    for label,records in items.items():
+        points={}
+        for _,result in records:
+            for book in result["per_book"]:
+                for point in book["cache_trace"]:
+                    if point["retained_length"]>1024 or point["forward_length"]>1025:
+                        raise ValueError("measured formal cache exceeds the frozen budget")
+                    points.setdefault(point["step"],[]).append(point)
+        xs=sorted(points)
+        for step in xs:
+            values=points[step]
+            rows.append(dict(method=label,step=step,n_book_seed_pairs=len(values),
+                             retained_min=min(p["retained_length"] for p in values),retained_max=max(p["retained_length"] for p in values),
+                             forward_max=max(p["forward_length"] for p in values),kv_bytes_min=min(p["kv_bytes"] for p in values),kv_bytes_max=max(p["kv_bytes"] for p in values)))
+        axes[0].plot(xs,[np.mean([p["retained_length"] for p in points[x]]) for x in xs],label=label)
+        axes[1].plot(xs,[np.mean([p["kv_bytes"] for p in points[x]])/1024**2 for x in xs],label=label)
+    axes[0].set(xlabel="prediction step",ylabel="retained KV positions"); axes[1].set(xlabel="prediction step",ylabel="actual tensor K+V bytes (MiB)")
+    for ax in axes: ax.legend()
+    fig.tight_layout(); fig.savefig(path,dpi=180); plt.close(fig)
+    write_csv(path.with_suffix(".csv"),rows)
+
+
 def scientific(stage,spec,manifest):
     directory=ROOT/"results"/stage; directory.mkdir(parents=True,exist_ok=True)
     paths=spec["baseline"]+spec["candidate"]
@@ -106,6 +133,7 @@ def scientific(stage,spec,manifest):
     write_json(directory/"status.json",dict(state="complete",claim_status=out["claim_status"],n_books=out["n_books"],seeds=summary["seeds"],paired_result_sha256=file_hash(directory/"paired_result.json")))
     figure_prefix=stage.replace("/","_")
     plot_positions(dict(baseline=base,candidate=candidate),ROOT/"figures"/(figure_prefix+"_nll_vs_position.png"))
+    plot_cache(dict(baseline=base,candidate=candidate),ROOT/"figures"/(figure_prefix+"_cache.png"))
     import matplotlib.pyplot as plt
     fig,ax=plt.subplots(figsize=(8,4)); xs=np.arange(len(out["per_book"]))
     ax.scatter(xs,[r["delta"] for r in out["per_book"]]); ax.axhline(0,color="gray",linewidth=1)
@@ -147,6 +175,89 @@ def pilots(spec,manifest):
     return dict(state="complete",nominated_method=nominated,selection_status=selection_status)
 
 
+def build_tables(spec,status):
+    """Export the report tables and measured quality/cost comparison together."""
+    import shutil
+    tables=ROOT/"tables"; tables.mkdir(exist_ok=True)
+    shutil.copyfile(ROOT/"results/diagnostics/comparison.csv",tables/"diagnostic_comparison.csv")
+    stages=[("reproduction",status["reproduction"]),("improvement",status["improvement"])]
+    stages.extend(("ablations/"+name,state) for name,state in status["ablations"].items())
+    rows=[]
+    for stage,state in stages:
+        if state["state"]!="complete": continue
+        summary=json.loads((ROOT/"results"/stage/"summary.json").read_text())
+        baseline,candidate=summary["baseline"],summary["candidate"]
+        row=dict(comparison=stage,n_books=summary["n_books"],seeds=";".join(map(str,summary["seeds"])),
+                 baseline_macro_nll=baseline["macro_book_nll"],candidate_macro_nll=candidate["macro_book_nll"],
+                 baseline_macro_derived_ppl=baseline["macro_derived_ppl"],candidate_macro_derived_ppl=candidate["macro_derived_ppl"],
+                 baseline_micro_nll=baseline["micro_token_nll"],candidate_micro_nll=candidate["micro_token_nll"],
+                 baseline_micro_ppl=baseline["micro_token_ppl"],candidate_micro_ppl=candidate["micro_token_ppl"],
+                 paired_macro_delta_nll=summary["paired_macro_delta_nll"],ci95_low=summary["bootstrap_ci95"][0],ci95_high=summary["bootstrap_ci95"][1],
+                 claim_status=summary["claim_status"],baseline_runtime_seconds=baseline["runtime_seconds"],candidate_runtime_seconds=candidate["runtime_seconds"],
+                 runtime_ratio=candidate["runtime_seconds"]/baseline["runtime_seconds"],
+                 baseline_peak_gpu_memory_mb=baseline["peak_gpu_memory_mb"],candidate_peak_gpu_memory_mb=candidate["peak_gpu_memory_mb"],
+                 peak_memory_ratio=candidate["peak_gpu_memory_mb"]/baseline["peak_gpu_memory_mb"])
+        rows.append(row)
+        shutil.copyfile(ROOT/"results"/stage/"per_book.csv",tables/(stage.replace("/","_")+"_per_book.csv"))
+    if rows: write_csv(tables/"scientific_summary.csv",rows)
+    if status["pilots"]["state"]=="complete":
+        shutil.copyfile(ROOT/"results/pilots/comparison.csv",tables/"pilot_comparison.csv")
+    write_csv(tables/"paper_settings.csv",[
+        dict(dimension="model",paper="Pythia2.8B among multiple model families",project="Pinned Pythia2.8B only",source="arXiv2309.17453v4 section4.1; data/assets_manifest.json"),
+        dict(dimension="position mechanism",paper="Raw cached K, cache-relative RoPE",project="Pinned official every-layer patch in both methods",source="arXiv2309.17453v4 section3.2; tests/test_position_reference.py"),
+        dict(dimension="PG19 stream",paper="Concatenated books",project="Original10 books independently reset; cap16384; short book7141",source="arXiv2309.17453v4 section4.1; protocol.md"),
+        dict(dimension="KV budget",paper="Pythia1024 retained positions",project="1024 retained; forward temporarily1025",source="arXiv2309.17453v4 section4.1; per-book cache_trace"),
+        dict(dimension="primary metric",paper="Perplexity curves",project="Equal-book post-overflow paired NLL; book bootstrap",source="protocol.md; results/reproduction/paired_result.json"),
+        dict(dimension="hardware",paper="Separate efficiency benchmark hardware; PG19 hardware unspecified",project="H800 MIG2g.20gb,30SM; matched instance within each seed",source="docs/paper_comparison.md; per-run registration.json"),
+    ])
+    cost_rows=[r for r in rows if r["comparison"]!="reproduction"]
+    if cost_rows:
+        import matplotlib.pyplot as plt
+        fig,axes=plt.subplots(1,2,figsize=(10,4))
+        for row in cost_rows:
+            label=row["comparison"].replace("ablations/","")
+            for ax,key in zip(axes,("runtime_ratio","peak_memory_ratio")):
+                point=ax.plot(row[key],row["paired_macro_delta_nll"],"o",label=label)[0]
+                ax.vlines(row[key],row["ci95_low"],row["ci95_high"],color=point.get_color())
+        for ax in axes:
+            ax.axhline(0,color="gray",linewidth=1); ax.axvline(1,color="gray",linewidth=1,linestyle="--")
+            ax.set_ylabel("candidate − fixed-four NLL (nats/token)")
+        axes[0].set_xlabel("whole-process runtime / matched baseline"); axes[1].set_xlabel("peak allocated memory / matched baseline")
+        axes[0].legend(fontsize=7); fig.suptitle("Full test and development controls (different book sets)",fontsize=10)
+        fig.tight_layout(); fig.savefig(ROOT/"figures/improvement_quality_cost.png",dpi=180); plt.close(fig)
+    if spec.get("improvement") and status["improvement"]["state"]=="complete":
+        selection=[]
+        for path in spec["improvement"]["candidate"]:
+            result=json.loads((ROOT/path).read_text())
+            for book in result["per_book"]:
+                selection.append(dict(run_id=result["run_id"],seed=result["contract"]["seed"],book_id=book["book_id"],
+                                      selection=json.dumps(book["selection"],sort_keys=True),
+                                      calibration_host_wall_seconds=book["calibration_seconds"],book_runtime_seconds=book["runtime_seconds"],
+                                      mean_nll_scored=book["mean_nll_scored"]))
+        write_csv(tables/"improvement_book_selections.csv",selection)
+
+
+def raw_index(spec):
+    paths=set(spec["diagnostics"])
+    for group in [spec["reproduction"],spec["pilots"],spec.get("improvement") or {},*spec.get("ablations",{}).values()]:
+        for value in group.values():
+            if isinstance(value,list): paths.update(value)
+    rows=[]
+    for path in sorted(paths):
+        if not (ROOT/path).is_file(): continue
+        result=json.loads((ROOT/path).read_text()); directory=Path(path).parent
+        for book in result["per_book"]:
+            raw=directory/"books"/book["book_id"]/"position_nll.npz"
+            metrics=directory/"books"/book["book_id"]/"metrics.json"
+            rows.append(dict(run_id=result["run_id"],phase=result["phase"],method=result["method"],seed=result["contract"]["seed"],
+                             book_id=book["book_id"],input_tokens=book["input_tokens"],scored_tokens=book["scored_tokens"],
+                             source_commit=result["git_commit"],numerical_source_sha256=result["contract"]["numerical_source_sha256"],
+                             device_uuid=result.get("device_uuid","legacy metadata"),config_path=str(directory/"config_used.json"),result_path=path,
+                             result_sha256=file_hash(ROOT/path),metrics_path=str(metrics),metrics_sha256=file_hash(ROOT/metrics),
+                             raw_path=str(raw),raw_sha256=file_hash(ROOT/raw)))
+    write_csv(ROOT/"results/raw_artifact_index.csv",rows)
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__); p.add_argument("--manifest",default="results/final_input_manifest.json"); a=p.parse_args()
     spec=json.loads(Path(a.manifest).read_text()); assets=json.loads((ROOT/"data/assets_manifest.json").read_text()); (ROOT/"figures").mkdir(exist_ok=True)
@@ -154,22 +265,25 @@ def main():
     status["diagnostics"]=build_diagnostics(spec["diagnostics"])
     status["reproduction"]=scientific("reproduction",spec["reproduction"],assets)
     status["pilots"]=pilots(spec["pilots"],assets)
-    status["improvement"]=scientific("improvement",spec["improvement"],assets) if spec.get("improvement") else dict(state="pending_real_method_selection")
+    status["improvement"]=scientific("improvement",spec["improvement"],assets) if spec.get("improvement") else dict(state="pending_registered_pilot_selection")
     status["ablations"]={}
     for name,control in spec.get("ablations",{}).items():
         status["ablations"][name]=scientific("ablations/"+name,control,assets)
     write_json(ROOT/"results/completion.json",status)
-    (ROOT/"tables").mkdir(exist_ok=True)
-    import shutil
-    shutil.copyfile(ROOT/"results/diagnostics/comparison.csv",ROOT/"tables/diagnostic_comparison.csv")
+    build_tables(spec,status)
+    raw_index(spec)
     index=[]
     for path in spec["diagnostics"]:
         result=json.loads((ROOT/path).read_text()); directory=Path(path).parent
         index.append(dict(claim_id=result["run_id"],role="measured_single_book_diagnostic",value=result["macro_book_nll"],run_id=result["run_id"],source_commit=result["git_commit"],config_path=str(directory/"config_used.json"),metrics_path=path,raw_path=str(directory/"books"/result["book_ids"][0]/"position_nll.npz"),result_sha256=file_hash(ROOT/path)))
     index.append(dict(claim_id="central_claim",role=status["reproduction"]["state"],value="not yet evaluated" if status["reproduction"]["state"]!="complete" else status["reproduction"]["claim_status"],run_id="see final_input_manifest",source_commit="see per-run metadata",config_path="configs/reproduction_matrix.yaml",metrics_path="results/reproduction/paired_result.json" if status["reproduction"]["state"]=="complete" else "results/reproduction/status.json",raw_path="see final_input_manifest",result_sha256="pending" if status["reproduction"]["state"]!="complete" else file_hash(ROOT/"results/reproduction/paired_result.json")))
+    for name,state in [("improvement",status["improvement"]),*(("ablations/"+name,state) for name,state in status["ablations"].items())]:
+        if name=="improvement" and not spec.get("improvement"): continue
+        path="results/"+name+("/paired_result.json" if state["state"]=="complete" else "/status.json")
+        index.append(dict(claim_id=name,role=state["state"],value=state.get("claim_status","not yet evaluated"),run_id="see final_input_manifest",source_commit="see raw_artifact_index.csv",config_path="see per-run config_used.json",metrics_path=path,raw_path="results/raw_artifact_index.csv",result_sha256=file_hash(ROOT/path)))
     write_csv(ROOT/"results/claim_to_artifact.csv",index)
     artifacts=[]
-    for folder in ["results","figures"]:
+    for folder in ["results","figures","tables"]:
         for path in sorted((ROOT/folder).rglob("*")):
             if path.is_file() and path.name!="build_provenance.json": artifacts.append(dict(path=str(path.relative_to(ROOT)),sha256=file_hash(path)))
     write_json(ROOT/"results/build_provenance.json",dict(command=[sys.executable]+sys.argv,input_runs=spec,artifacts=artifacts,aggregation="equal-book512-step bins starting1025; late-bin book coverage CSV",parameters=dict(bin_size=512,bootstrap_seed=0,n_boot=10000)))

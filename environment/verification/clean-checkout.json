@@ -1,79 +1,60 @@
 {
-  "verified_at": "2026-10-08T16:23:31.150129+00:00",
+  "verified_at": "2026-10-09T06:46:37.076990+00:00",
   "status": "pass",
-  "source_commit": "5e81fdeadd78937a8675b806315b04769b30ffc6",
-  "checkout": "/home/renjie/tmp/CISC8006Project-clean-20261009",
-  "environment": "new .venv-clean-py310, Python3.10.12; dependency set identical to verified-pip-freeze.txt",
-  "public_raw_text_recovery": "13 texts downloaded into an initially empty asset root; weights/tokenizer and pinned split files restored from the existing public HF cache and rehashed",
+  "source_commit": "624b022979cf670eeb22abd2c80ce165e48f07da",
+  "checkout": "/home/renjie/tmp/CISC8006Project-clean-owner-20261009",
+  "environment": "new .venv-clean-owner, Python3.10.12; all67 locked packages exactly matched",
+  "public_raw_text_recovery": "All13 previously freshly restored public texts, weights/tokenizer and split files rehashed in this new environment; original initially-empty recovery receipt retained at environment/verification/clean-checkout-5e81fde.json",
   "commands": [
     {
-      "command": "bash scripts/setup_env.sh .venv-clean",
-      "exit_code": 143,
-      "state": "stopped own wrong-Python3.12 installer; preserved, not reused",
-      "log": "environment/verification/clean-checkout-install.log"
-    },
-    {
-      "command": "bash scripts/setup_env.sh .venv-clean-py310",
+      "command": "bash scripts/setup_env.sh .venv-clean-owner",
       "exit_code": 0,
-      "log": "environment/verification/clean-checkout-install-py310.log"
+      "log": "environment/verification/owner-clean-install.log"
     },
     {
-      "command": "bash scripts/setup_env.sh .venv-clean",
-      "exit_code": 1,
-      "state": "fixed version guard rejects existing3.12 before dependency installation",
-      "log": "environment/verification/wrong-python-guard.log"
-    },
-    {
-      "command": "CISC_PYTHON=.venv-clean-py310/bin/python CUDA_VISIBLE_DEVICES= bash scripts/run_smoke.sh --mode cpu --run-id smoke-cpu-clean-checkout-20261009",
+      "command": "CISC_PYTHON=.venv-clean-owner/bin/python CUDA_VISIBLE_DEVICES= bash scripts/run_smoke.sh --mode cpu --run-id smoke-cpu-owner-clean-20261009",
       "exit_code": 0,
-      "log": "environment/verification/clean-checkout-smoke.log"
+      "log": "environment/verification/owner-clean-smoke.log"
     },
     {
-      "command": ".venv-clean-py310/bin/python scripts/prepare_data.py --manifest data/assets_manifest.json --asset-root /home/renjie/tmp/cisc8006-clean-assets-20261009",
+      "command": ".venv-clean-owner/bin/python scripts/verify_assets.py --manifest data/assets_manifest.json --asset-root /home/renjie/tmp/cisc8006-clean-assets-20261009 --out environment/verification/owner-clean-assets.json",
       "exit_code": 0,
-      "log": "environment/verification/clean-checkout-restore.log"
+      "log": "environment/verification/owner-clean-verify.log"
     },
     {
-      "command": ".venv-clean-py310/bin/python scripts/verify_assets.py --manifest data/assets_manifest.json --asset-root /home/renjie/tmp/cisc8006-clean-assets-20261009 --out /home/renjie/CISC8006Project/environment/verification/clean-checkout-assets.json",
+      "command": "pip freeze --all --exclude-editable (exact lock comparison)",
       "exit_code": 0,
-      "log": "environment/verification/clean-checkout-verify.log"
+      "log": "environment/verification/owner-clean-packages.json"
     }
   ],
   "logs": [
     {
-      "path": "environment/verification/clean-checkout-install.log",
-      "sha256": "4d9da82b816a8bac447350906129efa6617ef3a166e869d1e0004a457bd1b4b2"
+      "path": "environment/verification/owner-clean-install.log",
+      "sha256": "a2858bb6811570aaa790c231a699969b6d33b34265279692608e3178c3b458f9"
     },
     {
-      "path": "environment/verification/clean-checkout-install-py310.log",
-      "sha256": "23872013fd09173efa496c4eca0834a71ce2a14b6899fff651993d689f6b45d4"
+      "path": "environment/verification/owner-clean-smoke.log",
+      "sha256": "74c15b25ab8b55503d088ff08fcaa5eb6e67c765ee19992477aed006cc3f6fa5"
     },
     {
-      "path": "environment/verification/wrong-python-guard.log",
-      "sha256": "90f03a29483be008bad7c2d809444a5fc0f5fd9041f80322deb46fc747149772"
+      "path": "environment/verification/owner-clean-verify.log",
+      "sha256": "cdaf9ae1d6f9f1c6cc6929780b356894bcea964fda1e0e4641e202bcf2c5a8c3"
     },
     {
-      "path": "environment/verification/clean-checkout-smoke.log",
-      "sha256": "99172bdef079790e8fa464d1a784a0627f31127fa237c03ce1ccf19ff4a29260"
-    },
-    {
-      "path": "environment/verification/clean-checkout-restore.log",
-      "sha256": "8174f372c92846df723d1d0c8bb250b1c4b39a5816e26e9ffb8a98a107cfdb7c"
-    },
-    {
-      "path": "environment/verification/clean-checkout-verify.log",
-      "sha256": "5924dde0ff8d5bc779efe26c83e53e310541b4065efa5d4428f2e73c0fba6566"
+      "path": "environment/verification/owner-clean-packages.json",
+      "sha256": "38863d3a79bd866a000f79d757e50e1c198de746c7f8e96e68813fd5751c466d"
     }
   ],
   "independent_human_peer_audit": false,
   "cpu_tests": {
-    "passed": 53,
-    "gpu_tests_deselected": 2
+    "passed": 57,
+    "gpu_tests_deselected": 2,
+    "run_id": "smoke-cpu-owner-clean-20261009"
   },
   "assets_manifest_sha256": "e657c2d35066f5d59ecba70c17bac6222625790297c5b0e0566b112ff2794bf1",
   "installation_files_sha256": {
     "scripts/setup_env.sh": "402a95fae2dc7ebf4adcb067059e07357c6183167a9c51767c3c1ee054ae0a4f",
-    "pyproject.toml": "6670a1bf1ff420619e1ca17b7e7b6d0c96105b4c64b20903489c6c51ed3c9991",
-    "environment/verified-pip-freeze.txt": "9a35972f29ec9c7357ae76c34bf479426ef407b4d42a8cc6b4f03903cc271d93"
+    "pyproject.toml": "405687fff41a2310b2c8a1f02e9d9e1ead3ab11580a64722fbf01cca39702ae5",
+    "environment/verified-pip-freeze.txt": "e072be9f6fa0ca8940747987da8d4f0366b7630851c9ce0409c53f4bb767843a"
   }
 }

@@ -1,6 +1,6 @@
 # Current reproduction diagnosis
 
-Formal reproduction: **pending actual protocol/budget approval and six full runs**. Current results are a controlled one-book mechanism diagnosis, not the final claim.
+Formal reproduction is running under the user's explicit authorization, on the original ten books and three actual seeds. Its measured status is in `results/reproduction/`; it receives a verdict only after all six runs validate. The table below remains a controlled one-book mechanism diagnosis, separate from the final claim.
 
 | Retention / positions | Post-overflow NLL | Scored count | Run |
 |---|---:|---:|---|
@@ -17,4 +17,4 @@ Scorer isolation uses the identical faithful forward prefix (1200 tokens,174 sco
 
 Actual second-book fault injection exits1, preserves first-book10146 metrics/NPZ and records failed status without a final result or scientific verdict. No original R0000/R0001 file was overwritten (hash inventory verification passed). See `environment/verification/integrity-recovery.json`.
 
-Next scientific stage is the frozen original10-book comparison after genuine approval and a feasible resource decision. Do not extrapolate these diagnostic means to allbooks, derive a one-book CI, select test parameters or substitute historical smoke for main evidence. Paper deviations and direct comparison limits are in `docs/paper_comparison.md`.
+The original ten-book comparison now executes on matched H800 MIG instances under the owner waiver; the old resource ceiling is superseded. Do not extrapolate these diagnostic means to all books, derive a one-book CI, select test parameters or substitute historical smoke for main evidence. Paper deviations and direct comparison limits are in `docs/paper_comparison.md`.

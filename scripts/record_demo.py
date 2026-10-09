@@ -15,7 +15,7 @@ sys.path.insert(0, str(ROOT))
 from src.io_utils import file_hash, now, write_json
 
 
-def render_video(events, duration, path, commit):
+def render_video(events, duration, path, commit, scientific_complete):
     from PIL import Image, ImageDraw, ImageFont
     encoder = shutil.which("ffmpeg")
     if encoder is None:
@@ -31,7 +31,8 @@ def render_video(events, duration, path, commit):
             screen = Image.new("RGB", (1600, 900), "#101827")
             draw = ImageDraw.Draw(screen)
             draw.text((28, 24), "CISC8006 actual terminal demo | source " + commit[:12], font=font, fill="#70d7ff")
-            draw.text((28, 54), "Recorded diagnostic and fixtures; formal scientific results pending", font=font, fill="#ffd580")
+            status="Measured paired scientific results and fixtures" if scientific_complete else "Fixtures and registered study progress; incomplete stages have no verdict"
+            draw.text((28, 54), status, font=font, fill="#ffd580")
             current = "".join(event[2] for event in events if event[0] <= stamp)
             lines = current.replace("\r", "").splitlines()[-31:]
             for index, line in enumerate(lines):
@@ -53,6 +54,8 @@ def main():
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT).decode().strip()
     dirty = bool(subprocess.check_output(["git", "status", "--porcelain"], cwd=ROOT))
     command = ["bash", "scripts/demo.sh"]
+    completion=json.loads((ROOT/"results/completion.json").read_text())
+    scientific_complete=all(completion.get(stage,{}).get("state")=="complete" for stage in ("reproduction","pilots","improvement")) and len(completion.get("ablations",{}))==2 and all(value.get("state")=="complete" for value in completion["ablations"].values())
     started_at = now()
     events = [[0.0, "o", "$ " + " ".join(command) + "\r\n"]]
     started = time.monotonic()
@@ -74,13 +77,17 @@ def main():
             stream.write(json.dumps(event) + "\n")
     (directory / "stdout.log").write_text("".join(event[2] for event in events))
     if args.video:
-        render_video(events, duration + 2, directory / "session.mp4", commit)
+        render_video(events, duration + 2, directory / "session.mp4", commit,scientific_complete)
     files = [dict(path=str(path.relative_to(ROOT)), sha256=file_hash(path), bytes=path.stat().st_size)
              for path in sorted(directory.iterdir()) if path.is_file()]
     write_json(ROOT / "presentation/demo_recording_manifest.json",
                dict(recorded_at=started_at, artifact_kind="actual_agent_terminal_session_and_video_replay",
                     source_commit=commit, git_dirty_at_launch=dirty, command=command, exit_code=exit_code,
                     runtime_seconds=duration, demo_script_sha256=file_hash(ROOT / "scripts/demo.sh"),
+                    demo_evidence_sha256=file_hash(ROOT / "scripts/demo_evidence.py"),
+                    recorder_sha256=file_hash(ROOT / "scripts/record_demo.py"),
+                    scientific_complete=scientific_complete,
+                    paired_results=[dict(path=str(path.relative_to(ROOT)),sha256=file_hash(path)) for stage in ("reproduction","improvement") for path in [ROOT/"results"/stage/"paired_result.json"] if path.exists()],
                     diagnostic_result_sha256=file_hash(ROOT / "runs/D-S1-20261008/result.json"),
                     human_rehearsal="pending; this is not a member defense or peer review", artifacts=files))
     return exit_code

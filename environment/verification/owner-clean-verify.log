@@ -1,0 +1,11 @@
+/home/renjie/tmp/CISC8006Project-clean-owner-20261009/.venv-clean-owner/lib/python3.10/site-packages/huggingface_hub/file_download.py:1142: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+{
+  "verified_at": "2026-10-09T06:45:32.125393+00:00",
+  "validation_status": "valid",
+  "manifest_sha256": "e657c2d35066f5d59ecba70c17bac6222625790297c5b0e0566b112ff2794bf1",
+  "test_books": 10,
+  "dev_books": 3,
+  "test_input_tokens": 154597,
+  "test_scored_tokens": 144337
+}

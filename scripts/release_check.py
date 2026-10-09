@@ -9,7 +9,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from src.io_utils import file_hash, now, write_json
-from src.run_store import spent
+from src.run_store import spent,numerical_source
 from src.approvals import ceiling,authorized
 
 
@@ -51,7 +51,10 @@ def main():
     p=argparse.ArgumentParser(); p.add_argument("--candidate",action="store_true",help="write review snapshot; never treat pending gates as final")
     p.add_argument("--technical",action="store_true",help="seal measured scientific delivery; report real human course activities separately")
     a=p.parse_args(); missing=[]
-    required=["TASK_STATUS.md","AI_USAGE.md","CONTRIBUTIONS.md","LICENSES.md","SECURITY.md","data/assets_manifest.json","experiments/registry.jsonl","results/build_provenance.json","report/report_draft.pdf","presentation/defense_draft.pptx","audit/peer_audit/README.md"]
+    completion=json.loads((ROOT/"results/completion.json").read_text()) if (ROOT/"results/completion.json").exists() else {}
+    core_ready=all(completion.get(stage,{}).get("state")=="complete" for stage in ("reproduction","pilots","improvement")) and len(completion.get("ablations",{}))==2 and all(value.get("state")=="complete" for value in completion["ablations"].values())
+    required=["TASK_STATUS.md","AI_USAGE.md","CONTRIBUTIONS.md","LICENSES.md","SECURITY.md","data/assets_manifest.json","experiments/registry.jsonl","results/build_provenance.json","audit/peer_audit/README.md"]
+    required.extend(["report/report.md","report/report.pdf","presentation/defense.pptx","tables/scientific_summary.csv","tables/improvement_book_selections.csv","results/raw_artifact_index.csv","environment/verification/scientific-raw-reconstruction.json"] if core_ready else ["report/report_draft.pdf","presentation/defense_draft.pptx"])
     for rel in required:
         if not (ROOT/rel).is_file(): missing.append(rel)
     clean_path=ROOT/"environment/verification/clean-checkout.json"
@@ -61,6 +64,9 @@ def main():
             missing.append("clean checkout status / asset contract")
         for rel,digest in clean.get("installation_files_sha256",{}).items():
             if file_hash(ROOT/rel)!=digest: missing.append("clean checkout installation source changed: "+rel)
+        for artifact in clean.get("logs",[]):
+            if not (ROOT/artifact["path"]).is_file() or file_hash(ROOT/artifact["path"])!=artifact["sha256"]:
+                missing.append("clean checkout receipt checksum: "+artifact["path"])
     demo_path=ROOT/"presentation/demo_recording_manifest.json"
     if demo_path.exists():
         demo=json.loads(demo_path.read_text())
@@ -68,6 +74,11 @@ def main():
             missing.append("successful recording of current demo script")
         if demo.get("diagnostic_result_sha256")!=file_hash(ROOT/"runs/D-S1-20261008/result.json"):
             missing.append("demo diagnostic changed since recording")
+        for key,rel in [("demo_evidence_sha256","scripts/demo_evidence.py"),("recorder_sha256","scripts/record_demo.py")]:
+            if demo.get(key)!=file_hash(ROOT/rel): missing.append("recording source changed: "+rel)
+        if core_ready and demo.get("scientific_complete") is not True: missing.append("recording of completed scientific evidence")
+        for artifact in demo.get("paired_results",[]):
+            if file_hash(ROOT/artifact["path"])!=artifact["sha256"]: missing.append("demo paired result changed: "+artifact["path"])
         for artifact in demo.get("artifacts",[]):
             path=Path(artifact["path"])
             if path.is_absolute() or ".." in path.parts or not (ROOT/path).is_file() or file_hash(ROOT/path)!=artifact["sha256"]:
@@ -76,7 +87,6 @@ def main():
     if scan["status"]!="pass": missing.append("secret scan review")
     limit=ceiling()
     if limit is not None and spent()>limit: missing.append("GPU ceiling exceeded")
-    completion=json.loads((ROOT/"results/completion.json").read_text()) if (ROOT/"results/completion.json").exists() else {}
     pending=[]
     for stage in ("reproduction","pilots","improvement"):
         if completion.get(stage,{}).get("state")!="complete": pending.append(stage)
@@ -85,10 +95,48 @@ def main():
     decision=json.loads((ROOT/"docs/budget_decision.json").read_text())
     if not authorized(decision): pending.append("actual feasible budget / exemption decision")
     selected=json.loads((ROOT/"docs/approval_decisions.json").read_text())["selected_improvement"].get("method")
+    selected_decision=json.loads((ROOT/"docs/approval_decisions.json").read_text())["selected_improvement"]
+    if selected:
+        evidence=ROOT/selected_decision.get("selection_evidence","")
+        if not evidence.is_file() or file_hash(evidence)!=selected_decision.get("selection_evidence_sha256"):
+            pending.append("recorded pilot selection evidence checksum")
     prefix={"h1_adaptive_sink":"h1_","h2_sink_selection":"h2_"}.get(selected)
     controls={k:v for k,v in completion.get("ablations",{}).items() if prefix and k.startswith(prefix)}
     if prefix is None or len(controls)!=2 or any(v.get("state")!="complete" for v in controls.values()):
         pending.append("selected method core ablations / controls")
+    if core_ready:
+        audit_path=ROOT/"environment/verification/scientific-raw-reconstruction.json"
+        if audit_path.is_file():
+            audit=json.loads(audit_path.read_text())
+            if audit.get("status")!="pass" or audit.get("audit_script_sha256")!=file_hash(ROOT/"scripts/audit_scientific_results.py") or audit.get("input_manifest_sha256")!=file_hash(ROOT/"results/final_input_manifest.json"):
+                missing.append("current raw-statistics reconstruction receipt")
+            expected={"reproduction","improvement",*("ablations/"+name for name in completion["ablations"])}
+            if {row["stage"] for row in audit.get("stages",[])}!=expected:
+                missing.append("complete raw-statistics reconstruction stage set")
+            for row in audit.get("stages",[]):
+                if row["status"]!="pass" or row["paired_result_sha256"]!=file_hash(ROOT/"results"/row["stage"]/"paired_result.json"):
+                    missing.append("raw-statistics reconstruction differs: "+row["stage"])
+                for raw in row["raw_files"]:
+                    if file_hash(ROOT/raw["path"])!=raw["sha256"]: missing.append("audited raw array checksum: "+raw["path"])
+        provenance=json.loads((ROOT/"results/build_provenance.json").read_text())
+        for artifact in provenance["artifacts"]:
+            if not (ROOT/artifact["path"]).is_file() or file_hash(ROOT/artifact["path"])!=artifact["sha256"]:
+                missing.append("result/table/figure provenance checksum: "+artifact["path"])
+        numeric=numerical_source()[0]
+        inputs=json.loads((ROOT/"results/final_input_manifest.json").read_text())
+        for group in [inputs["reproduction"],inputs["pilots"],inputs["improvement"],*inputs["ablations"].values()]:
+            for value in group.values():
+                if not isinstance(value,list): continue
+                for rel in value:
+                    result=json.loads((ROOT/rel).read_text())
+                    if result["contract"]["numerical_source_sha256"]!=numeric:
+                        missing.append("current inference source differs from frozen run: "+rel)
+        delivery=json.loads((ROOT/"submission/deliverables_manifest.json").read_text())
+        if delivery.get("state")!="scientific_complete_owner_authorized" or delivery.get("input_manifest_sha256")!=file_hash(ROOT/"results/final_input_manifest.json"):
+            missing.append("complete deliverables manifest / input contract")
+        for artifact in delivery.get("artifacts",[]):
+            if not (ROOT/artifact["path"]).is_file() or file_hash(ROOT/artifact["path"])!=artifact["sha256"]:
+                missing.append("report/deck checksum: "+artifact["path"])
     for rel in ["audit/peer_audit/signed_review.md","CONTRIBUTIONS_verified.md"]:
         if not (ROOT/rel).exists(): pending.append("human evidence: "+rel)
     for rel in ["environment/verification/clean-checkout.json","presentation/demo_recording_manifest.json"]:
