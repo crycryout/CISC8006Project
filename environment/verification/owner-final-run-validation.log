@@ -243,5 +243,9 @@
   {
     "run_id": "reference-errors-h800-553bb7d01ae1",
     "validation_status": "valid_accounted_fixture"
+  },
+  {
+    "run_id": "smoke-cpu-a8a821b8a6cf",
+    "validation_status": "valid_cpu_fixture"
   }
 ]

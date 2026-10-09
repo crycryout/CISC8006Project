@@ -1,5 +1,5 @@
 {
-  "reviewed_at": "2026-10-09T14:05:07.733228+00:00",
+  "reviewed_at": "2026-10-09T14:12:52.602204+00:00",
   "status": "authorized_unlimited_actual_accounting",
   "ceiling_gpu_hours": null,
   "actual_instrumented_device_instance_hours": 23.612926974132424,
@@ -21,9 +21,10 @@
   "required_study_scored_positions": 1621503,
   "measurement": "one selected full-GPU/MIG device instance times registered-run wall-hours; not normalized full-GPU billing or currency",
   "timer_boundary": "after launch Git snapshot and exclusive directory creation through finish(); excludes preflight/startup and post-finish checksum/exit tails; calibration included once",
-  "registry_sha256": "2be164fa2bf76dfbaccc2571962b087498274a482739a7dea829495708577312",
+  "registry_sha256": "72c62f9f75c278de473efd16b9ccdbf43fc3931a9ba5e93bc0e7d1781f41ef68",
   "authorization": "docs/execution_authorization.md",
   "authorization_sha256": "b37209cf45bf5bd896224dee7495aed722464e4569c237bb1bdf062864df745b",
   "initial_owner_forecast": "environment/verification/budget-review-owner-start.json",
-  "historical_forecast": "environment/verification/budget-review-preauthorization.json"
+  "historical_forecast": "environment/verification/budget-review-preauthorization.json",
+  "final_cpu_demo_run_cost_device_hours": 0
 }

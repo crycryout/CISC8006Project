@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-09T14:05:12.314459+00:00",
+  "checked_at": "2026-10-09T14:12:52.545882+00:00",
   "status": "pass",
   "scope": "Agent content/structure verification; no Office visual rendering or human rehearsal claimed",
   "verification_script_sha256": "3c2c71da240ef22ca5abf7827adebfa57caedf373b6a1ad82dec8f72f8db1cba",
@@ -115,11 +115,11 @@
     },
     {
       "path": "report/report.pdf",
-      "sha256": "6095a41059a1db5bcc5db55a81656fededc478237268f3891e0a4504063b7327"
+      "sha256": "0c6385cb4e557695592e3788935adbc7b47d90489ccd6a3a5f164ef93430ff4c"
     },
     {
       "path": "presentation/defense.pptx",
-      "sha256": "0cad8075e4ddfe1b1981b82e79f3628925cdf48d51e81b2bcc210c8a916601be"
+      "sha256": "791da890406df159c23261bdfe01f5f537c5709eae04a7b599b0c00f1a71b56a"
     }
   ]
 }

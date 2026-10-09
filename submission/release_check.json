@@ -1,20 +1,12 @@
 {
-  "checked_at": "2026-10-08T16:31:13.103634+00:00",
+  "checked_at": "2026-10-09T14:15:04.819400+00:00",
   "engineering_missing": [],
   "scientific_human_pending": [
-    "reproduction",
-    "pilots",
-    "improvement",
-    "actual decision: reproduction_v2",
-    "actual decision: pilots_h1_h2",
-    "actual decision: selected_improvement",
-    "actual decision: final_freeze",
-    "actual feasible budget / exemption decision",
-    "selected method core ablations / controls",
     "human evidence: audit/peer_audit/signed_review.md",
     "human evidence: CONTRIBUTIONS_verified.md"
   ],
+  "technical_scientific_ready": true,
   "final_ready": false,
-  "spent_or_reserved_gpu_hours": 0.5786337181645084,
-  "ceiling_gpu_hours": 20.0
+  "spent_or_reserved_gpu_hours": 23.882926974132424,
+  "ceiling_gpu_hours": null
 }

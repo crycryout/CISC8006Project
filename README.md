@@ -1,6 +1,6 @@
 # CISC8006: auditable StreamingLLM reproduction
 
-第 4/4 步：24 个正式实验全部完成并校验，主复现、两个 pilot、H2 全测试和两组消融的原始统计均重算通过。主复现 ΔNLL=−0.721756，95% CI [−0.759084,−0.685837]，`supported`。H2 全测试 ΔNLL=+0.00010773，95% CI [−0.00006435,+0.00030269]，`inconclusive`，未证明改善；强制前四位置控制逐位完全一致，随机 anchors 在开发集上更差。最终 5 页 [报告](report/report.pdf)与 12 页 [幻灯片](presentation/defense.pptx)已核对，演示和技术 freeze 正在封存。执行分支 `codex/h800-course-completion-20261008`；[当前状态](TASK_STATUS.md)。
+第 4/4 步科学与工程验收完成：24 个正式实验全部完成并校验，主复现、两个 pilot、H2 全测试和两组消融的原始统计均重算通过。主复现 ΔNLL=−0.721756，95% CI [−0.759084,−0.685837]，`supported`。H2 全测试 ΔNLL=+0.00010773，95% CI [−0.00006435,+0.00030269]，`inconclusive`，未证明改善；强制前四位置控制逐位完全一致，随机 anchors 在开发集上更差。最终 5 页 [报告](report/report.pdf)与 12 页 [幻灯片](presentation/defense.pptx)已核对，[实际演示视频](presentation/demo_recording_final_20261009/session.mp4)已从干净提交 `81fa4dd` 录制并验证，技术包以 `cisc8006-scientific-final-v1-20261009` 标记；真实同伴签核、个人答辩及课程提交分别保留为待办。执行分支 `codex/h800-course-completion-20261008`；[当前状态](TASK_STATUS.md)。
 
 用户于 2026-10-09 明确指示“不需要审批，H800的GPU资源随便用”，已取消本次执行的审批前置与旧 20 GPU-h 上限。三个现有 H800 GPU1 MIG 2g.20gb 实例分配给 seed 0/1/2；方法按相同 UUID 配对，保留全部成本、失败和原始输出。[授权记录](docs/execution_authorization.md)是用户指令，不是教师批准或同伴签名。
 

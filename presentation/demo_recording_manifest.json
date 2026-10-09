@@ -1,32 +1,45 @@
 {
-  "recorded_at": "2026-10-08T16:28:26.439803+00:00",
+  "recorded_at": "2026-10-09T14:11:33.621973+00:00",
   "artifact_kind": "actual_agent_terminal_session_and_video_replay",
-  "source_commit": "4e54a2a8bded6d9ad52eec0f2f19545b718110b5",
+  "source_commit": "81fa4dd2ea3f4f46d8ce8bc4438dac9ed519ea5f",
   "git_dirty_at_launch": false,
   "command": [
     "bash",
     "scripts/demo.sh"
   ],
   "exit_code": 0,
-  "runtime_seconds": 4.3826738190837204,
-  "demo_script_sha256": "4eeede2ed7dd9c11c3f5dbb96eec1e25a9ed142c10d4c7eef1233fe11466cea4",
+  "runtime_seconds": 4.591857057996094,
+  "demo_script_sha256": "08fb2ebef791dca9722c2edc9f6b68e7f5b07e477da13a557c6924ef274f23d4",
+  "demo_evidence_sha256": "6e04eb2b216f1a543bd7ecfbd8276f4b039e10a5a6cbe7af845f9cae832b864e",
+  "recorder_sha256": "5124bf20f9071b9cd1081d28343a57eef79c043847e5b74d6f29328975e68f98",
+  "scientific_complete": true,
+  "paired_results": [
+    {
+      "path": "results/reproduction/paired_result.json",
+      "sha256": "3f056e4799d264be3d95b717ec5d2f51184582b880bad91f7ec6b6107b320740"
+    },
+    {
+      "path": "results/improvement/paired_result.json",
+      "sha256": "ceab51e6c1981435b9c63c2750dfca74c313ae28b1b13a794b9942ea8b32a67f"
+    }
+  ],
   "diagnostic_result_sha256": "ea903b2374e6c90d0243b98c9b352a92d65e8693f6a3ee534b87b8f5e66f08c2",
   "human_rehearsal": "pending; this is not a member defense or peer review",
   "artifacts": [
     {
-      "path": "presentation/demo_recording_verified_20261009/session.cast",
-      "sha256": "84ee0a876426674af4f1a5957ef2cd994e369728a0291843aa3b9cd72f4699ca",
-      "bytes": 2124
+      "path": "presentation/demo_recording_final_20261009/session.cast",
+      "sha256": "63d988b732d01f03c26eed390255e8264a7e3364be9d3e3caad77cd6ccec92fb",
+      "bytes": 3751
     },
     {
-      "path": "presentation/demo_recording_verified_20261009/session.mp4",
-      "sha256": "c963c8ce7c1bfa05fa7ac2291c1465c005f9fbf7421a23eca0f5c8d23ae0a650",
-      "bytes": 86945
+      "path": "presentation/demo_recording_final_20261009/session.mp4",
+      "sha256": "2d4e6bccf69c29b8425cdef4eb1cb7cf8447007175b5eb142d61a3eb6bb92b28",
+      "bytes": 257302
     },
     {
-      "path": "presentation/demo_recording_verified_20261009/stdout.log",
-      "sha256": "ee8f194ac10ab8f370d6d77b6b70c57246edc7f25ce387c314444dbff9b940ca",
-      "bytes": 1259
+      "path": "presentation/demo_recording_final_20261009/stdout.log",
+      "sha256": "9c5ce0ecdf249bd18b2be052145d7950a3963bc334078a518ddc510755370ce7",
+      "bytes": 2555
     }
   ]
 }

@@ -49,5 +49,6 @@ Machine events: `experiments/registry.jsonl`. Historical Markdown preserved in `
 | A-h2-v2-mig-20261009-random_anchors-s0 | ablation / 0 | completed | `52a24010` | 1198.699 / 0.332972 | `runs/A-h2-v2-mig-20261009-random_anchors-s0` |
 | A-h2-v2-mig-20261009-random_anchors-s1 | ablation / 1 | completed | `52a24010` | 1192.594 / 0.331276 | `runs/A-h2-v2-mig-20261009-random_anchors-s1` |
 | reference-errors-h800-553bb7d01ae1 | smoke / 17 | completed | `90b962b0` | 2.784 / 0.000773 | `runs/reference-errors-h800-553bb7d01ae1` |
+| smoke-cpu-a8a821b8a6cf | smoke / 0 | completed | `81fa4dd2` | 4.321 / 0.000000 | `runs/smoke-cpu-a8a821b8a6cf` |
 
 Spent/reserved charge: 23.882927 device-instance hours. This includes historical0.25h plus0.02h conservative prior uninstrumented H800-fixture reserve. Full-GPU and MIG instance wall-hours are not normalized full-GPU billing or currency cost. New attempts use whole-process wall-clock timing. The user authorized resources without the old20h ceiling. Failed attempts remain visible and never enter claim inference.
