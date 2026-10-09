@@ -1,0 +1,104 @@
+StartRecentKVCache: 4, 1020
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10146", "step": 0}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10146", "step": 2048}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10146", "step": 4096}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10146", "step": 6144}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10146", "step": 8192}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10146", "step": 10240}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10146", "step": 12288}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10146", "step": 14336}
+{"book": "10146", "nll": 2.2224544057733437, "scored": 15358}
+StartRecentKVCache: 4, 1020
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10321", "step": 0}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10321", "step": 2048}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10321", "step": 4096}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10321", "step": 6144}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10321", "step": 8192}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10321", "step": 10240}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10321", "step": 12288}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10321", "step": 14336}
+{"book": "10321", "nll": 3.0022841751236014, "scored": 15358}
+StartRecentKVCache: 4, 1020
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10356", "step": 0}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10356", "step": 2048}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10356", "step": 4096}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10356", "step": 6144}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10356", "step": 8192}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10356", "step": 10240}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10356", "step": 12288}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10356", "step": 14336}
+{"book": "10356", "nll": 2.570025658218337, "scored": 15358}
+StartRecentKVCache: 4, 1020
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10762", "step": 0}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10762", "step": 2048}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10762", "step": 4096}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10762", "step": 6144}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10762", "step": 8192}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10762", "step": 10240}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10762", "step": 12288}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "10762", "step": 14336}
+{"book": "10762", "nll": 3.0630668726113077, "scored": 15358}
+StartRecentKVCache: 4, 1020
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "12204", "step": 0}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "12204", "step": 2048}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "12204", "step": 4096}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "12204", "step": 6144}
+{"book": "12204", "nll": 1.9765726693739747, "scored": 6115}
+StartRecentKVCache: 4, 1020
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "15562", "step": 0}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "15562", "step": 2048}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "15562", "step": 4096}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "15562", "step": 6144}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "15562", "step": 8192}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "15562", "step": 10240}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "15562", "step": 12288}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "15562", "step": 14336}
+{"book": "15562", "nll": 2.2022872380567065, "scored": 15358}
+StartRecentKVCache: 4, 1020
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "22424", "step": 0}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "22424", "step": 2048}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "22424", "step": 4096}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "22424", "step": 6144}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "22424", "step": 8192}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "22424", "step": 10240}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "22424", "step": 12288}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "22424", "step": 14336}
+{"book": "22424", "nll": 2.2350242263743167, "scored": 15358}
+StartRecentKVCache: 4, 1020
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "24553", "step": 0}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "24553", "step": 2048}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "24553", "step": 4096}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "24553", "step": 6144}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "24553", "step": 8192}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "24553", "step": 10240}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "24553", "step": 12288}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "24553", "step": 14336}
+{"book": "24553", "nll": 2.641333116686435, "scored": 15358}
+StartRecentKVCache: 4, 1020
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "2544", "step": 0}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "2544", "step": 2048}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "2544", "step": 4096}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "2544", "step": 6144}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "2544", "step": 8192}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "2544", "step": 10240}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "2544", "step": 12288}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "2544", "step": 14336}
+{"book": "2544", "nll": 2.5053981994899934, "scored": 15358}
+StartRecentKVCache: 4, 1020
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "25646", "step": 0}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "25646", "step": 2048}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "25646", "step": 4096}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "25646", "step": 6144}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "25646", "step": 8192}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "25646", "step": 10240}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "25646", "step": 12288}
+{"run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2", "book": "25646", "step": 14336}
+{"book": "25646", "nll": 1.8814226070540438, "scored": 15358}
+{
+  "run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2",
+  "macro_book_nll": 2.429986916876206,
+  "micro_token_nll": 2.459022492575182,
+  "scored_tokens": 144337,
+  "elapsed_seconds": 7251.828005356714,
+  "predictions_per_second": 21.31696999512552
+}

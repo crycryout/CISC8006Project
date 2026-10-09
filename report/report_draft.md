@@ -32,11 +32,11 @@ H1 selects the smallest k in {1,2,4,8} covering 90% of first-eight attention mas
 
 ## Pilots, selection, full evaluation and controls
 
-h1_adaptive_sink: development delta -0.005345, 95% CI [-0.016612, 0.000460], runtime ratio 1.0026, peak-memory ratio 1.0000, acceptable cost True; h2_sink_selection: development delta -0.008053, 95% CI [-0.016347, -0.001836], runtime ratio 1.0084, peak-memory ratio 1.0000, acceptable cost True Selection follows the frozen lower-mean-NLL/cost rule with runtime and peak-memory ratios at most 1.10. If neither qualifies, simpler H1 is evaluated as the preregistered negative-result fallback. The owner delegated this rule; no parameter search or test selection is added. Recorded selection: h2_sink_selection. Full comparison against fixed-four StreamingLLM: Complete paired results are still pending; no verdict is assigned. Selected controls: Selected controls are pending complete raw outputs. Forced-prefix identity is independently tested; H1 has calibration-only/fixed-k controls, H2 forced-prefix/random-anchor controls. Controls use the development set and cannot be treated as full-test effects. Only the selected family's controls are required and executed. Full-test per-book cases remain pending. Per-book frozen anchors/k and calibration intervals are in tables/improvement_book_selections.csv.
+h1_adaptive_sink: development delta -0.005345, 95% CI [-0.016612, 0.000460], runtime ratio 1.0026, peak-memory ratio 1.0000, acceptable cost True; h2_sink_selection: development delta -0.008053, 95% CI [-0.016347, -0.001836], runtime ratio 1.0084, peak-memory ratio 1.0000, acceptable cost True. Selection follows the frozen lower-mean-NLL/cost rule with runtime and peak-memory ratios at most 1.10. If neither qualifies, simpler H1 is evaluated as the preregistered negative-result fallback. The owner delegated this rule; no parameter search or test selection is added. Recorded selection: h2_sink_selection. Full comparison against fixed-four StreamingLLM: Equal-book candidate-minus-baseline NLL difference 0.000108 nats/token; book-cluster 95% CI [-0.000064, 0.000303]; verdict inconclusive. 10 books, actual model seeds [0, 1, 2]. Baseline macro NLL 2.429879, candidate 2.429987; secondary micro PPL 11.6922 versus 11.6934. Selected controls: Selected controls are pending complete raw outputs. Forced-prefix identity is independently tested; H1 has calibration-only/fixed-k controls, H2 forced-prefix/random-anchor controls. Controls use the development set and cannot be treated as full-test effects. Only the selected family's controls are required and executed. Largest selected-minus-fixed-four book deltas: 22424: 0.000822 nats/token; 10321: 0.000273 nats/token. Maximum per-book delta range across actual seeds: 0. Frozen anchor-set counts across the 30 actual book-seed evaluations: {'[0, 1, 5, 49]': 3, '[0, 1, 29, 57]': 3, '[0, 1, 59, 63]': 3, '[0, 1, 21, 41]': 3, '[0, 1, 53, 57]': 3, '[0, 1, 62, 63]': 3, '[0, 1, 52, 54]': 3, '[0, 1, 24, 42]': 3, '[0, 1, 54, 56]': 3, '[0, 1, 24, 43]': 3}; fallbacks 0. These are descriptive cases on the frozen test set, not a further tuning rule. Per-book frozen anchors/k and calibration intervals are in tables/improvement_book_selections.csv.
 
 ## Compute, provenance and reproducibility
 
-Current spent/reserved charge is 26.697345 device-instance hours, with a conservative 0.27h historical reserve. Full-GPU and MIG instance wall-hours are not normalized billing or currency cost. The user authorized unrestricted resources; 20h is no longer an execution limit. Three existing idle H800 MIG instances run seed workers concurrently, preserving another project on GPU0. Each attempt records selected UUID/parent, 30-SM class, driver, clock/power snapshot, source/config/data hashes, status, per-book recovery and registered-run wall time. The timer begins at run-directory creation and ends at finish(), includes model loading/inference/failure intervals, and excludes preflight/startup, the initial Git snapshot and post-finish checksum/exit tails. These are the same stored runtime_seconds used by the frozen cost rule; no cost field or threshold is changed. Runtime comparisons use the matched MIG class; clocks are not locked. Calibration intervals include necessary prefix forward passes and attention collection, measured as host wall time; they are not isolated extra kernel costs and are not added again to the registered-run charge. Incremental cost is assessed through registered-run ratios and controls. Pinned Python 3.10.12 / torch 2.14.0+cu130 / Transformers 4.33.0 and NVML bindings restore through setup. GPU1 instances are unaffected by GPU0's nightly cron.
+Current spent/reserved charge is 23.759499 device-instance hours, with a conservative 0.27h historical reserve. Full-GPU and MIG instance wall-hours are not normalized billing or currency cost. The user authorized unrestricted resources; 20h is no longer an execution limit. Three existing idle H800 MIG instances run seed workers concurrently, preserving another project on GPU0. Each attempt records selected UUID/parent, 30-SM class, driver, clock/power snapshot, source/config/data hashes, status, per-book recovery and registered-run wall time. The timer begins after the launch Git snapshot and run-directory creation and ends at finish(), includes model loading/inference/failure intervals, and excludes preflight/startup, the initial Git snapshot and post-finish checksum/exit tails. These are the same stored runtime_seconds used by the frozen cost rule; no cost field or threshold is changed. Runtime comparisons use the matched MIG class; clocks are not locked. Calibration intervals include necessary prefix forward passes and attention collection, measured as host wall time; they are not isolated extra kernel costs and are not added again to the registered-run charge. Incremental cost is assessed through registered-run ratios and controls. Pinned Python 3.10.12 / torch 2.14.0+cu130 / Transformers 4.33.0 and NVML bindings restore through setup. GPU1 instances are unaffected by GPU0's nightly cron.
 
 ## Limitations, AI reflection and human delivery
 
@@ -72,6 +72,23 @@ Source: `tables/pilot_comparison.csv`. Negative delta favors the candidate; cont
 | h1_adaptive_sink | -0.005345 | -0.016612 | 0.000460 | 1.002620 | 1.000000 |
 | h2_sink_selection | -0.008053 | -0.016347 | -0.001836 | 1.008424 | 1.000000 |
 
+## Selected-method full test
+
+Source: `tables/improvement_per_book.csv`. Negative delta favors the candidate; controls use development books.
+
+| book_id | baseline_nll | candidate_nll | delta | scored_tokens |
+|---|---|---|---|---|
+| 10146 | 2.222721 | 2.222454 | -0.000266 | 15358 |
+| 10321 | 3.002012 | 3.002284 | 0.000273 | 15358 |
+| 10356 | 2.570339 | 2.570026 | -0.000313 | 15358 |
+| 10762 | 3.063084 | 3.063067 | -0.000017 | 15358 |
+| 12204 | 1.976411 | 1.976573 | 0.000162 | 6115 |
+| 15562 | 2.202056 | 2.202287 | 0.000231 | 15358 |
+| 22424 | 2.234202 | 2.235024 | 0.000822 | 15358 |
+| 24553 | 2.641161 | 2.641333 | 0.000173 | 15358 |
+| 2544 | 2.505462 | 2.505398 | -0.000064 | 15358 |
+| 25646 | 1.881346 | 1.881423 | 0.000076 | 15358 |
+
 ## Scientific summary and controls
 
 Source: `tables/scientific_summary.csv`. Negative delta favors the candidate; controls use development books.
@@ -79,3 +96,4 @@ Source: `tables/scientific_summary.csv`. Negative delta favors the candidate; co
 | comparison | n_books | paired_macro_delta_nll | ci95_low | ci95_high | claim_status | runtime_ratio | peak_memory_ratio |
 |---|---|---|---|---|---|---|---|
 | reproduction | 10 | -0.721756 | -0.759084 | -0.685837 | supported | 1.003282 | 1.000000 |
+| improvement | 10 | 0.000108 | -0.000064 | 0.000303 | inconclusive | 0.995707 | 1.000000 |

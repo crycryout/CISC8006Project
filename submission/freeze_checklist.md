@@ -1,12 +1,12 @@
 # Actual freeze state
 
-Step3 of4: the main comparison and both development pilots are complete; H2 full test is running; no final tag or course submission has been made. The user's2026-10-09 instruction removed procedural approval prerequisites and the20 device-instance-hour ceiling. `bash scripts/release_check.sh --technical` will seal the measured scientific/engineering package after the remaining checks pass. The default command separately reports genuinely missing human course evidence. `--candidate` creates a review snapshot only.
+Step3 of4: the main comparison, both development pilots and H2 full test are complete; the two H2 control families are running; no final tag or course submission has been made. The user's2026-10-09 instruction removed procedural approval prerequisites and the20 device-instance-hour ceiling. `bash scripts/release_check.sh --technical` will seal the measured scientific/engineering package after the remaining checks pass. The default command separately reports genuinely missing human course evidence. `--candidate` creates a review snapshot only.
 
 | Gate | Actual state / evidence |
 |---|---|
 | A correctness |59 CPU/H800 checks and2×2 diagnostics pass; final six-case preset-tolerance error distributions are still to be captured; human critical review separately pending |
 | B formal reproduction | All six original10-book/actual-seed0/1/2 runs sealed/validated and raw-reconstructed; ΔNLL−0.7217558173,95% CI [−0.7590835293,−0.6858373358], supported |
-| C improvement | All nine development runs complete and raw-reconstructed; H2 chosen from mean/cost rule, proposal SHA51845b74… recorded; three full H2 test runs active, forced-prefix/random-anchor controls follow |
+| C improvement | All nine development runs and three selected full runs complete/raw-reconstructed; immutable H2 selection SHA51845b74…; test ΔNLL+0.0001077282,95% CI [−0.0000643462,+0.0003026897], inconclusive; forced-prefix/random-anchor controls running |
 | D artifact | New clean checkout624b022:67 exact pins,57 CPU checks,13 asset hashes pass; final NPZ reconstruction, report/deck content check, current demo and immutable manifest/tag follow the measured study |
 | E human delivery | Report/deck/demo/peer packet prepared; actual roster, peer review, critical review, personal defense, template/deadline and final submission pending |
 

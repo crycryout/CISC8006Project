@@ -103,11 +103,11 @@
     },
     {
       "path": "results/claim_to_artifact.csv",
-      "sha256": "5b3db849127373d9627d824b1593d43cbd9e008d3e11ea9ca8d342ff59c28167"
+      "sha256": "0ba4cfd3b7a33fbc9cfa70b99ac8aa9e4d5ef8181b3ef014f7812a6f91089588"
     },
     {
       "path": "results/completion.json",
-      "sha256": "9ee1c903a88a84d183420462955997f885c525283837f19b76cc94432fdaf700"
+      "sha256": "9003cd3d3f556fafa4630080f0b6e2dc99a28f7cdb35439f4e99fddfa9d80a7c"
     },
     {
       "path": "results/diagnostics/comparison.csv",
@@ -126,8 +126,20 @@
       "sha256": "949baedf46b437178111626a11b828bfe342f6b7a7d01ec694a63b01e5dc35af"
     },
     {
+      "path": "results/improvement/paired_result.json",
+      "sha256": "ceab51e6c1981435b9c63c2750dfca74c313ae28b1b13a794b9942ea8b32a67f"
+    },
+    {
+      "path": "results/improvement/per_book.csv",
+      "sha256": "3bd43bd1baa380d732041162e45c8fed51413e08ba68e6194f3b8804534e5a6f"
+    },
+    {
       "path": "results/improvement/status.json",
-      "sha256": "76134bda176f9d41e01b0ffd5681f423600d0cc3700f5463f12190d53f4d90c6"
+      "sha256": "2e4511e22508bbb25859c23b1923311af81159bb600dd24af5e002f66f7fdbf5"
+    },
+    {
+      "path": "results/improvement/summary.json",
+      "sha256": "e9a509e4d17d0bfb07c66f946465d5601ecd61a1052d2e7a2485644243aa3c13"
     },
     {
       "path": "results/pilots/comparison.csv",
@@ -151,7 +163,7 @@
     },
     {
       "path": "results/raw_artifact_index.csv",
-      "sha256": "86b9983afcbd31529a3be55ddde693b51184292967b1eb1f11ef58f391ffd95c"
+      "sha256": "4586571886414df37bc6efef5f964015911a237c54179258e34cf69788c51528"
     },
     {
       "path": "results/reproduction/paired_result.json",
@@ -194,6 +206,30 @@
       "sha256": "accd39af8b6d0e1ceb7cbff8777379af848601df602643b4167b8e8bea4d64c3"
     },
     {
+      "path": "figures/improvement_cache.csv",
+      "sha256": "c8421b13b8995fb8edaaa3f701d501d8e2481a2651b6e8bd62af07603f462186"
+    },
+    {
+      "path": "figures/improvement_cache.png",
+      "sha256": "66e2760e263ac3f5c49db76b29d65db7ba8acce1a19ed664a6ef3dd95d01efbc"
+    },
+    {
+      "path": "figures/improvement_nll_vs_position.csv",
+      "sha256": "e22ded3dbaca44127b74abaeb0a7bcbf5e4f737434dead17bcdbb4e7c39fce3d"
+    },
+    {
+      "path": "figures/improvement_nll_vs_position.png",
+      "sha256": "50764a7e7429d1cfdd07bdce7d5adb537f8ca253c2da10c654f3eb11dc18f553"
+    },
+    {
+      "path": "figures/improvement_per_book_delta.png",
+      "sha256": "0d82eb9c5966b0d282a9caadb90f710d5f94031b90a1ac89e36cc1c2e738c87f"
+    },
+    {
+      "path": "figures/improvement_quality_cost.png",
+      "sha256": "8bfda6f43eecda76ada85f4d6b72ca1eaff181dcde2618e2ddac68d4705731ff"
+    },
+    {
       "path": "figures/r0000_harnesscheck_nll_vs_position.png",
       "sha256": "0896194caf137689d47a01ac5eda5f052729e90971308440d809a2e70a11c206"
     },
@@ -230,6 +266,14 @@
       "sha256": "5eab0462e218c27158af3b13f8d7940e67631e3c3a39c83c3eb44501a50de1f3"
     },
     {
+      "path": "tables/improvement_book_selections.csv",
+      "sha256": "666298a3bfba9cc3ce4b14cf217e94b12a9f03cfbcb8db0dad741cc8da7e5629"
+    },
+    {
+      "path": "tables/improvement_per_book.csv",
+      "sha256": "3bd43bd1baa380d732041162e45c8fed51413e08ba68e6194f3b8804534e5a6f"
+    },
+    {
       "path": "tables/paper_settings.csv",
       "sha256": "d4ff40bb6977ef37ecbad7e7cfa6d0a6c8179efafdd140ab720549275fc15984"
     },
@@ -243,7 +287,7 @@
     },
     {
       "path": "tables/scientific_summary.csv",
-      "sha256": "cd59d043cd8fbc8e45659aca0aae005d1c0ffc4e694b3928d29b3a2340c19f51"
+      "sha256": "b1c21ae40138f714176327e7ad124ce287f1036e534030cbdcb99c322fb3ca4a"
     }
   ],
   "aggregation": "equal-book512-step bins starting1025; late-bin book coverage CSV",

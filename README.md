@@ -1,6 +1,6 @@
 # CISC8006: auditable StreamingLLM reproduction
 
-第 3/4 步：完整主复现及两个开发集 pilot 已完成，H2 完整 test 评测正在运行。原 10 本书、实际 seed 0/1/2 的主 ΔNLL=−0.721756，书级 95% CI [−0.759084, −0.685837]，判定 `supported`；原始 NPZ 重算通过。H2 按冻结规则选出：开发集 ΔNLL=−0.008053，95% CI [−0.016347,−0.001836]，运行时间1.0084倍、峰值显存相同；完整 test 与两个控制尚在执行流程中。执行分支 `codex/h800-course-completion-20261008`；[当前状态](TASK_STATUS.md)与 `python scripts/study_status.py` 提供实际进度。
+第 3/4 步：完整主复现、两个开发集 pilot 和 H2 完整 test 已完成并从原始 NPZ 重算；两组消融正在执行。原 10 本书、实际 seed 0/1/2 的主 ΔNLL=−0.721756，书级 95% CI [−0.759084, −0.685837]，判定 `supported`。H2 按冻结开发集规则选出，但完整 test 的 ΔNLL=+0.00010773，95% CI [−0.00006435,+0.00030269]，判定 `inconclusive`，未证明改善。执行分支 `codex/h800-course-completion-20261008`；[当前状态](TASK_STATUS.md)与 `python scripts/study_status.py` 提供实际进度。
 
 用户于 2026-10-09 明确指示“不需要审批，H800的GPU资源随便用”，已取消本次执行的审批前置与旧 20 GPU-h 上限。三个现有 H800 GPU1 MIG 2g.20gb 实例分配给 seed 0/1/2；方法按相同 UUID 配对，保留全部成本、失败和原始输出。[授权记录](docs/execution_authorization.md)是用户指令，不是教师批准或同伴签名。
 
@@ -28,6 +28,6 @@
 
 Primary统计是书级等权seed配对NLL差；micro pooled PPL为secondary。输入 cap16384，短书12204保留7141，scored start1025，每组144337 scored。预算是eviction后1024，forward可见1025。实际3个模型seed不等于bootstrap seed，也不把10本变成30个独立样本。
 
-当前资源上限明确为 unlimited，仍记录失败、加载和整进程 device-instance wall-hours，不能当作归一化整卡账单。MIG smoke 实测 22.255 predictions/s；矩阵用保守 15 predictions/s 做规划。GPU0 的其它项目与 nightly cron 保持原样，GPU1 的三个现有实例不受该 cron 影响。完整 H800 与 MIG 的 FP16 诊断并非 bitwise 相同，正式配对只使用共同 MIG 硬件类。
+当前资源上限明确为 unlimited，仍记录失败、加载和注册运行区间的 device-instance wall-hours，起止边界见[compute budget](compute_budget.md)，不能当作归一化整卡账单。MIG smoke 实测 22.255 predictions/s；矩阵用保守 15 predictions/s 做规划。GPU0 的其它项目与 nightly cron 保持原样，GPU1 的三个现有实例不受该 cron 影响。完整 H800 与 MIG 的 FP16 诊断并非 bitwise 相同，正式配对只使用共同 MIG 硬件类。
 
 Pinned官方 raw-K pos-shift 是faithful baseline修复，不是原创improvement。三个候选、两pilot和一个完整改进按[方案](docs/improvement_hypotheses.md)准备；没有编造结果。论文位置机制、Fig3/Fig5和独立书reset的差异见[paper comparison](docs/paper_comparison.md)。AI、人类角色、许可证和数据来源见 `AI_USAGE.md`、`CONTRIBUTIONS.md`、`LICENSES.md`、`SECURITY.md`。
