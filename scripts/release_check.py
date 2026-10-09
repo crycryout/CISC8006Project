@@ -56,7 +56,7 @@ def main():
     completion=json.loads((ROOT/"results/completion.json").read_text()) if (ROOT/"results/completion.json").exists() else {}
     core_ready=all(completion.get(stage,{}).get("state")=="complete" for stage in ("reproduction","pilots","improvement")) and len(completion.get("ablations",{}))==2 and all(value.get("state")=="complete" for value in completion["ablations"].values())
     required=["TASK_STATUS.md","AI_USAGE.md","CONTRIBUTIONS.md","LICENSES.md","SECURITY.md","data/assets_manifest.json","experiments/registry.jsonl","results/build_provenance.json","audit/peer_audit/README.md"]
-    required.extend(["report/report.md","report/report.pdf","presentation/defense.pptx","tables/scientific_summary.csv","tables/improvement_book_selections.csv","results/raw_artifact_index.csv","environment/verification/scientific-raw-reconstruction.json","environment/verification/reference-error-distributions.json"] if core_ready else ["report/report_draft.pdf","presentation/defense_draft.pptx"])
+    required.extend(["report/report.md","report/report.pdf","presentation/defense.pptx","tables/scientific_summary.csv","tables/improvement_book_selections.csv","results/raw_artifact_index.csv","environment/verification/scientific-raw-reconstruction.json","environment/verification/reference-error-distributions.json","environment/verification/deliverable-verification.json"] if core_ready else ["report/report_draft.pdf","presentation/defense_draft.pptx"])
     for rel in required:
         if not (ROOT/rel).is_file(): missing.append(rel)
     clean_path=ROOT/"environment/verification/clean-checkout.json"
@@ -107,6 +107,17 @@ def main():
     if prefix is None or len(controls)!=2 or any(v.get("state")!="complete" for v in controls.values()):
         pending.append("selected method core ablations / controls")
     if core_ready:
+        check_path=ROOT/"environment/verification/deliverable-verification.json"
+        if check_path.is_file():
+            check=json.loads(check_path.read_text())
+            if check.get("status")!="pass" or check.get("verification_script_sha256")!=file_hash(ROOT/"scripts/verify_deliverables.py") or check.get("deck_slides")!=12:
+                missing.append("current measured report/deck verification")
+            for artifact in check.get("artifacts",[])+check.get("embedded_figures",[]):
+                if file_hash(ROOT/artifact["path"])!=artifact["sha256"]:
+                    missing.append("verified deliverable changed: "+artifact["path"])
+            for row in check.get("comparisons",[]):
+                if row.get("metrics_match") is not True or row.get("summary_sha256")!=file_hash(ROOT/"results"/row["stage"]/"summary.json"):
+                    missing.append("verified report/deck metrics changed: "+row["stage"])
         reference_path=ROOT/"environment/verification/reference-error-distributions.json"
         if reference_path.is_file():
             reference=json.loads(reference_path.read_text())
