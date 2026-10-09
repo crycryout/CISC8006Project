@@ -1,12 +1,11 @@
 {
-  "state": "pending",
-  "missing": [
-    "runs/R-v2-20261008-window-s0/result.json",
-    "runs/R-v2-20261008-window-s1/result.json",
-    "runs/R-v2-20261008-window-s2/result.json",
-    "runs/R-v2-20261008-streaming-s0/result.json",
-    "runs/R-v2-20261008-streaming-s1/result.json",
-    "runs/R-v2-20261008-streaming-s2/result.json"
+  "state": "complete",
+  "claim_status": "supported",
+  "n_books": 10,
+  "seeds": [
+    0,
+    1,
+    2
   ],
-  "claim_status": null
+  "paired_result_sha256": "3f056e4799d264be3d95b717ec5d2f51184582b880bad91f7ec6b6107b320740"
 }

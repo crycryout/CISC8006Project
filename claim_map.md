@@ -2,6 +2,8 @@
 
 **Status: v2 scientific execution authorized by the explicit user waiver; actual teacher review/portal receipt is not evidenced.** Original map preserved in Git at `48e57c6`; current amendment and hardware contract are in `docs/protocol_amendments.md`. Final measured status is read from `results/reproduction/summary.json` after strict complete pairing.
 
+Measured main evidence is now complete: ΔNLL −0.7217558173, 95% CI [−0.7590835293, −0.6858373358], **supported** on the frozen ten-book scope. All three actual seeds per arm passed raw reconstruction and have bitwise-identical losses. Source/result/NPZ paths and hashes are in `results/raw_artifact_index.csv`; independent agent reconstruction is in `environment/verification/main-raw-reconstruction.json`.
+
 **Maps to central claim (v1.1):**
 
 > On a fixed PG19 evaluation using Pythia-2.8B and a 1024-token KV-cache budget, StreamingLLM retaining four initial attention-sink tokens together with recent tokens achieves lower post-overflow token negative log-likelihood (and therefore lower perplexity under the same aggregation) than pure window attention.

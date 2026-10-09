@@ -1,0 +1,12 @@
+{
+  "registered_at": "2026-10-09T06:12:08.040396+00:00",
+  "matrix_sha256": "b3d281595fbd973504afc45e1512431badc5c193d895a7077ffbc5f1981c7fe7",
+  "command": [
+    "/home/renjie/CISC8006Project/.venv-verified/bin/python",
+    "/home/renjie/CISC8006Project/scripts/eval_ppl.py",
+    "--config",
+    "/home/renjie/CISC8006Project/experiments/plans/R-v2-mig-20261009-window-s0/config.yaml"
+  ],
+  "selected_device": "MIG-e6fc2d29-df53-531c-bfda-84767274c8a2",
+  "numerical_source_sha256": "a6dbe103b2e9416295807cd481a9ff1660fbfede9c26b68e7db65d230e6229ef"
+}

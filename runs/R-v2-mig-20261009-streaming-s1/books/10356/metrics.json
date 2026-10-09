@@ -1,0 +1,885 @@
+{
+  "book_id": "10356",
+  "input_tokens": 16384,
+  "tokenized_length": 16384,
+  "scored_tokens": 15358,
+  "text_sha256": "af4b57d358448588adbc6da962cad655bf586ae746dba21f62e956d36d97c88e",
+  "token_ids_sha256": "0aecb49598f6dcf578d6132f4fcbe2555a16171436cec0321fc02b32a0f82414",
+  "scored_mask_sha256": "175ff24cb7f77b720b2085cee98dc126d9281988bf84bd49de4faa3bf7f10186",
+  "sum_nll_scored": 39475.25950440878,
+  "mean_nll_scored": 2.570338553484098,
+  "ppl_scored": 13.07024867019851,
+  "mean_nll_all_positions": 2.5803500794614425,
+  "runtime_seconds": 778.2175356969237,
+  "calibration_seconds": 0.0,
+  "selection": {
+    "anchors": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "sink_tokens": 4,
+    "decision_step": null,
+    "calibration_queries": 0,
+    "attention_mass": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "fallback": false
+  },
+  "max_forward_length": 1025,
+  "max_retained_length": 1024,
+  "max_kv_bytes": 335544320,
+  "attention_layers": 32,
+  "cache_trace": [
+    {
+      "step": 0,
+      "forward_length": 1,
+      "retained_length": 1,
+      "kv_bytes": 327680
+    },
+    {
+      "step": 128,
+      "forward_length": 129,
+      "retained_length": 129,
+      "kv_bytes": 42270720
+    },
+    {
+      "step": 256,
+      "forward_length": 257,
+      "retained_length": 257,
+      "kv_bytes": 84213760
+    },
+    {
+      "step": 384,
+      "forward_length": 385,
+      "retained_length": 385,
+      "kv_bytes": 126156800
+    },
+    {
+      "step": 512,
+      "forward_length": 513,
+      "retained_length": 513,
+      "kv_bytes": 168099840
+    },
+    {
+      "step": 640,
+      "forward_length": 641,
+      "retained_length": 641,
+      "kv_bytes": 210042880
+    },
+    {
+      "step": 768,
+      "forward_length": 769,
+      "retained_length": 769,
+      "kv_bytes": 251985920
+    },
+    {
+      "step": 896,
+      "forward_length": 897,
+      "retained_length": 897,
+      "kv_bytes": 293928960
+    },
+    {
+      "step": 1023,
+      "forward_length": 1024,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 1024,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 1025,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 1152,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 1280,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 1408,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 1536,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 1664,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 1792,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 1920,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 2048,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 2176,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 2304,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 2432,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 2560,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 2688,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 2816,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 2944,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 3072,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 3200,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 3328,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 3456,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 3584,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 3712,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 3840,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 3968,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 4096,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 4224,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 4352,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 4480,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 4608,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 4736,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 4864,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 4992,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 5120,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 5248,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 5376,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 5504,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 5632,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 5760,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 5888,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 6016,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 6144,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 6272,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 6400,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 6528,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 6656,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 6784,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 6912,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 7040,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 7168,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 7296,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 7424,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 7552,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 7680,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 7808,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 7936,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 8064,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 8192,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 8320,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 8448,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 8576,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 8704,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 8832,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 8960,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 9088,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 9216,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 9344,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 9472,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 9600,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 9728,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 9856,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 9984,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 10112,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 10240,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 10368,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 10496,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 10624,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 10752,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 10880,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 11008,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 11136,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 11264,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 11392,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 11520,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 11648,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 11776,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 11904,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 12032,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 12160,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 12288,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 12416,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 12544,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 12672,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 12800,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 12928,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 13056,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 13184,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 13312,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 13440,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 13568,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 13696,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 13824,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 13952,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 14080,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 14208,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 14336,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 14464,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 14592,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 14720,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 14848,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 14976,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 15104,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 15232,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 15360,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 15488,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 15616,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 15744,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 15872,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 16000,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 16128,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 16256,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    },
+    {
+      "step": 16382,
+      "forward_length": 1025,
+      "retained_length": 1024,
+      "kv_bytes": 335544320
+    }
+  ]
+}

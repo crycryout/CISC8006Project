@@ -1,6 +1,6 @@
 # Current reproduction diagnosis
 
-Formal reproduction is running under the user's explicit authorization, on the original ten books and three actual seeds. Its measured status is in `results/reproduction/`; it receives a verdict only after all six runs validate. The table below remains a controlled one-book mechanism diagnosis, separate from the final claim.
+Formal reproduction is complete under the user's explicit authorization, on the original ten books and three actual seeds. All six runs pass strict raw validation and independent NPZ reconstruction. Paired equal-book ΔNLL is−0.7217558173, 95% book-bootstrap CI [−0.7590835293, −0.6858373358], **supported**. Macro NLL is3.1516350060 for window and2.4298791887 for fixed-four; secondary pooled micro PPL23.9581092955 versus11.6921566131. All ten book deltas are negative, ranging−0.8317118794 to−0.6153676440. Within each method the three actual seed arrays are bitwise identical. Main receipt: `environment/verification/main-raw-reconstruction.json`. The table below remains a separate controlled one-book mechanism diagnosis.
 
 | Retention / positions | Post-overflow NLL | Scored count | Run |
 |---|---:|---:|---|
@@ -17,4 +17,4 @@ Scorer isolation uses the identical faithful forward prefix (1200 tokens,174 sco
 
 Actual second-book fault injection exits1, preserves first-book10146 metrics/NPZ and records failed status without a final result or scientific verdict. No original R0000/R0001 file was overwritten (hash inventory verification passed). See `environment/verification/integrity-recovery.json`.
 
-The original ten-book comparison now executes on matched H800 MIG instances under the owner waiver; the old resource ceiling is superseded. Do not extrapolate these diagnostic means to all books, derive a one-book CI, select test parameters or substitute historical smoke for main evidence. Paper deviations and direct comparison limits are in `docs/paper_comparison.md`.
+The completed ten-book comparison uses matched H800 MIG instances under the owner waiver; the old resource ceiling is superseded. Window launches record source `aa76de1`, streaming launches `6181538`, and all six share the frozen numerical fingerprint `a6dbe103b2e9416295807cd481a9ff1660fbfede9c26b68e7db65d230e6229ef`. Exact source/config mappings are in each launch metadata and the raw index. Do not extrapolate the one-book diagnostic means, select test parameters or substitute historical smoke for main evidence. Paper deviations and direct comparison limits are in `docs/paper_comparison.md`.

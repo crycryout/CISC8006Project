@@ -1,0 +1,7 @@
+dimension,paper,project,source
+model,Pythia2.8B among multiple model families,Pinned Pythia2.8B only,arXiv2309.17453v4 section4.1; data/assets_manifest.json
+position mechanism,"Raw cached K, cache-relative RoPE",Pinned official every-layer patch in both methods,arXiv2309.17453v4 section3.2; tests/test_position_reference.py
+PG19 stream,Concatenated books,Original10 books independently reset; cap16384; short book7141,arXiv2309.17453v4 section4.1; protocol.md
+KV budget,Pythia1024 retained positions,1024 retained; forward temporarily1025,arXiv2309.17453v4 section4.1; per-book cache_trace
+primary metric,Perplexity curves,Equal-book post-overflow paired NLL; book bootstrap,protocol.md; results/reproduction/paired_result.json
+hardware,Separate efficiency benchmark hardware; PG19 hardware unspecified,"H800 MIG2g.20gb,30SM; matched instance within each seed",docs/paper_comparison.md; per-run registration.json

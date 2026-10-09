@@ -1,10 +1,10 @@
-# StreamingLLM: technical review candidate
+# StreamingLLM: execution progress report
 
-Measured diagnostics; formal scientific results and human freeze pending.
+Registered execution in progress; incomplete stages have no assigned verdict.
 
 ## Claim and current evidence
 
-We study whether retaining four initial attention-sink tokens improves equal-book post-overflow NLL over window attention with a 1024-position retained KV budget. The current artifact is a review candidate: scientific reproduction, validation pilots, method selection and human freeze approval are pending. Diagnostics are measured; no final claim verdict is asserted.
+We study whether retaining four initial attention-sink tokens improves equal-book post-overflow NLL over window attention with a 1024-position retained KV budget. Scientific execution is authorized and in progress; pending stages have no assigned final verdict. The user explicitly waived procedural approvals and the 20 GPU-hour ceiling on 2026-10-09. This is an owner instruction, not a teacher approval or a peer signature. The main claim uses complete strict paired outputs, never a historical smoke.
 
 ## Mechanism and position correction
 
@@ -16,32 +16,57 @@ Pinned Pythia-2.8B and tokenizer; original ten PG19 test books, independent book
 
 ## Statistics and independent verification
 
-Primary estimand: seed-paired per-book NLL deltas averaged within book, then averaged equally over books. Percentile 95% CI uses 10000 book-cluster resamples, RNG seed 0. Actual model seeds 0, 1, 2 are distinct from bootstrap seeds and never create 30 independent books. Micro token NLL/PPL is secondary; exp(macro NLL) is macro-derived PPL. Fixtures test known probabilities, unequal lengths, boundaries, missing/duplicate/nonfinite contracts, raw-K, every layer K/V, attention and logits. H800 fp16/bf16 tolerances are preset.
+Primary estimand: seed-paired per-book NLL deltas averaged within book, then averaged equally over books. Percentile 95% CI uses 10000 book-cluster resamples, RNG seed 0. Actual model seeds 0, 1, 2 are distinct from bootstrap seeds and never create 30 independent books. Micro token NLL/PPL is secondary; exp(macro NLL) is macro-derived PPL. Fixtures test known probabilities, unequal lengths, boundaries and missing/duplicate/nonfinite contracts. An independent three-layer tiny GPT-NeoX reference checks trigonometric RoPE, raw-K, every layer K/V, attention and final logits through multiple evictions; real-model integration uses the full 32-layer pinned checkpoint. H800 fp16/bf16 tolerances are preset. The preset-tolerance GPU error-distribution capture is pending as a separate engineering release check. The audit script reconstructs NLL, PPL, book deltas, bootstrap intervals and actual seed spread directly from saved NPZ arrays; this remains agent engineering verification.
 
 ## Measured 2 by 2 diagnostic
 
-D-W0-20261008: NLL 5.450578; D-S0-20261008: NLL 5.292458; D-W1-20261008: NLL 3.051129; D-S1-20261008: NLL 2.223681. Each run uses one historically exposed smoke book, 4096 inputs and 3070 scored positions. Faithful positions change both absolute losses and the method gap. Actual retained K+V bytes plateau480MiB in legacy and320MiB in faithful positions, matching between methods within each position policy. This local effect diagnoses the old implementation; it cannot establish a ten-book population conclusion, systems speedup or million-token stability. Position NLL arrays, KV traces, launch source hashes and costs are preserved.
+D-W0-20261008: NLL 5.450578; D-S0-20261008: NLL 5.292458; D-W1-20261008: NLL 3.051129; D-S1-20261008: NLL 2.223681. Each run uses one historically exposed smoke book, 4096 inputs and 3070 scored positions. Faithful positions change both absolute losses and the method gap. Actual retained K+V bytes plateau 480MiB in legacy and 320MiB in faithful positions, matching between methods within each position policy. This local effect diagnoses the old implementation; it cannot establish a ten-book population conclusion, systems speedup or million-token stability. Position NLL arrays, KV traces, launch source hashes and costs are preserved.
 
-## Reproduction status and paper comparison
+## Formal reproduction and paper comparison
 
-Formal six-job reproduction matrix is implemented but not run: protocol approval and a feasible approved budget path are missing. Paper arXiv v4 section 3.2 defines cache-relative positions; Figure 3 gives short-stream language-modeling comparisons, Figure 5 gives super-long-stream results, and Figure 4 illustrates the cache. The paper concatenates books; our independent-book reset and post-overflow aggregation are explicit deviations. No incompatible absolute-PPL target or paper speedup is claimed. Current stage status: {"state": "pending", "missing_runs": 6}
+Equal-book candidate-minus-baseline NLL difference -0.721756 nats/token; book-cluster 95% CI [-0.759084, -0.685837]; verdict supported. 10 books, actual model seeds [0, 1, 2]. Baseline macro NLL 3.151635, candidate 2.429879; secondary micro PPL 23.9581 versus 11.6922. Descriptive 512-step equal-book position bins: bin starting 1025: candidate-minus-baseline -0.611089 nats/token, 10 books; bin starting 15873: candidate-minus-baseline -0.749713 nats/token, 9 books. Partial last bins are not zero-padded; exact book coverage is saved in the companion CSV. Bin differences are secondary and do not replace the primary whole-scored-region book estimand. Paper arXiv v4 section 3.2 defines cache-relative positions; Figure 3 gives short-stream comparisons, Figure 5 super-long-stream results, and Figure 4 the cache schematic. The paper concatenates books; independent-book reset and post-overflow aggregation are explicit deviations. Formal methods are paired on the same existing H800 MIG 2g.20gb instance for each seed, with the same 30-SM hardware class across seeds. Full-GPU/MIG fp16 diagnostic outputs were not bitwise identical; the scored smoke-prefix mean shift was 0.000489 nats/token. Their results are not mixed in a formal pair. No paper speedup or full-H800 throughput equivalence is inferred.
 
 ## Three improvement hypotheses and two pilots
 
-H1 selects the smallest k in {1,2,4,8} covering 90% of first-eight attention mass from queries 64 through 511, then freezes k within the book. H2 protects position 0 and chooses the three highest-mass positions 1 through 63, breaks ties earlier, preserves chronological order and deduplicates recent K/V. Both use only causal prefix attention and a fixed 1024 retained budget. H3 is optional preallocated rolling-KV systems work, motivated only if a profiler shows material allocation cost; it is not implemented. Validation books 1022, 11155 and 13089 were selected without losses; pilot cap 8192 and actual seeds 0/1/2 are proposed before any tuning.
+H1 selects the smallest k in {1,2,4,8} covering 90% of first-eight attention mass from queries 64 through 511, then freezes k within the book; negligible/invalid mass falls back to four. H2 protects position 0 and chooses the three highest-mass positions 1 through 63, breaks ties earlier, preserves chronological order and deduplicates recent K/V. Both use only causal prefix attention and a fixed 1024 retained budget. H3 is optional preallocated rolling-KV systems work, motivated only if a profiler shows material allocation cost; it is not implemented. Validation books 1022, 11155 and 13089 were selected without losses; cap 8192 and actual seeds 0/1/2 were frozen before pilot evaluation.
 
-## Selection, full evaluation and controls
+## Pilots, selection, full evaluation and controls
 
-Compare valid H1/H2 pilots against faithful fixed-four StreamingLLM. Acceptable runtime and extra peak-memory ratios are proposed at 1.10. Prefer lower paired NLL at acceptable cost; if neither improves, nominate simpler H1 for a full negative-result evaluation without additional searches. A real team decision must confirm selection. Full evaluation retains the original test contract. Controls include forced-prefix identity, calibration-only fixed-four and fixed-k for H1; forced-prefix and three-seed random-anchor control for H2. These experiments remain pending; no improvement or ablation values are invented.
+Registered development pilots are still running. Selection follows the frozen lower-mean-NLL/cost rule with runtime and peak-memory ratios at most 1.10. If neither qualifies, simpler H1 is evaluated as the preregistered negative-result fallback. The owner delegated this rule; no parameter search or test selection is added. Recorded selection: None. Full comparison against fixed-four StreamingLLM: Complete paired results are still pending; no verdict is assigned. Selected controls: Selected controls are pending complete raw outputs. Forced-prefix identity is independently tested; H1 has calibration-only/fixed-k controls, H2 forced-prefix/random-anchor controls. Controls use the development set and cannot be treated as full-test effects. Only the selected family's controls are required and executed. Full-test per-book cases remain pending. Per-book frozen anchors/k and calibration intervals are in tables/improvement_book_selections.csv.
 
 ## Compute, provenance and reproducibility
 
-Current spent/reserved charge is 0.578634 GPU-hours, including conservative historical accounting. The measured slowest faithful throughput is 24.192 predictions/s. The required default plan estimate is 21.186 GPU-hours, above the enforced 20-hour ceiling before calibration/future retry overhead. A concrete budget decision is required. Source commit is captured at launch; every attempt has a unique ID, status, selected GPU UUID, checksum inventory and per-book recovery. Fresh Python3.10.12 checkout installation matches all dependency pins, restores thirteen public text assets and passes53 CPU fixtures. Model weights and split lists were rehashed from the public HF cache. GPU0 has a scheduled MIG change at 01:30/09:00 Asia/Macao; the launcher checks execution windows.
+Current spent/reserved charge is 14.689379 device-instance hours, with a conservative 0.27h historical reserve. Full-GPU and MIG instance wall-hours are not normalized billing or currency cost. The user authorized unrestricted resources; 20h is no longer an execution limit. Three existing idle H800 MIG instances run seed workers concurrently, preserving another project on GPU0. Each attempt records selected UUID/parent, 30-SM class, driver, clock/power snapshot, source/config/data hashes, status, per-book recovery and actual whole-process time. Runtime comparisons use the matched MIG class; clocks are not locked. Calibration intervals include forward and attention collection, measured as host wall time; they are not isolated kernel costs. Incremental cost is assessed through whole-run ratios and controls. Pinned Python 3.10.12 / torch 2.14.0+cu130 / Transformers 4.33.0 and NVML bindings restore through setup. GPU1 instances are unaffected by GPU0's nightly cron.
 
 ## Limitations, AI reflection and human delivery
 
-The ten fixed books are not a random sample of all PG19; one test book was previously observed. Deterministic repeated evaluations do not add independent books. Candidate attention proxies may fail and calibration may exceed fair cost thresholds. Independent fixture verification was performed by the agent, not a peer. No teacher approval, member contribution, critical human review, deadline, final template or submission receipt is fabricated. Members must review scientific decisions, execute a genuine peer audit and individually explain mechanism, masks, aggregation, seeds, controls and failures. Exact Codex serving version was not exposed.
+The ten fixed books are not a random sample of all PG19; one test book was previously observed. Three deterministic evaluations do not add independent books. Development selection uses only three books; attention proxies may fail, quality may not improve and calibration may exceed cost thresholds. Runtime order is not counterbalanced, clocks are unlocked and the three instances share a physical parent; ratios support the registered descriptive cost gate, not a causal speedup claim. The report preserves negative, inconclusive and failed outcomes. Agent verification is engineering verification, not an independent peer audit. The user's explicit authorization supersedes procedural approvals, while no teacher approval, member contribution, critical human review, deadline, final template or submission receipt is fabricated. Actual roster, T_final, peer review and individual defense remain human facts. Members can use the peer/defense packet. Exact Codex serving version was not exposed.
 
 ## References and artifact entry points
 
 StreamingLLM: https://arxiv.org/html/2309.17453v4 ; official code pinned in third_party/streaming-llm. Model: pinned EleutherAI/pythia-2.8b revision and Apache-2.0 model card. PG19: DeepMind official processed GCS texts and pinned split lists. Rebuild: python scripts/build_results.py --manifest results/final_input_manifest.json ; python scripts/build_deliverables.py. Input/run hashes: results/build_provenance.json. Decisions: docs/review_packet.md. AI/roles: AI_USAGE.md and CONTRIBUTIONS.md.
+
+## Reproduction per book
+
+Source: `tables/reproduction_per_book.csv`. Negative delta favors the candidate; controls use development books.
+
+| book_id | baseline_nll | candidate_nll | delta | scored_tokens |
+|---|---|---|---|---|
+| 10146 | 3.054432 | 2.222721 | -0.831712 | 15358 |
+| 10321 | 3.704848 | 3.002012 | -0.702837 | 15358 |
+| 10356 | 3.264875 | 2.570339 | -0.694536 | 15358 |
+| 10762 | 3.722634 | 3.063084 | -0.659550 | 15358 |
+| 12204 | 2.766364 | 1.976411 | -0.789953 | 6115 |
+| 15562 | 2.916400 | 2.202056 | -0.714344 | 15358 |
+| 22424 | 2.939753 | 2.234202 | -0.705551 | 15358 |
+| 24553 | 3.402428 | 2.641161 | -0.761267 | 15358 |
+| 2544 | 3.247901 | 2.505462 | -0.742439 | 15358 |
+| 25646 | 2.496714 | 1.881346 | -0.615368 | 15358 |
+
+## Scientific summary and controls
+
+Source: `tables/scientific_summary.csv`. Negative delta favors the candidate; controls use development books.
+
+| comparison | n_books | paired_macro_delta_nll | ci95_low | ci95_high | claim_status | runtime_ratio | peak_memory_ratio |
+|---|---|---|---|---|---|---|---|
+| reproduction | 10 | -0.721756 | -0.759084 | -0.685837 | supported | 1.003282 | 1.000000 |

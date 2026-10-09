@@ -1,0 +1,113 @@
+/home/renjie/CISC8006Project/.venv-verified/lib/python3.10/site-packages/huggingface_hub/file_download.py:1142: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/home/renjie/CISC8006Project/.venv-verified/lib/python3.10/site-packages/transformers/utils/generic.py:311: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/home/renjie/CISC8006Project/.venv-verified/lib/python3.10/site-packages/transformers/utils/generic.py:311: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/home/renjie/CISC8006Project/.venv-verified/lib/python3.10/site-packages/huggingface_hub/file_download.py:1142: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+StartRecentKVCache: 0, 1024
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10146", "step": 0}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10146", "step": 2048}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10146", "step": 4096}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10146", "step": 6144}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10146", "step": 8192}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10146", "step": 10240}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10146", "step": 12288}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10146", "step": 14336}
+{"book": "10146", "nll": 3.0544324157796967, "scored": 15358}
+StartRecentKVCache: 0, 1024
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10321", "step": 0}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10321", "step": 2048}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10321", "step": 4096}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10321", "step": 6144}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10321", "step": 8192}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10321", "step": 10240}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10321", "step": 12288}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10321", "step": 14336}
+{"book": "10321", "nll": 3.7048482131953167, "scored": 15358}
+StartRecentKVCache: 0, 1024
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10356", "step": 0}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10356", "step": 2048}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10356", "step": 4096}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10356", "step": 6144}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10356", "step": 8192}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10356", "step": 10240}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10356", "step": 12288}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10356", "step": 14336}
+{"book": "10356", "nll": 3.264874557298775, "scored": 15358}
+StartRecentKVCache: 0, 1024
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10762", "step": 0}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10762", "step": 2048}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10762", "step": 4096}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10762", "step": 6144}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10762", "step": 8192}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10762", "step": 10240}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10762", "step": 12288}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "10762", "step": 14336}
+{"book": "10762", "nll": 3.7226344109701626, "scored": 15358}
+StartRecentKVCache: 0, 1024
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "12204", "step": 0}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "12204", "step": 2048}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "12204", "step": 4096}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "12204", "step": 6144}
+{"book": "12204", "nll": 2.7663638510903623, "scored": 6115}
+StartRecentKVCache: 0, 1024
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "15562", "step": 0}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "15562", "step": 2048}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "15562", "step": 4096}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "15562", "step": 6144}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "15562", "step": 8192}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "15562", "step": 10240}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "15562", "step": 12288}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "15562", "step": 14336}
+{"book": "15562", "nll": 2.9164001978730867, "scored": 15358}
+StartRecentKVCache: 0, 1024
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "22424", "step": 0}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "22424", "step": 2048}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "22424", "step": 4096}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "22424", "step": 6144}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "22424", "step": 8192}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "22424", "step": 10240}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "22424", "step": 12288}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "22424", "step": 14336}
+{"book": "22424", "nll": 2.9397532273720524, "scored": 15358}
+StartRecentKVCache: 0, 1024
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "24553", "step": 0}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "24553", "step": 2048}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "24553", "step": 4096}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "24553", "step": 6144}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "24553", "step": 8192}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "24553", "step": 10240}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "24553", "step": 12288}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "24553", "step": 14336}
+{"book": "24553", "nll": 3.402427840552916, "scored": 15358}
+StartRecentKVCache: 0, 1024
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "2544", "step": 0}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "2544", "step": 2048}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "2544", "step": 4096}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "2544", "step": 6144}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "2544", "step": 8192}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "2544", "step": 10240}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "2544", "step": 12288}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "2544", "step": 14336}
+{"book": "2544", "nll": 3.2479012238956693, "scored": 15358}
+StartRecentKVCache: 0, 1024
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "25646", "step": 0}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "25646", "step": 2048}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "25646", "step": 4096}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "25646", "step": 6144}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "25646", "step": 8192}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "25646", "step": 10240}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "25646", "step": 12288}
+{"run_id": "R-v2-mig-20261009-window-s2", "book": "25646", "step": 14336}
+{"book": "25646", "nll": 2.4967141219464075, "scored": 15358}
+{
+  "run_id": "R-v2-mig-20261009-window-s2",
+  "macro_book_nll": 3.1516350059974445,
+  "micro_token_nll": 3.1763068592631085,
+  "scored_tokens": 144337,
+  "elapsed_seconds": 7267.181909896899,
+  "predictions_per_second": 21.271932079954382
+}
+{"run_id": "R-v2-mig-20261009-window-s2", "status": "completed", "gpu_hours": 2.026904357473573}

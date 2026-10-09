@@ -1,14 +1,16 @@
 # H800 execution status
 
-Step 2 of 4: formal reproduction is running. Steps correspond to repair/inventory → main reproduction → pilots/full/controls → verified delivery. The user explicitly waived procedural approvals and authorized unrestricted H800 resources on 2026-10-09. Evidence: `docs/execution_authorization.md`. No teacher approval or peer signature is invented.
+Step 3 of 4: formal reproduction is complete and raw-reconstructed; development pilots are running. Steps correspond to repair/inventory → main reproduction → pilots/full/controls → verified delivery. The user explicitly waived procedural approvals and authorized unrestricted H800 resources on 2026-10-09. Evidence: `docs/execution_authorization.md`. No teacher approval or peer signature is invented.
+
+Measured main result: paired equal-book ΔNLL −0.7217558173, book-bootstrap95% CI [−0.7590835293, −0.6858373358], `supported`. Window/StreamingLLM macro NLL3.1516350060/2.4298791887; secondary micro PPL23.9581092955/11.6921566131. All10 book deltas are negative. Each method's three actual seed loss arrays are bitwise identical; they remain three actual runs, not30 independent books. Receipt: `environment/verification/main-raw-reconstruction.json`.
 
 Branch: `codex/h800-course-completion-20261008`. Updated remote baseline: `48e57c6`; original audit baseline: `a3ffaf0`. T_final, actual roster and final course template are unknown. Prior pre-authorization checkpoint is retained in `docs/historical_task_status_before_owner_execution.md`.
 
 | Package | Actual state | Evidence |
 |---|---|---|
 | WP0–WP3 | complete | Inventory `docs/wp0_inventory.json`; all16 historical file hashes unchanged. Configuration/scoring/raw-K/every-layer references verified;59 actual CPU/H800 checks; immutable runs and failure recovery preserve evidence |
-| WP4 | running | Three matched H800 GPU1 MIG2g.20gb seed workers; `configs/reproduction_matrix.yaml`; six registered main arms, original10 books and actual seeds0/1/2; no final verdict before complete raw validation |
-| WP5 | preregistered; automatically follows WP4 | Three hypothesis cards; nine baseline/H1/H2 development runs; IDs1022/11155/13089 selected without losses; fixed rule delegated by owner, immutable proposal SHA recorded before full test |
+| WP4 | complete | All six matched MIG runs sealed/validated; original10 books and actual seeds0/1/2; direct raw NPZ reconstruction passes, main claim supported on this scope |
+| WP5 | running | Three hypothesis cards; nine baseline/H1/H2 development runs; IDs1022/11155/13089 selected without losses; fixed rule delegated by owner, immutable proposal SHA recorded before full test |
 | WP6 | automatically follows measured selection | Three full selected-method runs against compatible main fixed-four outputs; six selected-family development controls; per-book choices, uncertainty and whole-process cost retained |
 | WP7 | technical preparation verified; final scientific artifacts await runs | New clean checkout624b022 matches all67 dependency pins,57 CPU tests and13 asset hashes; report/deck/detailed tables/plots/raw audit/demo/freeze tooling; real peer review and individual course activities separately pending |
 

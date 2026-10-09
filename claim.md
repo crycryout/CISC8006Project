@@ -1,6 +1,6 @@
 # Central claim, frozen operational definition
 
-Status: original portal submission/instructor review is not evidenced. The user explicitly authorized v2 scientific execution without procedural approvals on 2026-10-09; registered runs are in progress and no final verdict is assigned before complete paired validation. Original wording/protocol are preserved in Git at `48e57c6`. Current status and any measured verdict are in `results/reproduction/status.json` and `summary.json`.
+Status: the complete v2 main comparison is **supported** on the original ten-book protocol. Six actual seed0/1/2 runs are sealed, strictly validated and independently reconstructed from raw NPZ: paired equal-book ΔNLL −0.7217558173, book-bootstrap95% CI [−0.7590835293, −0.6858373358]. All ten book deltas are negative; each method's three seed arrays are bitwise identical. Evidence: `results/reproduction/summary.json`, `per_book.csv`, and `environment/verification/main-raw-reconstruction.json`. Original portal submission/instructor review is not evidenced. The owner authorized execution on2026-10-09; original wording/protocol are preserved in Git at `48e57c6`.
 
 > On the fixed PG19 evaluation using pinned Pythia-2.8B and a1024-position retained KV budget, StreamingLLM retaining four initial attention-sink tokens plus recent tokens has lower equal-book post-overflow mean NLL than pure window attention, with positions continuous within each arm's cache.
 
