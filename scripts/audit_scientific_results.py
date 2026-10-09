@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Reconstruct paired statistics directly from every frozen raw NPZ loss array."""
 import argparse
+import csv
 import json
 import math
 from pathlib import Path
@@ -14,12 +15,13 @@ from scripts.validate_runs import validate_run
 
 def audit(stage,spec):
     baseline,candidate=spec["baseline"],spec["candidate"]
-    book_rows={}; raw_files=[]; repeats={"baseline":[],"candidate":[]}
+    book_rows={}; raw_files=[]; repeats={"baseline":[],"candidate":[]}; reported_runs={"baseline":[],"candidate":[]}
     for label,paths in [("baseline",baseline),("candidate",candidate)]:
         for relative in paths:
             directory=ROOT/Path(relative).parent
             validate_run(directory)
             result=json.loads((ROOT/relative).read_text()); seed=result["contract"]["seed"]
+            reported_runs[label].append(result)
             values={}
             for row in result["per_book"]:
                 book=row["book_id"]; raw=directory/"books"/book/"position_nll.npz"
@@ -46,8 +48,18 @@ def audit(stage,spec):
     indices=generator.integers(0,len(rows),size=(10000,len(rows)))
     samples=np.mean(differences[indices],axis=1)
     interval=np.percentile(samples,[2.5,97.5]).tolist()
-    summary=json.loads((ROOT/"results"/stage/"summary.json").read_text())
-    paired=json.loads((ROOT/"results"/stage/"paired_result.json").read_text())
+    if stage.startswith("pilots/"):
+        method=stage.split("/",1)[1]
+        paired_path=ROOT/"results/pilots"/(method+"_paired.json")
+        paired=json.loads(paired_path.read_text())
+        with (ROOT/"results/pilots/comparison.csv").open() as stream:
+            row=next(item for item in csv.DictReader(stream) if item["method"]==method)
+        summary=dict(paired_macro_delta_nll=float(row["paired_macro_delta_nll"]),
+                     bootstrap_ci95=[float(row["ci95_low"]),float(row["ci95_high"])],claim_status=paired["claim_status"])
+    else:
+        summary=json.loads((ROOT/"results"/stage/"summary.json").read_text())
+        paired_path=ROOT/"results"/stage/"paired_result.json"
+        paired=json.loads(paired_path.read_text())
     def close(measured,reported,label):
         if not math.isclose(measured,reported,rel_tol=1e-12,abs_tol=1e-12): raise ValueError(stage+": raw reconstruction differs: "+label)
     close(float(differences.mean()),summary["paired_macro_delta_nll"],"mean paired delta")
@@ -59,22 +71,28 @@ def audit(stage,spec):
     for label,runs in repeats.items():
         means=[np.mean([v["mean"] for v in run.values()]) for run in runs]
         micros=[sum(v["total"] for v in run.values())/sum(v["count"] for v in run.values()) for run in runs]
-        close(float(np.mean(means)),summary[label]["macro_book_nll"],label+" macro NLL")
-        close(float(np.mean(micros)),summary[label]["micro_token_nll"],label+" micro NLL")
-        close(float(np.exp(np.mean(micros))),summary[label]["micro_token_ppl"],label+" pooled PPL")
+        for mean,micro,reported in zip(means,micros,reported_runs[label]):
+            close(float(mean),reported["macro_book_nll"],label+" raw per-run macro NLL")
+            close(float(micro),reported["micro_token_nll"],label+" raw per-run micro NLL")
+            close(math.exp(float(micro)),reported["micro_token_ppl"],label+" raw per-run pooled PPL")
+        if label in summary:
+            close(float(np.mean(means)),summary[label]["macro_book_nll"],label+" macro NLL")
+            close(float(np.mean(micros)),summary[label]["micro_token_nll"],label+" micro NLL")
+            close(float(np.exp(np.mean(micros))),summary[label]["micro_token_ppl"],label+" pooled PPL")
         same=all(np.array_equal(runs[0][book]["raw_nll"],run[book]["raw_nll"]) for run in runs[1:] for book in runs[0])
         seed_spread[label]=dict(actual_seeds=[0,1,2],macro_nll_range=float(max(means)-min(means)),all_position_losses_bitwise_identical=same)
     verdict="supported" if interval[1]<0 else "not_supported" if interval[0]>0 else "inconclusive"
     if verdict!=summary["claim_status"]: raise ValueError("raw verdict differs")
     return dict(stage=stage,status="pass",n_books=len(rows),paired_macro_delta_nll=float(differences.mean()),bootstrap_ci95=interval,
                 claim_status=verdict,seed_spread=seed_spread,raw_files=raw_files,
-                paired_result_sha256=file_hash(ROOT/"results"/stage/"paired_result.json"))
+                paired_result_path=str(paired_path.relative_to(ROOT)),paired_result_sha256=file_hash(paired_path))
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__); p.add_argument("--stage",choices=["reproduction","improvement"]); p.add_argument("--out",default="environment/verification/scientific-raw-reconstruction.json")
+    p=argparse.ArgumentParser(description=__doc__); p.add_argument("--stage",choices=["reproduction","pilots","improvement"]); p.add_argument("--out",default="environment/verification/scientific-raw-reconstruction.json")
     args=p.parse_args(); inputs=json.loads((ROOT/"results/final_input_manifest.json").read_text())
-    stages=[(args.stage,inputs[args.stage])] if args.stage else [("reproduction",inputs["reproduction"]),("improvement",inputs["improvement"]),*(("ablations/"+name,spec) for name,spec in inputs["ablations"].items())]
+    pilot_stages=[("pilots/"+method,dict(baseline=inputs["pilots"]["streaming"],candidate=inputs["pilots"][method])) for method in ("h1_adaptive_sink","h2_sink_selection")]
+    stages=(pilot_stages if args.stage=="pilots" else [(args.stage,inputs[args.stage])]) if args.stage else [("reproduction",inputs["reproduction"]),*pilot_stages,("improvement",inputs["improvement"]),*(("ablations/"+name,spec) for name,spec in inputs["ablations"].items())]
     results=[audit(stage,spec) for stage,spec in stages]
     write_json(ROOT/args.out,dict(checked_at=now(),status="pass",kind="agent engineering reconstruction; not independent human peer review",audit_script_sha256=file_hash(Path(__file__)),input_manifest_sha256=file_hash(ROOT/"results/final_input_manifest.json"),bootstrap=dict(seed=0,resamples=10000,unit="book"),stages=results))
     print(json.dumps([dict(stage=row["stage"],status=row["status"],n_books=row["n_books"],claim_status=row["claim_status"],seed_spread=row["seed_spread"]) for row in results],indent=2))

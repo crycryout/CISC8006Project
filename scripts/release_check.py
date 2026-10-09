@@ -142,11 +142,12 @@ def main():
             audit=json.loads(audit_path.read_text())
             if audit.get("status")!="pass" or audit.get("audit_script_sha256")!=file_hash(ROOT/"scripts/audit_scientific_results.py") or audit.get("input_manifest_sha256")!=file_hash(ROOT/"results/final_input_manifest.json"):
                 missing.append("current raw-statistics reconstruction receipt")
-            expected={"reproduction","improvement",*("ablations/"+name for name in completion["ablations"])}
+            expected={"reproduction","improvement","pilots/h1_adaptive_sink","pilots/h2_sink_selection",*("ablations/"+name for name in completion["ablations"])}
             if {row["stage"] for row in audit.get("stages",[])}!=expected:
                 missing.append("complete raw-statistics reconstruction stage set")
             for row in audit.get("stages",[]):
-                if row["status"]!="pass" or row["paired_result_sha256"]!=file_hash(ROOT/"results"/row["stage"]/"paired_result.json"):
+                paired_path=ROOT/row.get("paired_result_path","results/"+row["stage"]+"/paired_result.json")
+                if row["status"]!="pass" or row["paired_result_sha256"]!=file_hash(paired_path):
                     missing.append("raw-statistics reconstruction differs: "+row["stage"])
                 for raw in row["raw_files"]:
                     if file_hash(ROOT/raw["path"])!=raw["sha256"]: missing.append("audited raw array checksum: "+raw["path"])

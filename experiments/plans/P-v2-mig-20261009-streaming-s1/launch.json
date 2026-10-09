@@ -1,0 +1,12 @@
+{
+  "registered_at": "2026-10-09T10:17:10.968264+00:00",
+  "matrix_sha256": "2316bd153f3706476f751737392b2e24cf7ee3732c97b9df483a692540a46bb6",
+  "command": [
+    "/home/renjie/CISC8006Project/.venv-verified/bin/python",
+    "/home/renjie/CISC8006Project/scripts/eval_ppl.py",
+    "--config",
+    "/home/renjie/CISC8006Project/experiments/plans/P-v2-mig-20261009-streaming-s1/config.yaml"
+  ],
+  "selected_device": "MIG-0ac25523-86e7-5277-bfb8-0d8f3b6175d7",
+  "numerical_source_sha256": "a6dbe103b2e9416295807cd481a9ff1660fbfede9c26b68e7db65d230e6229ef"
+}

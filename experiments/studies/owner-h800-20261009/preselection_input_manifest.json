@@ -1,0 +1,93 @@
+{
+  "diagnostics": [
+    "runs/D-W0-20261008/result.json",
+    "runs/D-S0-20261008/result.json",
+    "runs/D-W1-20261008/result.json",
+    "runs/D-S1-20261008/result.json"
+  ],
+  "reproduction": {
+    "baseline": [
+      "runs/R-v2-mig-20261009-window-s0/result.json",
+      "runs/R-v2-mig-20261009-window-s1/result.json",
+      "runs/R-v2-mig-20261009-window-s2/result.json"
+    ],
+    "candidate": [
+      "runs/R-v2-mig-20261009-streaming-s0/result.json",
+      "runs/R-v2-mig-20261009-streaming-s1/result.json",
+      "runs/R-v2-mig-20261009-streaming-s2/result.json"
+    ],
+    "split": "test"
+  },
+  "pilots": {
+    "streaming": [
+      "runs/P-v2-mig-20261009-streaming-s0/result.json",
+      "runs/P-v2-mig-20261009-streaming-s1/result.json",
+      "runs/P-v2-mig-20261009-streaming-s2/result.json"
+    ],
+    "h1_adaptive_sink": [
+      "runs/P-v2-mig-20261009-h1_adaptive_sink-s0/result.json",
+      "runs/P-v2-mig-20261009-h1_adaptive_sink-s1/result.json",
+      "runs/P-v2-mig-20261009-h1_adaptive_sink-s2/result.json"
+    ],
+    "h2_sink_selection": [
+      "runs/P-v2-mig-20261009-h2_sink_selection-s0/result.json",
+      "runs/P-v2-mig-20261009-h2_sink_selection-s1/result.json",
+      "runs/P-v2-mig-20261009-h2_sink_selection-s2/result.json"
+    ]
+  },
+  "improvement": null,
+  "ablations": {
+    "h1_calibration_control": {
+      "baseline": [
+        "runs/P-v2-mig-20261009-streaming-s0/result.json",
+        "runs/P-v2-mig-20261009-streaming-s1/result.json",
+        "runs/P-v2-mig-20261009-streaming-s2/result.json"
+      ],
+      "candidate": [
+        "runs/A-h1-v2-mig-20261009-calibration_control-s0/result.json",
+        "runs/A-h1-v2-mig-20261009-calibration_control-s1/result.json",
+        "runs/A-h1-v2-mig-20261009-calibration_control-s2/result.json"
+      ],
+      "split": "dev"
+    },
+    "h1_fixed_sink": {
+      "baseline": [
+        "runs/P-v2-mig-20261009-streaming-s0/result.json",
+        "runs/P-v2-mig-20261009-streaming-s1/result.json",
+        "runs/P-v2-mig-20261009-streaming-s2/result.json"
+      ],
+      "candidate": [
+        "runs/A-h1-v2-mig-20261009-fixed_sink-s0/result.json",
+        "runs/A-h1-v2-mig-20261009-fixed_sink-s1/result.json",
+        "runs/A-h1-v2-mig-20261009-fixed_sink-s2/result.json"
+      ],
+      "split": "dev"
+    },
+    "h2_h2_forced_prefix": {
+      "baseline": [
+        "runs/P-v2-mig-20261009-streaming-s0/result.json",
+        "runs/P-v2-mig-20261009-streaming-s1/result.json",
+        "runs/P-v2-mig-20261009-streaming-s2/result.json"
+      ],
+      "candidate": [
+        "runs/A-h2-v2-mig-20261009-h2_forced_prefix-s0/result.json",
+        "runs/A-h2-v2-mig-20261009-h2_forced_prefix-s1/result.json",
+        "runs/A-h2-v2-mig-20261009-h2_forced_prefix-s2/result.json"
+      ],
+      "split": "dev"
+    },
+    "h2_random_anchors": {
+      "baseline": [
+        "runs/P-v2-mig-20261009-streaming-s0/result.json",
+        "runs/P-v2-mig-20261009-streaming-s1/result.json",
+        "runs/P-v2-mig-20261009-streaming-s2/result.json"
+      ],
+      "candidate": [
+        "runs/A-h2-v2-mig-20261009-random_anchors-s0/result.json",
+        "runs/A-h2-v2-mig-20261009-random_anchors-s1/result.json",
+        "runs/A-h2-v2-mig-20261009-random_anchors-s2/result.json"
+      ],
+      "split": "dev"
+    }
+  }
+}

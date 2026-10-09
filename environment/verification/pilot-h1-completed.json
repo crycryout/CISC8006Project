@@ -1,0 +1,230 @@
+{
+  "checked_at": "2026-10-09T11:01:20.897486+00:00",
+  "status": "pass",
+  "scope": "Completed H1 development comparison only; selection waits for the full H2 comparison",
+  "kind": "agent strict pairing after raw-array validation",
+  "validated": [
+    {
+      "run_id": "P-v2-mig-20261009-streaming-s0",
+      "validation_status": "valid",
+      "books": 3,
+      "result_sha256": "4e34bf3196aabfddcdaf9816c712c7c2f336500eeba9f31b2dc6d12834021246"
+    },
+    {
+      "run_id": "P-v2-mig-20261009-streaming-s1",
+      "validation_status": "valid",
+      "books": 3,
+      "result_sha256": "a0a38a7e3dec8f6a99953bb4945b87c4be9cd550c54ff0b6e068a08738831c69"
+    },
+    {
+      "run_id": "P-v2-mig-20261009-streaming-s2",
+      "validation_status": "valid",
+      "books": 3,
+      "result_sha256": "6555caf5360c98571118d2ca7a3fa52a57fe6ff0019db0751c53071d21d38dc3"
+    },
+    {
+      "run_id": "P-v2-mig-20261009-h1_adaptive_sink-s0",
+      "validation_status": "valid",
+      "books": 3,
+      "result_sha256": "ed063395f0d1cbe0dec5e854528ea3d4d6498661ff2993ed33590778df338d09"
+    },
+    {
+      "run_id": "P-v2-mig-20261009-h1_adaptive_sink-s1",
+      "validation_status": "valid",
+      "books": 3,
+      "result_sha256": "b87f6b5bcb2f5ed6923561edf350d54f09a3757f96a8db7c16597875fdb5df3c"
+    },
+    {
+      "run_id": "P-v2-mig-20261009-h1_adaptive_sink-s2",
+      "validation_status": "valid",
+      "books": 3,
+      "result_sha256": "a8017d7e95a274e0b161949790a6f30e985b2f7711471c0683d55a90cc663111"
+    }
+  ],
+  "paired": {
+    "validation_status": "valid",
+    "provenance": [
+      {
+        "seed": 0,
+        "baseline_run": "P-v2-mig-20261009-streaming-s0",
+        "candidate_run": "P-v2-mig-20261009-h1_adaptive_sink-s0"
+      },
+      {
+        "seed": 1,
+        "baseline_run": "P-v2-mig-20261009-streaming-s1",
+        "candidate_run": "P-v2-mig-20261009-h1_adaptive_sink-s1"
+      },
+      {
+        "seed": 2,
+        "baseline_run": "P-v2-mig-20261009-streaming-s2",
+        "candidate_run": "P-v2-mig-20261009-h1_adaptive_sink-s2"
+      }
+    ],
+    "per_book": [
+      {
+        "book_id": "1022",
+        "baseline_nll": 2.6662909568686968,
+        "candidate_nll": 2.6667510972723183,
+        "delta": 0.00046014040362152286,
+        "seed_delta_min": 0.00046014040362152286,
+        "seed_delta_max": 0.00046014040362152286,
+        "scored_tokens": 7166
+      },
+      {
+        "book_id": "11155",
+        "baseline_nll": 2.852686879919036,
+        "candidate_nll": 2.836075302324973,
+        "delta": -0.016611577594062954,
+        "seed_delta_min": -0.016611577594062954,
+        "seed_delta_max": -0.016611577594062954,
+        "scored_tokens": 7166
+      },
+      {
+        "book_id": "13089",
+        "baseline_nll": 2.3172822216287017,
+        "candidate_nll": 2.3173989763925085,
+        "delta": 0.00011675476380679228,
+        "seed_delta_min": 0.00011675476380679228,
+        "seed_delta_max": 0.00011675476380679228,
+        "scored_tokens": 7166
+      }
+    ],
+    "seed_results": {
+      "1022": [
+        {
+          "seed": 0,
+          "baseline_nll": 2.6662909568686968,
+          "candidate_nll": 2.6667510972723183,
+          "delta": 0.00046014040362152286,
+          "scored_tokens": 7166
+        },
+        {
+          "seed": 1,
+          "baseline_nll": 2.6662909568686968,
+          "candidate_nll": 2.6667510972723183,
+          "delta": 0.00046014040362152286,
+          "scored_tokens": 7166
+        },
+        {
+          "seed": 2,
+          "baseline_nll": 2.6662909568686968,
+          "candidate_nll": 2.6667510972723183,
+          "delta": 0.00046014040362152286,
+          "scored_tokens": 7166
+        }
+      ],
+      "11155": [
+        {
+          "seed": 0,
+          "baseline_nll": 2.852686879919036,
+          "candidate_nll": 2.836075302324973,
+          "delta": -0.016611577594062954,
+          "scored_tokens": 7166
+        },
+        {
+          "seed": 1,
+          "baseline_nll": 2.852686879919036,
+          "candidate_nll": 2.836075302324973,
+          "delta": -0.016611577594062954,
+          "scored_tokens": 7166
+        },
+        {
+          "seed": 2,
+          "baseline_nll": 2.852686879919036,
+          "candidate_nll": 2.836075302324973,
+          "delta": -0.016611577594062954,
+          "scored_tokens": 7166
+        }
+      ],
+      "13089": [
+        {
+          "seed": 0,
+          "baseline_nll": 2.3172822216287017,
+          "candidate_nll": 2.3173989763925085,
+          "delta": 0.00011675476380679228,
+          "scored_tokens": 7166
+        },
+        {
+          "seed": 1,
+          "baseline_nll": 2.3172822216287017,
+          "candidate_nll": 2.3173989763925085,
+          "delta": 0.00011675476380679228,
+          "scored_tokens": 7166
+        },
+        {
+          "seed": 2,
+          "baseline_nll": 2.3172822216287017,
+          "candidate_nll": 2.3173989763925085,
+          "delta": 0.00011675476380679228,
+          "scored_tokens": 7166
+        }
+      ]
+    },
+    "uncertainty_unit": "book; seed-paired deltas averaged within book before bootstrap",
+    "paired_macro_delta_nll": -0.0053448941422115466,
+    "bootstrap_ci95": [
+      -0.016611577594062954,
+      0.00046014040362152286
+    ],
+    "claim_status": "inconclusive",
+    "bootstrap_seed": 0,
+    "n_boot": 10000,
+    "n_books": 3
+  },
+  "choices": [
+    {
+      "seed": 0,
+      "book": "1022",
+      "k": 2,
+      "fallback": false
+    },
+    {
+      "seed": 0,
+      "book": "11155",
+      "k": 8,
+      "fallback": false
+    },
+    {
+      "seed": 0,
+      "book": "13089",
+      "k": 2,
+      "fallback": false
+    },
+    {
+      "seed": 1,
+      "book": "1022",
+      "k": 2,
+      "fallback": false
+    },
+    {
+      "seed": 1,
+      "book": "11155",
+      "k": 8,
+      "fallback": false
+    },
+    {
+      "seed": 1,
+      "book": "13089",
+      "k": 2,
+      "fallback": false
+    },
+    {
+      "seed": 2,
+      "book": "1022",
+      "k": 2,
+      "fallback": false
+    },
+    {
+      "seed": 2,
+      "book": "11155",
+      "k": 8,
+      "fallback": false
+    },
+    {
+      "seed": 2,
+      "book": "13089",
+      "k": 2,
+      "fallback": false
+    }
+  ]
+}

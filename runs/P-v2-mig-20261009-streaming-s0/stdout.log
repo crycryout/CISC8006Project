@@ -1,0 +1,26 @@
+StartRecentKVCache: 4, 1020
+{"run_id": "P-v2-mig-20261009-streaming-s0", "book": "1022", "step": 0}
+{"run_id": "P-v2-mig-20261009-streaming-s0", "book": "1022", "step": 2048}
+{"run_id": "P-v2-mig-20261009-streaming-s0", "book": "1022", "step": 4096}
+{"run_id": "P-v2-mig-20261009-streaming-s0", "book": "1022", "step": 6144}
+{"book": "1022", "nll": 2.6662909568686968, "scored": 7166}
+StartRecentKVCache: 4, 1020
+{"run_id": "P-v2-mig-20261009-streaming-s0", "book": "11155", "step": 0}
+{"run_id": "P-v2-mig-20261009-streaming-s0", "book": "11155", "step": 2048}
+{"run_id": "P-v2-mig-20261009-streaming-s0", "book": "11155", "step": 4096}
+{"run_id": "P-v2-mig-20261009-streaming-s0", "book": "11155", "step": 6144}
+{"book": "11155", "nll": 2.852686879919036, "scored": 7166}
+StartRecentKVCache: 4, 1020
+{"run_id": "P-v2-mig-20261009-streaming-s0", "book": "13089", "step": 0}
+{"run_id": "P-v2-mig-20261009-streaming-s0", "book": "13089", "step": 2048}
+{"run_id": "P-v2-mig-20261009-streaming-s0", "book": "13089", "step": 4096}
+{"run_id": "P-v2-mig-20261009-streaming-s0", "book": "13089", "step": 6144}
+{"book": "13089", "nll": 2.3172822216287017, "scored": 7166}
+{
+  "run_id": "P-v2-mig-20261009-streaming-s0",
+  "macro_book_nll": 2.6120866861388117,
+  "micro_token_nll": 2.6120866861388117,
+  "scored_tokens": 21498,
+  "elapsed_seconds": 1163.371368553955,
+  "predictions_per_second": 21.12223204404944
+}

@@ -35,34 +35,20 @@
       "runs/P-v2-mig-20261009-h2_sink_selection-s2/result.json"
     ]
   },
-  "improvement": null,
+  "improvement": {
+    "baseline": [
+      "runs/R-v2-mig-20261009-streaming-s0/result.json",
+      "runs/R-v2-mig-20261009-streaming-s1/result.json",
+      "runs/R-v2-mig-20261009-streaming-s2/result.json"
+    ],
+    "candidate": [
+      "runs/I-h2-v2-mig-20261009-h2_sink_selection-s0/result.json",
+      "runs/I-h2-v2-mig-20261009-h2_sink_selection-s1/result.json",
+      "runs/I-h2-v2-mig-20261009-h2_sink_selection-s2/result.json"
+    ],
+    "split": "test"
+  },
   "ablations": {
-    "h1_calibration_control": {
-      "baseline": [
-        "runs/P-v2-mig-20261009-streaming-s0/result.json",
-        "runs/P-v2-mig-20261009-streaming-s1/result.json",
-        "runs/P-v2-mig-20261009-streaming-s2/result.json"
-      ],
-      "candidate": [
-        "runs/A-h1-v2-mig-20261009-calibration_control-s0/result.json",
-        "runs/A-h1-v2-mig-20261009-calibration_control-s1/result.json",
-        "runs/A-h1-v2-mig-20261009-calibration_control-s2/result.json"
-      ],
-      "split": "dev"
-    },
-    "h1_fixed_sink": {
-      "baseline": [
-        "runs/P-v2-mig-20261009-streaming-s0/result.json",
-        "runs/P-v2-mig-20261009-streaming-s1/result.json",
-        "runs/P-v2-mig-20261009-streaming-s2/result.json"
-      ],
-      "candidate": [
-        "runs/A-h1-v2-mig-20261009-fixed_sink-s0/result.json",
-        "runs/A-h1-v2-mig-20261009-fixed_sink-s1/result.json",
-        "runs/A-h1-v2-mig-20261009-fixed_sink-s2/result.json"
-      ],
-      "split": "dev"
-    },
     "h2_h2_forced_prefix": {
       "baseline": [
         "runs/P-v2-mig-20261009-streaming-s0/result.json",

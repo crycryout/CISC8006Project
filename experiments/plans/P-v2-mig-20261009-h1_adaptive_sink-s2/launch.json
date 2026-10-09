@@ -1,0 +1,12 @@
+{
+  "registered_at": "2026-10-09T10:36:56.901556+00:00",
+  "matrix_sha256": "2316bd153f3706476f751737392b2e24cf7ee3732c97b9df483a692540a46bb6",
+  "command": [
+    "/home/renjie/CISC8006Project/.venv-verified/bin/python",
+    "/home/renjie/CISC8006Project/scripts/eval_ppl.py",
+    "--config",
+    "/home/renjie/CISC8006Project/experiments/plans/P-v2-mig-20261009-h1_adaptive_sink-s2/config.yaml"
+  ],
+  "selected_device": "MIG-c3be06c6-cf04-5d8b-85a3-617a77291100",
+  "numerical_source_sha256": "a6dbe103b2e9416295807cd481a9ff1660fbfede9c26b68e7db65d230e6229ef"
+}

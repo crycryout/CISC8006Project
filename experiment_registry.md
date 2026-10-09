@@ -30,8 +30,17 @@ Machine events: `experiments/registry.jsonl`. Historical Markdown preserved in `
 | R-v2-mig-20261009-streaming-s2 | reproduction / 2 | completed | `61815385` | 7327.012 / 2.035281 | `runs/R-v2-mig-20261009-streaming-s2` |
 | R-v2-mig-20261009-streaming-s1 | reproduction / 1 | completed | `61815385` | 7344.114 / 2.040032 | `runs/R-v2-mig-20261009-streaming-s1` |
 | R-v2-mig-20261009-streaming-s0 | reproduction / 0 | completed | `61815385` | 7352.186 / 2.042274 | `runs/R-v2-mig-20261009-streaming-s0` |
-| P-v2-mig-20261009-streaming-s2 | pilot / 2 | running | `311cc9e1` | unknown / pending | `runs/P-v2-mig-20261009-streaming-s2` |
-| P-v2-mig-20261009-streaming-s0 | pilot / 0 | running | `311cc9e1` | unknown / pending | `runs/P-v2-mig-20261009-streaming-s0` |
-| P-v2-mig-20261009-streaming-s1 | pilot / 1 | running | `311cc9e1` | unknown / pending | `runs/P-v2-mig-20261009-streaming-s1` |
+| P-v2-mig-20261009-streaming-s2 | pilot / 2 | completed | `311cc9e1` | 1184.989 / 0.329164 | `runs/P-v2-mig-20261009-streaming-s2` |
+| P-v2-mig-20261009-streaming-s0 | pilot / 0 | completed | `311cc9e1` | 1192.339 / 0.331205 | `runs/P-v2-mig-20261009-streaming-s0` |
+| P-v2-mig-20261009-streaming-s1 | pilot / 1 | completed | `311cc9e1` | 1184.119 / 0.328922 | `runs/P-v2-mig-20261009-streaming-s1` |
+| P-v2-mig-20261009-h1_adaptive_sink-s1 | pilot / 1 | completed | `3c3d9478` | 1211.089 / 0.336414 | `runs/P-v2-mig-20261009-h1_adaptive_sink-s1` |
+| P-v2-mig-20261009-h1_adaptive_sink-s2 | pilot / 2 | completed | `3c3d9478` | 1167.769 / 0.324380 | `runs/P-v2-mig-20261009-h1_adaptive_sink-s2` |
+| P-v2-mig-20261009-h1_adaptive_sink-s0 | pilot / 0 | completed | `3c3d9478` | 1191.922 / 0.331090 | `runs/P-v2-mig-20261009-h1_adaptive_sink-s0` |
+| P-v2-mig-20261009-h2_sink_selection-s2 | pilot / 2 | completed | `10616458` | 1193.780 / 0.331606 | `runs/P-v2-mig-20261009-h2_sink_selection-s2` |
+| P-v2-mig-20261009-h2_sink_selection-s0 | pilot / 0 | completed | `10616458` | 1200.386 / 0.333440 | `runs/P-v2-mig-20261009-h2_sink_selection-s0` |
+| P-v2-mig-20261009-h2_sink_selection-s1 | pilot / 1 | completed | `10616458` | 1197.282 / 0.332578 | `runs/P-v2-mig-20261009-h2_sink_selection-s1` |
+| I-h2-v2-mig-20261009-h2_sink_selection-s1 | improvement / 1 | running | `10616458` | unknown / pending | `runs/I-h2-v2-mig-20261009-h2_sink_selection-s1` |
+| I-h2-v2-mig-20261009-h2_sink_selection-s0 | improvement / 0 | running | `10616458` | unknown / pending | `runs/I-h2-v2-mig-20261009-h2_sink_selection-s0` |
+| I-h2-v2-mig-20261009-h2_sink_selection-s2 | improvement / 2 | running | `10616458` | unknown / pending | `runs/I-h2-v2-mig-20261009-h2_sink_selection-s2` |
 
-Spent/reserved charge: 14.689379 device-instance hours. This includes historical0.25h plus0.02h conservative prior uninstrumented H800-fixture reserve. Full-GPU and MIG instance wall-hours are not normalized full-GPU billing or currency cost. New attempts use whole-process wall-clock timing. The user authorized resources without the old20h ceiling. Failed attempts remain visible and never enter claim inference.
+Spent/reserved charge: 26.697345 device-instance hours. This includes historical0.25h plus0.02h conservative prior uninstrumented H800-fixture reserve. Full-GPU and MIG instance wall-hours are not normalized full-GPU billing or currency cost. New attempts use whole-process wall-clock timing. The user authorized resources without the old20h ceiling. Failed attempts remain visible and never enter claim inference.

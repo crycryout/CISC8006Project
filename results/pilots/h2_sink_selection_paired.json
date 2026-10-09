@@ -1,0 +1,130 @@
+{
+  "validation_status": "valid",
+  "provenance": [
+    {
+      "seed": 0,
+      "baseline_run": "P-v2-mig-20261009-streaming-s0",
+      "candidate_run": "P-v2-mig-20261009-h2_sink_selection-s0"
+    },
+    {
+      "seed": 1,
+      "baseline_run": "P-v2-mig-20261009-streaming-s1",
+      "candidate_run": "P-v2-mig-20261009-h2_sink_selection-s1"
+    },
+    {
+      "seed": 2,
+      "baseline_run": "P-v2-mig-20261009-streaming-s2",
+      "candidate_run": "P-v2-mig-20261009-h2_sink_selection-s2"
+    }
+  ],
+  "per_book": [
+    {
+      "book_id": "1022",
+      "baseline_nll": 2.6662909568686968,
+      "candidate_nll": 2.6603147357300374,
+      "delta": -0.0059762211386593656,
+      "seed_delta_min": -0.0059762211386593656,
+      "seed_delta_max": -0.0059762211386593656,
+      "scored_tokens": 7166
+    },
+    {
+      "book_id": "11155",
+      "baseline_nll": 2.852686879919036,
+      "candidate_nll": 2.8363396331215056,
+      "delta": -0.016347246797530968,
+      "seed_delta_min": -0.016347246797530968,
+      "seed_delta_max": -0.016347246797530968,
+      "scored_tokens": 7166
+    },
+    {
+      "book_id": "13089",
+      "baseline_nll": 2.3172822216287017,
+      "candidate_nll": 2.315446225936309,
+      "delta": -0.001835995692392789,
+      "seed_delta_min": -0.001835995692392789,
+      "seed_delta_max": -0.001835995692392789,
+      "scored_tokens": 7166
+    }
+  ],
+  "seed_results": {
+    "1022": [
+      {
+        "seed": 0,
+        "baseline_nll": 2.6662909568686968,
+        "candidate_nll": 2.6603147357300374,
+        "delta": -0.0059762211386593656,
+        "scored_tokens": 7166
+      },
+      {
+        "seed": 1,
+        "baseline_nll": 2.6662909568686968,
+        "candidate_nll": 2.6603147357300374,
+        "delta": -0.0059762211386593656,
+        "scored_tokens": 7166
+      },
+      {
+        "seed": 2,
+        "baseline_nll": 2.6662909568686968,
+        "candidate_nll": 2.6603147357300374,
+        "delta": -0.0059762211386593656,
+        "scored_tokens": 7166
+      }
+    ],
+    "11155": [
+      {
+        "seed": 0,
+        "baseline_nll": 2.852686879919036,
+        "candidate_nll": 2.836339633121505,
+        "delta": -0.016347246797530968,
+        "scored_tokens": 7166
+      },
+      {
+        "seed": 1,
+        "baseline_nll": 2.852686879919036,
+        "candidate_nll": 2.836339633121505,
+        "delta": -0.016347246797530968,
+        "scored_tokens": 7166
+      },
+      {
+        "seed": 2,
+        "baseline_nll": 2.852686879919036,
+        "candidate_nll": 2.836339633121505,
+        "delta": -0.016347246797530968,
+        "scored_tokens": 7166
+      }
+    ],
+    "13089": [
+      {
+        "seed": 0,
+        "baseline_nll": 2.3172822216287017,
+        "candidate_nll": 2.315446225936309,
+        "delta": -0.001835995692392789,
+        "scored_tokens": 7166
+      },
+      {
+        "seed": 1,
+        "baseline_nll": 2.3172822216287017,
+        "candidate_nll": 2.315446225936309,
+        "delta": -0.001835995692392789,
+        "scored_tokens": 7166
+      },
+      {
+        "seed": 2,
+        "baseline_nll": 2.3172822216287017,
+        "candidate_nll": 2.315446225936309,
+        "delta": -0.001835995692392789,
+        "scored_tokens": 7166
+      }
+    ]
+  },
+  "uncertainty_unit": "book; seed-paired deltas averaged within book before bootstrap",
+  "paired_macro_delta_nll": -0.00805315454286104,
+  "bootstrap_ci95": [
+    -0.016347246797530968,
+    -0.001835995692392789
+  ],
+  "claim_status": "supported",
+  "bootstrap_seed": 0,
+  "n_boot": 10000,
+  "n_books": 3
+}

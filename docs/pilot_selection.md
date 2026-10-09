@@ -1,7 +1,14 @@
-# Pilot selection state
+# Measured pilot selection
 
-The user authorized both validation pilots and delegated the frozen selection rule on 2026-10-09. Execution follows the running main reproduction automatically. Both causal candidates/controls are implemented and tested; development IDs 1022, 11155 and 13089 and fixed parameters were recorded before losses. `configs/pilot_matrix.yaml` defines actual three-seed baseline/H1/H2 jobs on matched H800 MIG instances.
+All nine development baseline/H1/H2 runs are complete and strictly validated on frozen IDs1022,11155,13089, cap8192 and actual seeds0/1/2. Direct raw-NPZ reconstruction passes for both candidates: `environment/verification/pilot-raw-reconstruction.json`. Each method's three actual seed loss arrays are bitwise identical; three books remain the uncertainty units.
 
-Selection rule is fixed in `docs/protocol_amendments.md`: invalid candidates cannot enter comparison; compare paired macro loss and measured cost under 1.10 ratio limits; prefer the lower acceptable-cost negative mean loss; evaluate H1 as the preregistered negative-result fallback if neither qualifies. `build_results.py` writes all comparisons and an immutable proposal. `complete_study.py` records its actual SHA and applies the rule under the owner delegation before any full improvement run. The actor is labelled as agent execution, never human review. No additional confirmation is required.
+| Candidate | Paired mean ΔNLL | Book-bootstrap95% CI | Registered runtime / baseline | Peak memory / baseline | Development verdict |
+|---|---:|---|---:|---:|---|
+| H1 adaptive sink |−0.0053448941|[−0.0166115776,0.0004601404]|1.0026204417|1.000000|inconclusive|
+| H2 anchor selection |−0.0080531545|[−0.0163472468,−0.0018359957]|1.0084236115|1.000000|supported on the three-book scope|
 
-No test result selects a threshold, anchor set, seed or book. Until real pilot outputs exist, their values and nomination remain pending. Machine outputs live in `results/pilots/`; the actual selection record is `docs/approval_decisions.json`. Placeholder names are not experimental evidence.
+Both have negative mean ΔNLL and acceptable registered runtime/peak-memory ratios≤1.10. The frozen rule ranks point means and costs, not CI significance. H2 has the lower qualifying mean and was selected at2026-10-09 11:17:07 UTC. No fallback or additional parameter search was needed. The three-book pilot CI does not establish a full-test effect.
+
+Immutable proposal: `results/pilots/selection_proposal.json`, SHA256 `51845b744f16c83a9298348eb86e2b5f5ffb546e6e04d9cd6afa0d6ee5087f79`. Selection actor: agent applying the frozen owner-authorized rule, recorded in `docs/approval_decisions.json`; no teacher or human scientific review is claimed. Rebuild verifies the proposal remains unchanged after selection.
+
+H2 full test now runs on the original ten books with actual seeds0/1/2, reusing the compatible fixed-four main baseline. Only H2 forced-prefix and random-anchor development controls follow. No test NLL chooses a threshold, anchor-selection rule, seed or book.

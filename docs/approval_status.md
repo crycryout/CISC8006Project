@@ -7,7 +7,7 @@ On 2026-10-09 the user explicitly instructed: “不需要审批，H800的GPU资
 | Code repair, fixtures, diagnostics, setup and draft deliverables | authorized by owner | Current request to execute plan §9 |
 | Original claim portal submission / instructor review | pending evidence | Historical files still say not submitted; no receipt |
 | Reproduction v2: cache-relative RoPE, fp32 scorer, explicit macro estimand, three seeds | execution authorized by user; procedural approval waived | `execution_authorization.md`, `approval_decisions.json` |
-| H1/H2 pilots and method selection | execution authorized; frozen selection rule delegated | `execution_authorization.md`, immutable pilot proposal once completed |
+| H1/H2 pilots and method selection | execution authorized; frozen selection rule delegated | `execution_authorization.md`; completed nine pilots, H2 chosen at11:17:07 UTC; immutable proposal SHA51845b74… in `approval_decisions.json` |
 | Resource ceiling | old 20h limit superseded by explicit unrestricted authorization | `budget_decision.json`; all actual failed/successful costs still recorded |
 | Scientific artifact freeze | authorized after measured scientific and engineering checks pass | `approval_decisions.json`; human course activities separately recorded |
 

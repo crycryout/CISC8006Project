@@ -1,0 +1,228 @@
+{
+  "checked_at": "2026-10-09T11:22:27.299205+00:00",
+  "status": "pass",
+  "kind": "agent engineering reconstruction; not independent human peer review",
+  "audit_script_sha256": "79e1f0135c21f2dc4c6ca69a98dffc387d521f098aa2a0f6f41cff477d7e3447",
+  "input_manifest_sha256": "949baedf46b437178111626a11b828bfe342f6b7a7d01ec694a63b01e5dc35af",
+  "bootstrap": {
+    "seed": 0,
+    "resamples": 10000,
+    "unit": "book"
+  },
+  "stages": [
+    {
+      "stage": "pilots/h1_adaptive_sink",
+      "status": "pass",
+      "n_books": 3,
+      "paired_macro_delta_nll": -0.0053448941422115466,
+      "bootstrap_ci95": [
+        -0.016611577594062954,
+        0.00046014040362152286
+      ],
+      "claim_status": "inconclusive",
+      "seed_spread": {
+        "baseline": {
+          "actual_seeds": [
+            0,
+            1,
+            2
+          ],
+          "macro_nll_range": 0.0,
+          "all_position_losses_bitwise_identical": true
+        },
+        "candidate": {
+          "actual_seeds": [
+            0,
+            1,
+            2
+          ],
+          "macro_nll_range": 0.0,
+          "all_position_losses_bitwise_identical": true
+        }
+      },
+      "raw_files": [
+        {
+          "path": "runs/P-v2-mig-20261009-streaming-s0/books/1022/position_nll.npz",
+          "sha256": "ea2e27935615b439e5a4c526953f3cb2742f3457d5eefdda1f0cb8b59e282e0a"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-streaming-s0/books/11155/position_nll.npz",
+          "sha256": "a218ccf68cd19ef962f49e4d19adbf1f5016510fda02b439b7c7dc4b852d63e4"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-streaming-s0/books/13089/position_nll.npz",
+          "sha256": "162ddcf2ffb95f94c27bde9f28a2e64338c4a455fdad9e75f3cf78f4bbeb4fa8"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-streaming-s1/books/1022/position_nll.npz",
+          "sha256": "ea2e27935615b439e5a4c526953f3cb2742f3457d5eefdda1f0cb8b59e282e0a"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-streaming-s1/books/11155/position_nll.npz",
+          "sha256": "a218ccf68cd19ef962f49e4d19adbf1f5016510fda02b439b7c7dc4b852d63e4"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-streaming-s1/books/13089/position_nll.npz",
+          "sha256": "162ddcf2ffb95f94c27bde9f28a2e64338c4a455fdad9e75f3cf78f4bbeb4fa8"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-streaming-s2/books/1022/position_nll.npz",
+          "sha256": "ea2e27935615b439e5a4c526953f3cb2742f3457d5eefdda1f0cb8b59e282e0a"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-streaming-s2/books/11155/position_nll.npz",
+          "sha256": "a218ccf68cd19ef962f49e4d19adbf1f5016510fda02b439b7c7dc4b852d63e4"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-streaming-s2/books/13089/position_nll.npz",
+          "sha256": "162ddcf2ffb95f94c27bde9f28a2e64338c4a455fdad9e75f3cf78f4bbeb4fa8"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-h1_adaptive_sink-s0/books/1022/position_nll.npz",
+          "sha256": "fa55994e57992de5fedc73209575b805c29e29f2ff2731267f74307ad30cc272"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-h1_adaptive_sink-s0/books/11155/position_nll.npz",
+          "sha256": "d5c4453e4d971ef568641242ebd6cf5fa4cb2727f214199861d9da93b5776d56"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-h1_adaptive_sink-s0/books/13089/position_nll.npz",
+          "sha256": "4b2bba3d23843f805df6d4f4b963d2f6da31e1cf6fb3b63a7cc0e501b94281cb"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-h1_adaptive_sink-s1/books/1022/position_nll.npz",
+          "sha256": "fa55994e57992de5fedc73209575b805c29e29f2ff2731267f74307ad30cc272"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-h1_adaptive_sink-s1/books/11155/position_nll.npz",
+          "sha256": "d5c4453e4d971ef568641242ebd6cf5fa4cb2727f214199861d9da93b5776d56"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-h1_adaptive_sink-s1/books/13089/position_nll.npz",
+          "sha256": "4b2bba3d23843f805df6d4f4b963d2f6da31e1cf6fb3b63a7cc0e501b94281cb"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-h1_adaptive_sink-s2/books/1022/position_nll.npz",
+          "sha256": "fa55994e57992de5fedc73209575b805c29e29f2ff2731267f74307ad30cc272"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-h1_adaptive_sink-s2/books/11155/position_nll.npz",
+          "sha256": "d5c4453e4d971ef568641242ebd6cf5fa4cb2727f214199861d9da93b5776d56"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-h1_adaptive_sink-s2/books/13089/position_nll.npz",
+          "sha256": "4b2bba3d23843f805df6d4f4b963d2f6da31e1cf6fb3b63a7cc0e501b94281cb"
+        }
+      ],
+      "paired_result_path": "results/pilots/h1_adaptive_sink_paired.json",
+      "paired_result_sha256": "2d1aa9c38b365bd869cd56f5361ba3aa7c5e1cae931f9d20b0dce9ec0f3953e2"
+    },
+    {
+      "stage": "pilots/h2_sink_selection",
+      "status": "pass",
+      "n_books": 3,
+      "paired_macro_delta_nll": -0.00805315454286104,
+      "bootstrap_ci95": [
+        -0.016347246797530968,
+        -0.001835995692392789
+      ],
+      "claim_status": "supported",
+      "seed_spread": {
+        "baseline": {
+          "actual_seeds": [
+            0,
+            1,
+            2
+          ],
+          "macro_nll_range": 0.0,
+          "all_position_losses_bitwise_identical": true
+        },
+        "candidate": {
+          "actual_seeds": [
+            0,
+            1,
+            2
+          ],
+          "macro_nll_range": 0.0,
+          "all_position_losses_bitwise_identical": true
+        }
+      },
+      "raw_files": [
+        {
+          "path": "runs/P-v2-mig-20261009-streaming-s0/books/1022/position_nll.npz",
+          "sha256": "ea2e27935615b439e5a4c526953f3cb2742f3457d5eefdda1f0cb8b59e282e0a"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-streaming-s0/books/11155/position_nll.npz",
+          "sha256": "a218ccf68cd19ef962f49e4d19adbf1f5016510fda02b439b7c7dc4b852d63e4"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-streaming-s0/books/13089/position_nll.npz",
+          "sha256": "162ddcf2ffb95f94c27bde9f28a2e64338c4a455fdad9e75f3cf78f4bbeb4fa8"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-streaming-s1/books/1022/position_nll.npz",
+          "sha256": "ea2e27935615b439e5a4c526953f3cb2742f3457d5eefdda1f0cb8b59e282e0a"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-streaming-s1/books/11155/position_nll.npz",
+          "sha256": "a218ccf68cd19ef962f49e4d19adbf1f5016510fda02b439b7c7dc4b852d63e4"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-streaming-s1/books/13089/position_nll.npz",
+          "sha256": "162ddcf2ffb95f94c27bde9f28a2e64338c4a455fdad9e75f3cf78f4bbeb4fa8"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-streaming-s2/books/1022/position_nll.npz",
+          "sha256": "ea2e27935615b439e5a4c526953f3cb2742f3457d5eefdda1f0cb8b59e282e0a"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-streaming-s2/books/11155/position_nll.npz",
+          "sha256": "a218ccf68cd19ef962f49e4d19adbf1f5016510fda02b439b7c7dc4b852d63e4"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-streaming-s2/books/13089/position_nll.npz",
+          "sha256": "162ddcf2ffb95f94c27bde9f28a2e64338c4a455fdad9e75f3cf78f4bbeb4fa8"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-h2_sink_selection-s0/books/1022/position_nll.npz",
+          "sha256": "5e1cbec0501b163a10ff6999417112278dc28172f235e6c962a31065953bab30"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-h2_sink_selection-s0/books/11155/position_nll.npz",
+          "sha256": "49597740e2c4d9c96716a5942880a8c6f7297596938ac8acb41f68d5462aa9fb"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-h2_sink_selection-s0/books/13089/position_nll.npz",
+          "sha256": "857544fce4a6cf3c915ba96e34c220d7248d57aa2e7c994a10ae299ec71ff97b"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-h2_sink_selection-s1/books/1022/position_nll.npz",
+          "sha256": "5e1cbec0501b163a10ff6999417112278dc28172f235e6c962a31065953bab30"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-h2_sink_selection-s1/books/11155/position_nll.npz",
+          "sha256": "49597740e2c4d9c96716a5942880a8c6f7297596938ac8acb41f68d5462aa9fb"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-h2_sink_selection-s1/books/13089/position_nll.npz",
+          "sha256": "857544fce4a6cf3c915ba96e34c220d7248d57aa2e7c994a10ae299ec71ff97b"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-h2_sink_selection-s2/books/1022/position_nll.npz",
+          "sha256": "5e1cbec0501b163a10ff6999417112278dc28172f235e6c962a31065953bab30"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-h2_sink_selection-s2/books/11155/position_nll.npz",
+          "sha256": "49597740e2c4d9c96716a5942880a8c6f7297596938ac8acb41f68d5462aa9fb"
+        },
+        {
+          "path": "runs/P-v2-mig-20261009-h2_sink_selection-s2/books/13089/position_nll.npz",
+          "sha256": "857544fce4a6cf3c915ba96e34c220d7248d57aa2e7c994a10ae299ec71ff97b"
+        }
+      ],
+      "paired_result_path": "results/pilots/h2_sink_selection_paired.json",
+      "paired_result_sha256": "719578fc29d80da8dd926dbf16741a4957ec25c848b2a3ae9193182ee46baa20"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 {
-  "state": "pending",
-  "claim_status": null
+  "state": "complete",
+  "selection_status": "recorded_owner_delegated_rule",
+  "nominated_method": "h2_sink_selection"
 }

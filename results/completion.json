@@ -1,6 +1,6 @@
 {
-  "built_at": "2026-10-09T10:17:09.418920+00:00",
-  "input_manifest_sha256": "7f685d3aac0585879686ba1c3b73d1b0ababf80210cede89347aabf0f0762e5a",
+  "built_at": "2026-10-09T11:21:04.024035+00:00",
+  "input_manifest_sha256": "949baedf46b437178111626a11b828bfe342f6b7a7d01ec694a63b01e5dc35af",
   "diagnostics": {
     "state": "diagnostic_complete",
     "runs": [
@@ -15,27 +15,22 @@
     "claim_status": "supported"
   },
   "pilots": {
-    "state": "pending"
+    "state": "complete",
+    "nominated_method": "h2_sink_selection",
+    "selection_status": "recorded_owner_delegated_rule"
   },
   "improvement": {
-    "state": "pending_registered_pilot_selection"
+    "state": "pending",
+    "missing_runs": 3
   },
   "ablations": {
-    "h1_calibration_control": {
-      "state": "pending",
-      "missing_runs": 6
-    },
-    "h1_fixed_sink": {
-      "state": "pending",
-      "missing_runs": 6
-    },
     "h2_h2_forced_prefix": {
       "state": "pending",
-      "missing_runs": 6
+      "missing_runs": 3
     },
     "h2_random_anchors": {
       "state": "pending",
-      "missing_runs": 6
+      "missing_runs": 3
     }
   }
 }

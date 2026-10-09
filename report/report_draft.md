@@ -32,11 +32,11 @@ H1 selects the smallest k in {1,2,4,8} covering 90% of first-eight attention mas
 
 ## Pilots, selection, full evaluation and controls
 
-Registered development pilots are still running. Selection follows the frozen lower-mean-NLL/cost rule with runtime and peak-memory ratios at most 1.10. If neither qualifies, simpler H1 is evaluated as the preregistered negative-result fallback. The owner delegated this rule; no parameter search or test selection is added. Recorded selection: None. Full comparison against fixed-four StreamingLLM: Complete paired results are still pending; no verdict is assigned. Selected controls: Selected controls are pending complete raw outputs. Forced-prefix identity is independently tested; H1 has calibration-only/fixed-k controls, H2 forced-prefix/random-anchor controls. Controls use the development set and cannot be treated as full-test effects. Only the selected family's controls are required and executed. Full-test per-book cases remain pending. Per-book frozen anchors/k and calibration intervals are in tables/improvement_book_selections.csv.
+h1_adaptive_sink: development delta -0.005345, 95% CI [-0.016612, 0.000460], runtime ratio 1.0026, peak-memory ratio 1.0000, acceptable cost True; h2_sink_selection: development delta -0.008053, 95% CI [-0.016347, -0.001836], runtime ratio 1.0084, peak-memory ratio 1.0000, acceptable cost True Selection follows the frozen lower-mean-NLL/cost rule with runtime and peak-memory ratios at most 1.10. If neither qualifies, simpler H1 is evaluated as the preregistered negative-result fallback. The owner delegated this rule; no parameter search or test selection is added. Recorded selection: h2_sink_selection. Full comparison against fixed-four StreamingLLM: Complete paired results are still pending; no verdict is assigned. Selected controls: Selected controls are pending complete raw outputs. Forced-prefix identity is independently tested; H1 has calibration-only/fixed-k controls, H2 forced-prefix/random-anchor controls. Controls use the development set and cannot be treated as full-test effects. Only the selected family's controls are required and executed. Full-test per-book cases remain pending. Per-book frozen anchors/k and calibration intervals are in tables/improvement_book_selections.csv.
 
 ## Compute, provenance and reproducibility
 
-Current spent/reserved charge is 14.689379 device-instance hours, with a conservative 0.27h historical reserve. Full-GPU and MIG instance wall-hours are not normalized billing or currency cost. The user authorized unrestricted resources; 20h is no longer an execution limit. Three existing idle H800 MIG instances run seed workers concurrently, preserving another project on GPU0. Each attempt records selected UUID/parent, 30-SM class, driver, clock/power snapshot, source/config/data hashes, status, per-book recovery and actual whole-process time. Runtime comparisons use the matched MIG class; clocks are not locked. Calibration intervals include forward and attention collection, measured as host wall time; they are not isolated kernel costs. Incremental cost is assessed through whole-run ratios and controls. Pinned Python 3.10.12 / torch 2.14.0+cu130 / Transformers 4.33.0 and NVML bindings restore through setup. GPU1 instances are unaffected by GPU0's nightly cron.
+Current spent/reserved charge is 26.697345 device-instance hours, with a conservative 0.27h historical reserve. Full-GPU and MIG instance wall-hours are not normalized billing or currency cost. The user authorized unrestricted resources; 20h is no longer an execution limit. Three existing idle H800 MIG instances run seed workers concurrently, preserving another project on GPU0. Each attempt records selected UUID/parent, 30-SM class, driver, clock/power snapshot, source/config/data hashes, status, per-book recovery and registered-run wall time. The timer begins at run-directory creation and ends at finish(), includes model loading/inference/failure intervals, and excludes preflight/startup, the initial Git snapshot and post-finish checksum/exit tails. These are the same stored runtime_seconds used by the frozen cost rule; no cost field or threshold is changed. Runtime comparisons use the matched MIG class; clocks are not locked. Calibration intervals include necessary prefix forward passes and attention collection, measured as host wall time; they are not isolated extra kernel costs and are not added again to the registered-run charge. Incremental cost is assessed through registered-run ratios and controls. Pinned Python 3.10.12 / torch 2.14.0+cu130 / Transformers 4.33.0 and NVML bindings restore through setup. GPU1 instances are unaffected by GPU0's nightly cron.
 
 ## Limitations, AI reflection and human delivery
 
@@ -62,6 +62,15 @@ Source: `tables/reproduction_per_book.csv`. Negative delta favors the candidate;
 | 24553 | 3.402428 | 2.641161 | -0.761267 | 15358 |
 | 2544 | 3.247901 | 2.505462 | -0.742439 | 15358 |
 | 25646 | 2.496714 | 1.881346 | -0.615368 | 15358 |
+
+## Development pilots
+
+Source: `tables/pilot_comparison.csv`. Negative delta favors the candidate; controls use development books.
+
+| method | paired_macro_delta_nll | ci95_low | ci95_high | runtime_ratio | peak_memory_ratio |
+|---|---|---|---|---|---|
+| h1_adaptive_sink | -0.005345 | -0.016612 | 0.000460 | 1.002620 | 1.000000 |
+| h2_sink_selection | -0.008053 | -0.016347 | -0.001836 | 1.008424 | 1.000000 |
 
 ## Scientific summary and controls
 

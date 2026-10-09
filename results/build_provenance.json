@@ -3,8 +3,8 @@
     "/home/renjie/CISC8006Project/.venv-verified/bin/python",
     "scripts/build_results.py"
   ],
-  "builder_sha256": "bcb4aba9ab43ea3b466a842578d575effa4e9af76e7e89f90c4f1a9ed46c39a4",
-  "input_manifest_sha256": "7f685d3aac0585879686ba1c3b73d1b0ababf80210cede89347aabf0f0762e5a",
+  "builder_sha256": "38c2e435c40049c1426feab3bcdf92d3ece02e4773f5c8276b78578481deacb8",
+  "input_manifest_sha256": "949baedf46b437178111626a11b828bfe342f6b7a7d01ec694a63b01e5dc35af",
   "input_runs": {
     "diagnostics": [
       "runs/D-W0-20261008/result.json",
@@ -42,34 +42,20 @@
         "runs/P-v2-mig-20261009-h2_sink_selection-s2/result.json"
       ]
     },
-    "improvement": null,
+    "improvement": {
+      "baseline": [
+        "runs/R-v2-mig-20261009-streaming-s0/result.json",
+        "runs/R-v2-mig-20261009-streaming-s1/result.json",
+        "runs/R-v2-mig-20261009-streaming-s2/result.json"
+      ],
+      "candidate": [
+        "runs/I-h2-v2-mig-20261009-h2_sink_selection-s0/result.json",
+        "runs/I-h2-v2-mig-20261009-h2_sink_selection-s1/result.json",
+        "runs/I-h2-v2-mig-20261009-h2_sink_selection-s2/result.json"
+      ],
+      "split": "test"
+    },
     "ablations": {
-      "h1_calibration_control": {
-        "baseline": [
-          "runs/P-v2-mig-20261009-streaming-s0/result.json",
-          "runs/P-v2-mig-20261009-streaming-s1/result.json",
-          "runs/P-v2-mig-20261009-streaming-s2/result.json"
-        ],
-        "candidate": [
-          "runs/A-h1-v2-mig-20261009-calibration_control-s0/result.json",
-          "runs/A-h1-v2-mig-20261009-calibration_control-s1/result.json",
-          "runs/A-h1-v2-mig-20261009-calibration_control-s2/result.json"
-        ],
-        "split": "dev"
-      },
-      "h1_fixed_sink": {
-        "baseline": [
-          "runs/P-v2-mig-20261009-streaming-s0/result.json",
-          "runs/P-v2-mig-20261009-streaming-s1/result.json",
-          "runs/P-v2-mig-20261009-streaming-s2/result.json"
-        ],
-        "candidate": [
-          "runs/A-h1-v2-mig-20261009-fixed_sink-s0/result.json",
-          "runs/A-h1-v2-mig-20261009-fixed_sink-s1/result.json",
-          "runs/A-h1-v2-mig-20261009-fixed_sink-s2/result.json"
-        ],
-        "split": "dev"
-      },
       "h2_h2_forced_prefix": {
         "baseline": [
           "runs/P-v2-mig-20261009-streaming-s0/result.json",
@@ -101,27 +87,27 @@
   "artifacts": [
     {
       "path": "results/ablations/h1_calibration_control/status.json",
-      "sha256": "c1897409daa659e467d352fcde9012cf1fa6533a4326afd623e3cf432e1fca79"
+      "sha256": "b776d2eae51eab5d1ab7852eaa383065a35eb563e4f9e37fbab3d1069c54e960"
     },
     {
       "path": "results/ablations/h1_fixed_sink/status.json",
-      "sha256": "1ee9f1fa2f812b3e58db5b7811b2831996b80cb52511547ea30a3822b338b4c7"
+      "sha256": "7152f3e186eacec074a77929b653baf43f0e2b22a612dabb1383dcb137523300"
     },
     {
       "path": "results/ablations/h2_h2_forced_prefix/status.json",
-      "sha256": "9d1765a5a159ab11cd14c47d996b19d78b95e650a8952f5216312db2ee03e647"
+      "sha256": "018f781d56f7ca48452defe9e1141d15b97eac9601b6734dcba78a44aed48612"
     },
     {
       "path": "results/ablations/h2_random_anchors/status.json",
-      "sha256": "2f7a4c2a1130a85157bfcde1d829d76956f8a994fa5c83e510a94f7cfe0037b3"
+      "sha256": "361751f738af5e16450fbdbbcd623eb979e26b303dd6716c14bbeb3d7ad2476b"
     },
     {
       "path": "results/claim_to_artifact.csv",
-      "sha256": "6b86eb2555546fa8b266d7398f4d39f5454de686fd8d03435a63bd2bee7aa25a"
+      "sha256": "5b3db849127373d9627d824b1593d43cbd9e008d3e11ea9ca8d342ff59c28167"
     },
     {
       "path": "results/completion.json",
-      "sha256": "9dd7c12f0e14ae553c3b056463882438ed83b555d84cbf8a6b1f5dee8556344f"
+      "sha256": "9ee1c903a88a84d183420462955997f885c525283837f19b76cc94432fdaf700"
     },
     {
       "path": "results/diagnostics/comparison.csv",
@@ -137,15 +123,35 @@
     },
     {
       "path": "results/final_input_manifest.json",
-      "sha256": "7f685d3aac0585879686ba1c3b73d1b0ababf80210cede89347aabf0f0762e5a"
+      "sha256": "949baedf46b437178111626a11b828bfe342f6b7a7d01ec694a63b01e5dc35af"
+    },
+    {
+      "path": "results/improvement/status.json",
+      "sha256": "76134bda176f9d41e01b0ffd5681f423600d0cc3700f5463f12190d53f4d90c6"
+    },
+    {
+      "path": "results/pilots/comparison.csv",
+      "sha256": "f8c8fa6262f3b56557c784c72ed1c652795ff523d0f0ffbf1d1185ab33b968f3"
+    },
+    {
+      "path": "results/pilots/h1_adaptive_sink_paired.json",
+      "sha256": "2d1aa9c38b365bd869cd56f5361ba3aa7c5e1cae931f9d20b0dce9ec0f3953e2"
+    },
+    {
+      "path": "results/pilots/h2_sink_selection_paired.json",
+      "sha256": "719578fc29d80da8dd926dbf16741a4957ec25c848b2a3ae9193182ee46baa20"
+    },
+    {
+      "path": "results/pilots/selection_proposal.json",
+      "sha256": "51845b744f16c83a9298348eb86e2b5f5ffb546e6e04d9cd6afa0d6ee5087f79"
     },
     {
       "path": "results/pilots/status.json",
-      "sha256": "53c2a8a3bb41a4915e15c014ef21cf410c79913a1de7a0e09a0492d5188038b1"
+      "sha256": "d44bc5a7faff42af18415fa703854359793966e9da9d7dc1413fb6c8819940bc"
     },
     {
       "path": "results/raw_artifact_index.csv",
-      "sha256": "c1aa5960bac7c8921fc0077887840401defced2ebb67b28597dc0878a17231f6"
+      "sha256": "86b9983afcbd31529a3be55ddde693b51184292967b1eb1f11ef58f391ffd95c"
     },
     {
       "path": "results/reproduction/paired_result.json",
@@ -226,6 +232,10 @@
     {
       "path": "tables/paper_settings.csv",
       "sha256": "d4ff40bb6977ef37ecbad7e7cfa6d0a6c8179efafdd140ab720549275fc15984"
+    },
+    {
+      "path": "tables/pilot_comparison.csv",
+      "sha256": "f8c8fa6262f3b56557c784c72ed1c652795ff523d0f0ffbf1d1185ab33b968f3"
     },
     {
       "path": "tables/reproduction_per_book.csv",

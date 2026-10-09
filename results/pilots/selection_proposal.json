@@ -1,0 +1,28 @@
+{
+  "nominated_method": "h2_sink_selection",
+  "selection_status": "ready_for_owner_delegated_rule",
+  "execution_authorization": "waived_by_user",
+  "basis": "preregistered quality/cost rule; H1 negative-result fallback",
+  "rows": [
+    {
+      "method": "h1_adaptive_sink",
+      "paired_macro_delta_nll": -0.0053448941422115466,
+      "ci95_low": -0.016611577594062954,
+      "ci95_high": 0.00046014040362152286,
+      "runtime_ratio": 1.0026204417457505,
+      "peak_memory_ratio": 1.0,
+      "n_books": 3,
+      "cost_acceptable": true
+    },
+    {
+      "method": "h2_sink_selection",
+      "paired_macro_delta_nll": -0.00805315454286104,
+      "ci95_low": -0.016347246797530968,
+      "ci95_high": -0.001835995692392789,
+      "runtime_ratio": 1.0084236114818501,
+      "peak_memory_ratio": 1.0,
+      "n_books": 3,
+      "cost_acceptable": true
+    }
+  ]
+}

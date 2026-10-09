@@ -1,9 +1,6 @@
 {
   "state": "pending",
   "missing": [
-    "runs/P-v2-mig-20261009-streaming-s0/result.json",
-    "runs/P-v2-mig-20261009-streaming-s1/result.json",
-    "runs/P-v2-mig-20261009-streaming-s2/result.json",
     "runs/A-h2-v2-mig-20261009-random_anchors-s0/result.json",
     "runs/A-h2-v2-mig-20261009-random_anchors-s1/result.json",
     "runs/A-h2-v2-mig-20261009-random_anchors-s2/result.json"

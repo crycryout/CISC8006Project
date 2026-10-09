@@ -34,3 +34,10 @@ These entries do not authenticate historical accept assertions or supply new ins
 | E0009 |2026-10-09|Codex / complete main comparison and independent reconstruction|Run six original10-book/three-seed arms; reconstruct all NPZ losses, per-book deltas and book-bootstrap CI|All six actual attempts validate; ΔNLL−0.7217558173,95% CI [−0.7590835293,−0.6858373358], supported; each method's seed arrays bitwise identical; agent engineering verification, human critical review still pending|Window sourceaa76de1 / streaming6181538; main evidence commite491d74; `environment/verification/main-raw-reconstruction.json`;64 indexed diagnostic/main book artifacts|
 
 Two development candidates, selected full test and controls remain in progress at this checkpoint. Later entries must use their actual measured outcomes. No failed/negative attempt, original smoke or historical reviewer assertion is replaced.
+
+
+## E0010: completed development selection, 2026-10-09
+
+Codex based on GPT-6, exact serving build not exposed, completed all nine baseline/H1/H2 development runs and independently reconstructed both raw-NPZ comparisons. H1 meanΔNLL−0.0053448941 with CI [−0.0166115776,0.0004601404] is inconclusive; H2−0.0080531545 with CI [−0.0163472468,−0.0018359957] is supported on these three books. Runtime ratios1.0026204417/1.0084236115 and both memory ratios1.0 satisfy the unchanged1.10 cost rule. Both qualify by negative point mean; H2 ranks lower and was selected at11:17:07 UTC under the owner's actual delegation. This is an agent rule application, not critical human review or teacher approval.
+
+Proposal SHA51845b744f16c83a9298348eb86e2b5f5ffb546e6e04d9cd6afa0d6ee5087f79 is fixed before full test. Twenty-seven development book-run artifacts and all outcomes are retained. Evidence: `results/pilots/`, `environment/verification/pilot-raw-reconstruction.json`, `docs/approval_decisions.json`. Three H2 full runs are now active; their scientific verdict and the selected controls remain pending. No new parameters or test-driven book/seed selection were added.

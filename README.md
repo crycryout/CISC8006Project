@@ -1,6 +1,6 @@
 # CISC8006: auditable StreamingLLM reproduction
 
-第 3/4 步：完整主复现已完成，开发集两个 pilot 正在运行。原 10 本书、实际 seed 0/1/2 的主 ΔNLL=−0.721756，书级 95% CI [−0.759084, −0.685837]，判定 `supported`；原始 NPZ 重算通过。接下来按冻结规则完成一个完整改进及其两个控制。执行分支 `codex/h800-course-completion-20261008`；[当前状态](TASK_STATUS.md)与 `python scripts/study_status.py` 提供实际进度。
+第 3/4 步：完整主复现及两个开发集 pilot 已完成，H2 完整 test 评测正在运行。原 10 本书、实际 seed 0/1/2 的主 ΔNLL=−0.721756，书级 95% CI [−0.759084, −0.685837]，判定 `supported`；原始 NPZ 重算通过。H2 按冻结规则选出：开发集 ΔNLL=−0.008053，95% CI [−0.016347,−0.001836]，运行时间1.0084倍、峰值显存相同；完整 test 与两个控制尚在执行流程中。执行分支 `codex/h800-course-completion-20261008`；[当前状态](TASK_STATUS.md)与 `python scripts/study_status.py` 提供实际进度。
 
 用户于 2026-10-09 明确指示“不需要审批，H800的GPU资源随便用”，已取消本次执行的审批前置与旧 20 GPU-h 上限。三个现有 H800 GPU1 MIG 2g.20gb 实例分配给 seed 0/1/2；方法按相同 UUID 配对，保留全部成本、失败和原始输出。[授权记录](docs/execution_authorization.md)是用户指令，不是教师批准或同伴签名。
 

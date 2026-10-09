@@ -16,9 +16,13 @@
     "reviewer": "user in current session",
     "evidence": "docs/execution_authorization.md",
     "recorded_at": "2026-10-09T06:01:29.189188+00:00",
-    "method": null,
+    "method": "h2_sink_selection",
     "selection_rule": "frozen pilot quality/cost rule; H1 negative-result fallback",
-    "selection_delegated": true
+    "selection_delegated": true,
+    "selected_at": "2026-10-09T11:17:07.938332+00:00",
+    "selection_actor": "agent applying the frozen owner-authorized pilot rule",
+    "selection_evidence": "results/pilots/selection_proposal.json",
+    "selection_evidence_sha256": "51845b744f16c83a9298348eb86e2b5f5ffb546e6e04d9cd6afa0d6ee5087f79"
   },
   "final_freeze": {
     "status": "waived_by_user",
