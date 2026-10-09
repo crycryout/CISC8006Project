@@ -103,6 +103,7 @@ def scientific(stage,spec,manifest):
         summary[label]["macro_derived_ppl"]=math.exp(summary[label]["macro_book_nll"])
         summary[label]["micro_token_ppl"]=math.exp(summary[label]["micro_token_nll"])
     write_json(directory/"summary.json",summary)
+    write_json(directory/"status.json",dict(state="complete",claim_status=out["claim_status"],n_books=out["n_books"],seeds=summary["seeds"],paired_result_sha256=file_hash(directory/"paired_result.json")))
     figure_prefix=stage.replace("/","_")
     plot_positions(dict(baseline=base,candidate=candidate),ROOT/"figures"/(figure_prefix+"_nll_vs_position.png"))
     import matplotlib.pyplot as plt
@@ -132,8 +133,18 @@ def pilots(spec,manifest):
     write_csv(directory/"comparison.csv",rows)
     winners=[r for r in rows if r["paired_macro_delta_nll"]<0 and r["cost_acceptable"]]
     nominated=sorted(winners,key=lambda r:(r["paired_macro_delta_nll"],r["runtime_ratio"],r["method"]))[0]["method"] if winners else "h1_adaptive_sink"
-    write_json(directory/"selection_proposal.json",dict(nominated_method=nominated,human_decision="pending",basis="preregistered quality/cost rule; H1 negative-result fallback",rows=rows))
-    return dict(state="complete",nominated_method=nominated,human_decision="pending")
+    decision=json.loads((ROOT/"docs/approval_decisions.json").read_text())["selected_improvement"]
+    recorded=decision.get("method")==nominated
+    selection_status="recorded_owner_delegated_rule" if recorded else "ready_for_owner_delegated_rule"
+    proposal_path=directory/"selection_proposal.json"
+    if recorded:
+        frozen_proposal=json.loads(proposal_path.read_text())
+        if frozen_proposal["nominated_method"]!=nominated or frozen_proposal["rows"]!=rows:
+            raise ValueError("pilot evidence changed after the recorded selection")
+    else:
+        write_json(proposal_path,dict(nominated_method=nominated,selection_status=selection_status,execution_authorization=decision.get("status"),basis="preregistered quality/cost rule; H1 negative-result fallback",rows=rows))
+    write_json(directory/"status.json",dict(state="complete",selection_status=selection_status,nominated_method=nominated))
+    return dict(state="complete",nominated_method=nominated,selection_status=selection_status)
 
 
 def main():

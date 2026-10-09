@@ -7,7 +7,7 @@ name = "cisc8006-streaming-audit"
 version = "0.2.0"
 description = "Auditable fixed-budget StreamingLLM reproduction"
 requires-python = ">=3.10,<3.11"
-dependencies = ["torch==2.14.0", "transformers==4.33.0", "numpy==1.26.4", "PyYAML==6.0.3", "huggingface-hub==0.25.2"]
+dependencies = ["torch==2.14.0", "transformers==4.33.0", "numpy==1.26.4", "PyYAML==6.0.3", "huggingface-hub==0.25.2", "nvidia-ml-py==13.615.71"]
 
 [tool.setuptools.packages.find]
 include = ["src", "scripts"]
