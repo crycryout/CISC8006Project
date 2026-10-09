@@ -54,7 +54,7 @@ def main():
     completion=json.loads((ROOT/"results/completion.json").read_text()) if (ROOT/"results/completion.json").exists() else {}
     core_ready=all(completion.get(stage,{}).get("state")=="complete" for stage in ("reproduction","pilots","improvement")) and len(completion.get("ablations",{}))==2 and all(value.get("state")=="complete" for value in completion["ablations"].values())
     required=["TASK_STATUS.md","AI_USAGE.md","CONTRIBUTIONS.md","LICENSES.md","SECURITY.md","data/assets_manifest.json","experiments/registry.jsonl","results/build_provenance.json","audit/peer_audit/README.md"]
-    required.extend(["report/report.md","report/report.pdf","presentation/defense.pptx","tables/scientific_summary.csv","tables/improvement_book_selections.csv","results/raw_artifact_index.csv","environment/verification/scientific-raw-reconstruction.json"] if core_ready else ["report/report_draft.pdf","presentation/defense_draft.pptx"])
+    required.extend(["report/report.md","report/report.pdf","presentation/defense.pptx","tables/scientific_summary.csv","tables/improvement_book_selections.csv","results/raw_artifact_index.csv","environment/verification/scientific-raw-reconstruction.json","environment/verification/reference-error-distributions.json"] if core_ready else ["report/report_draft.pdf","presentation/defense_draft.pptx"])
     for rel in required:
         if not (ROOT/rel).is_file(): missing.append(rel)
     clean_path=ROOT/"environment/verification/clean-checkout.json"
@@ -105,6 +105,13 @@ def main():
     if prefix is None or len(controls)!=2 or any(v.get("state")!="complete" for v in controls.values()):
         pending.append("selected method core ablations / controls")
     if core_ready:
+        reference_path=ROOT/"environment/verification/reference-error-distributions.json"
+        if reference_path.is_file():
+            reference=json.loads(reference_path.read_text())
+            if reference.get("status")!="pass" or reference.get("script_sha256")!=file_hash(ROOT/"scripts/record_reference_errors.py") or reference.get("reference_fixture_sha256")!=file_hash(ROOT/"tests/test_position_reference.py") or len(reference.get("cases",[]))!=6:
+                missing.append("current preset-tolerance reference error distributions")
+            if reference.get("errors_sha256")!=file_hash(ROOT/reference["artifact_path"]/"errors.json"):
+                missing.append("reference error-distribution raw artifact checksum")
         audit_path=ROOT/"environment/verification/scientific-raw-reconstruction.json"
         if audit_path.is_file():
             audit=json.loads(audit_path.read_text())
