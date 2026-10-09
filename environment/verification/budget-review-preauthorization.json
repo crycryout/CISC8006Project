@@ -1,0 +1,15 @@
+{
+  "reviewed_at": "2026-10-08T16:14:30.992778+00:00",
+  "actual_spent_or_reserved": 0.5786337181645084,
+  "mandatory_estimates_gpu_hours": {
+    "reproduction_matrix": 10.750003563822105,
+    "pilot_matrix": 2.6893713983756773,
+    "improvement_matrix_h1": 5.3750017819110525,
+    "ablation_matrix_h1": 1.792914265583785
+  },
+  "estimated_total": 21.185924727857127,
+  "single_pass_proposal_estimated_total": 10.435921164035024,
+  "ceiling_gpu_hours": 20,
+  "estimate_basis": "slowest faithful4096-token diagnostic;60 setup seconds/job; calibration overhead not yet measured",
+  "status": "requires concrete budget review before full matrix"
+}

@@ -148,7 +148,10 @@ def main():
     if a.candidate and not missing:
         write_json(ROOT/"submission/candidate_manifest.json",manifest("review_candidate_not_final_freeze"))
     elif a.technical and technical_ready:
-        write_json(ROOT/"submission/technical_final_manifest.json",manifest("owner_authorized_scientific_delivery_human_course_activities_separately_recorded"))
+        value=manifest("owner_authorized_scientific_delivery_human_course_activities_separately_recorded")
+        value.update(scope="scientific_and_engineering",human_activities_pending=[item for item in pending if item.startswith("human evidence:")])
+        write_json(ROOT/"submission/technical_final_manifest.json",value)
+        write_json(ROOT/"submission/release_manifest.json",value)
     elif not(missing or pending): write_json(ROOT/"submission/release_manifest.json",manifest("final_freeze_candidate_for_actual_tag"))
     print(json.dumps(output,indent=2))
     return 0 if (a.candidate and not missing) or (a.technical and technical_ready) else (0 if output["final_ready"] else 2)
