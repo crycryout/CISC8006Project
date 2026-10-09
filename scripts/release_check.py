@@ -17,7 +17,15 @@ def secret_scan():
     patterns={"private_key":re.compile(rb"-----BEGIN (?:[A-Z]+ )?PRIVATE KEY-----"),
               "github_token":re.compile(rb"\bgh[pousr]_[A-Za-z0-9]{30,}\b"),
               "github_fine_grained_token":re.compile(rb"\bgithub_pat_[A-Za-z0-9_]{40,}\b"),
+              "openai_key":re.compile(rb"\bsk-(?:proj-|svcacct-)?[A-Za-z0-9_-]{20,}\b"),
+              "huggingface_token":re.compile(rb"\bhf_[A-Za-z0-9]{30,}\b"),
+              "google_api_key":re.compile(rb"\bAIza[A-Za-z0-9_-]{35}\b"),
               "aws_access_key":re.compile(rb"\bAKIA[0-9A-Z]{16}\b")}
+    assignment=re.compile(rb'''(?im)\b(?:password|passwd|api_key|api_secret|access_token|secret_key)\b["']?\s*[:=]\s*["']?([A-Za-z0-9_./+\-=]{12,})''')
+    placeholders=(b"placeholder",b"example",b"dummy",b"your_",b"change_me",b"changeme",b"replace",b"test_")
+    def credential_assignments(data):
+        return sum(not any(marker in value.lower() for marker in placeholders)
+                   for value in assignment.findall(data))
     findings=[]
     paths=subprocess.check_output(["git","ls-files","-z"],cwd=ROOT).decode().split("\0")
     for rel in filter(None,paths):
@@ -27,12 +35,16 @@ def secret_scan():
         for label,pattern in patterns.items():
             count=len(pattern.findall(data))
             if count: findings.append(dict(path=rel,pattern=label,count=count))
+        count=credential_assignments(data)
+        if count: findings.append(dict(path=rel,pattern="literal_credential_assignment",count=count))
         if Path(rel).name==".env": findings.append(dict(path=rel,pattern="tracked_dotenv",count=1))
     history=subprocess.check_output(["git","log","--all","-p","--format=commit:%H"],cwd=ROOT)
     for label,pattern in patterns.items():
         count=len(pattern.findall(history))
         if count: findings.append(dict(path="git history",pattern=label,count=count))
-    out=dict(scanned_at=now(),tool="project regex scanner-v1 / Python "+sys.version.split()[0],scope="tracked files and all local Git historical diffs",finding_details_redacted=True,findings=findings,status="pass" if not findings else "needs_review")
+    count=credential_assignments(history)
+    if count: findings.append(dict(path="git history",pattern="literal_credential_assignment",count=count))
+    out=dict(scanned_at=now(),tool="project regex scanner-v2 / Python "+sys.version.split()[0],scope="tracked files and all local Git historical diffs; known key families, literal credentials and tracked .env; not a proof that every possible secret is absent",finding_details_redacted=True,findings=findings,status="pass" if not findings else "needs_review")
     write_json(ROOT/"environment/verification/secret_scan.json",out)
     return out
 
