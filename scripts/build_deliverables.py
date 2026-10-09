@@ -82,6 +82,9 @@ def sections():
         value=read_optional("results/ablations/"+name+"/summary.json")
         if value: controls.append(name+": "+paired_text(value))
     control_text=" ".join(controls) or "Selected controls are pending complete raw outputs."
+    identity=read_optional("environment/verification/forced-prefix-identity.json")
+    if identity and identity.get("status")=="pass":
+        control_text+=f" Full-checkpoint forced-prefix control: all {len(identity['comparisons'])} development book-seed NLL/input/mask arrays match the fixed-four baseline bitwise; exact receipt environment/verification/forced-prefix-identity.json."
     core_ready=all(completion.get(stage,{}).get("state")=="complete" for stage in ("reproduction","pilots","improvement")) and len(completion.get("ablations",{}))==2 and all(v.get("state")=="complete" for v in completion["ablations"].values())
     evidence_status="The registered scientific execution is complete and source-linked; real human course activities are separately recorded." if core_ready else "Scientific execution is authorized and in progress; pending stages have no assigned final verdict."
     return [

@@ -1,0 +1,206 @@
+{
+  "checked_at": "2026-10-09T13:45:36.104424+00:00",
+  "status": "pass",
+  "purpose": "full-checkpoint forced-prefix control versus fixed-four development baseline, exact saved NPZ identity; agent engineering verification",
+  "input_manifest_sha256": "949baedf46b437178111626a11b828bfe342f6b7a7d01ec694a63b01e5dc35af",
+  "comparisons": [
+    {
+      "seed": 0,
+      "book_id": "1022",
+      "arrays_bitwise_equal": {
+        "nll": true,
+        "input_ids": true,
+        "scored_mask": true
+      },
+      "float_arrays_max_abs": {
+        "nll": 0.0
+      },
+      "baseline": {
+        "path": "runs/P-v2-mig-20261009-streaming-s0/books/1022/position_nll.npz",
+        "sha256": "ea2e27935615b439e5a4c526953f3cb2742f3457d5eefdda1f0cb8b59e282e0a"
+      },
+      "candidate": {
+        "path": "runs/A-h2-v2-mig-20261009-h2_forced_prefix-s0/books/1022/position_nll.npz",
+        "sha256": "ea2e27935615b439e5a4c526953f3cb2742f3457d5eefdda1f0cb8b59e282e0a"
+      },
+      "baseline_result_sha256": "4e34bf3196aabfddcdaf9816c712c7c2f336500eeba9f31b2dc6d12834021246",
+      "candidate_result_sha256": "e404f4b75f8fc5dd223defd03a07d8fe5088521c4b1cfed1f1fa79a7de55d89e"
+    },
+    {
+      "seed": 0,
+      "book_id": "11155",
+      "arrays_bitwise_equal": {
+        "nll": true,
+        "input_ids": true,
+        "scored_mask": true
+      },
+      "float_arrays_max_abs": {
+        "nll": 0.0
+      },
+      "baseline": {
+        "path": "runs/P-v2-mig-20261009-streaming-s0/books/11155/position_nll.npz",
+        "sha256": "a218ccf68cd19ef962f49e4d19adbf1f5016510fda02b439b7c7dc4b852d63e4"
+      },
+      "candidate": {
+        "path": "runs/A-h2-v2-mig-20261009-h2_forced_prefix-s0/books/11155/position_nll.npz",
+        "sha256": "a218ccf68cd19ef962f49e4d19adbf1f5016510fda02b439b7c7dc4b852d63e4"
+      },
+      "baseline_result_sha256": "4e34bf3196aabfddcdaf9816c712c7c2f336500eeba9f31b2dc6d12834021246",
+      "candidate_result_sha256": "e404f4b75f8fc5dd223defd03a07d8fe5088521c4b1cfed1f1fa79a7de55d89e"
+    },
+    {
+      "seed": 0,
+      "book_id": "13089",
+      "arrays_bitwise_equal": {
+        "nll": true,
+        "input_ids": true,
+        "scored_mask": true
+      },
+      "float_arrays_max_abs": {
+        "nll": 0.0
+      },
+      "baseline": {
+        "path": "runs/P-v2-mig-20261009-streaming-s0/books/13089/position_nll.npz",
+        "sha256": "162ddcf2ffb95f94c27bde9f28a2e64338c4a455fdad9e75f3cf78f4bbeb4fa8"
+      },
+      "candidate": {
+        "path": "runs/A-h2-v2-mig-20261009-h2_forced_prefix-s0/books/13089/position_nll.npz",
+        "sha256": "162ddcf2ffb95f94c27bde9f28a2e64338c4a455fdad9e75f3cf78f4bbeb4fa8"
+      },
+      "baseline_result_sha256": "4e34bf3196aabfddcdaf9816c712c7c2f336500eeba9f31b2dc6d12834021246",
+      "candidate_result_sha256": "e404f4b75f8fc5dd223defd03a07d8fe5088521c4b1cfed1f1fa79a7de55d89e"
+    },
+    {
+      "seed": 1,
+      "book_id": "1022",
+      "arrays_bitwise_equal": {
+        "nll": true,
+        "input_ids": true,
+        "scored_mask": true
+      },
+      "float_arrays_max_abs": {
+        "nll": 0.0
+      },
+      "baseline": {
+        "path": "runs/P-v2-mig-20261009-streaming-s1/books/1022/position_nll.npz",
+        "sha256": "ea2e27935615b439e5a4c526953f3cb2742f3457d5eefdda1f0cb8b59e282e0a"
+      },
+      "candidate": {
+        "path": "runs/A-h2-v2-mig-20261009-h2_forced_prefix-s1/books/1022/position_nll.npz",
+        "sha256": "ea2e27935615b439e5a4c526953f3cb2742f3457d5eefdda1f0cb8b59e282e0a"
+      },
+      "baseline_result_sha256": "a0a38a7e3dec8f6a99953bb4945b87c4be9cd550c54ff0b6e068a08738831c69",
+      "candidate_result_sha256": "c040ea09d75693c3aee3bceb3637296e2daa895bb2b1313769768b3bbfc4ed96"
+    },
+    {
+      "seed": 1,
+      "book_id": "11155",
+      "arrays_bitwise_equal": {
+        "nll": true,
+        "input_ids": true,
+        "scored_mask": true
+      },
+      "float_arrays_max_abs": {
+        "nll": 0.0
+      },
+      "baseline": {
+        "path": "runs/P-v2-mig-20261009-streaming-s1/books/11155/position_nll.npz",
+        "sha256": "a218ccf68cd19ef962f49e4d19adbf1f5016510fda02b439b7c7dc4b852d63e4"
+      },
+      "candidate": {
+        "path": "runs/A-h2-v2-mig-20261009-h2_forced_prefix-s1/books/11155/position_nll.npz",
+        "sha256": "a218ccf68cd19ef962f49e4d19adbf1f5016510fda02b439b7c7dc4b852d63e4"
+      },
+      "baseline_result_sha256": "a0a38a7e3dec8f6a99953bb4945b87c4be9cd550c54ff0b6e068a08738831c69",
+      "candidate_result_sha256": "c040ea09d75693c3aee3bceb3637296e2daa895bb2b1313769768b3bbfc4ed96"
+    },
+    {
+      "seed": 1,
+      "book_id": "13089",
+      "arrays_bitwise_equal": {
+        "nll": true,
+        "input_ids": true,
+        "scored_mask": true
+      },
+      "float_arrays_max_abs": {
+        "nll": 0.0
+      },
+      "baseline": {
+        "path": "runs/P-v2-mig-20261009-streaming-s1/books/13089/position_nll.npz",
+        "sha256": "162ddcf2ffb95f94c27bde9f28a2e64338c4a455fdad9e75f3cf78f4bbeb4fa8"
+      },
+      "candidate": {
+        "path": "runs/A-h2-v2-mig-20261009-h2_forced_prefix-s1/books/13089/position_nll.npz",
+        "sha256": "162ddcf2ffb95f94c27bde9f28a2e64338c4a455fdad9e75f3cf78f4bbeb4fa8"
+      },
+      "baseline_result_sha256": "a0a38a7e3dec8f6a99953bb4945b87c4be9cd550c54ff0b6e068a08738831c69",
+      "candidate_result_sha256": "c040ea09d75693c3aee3bceb3637296e2daa895bb2b1313769768b3bbfc4ed96"
+    },
+    {
+      "seed": 2,
+      "book_id": "1022",
+      "arrays_bitwise_equal": {
+        "nll": true,
+        "input_ids": true,
+        "scored_mask": true
+      },
+      "float_arrays_max_abs": {
+        "nll": 0.0
+      },
+      "baseline": {
+        "path": "runs/P-v2-mig-20261009-streaming-s2/books/1022/position_nll.npz",
+        "sha256": "ea2e27935615b439e5a4c526953f3cb2742f3457d5eefdda1f0cb8b59e282e0a"
+      },
+      "candidate": {
+        "path": "runs/A-h2-v2-mig-20261009-h2_forced_prefix-s2/books/1022/position_nll.npz",
+        "sha256": "ea2e27935615b439e5a4c526953f3cb2742f3457d5eefdda1f0cb8b59e282e0a"
+      },
+      "baseline_result_sha256": "6555caf5360c98571118d2ca7a3fa52a57fe6ff0019db0751c53071d21d38dc3",
+      "candidate_result_sha256": "28373e7ac8c4ef9f733ba5de49f2985e46c18a420f3a651586496ee5f777364d"
+    },
+    {
+      "seed": 2,
+      "book_id": "11155",
+      "arrays_bitwise_equal": {
+        "nll": true,
+        "input_ids": true,
+        "scored_mask": true
+      },
+      "float_arrays_max_abs": {
+        "nll": 0.0
+      },
+      "baseline": {
+        "path": "runs/P-v2-mig-20261009-streaming-s2/books/11155/position_nll.npz",
+        "sha256": "a218ccf68cd19ef962f49e4d19adbf1f5016510fda02b439b7c7dc4b852d63e4"
+      },
+      "candidate": {
+        "path": "runs/A-h2-v2-mig-20261009-h2_forced_prefix-s2/books/11155/position_nll.npz",
+        "sha256": "a218ccf68cd19ef962f49e4d19adbf1f5016510fda02b439b7c7dc4b852d63e4"
+      },
+      "baseline_result_sha256": "6555caf5360c98571118d2ca7a3fa52a57fe6ff0019db0751c53071d21d38dc3",
+      "candidate_result_sha256": "28373e7ac8c4ef9f733ba5de49f2985e46c18a420f3a651586496ee5f777364d"
+    },
+    {
+      "seed": 2,
+      "book_id": "13089",
+      "arrays_bitwise_equal": {
+        "nll": true,
+        "input_ids": true,
+        "scored_mask": true
+      },
+      "float_arrays_max_abs": {
+        "nll": 0.0
+      },
+      "baseline": {
+        "path": "runs/P-v2-mig-20261009-streaming-s2/books/13089/position_nll.npz",
+        "sha256": "162ddcf2ffb95f94c27bde9f28a2e64338c4a455fdad9e75f3cf78f4bbeb4fa8"
+      },
+      "candidate": {
+        "path": "runs/A-h2-v2-mig-20261009-h2_forced_prefix-s2/books/13089/position_nll.npz",
+        "sha256": "162ddcf2ffb95f94c27bde9f28a2e64338c4a455fdad9e75f3cf78f4bbeb4fa8"
+      },
+      "baseline_result_sha256": "6555caf5360c98571118d2ca7a3fa52a57fe6ff0019db0751c53071d21d38dc3",
+      "candidate_result_sha256": "28373e7ac8c4ef9f733ba5de49f2985e46c18a420f3a651586496ee5f777364d"
+    }
+  ]
+}
