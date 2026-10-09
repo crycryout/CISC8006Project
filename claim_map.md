@@ -21,18 +21,18 @@
 | A — Window | `sink=0, recent=1024` | primary baseline (the paper's failing case) |
 | B — StreamingLLM | `sink=4, recent=1020` | method under test |
 
-Secondary/reference arms (not part of the primary comparison): preregistered development controls; legacy position diagnostic. Cache-relative positions are the candidate primary mechanism.
+Secondary/reference arms (not part of the primary comparison): preregistered development controls; legacy position diagnostic. Cache-relative positions are common to both primary arms; retained membership is the factor under comparison.
 
 ## 3. Data / split
 
-- **Source:** PG19 **test** split (DeepMind, via Hugging Face `deepmind/pg19`, original GCS raw `.txt` files and token hashes fixed in `data/assets_manifest.json`).
-- **Preregistration:** 10 book IDs selected **before any method-performance look**, recorded and frozen in `data_manifest.md`; identical token ranges per book for both arms.
+- **Source:** PG19 **test** split: pinned official split lists and DeepMind's public processed GCS `.txt` files; exact text/token hashes are fixed in `data/assets_manifest.json`.
+- **Frozen selection:** The original 10 book IDs and identical token ranges are retained from `data_manifest.md`. Book10146 was exposed in historical smoke; this limits a completely unseen-test interpretation. No book is replaced using its observed method performance.
 - **Scoring region:** NLL-array indices `idx ≥ 1025`, where `nlls[idx]` scores the prediction of token `idx+1` (post-overflow: the official implementation evicts *after* each forward, so step 1025 is the first prediction made under an already-evicted cache; indexing convention in `protocol.md` §3), on a fixed max-tokens-per-book cap (frozen before final runs on compute grounds only, see `compute_budget.md`).
 - **Never** select books by observed method performance.
 
 ## 4. Metrics
 
-- **Primary:** token-level mean NLL on the scored region, per book → paired `ΔNLL = NLL_B − NLL_A` per book → paired mean + bootstrap 95% CI over books (10 books, resampling books).
+- **Primary:** mean NLL on the scored region within each book/seed → seed-paired `ΔNLL = NLL_B − NLL_A` → average the actual three seed deltas within each book → equal-book paired mean + bootstrap 95% CI (10 books, resampling books).
 - **Derived:** perplexity = exp(mean NLL).
 - **Systems (secondary):** peak GPU memory; KV length over time (constant-budget verification); optional decode latency vs processed length.
 - **Reporting discipline:** aggregate uncertainty over **books**, never treat within-book tokens as independent replicates.
@@ -43,10 +43,7 @@ Secondary/reference arms (not part of the primary comparison): preregistered dev
 
 ## 6. Falsification condition
 
-The claim is **not supported** if, under a valid protocol (same books/ranges/precision/scorer, post-overflow region included):
-
-- paired mean `ΔNLL ≥ 0` with 95% CI excluding 0 → **not recovered**; or
-- the 95% CI includes 0 → **inconclusive**.
+Under a valid protocol (same books/ranges/precision/scorer, post-overflow region included), CI upper bound below0 gives **supported**, lower bound above0 gives **not_supported**, otherwise **inconclusive**. A missing/invalid contract receives no scientific verdict. This is the frozen rule used by `claim.md` and the paired analysis.
 
 Any such outcome is reported as-is; diagnosis follows `protocol.md` (tokenizer/revision → preprocessing → cache indices/position IDs → precision → NLL masking → chunking → library drift → hardware).
 
@@ -59,7 +56,7 @@ Any such outcome is reported as-is; diagnosis follows `protocol.md` (tokenizer/r
 | T3 | Official code expects `transformers==4.33.0` legacy KV tuple; newer stacks change cache internals | breaks eviction silently | pin 4.33.0; compatibility changes isolated in dedicated commits with logs |
 | T4 | fp16 numerics differ across hardware classes (paper's A6000 efficiency experiments; PG19 hardware unspecified; full H800 versus MIG diagnostic not bitwise identical) | noise in NLL | same precision and same MIG UUID within each seed pair; matched30-SM class across seeds; record GPU/driver |
 | T5 | PG19 preprocessing/concatenation drift (whitespace, book headers) | shifts absolute NLL | frozen tokenization path; checksummed original raw text; same tokens both arms |
-| T6 | Book selection bias | false positive | preregistered book list frozen before performance looks |
+| T6 | Book selection bias and historical observation of book10146 | false positive | original list retained; exposure disclosed; no loss-driven replacement or tuning |
 | T7 | Scoring-region leakage (scoring pre-overflow warm-up tokens) inflates apparent equivalence | false negative | mask all steps < 1025 in the scorer |
 | T8 | Per-run resource timeout or failure leaves incomplete evidence | invalid comparison | user removed total ceiling; retain hard timeouts, preserve failures, retry with new IDs; no book-count reduction or intersection |
 
