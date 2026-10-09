@@ -36,8 +36,8 @@ def snapshot():
                         if isinstance(item,dict) and "step" in item and "book" in item: latest=item
             if latest and latest["book"] not in done: predicted+=latest["step"]+1
             if row["status"]=="completed": predicted=total
-            elapsed=None
-            if row.get("started_at"):
+            elapsed=row.get("runtime_seconds")
+            if elapsed is None and row.get("started_at"):
                 elapsed=(datetime.datetime.now(datetime.timezone.utc)-datetime.datetime.fromisoformat(row["started_at"])).total_seconds()
             current.append(dict(run_id=job["run_id"],state=row["status"],completed_books=len(done),total_books=len(books),predictions_observed=predicted,predictions_total=total,percent=round(100*predicted/total,2),latest=latest,elapsed_seconds=round(elapsed,1) if elapsed is not None else None,gpu_hours=row.get("gpu_hours"),device=row["gpu_uuid"]))
     checkpoints=sorted((ROOT/"experiments/studies").glob("*/state.json"))
