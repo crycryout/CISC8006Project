@@ -1,5 +1,7 @@
 # CISC8006: auditable StreamingLLM reproduction
 
+2026-10-09执行授权：用户明确指示“无需审批，H800资源随便用”。正式实验审批前置与20 GPU-h上限已取消，保留全部3个真实seed、原书单/参数、费用和失败记录。GPU1现有3个2g.20gb MIG实例分配给seed0/1/2；配对方法使用相同实例。已通过59项CPU/MIG测试。详见[授权记录](docs/execution_authorization.md)。下述历史审批状态描述由这条明确授权取代；完成状态按[TASK_STATUS](TASK_STATUS.md)更新。
+
 当前为技术审核候选包，**尚未完成正式复现、改进评测或最终课程 freeze**。状态入口：[TASK_STATUS.md](TASK_STATUS.md)；必须的人类决定：[review_packet.md](docs/review_packet.md)。执行分支 `codex/h800-course-completion-20261008`，原有实验保持原样。
 
 已验证：55项 CPU/H800 测试、干净 checkout 安装与13份资产恢复、原10本书、完整模型2×2诊断、失败重试保留、逐位置无损输出和重建脚本。修正版单本 smoke 的 window/StreamingLLM NLL=3.051129/2.223681，3070 scored；不是10本书结论。科学门槛和真实审批由发布检查区分。

@@ -1,6 +1,29 @@
 {
-  "reproduction_v2": {"status": "pending", "reviewer": null, "evidence": null},
-  "pilots_h1_h2": {"status": "pending", "reviewer": null, "evidence": null},
-  "selected_improvement": {"status": "pending", "method": null, "reviewer": null, "evidence": null},
-  "final_freeze": {"status": "pending", "reviewer": null, "evidence": null}
+  "reproduction_v2": {
+    "status": "waived_by_user",
+    "reviewer": "user in current session",
+    "evidence": "docs/execution_authorization.md",
+    "recorded_at": "2026-10-09T06:01:29.189188+00:00"
+  },
+  "pilots_h1_h2": {
+    "status": "waived_by_user",
+    "reviewer": "user in current session",
+    "evidence": "docs/execution_authorization.md",
+    "recorded_at": "2026-10-09T06:01:29.189188+00:00"
+  },
+  "selected_improvement": {
+    "status": "waived_by_user",
+    "reviewer": "user in current session",
+    "evidence": "docs/execution_authorization.md",
+    "recorded_at": "2026-10-09T06:01:29.189188+00:00",
+    "method": null,
+    "selection_rule": "frozen pilot quality/cost rule; H1 negative-result fallback",
+    "selection_delegated": true
+  },
+  "final_freeze": {
+    "status": "waived_by_user",
+    "reviewer": "user in current session",
+    "evidence": "docs/execution_authorization.md",
+    "recorded_at": "2026-10-09T06:01:29.189188+00:00"
+  }
 }

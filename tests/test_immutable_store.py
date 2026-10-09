@@ -30,9 +30,19 @@ def test_launch_snapshot_does_not_follow_later_head(tmp_path,monkeypatch):
     assert store.finish(0)["git_commit"]=="launch"
 
 
-def test_budget_rejects_without_loading_model(tmp_path):
+def test_budget_rejects_without_loading_model(tmp_path,monkeypatch):
+    monkeypatch.setattr("src.run_store.ceiling",lambda:20.0)
     cfg=fixture_cfg(tmp_path); cfg.update(device="cuda",max_gpu_seconds=72000)
     registry=tmp_path/"registry.jsonl"
     with pytest.raises(ValueError,match="20 GPU-h"): RunStore(cfg,registry=registry)
     assert states(registry)[cfg["run_id"]]["status"]=="failed"
     assert states(registry)[cfg["run_id"]]["gpu_hours"]==0
+
+
+def test_user_unlimited_budget_keeps_measured_costs(tmp_path,monkeypatch):
+    monkeypatch.setattr("src.run_store.ceiling",lambda:None)
+    cfg=fixture_cfg(tmp_path); cfg.update(device="cuda",max_gpu_seconds=100000)
+    registry=tmp_path/"registry.jsonl"
+    store=RunStore(cfg,registry=registry)
+    row=store.finish(0)
+    assert row["gpu_hours"]>=0 and row["reserved_gpu_hours"]>20

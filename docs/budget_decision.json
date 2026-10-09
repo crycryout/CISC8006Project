@@ -1,9 +1,11 @@
 {
-  "status": "pending",
-  "reviewer": null,
-  "evidence": null,
-  "approved_ceiling_gpu_hours": 20,
+  "status": "authorized_by_user",
+  "reviewer": "user in current session",
+  "evidence": "docs/execution_authorization.md",
+  "recorded_at": "2026-10-09T06:01:29.189188+00:00",
+  "approved_ceiling_gpu_hours": null,
+  "unlimited_resources": true,
   "deterministic_single_pass_exemption": false,
   "exemption_scope": [],
-  "note": "Default three-seed full plan exceeds20h by measured projection. No exception active."
+  "note": "Explicit user instruction overrides20 GPU-h ceiling; all three actual seeds and cost records retained."
 }

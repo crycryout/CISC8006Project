@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/renjie/CISC8006Project/scripts/run_tests.py", line 31, in <module>
+    if __name__=='__main__': sys.exit(main())
+  File "/home/renjie/CISC8006Project/scripts/run_tests.py", line 19, in main
+    store=RunStore(cfg,hardware('cuda'))
+  File "/home/renjie/CISC8006Project/src/hardware.py", line 41, in hardware
+    compute_capability=list(nvml.nvmlDeviceGetCudaComputeCapability(handle)),
+  File "/home/renjie/CISC8006Project/.venv-verified/lib/python3.10/site-packages/pynvml.py", line 4024, in nvmlDeviceGetCudaComputeCapability
+    _nvmlCheckReturn(ret)
+  File "/home/renjie/CISC8006Project/.venv-verified/lib/python3.10/site-packages/pynvml.py", line 1116, in _nvmlCheckReturn
+    raise NVMLError(ret)
+pynvml.NVMLError_InvalidArgument: Invalid Argument

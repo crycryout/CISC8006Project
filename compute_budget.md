@@ -1,3 +1,13 @@
+# Current resource authorization
+
+On2026-10-09 the user explicitly instructed: “不需要审批，H800的GPU资源随便用”. The20 GPU-h cap and procedural approvals are superseded for this execution. `docs/execution_authorization.md` records the real instruction; it is not a fabricated teacher approval. Complete actual seeds0/1/2 and all failures/costs remain recorded. `approved_ceiling_gpu_hours: null` means explicitly unlimited, not an unknown or implicit waiver.
+
+Three existing idle H800 2g.20gb MIG instances run independent seed workers. Both methods for a seed run on the same instance. NVML records actual30 SMs, memory, UUID/parent, driver and clock/power snapshots. Device-instance wall-hours are conservative usage accounting, not normalized full-GPU billing. A full-GPU/MIG smoke comparison is not bitwise identical and is recorded; all formal comparisons use the common MIG hardware class. No other project is stopped, topology/cron is unchanged.
+
+The full-GPU historical forecast was21.186h. New matrices use a conservative15predictions/s planning rate versus the measured22.255 solo MIG rate, reserve a per-job hard timeout and execute3 devices in parallel. The new total and wall-time forecast will be recalibrated from actual first-book progress. GPU1 instances are unaffected by GPU0's nightly MIG cron.
+
+Historical policy (preserved below; superseded only by the explicit instruction above):
+
 # Compute contract and actual accounting
 
 Default ceiling: **20 GPU-h**, including unsuccessful attempts and model loading. It remains active until a genuine approved budget decision is recorded in `docs/budget_decision.json`; no exception is currently active.

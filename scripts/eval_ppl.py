@@ -17,6 +17,7 @@ from src.config import parse_config
 from src.io_utils import file_hash, object_hash, write_json
 from src.approvals import require_approval
 from src.run_store import RunStore, Tee
+from src.hardware import hardware
 
 
 def prepare_inputs(cfg):
@@ -43,14 +44,6 @@ def prepare_inputs(cfg):
     return manifest,data
 
 
-def hardware(device):
-    if device=='cpu': return dict(device='cpu',allocated_devices=0)
-    selected=os.environ.get('CUDA_VISIBLE_DEVICES','0')
-    if ',' in selected: raise ValueError('one explicitly selected GPU per job required')
-    output=subprocess.check_output(['nvidia-smi','-i',selected,'--query-gpu=uuid,name,driver_version','--format=csv,noheader'],text=True).strip().split(', ')
-    return dict(uuid=output[0],name=output[1],driver=output[2],visible_devices=selected,allocated_devices=1)
-
-
 def run(cfg,store):
     import numpy as np
     import torch
@@ -75,6 +68,8 @@ def run(cfg,store):
     layers=apply_position_policy(model,cfg['position_policy'])
     determinism=dict(enabled=True,tf32=False,cudnn_benchmark=False,torch_threads=1,cublas_workspace=os.environ['CUBLAS_WORKSPACE_CONFIG'],attention_backend='GPTNeoXAttention eager',torch=torch.__version__,transformers=__import__('transformers').__version__,cuda=torch.version.cuda)
     contract=dict(model=cfg['model'],model_revision=cfg['model_revision'],tokenizer_revision=manifest['tokenizer_revision'],assets_manifest_sha256=file_hash(cfg['assets_manifest']),precision=cfg['precision'],scorer_precision=cfg['scorer_precision'],position_policy=cfg['position_policy'],cache_budget=1024,min_scored_idx=1025,max_tokens_per_book=cfg['max_tokens_per_book'],add_special_tokens=True,eviction='after_forward',environment_id=cfg['environment_id'],numerical_source_sha256=store.row['numerical_source_sha256'],protocol_id=cfg['protocol_id'],seed=cfg['seed'],split=cfg['manifest_split'],determinism=determinism)
+    contract['hardware_class']={key:store.row['hardware'].get(key) for key in ('name','memory_total_bytes','multiprocessor_count','compute_capability')}
+    contract['calibration_protocol']=dict(start=cfg['calibration_start'],end=cfg['calibration_end'],selection_threshold=cfg['selection_threshold'])
     per_book=[]
     if cfg['device']=='cuda': torch.cuda.reset_peak_memory_stats()
     evaluation_t0=time.perf_counter()
@@ -110,7 +105,7 @@ def run(cfg,store):
         write_json(store.directory/'progress.json',dict(status='running',completed_books=[b['book_id'] for b in per_book]))
         print(json.dumps(dict(book=book['book_id'],nll=mean,scored=len(scored))),flush=True)
     elapsed=time.perf_counter()-evaluation_t0
-    result=dict(schema_version=2,run_id=cfg['run_id'],status='completed',validation_status='valid',phase=cfg['phase'],method=cfg['method'],git_commit=store.row['git_commit'],contract=contract,contract_sha256=object_hash(contract),book_ids=[b['book_id'] for b in per_book],per_book=per_book,**aggregate(per_book),elapsed_seconds=elapsed,predictions_per_second=sum(b['input_tokens']-1 for b in per_book)/elapsed,peak_gpu_memory_mb=torch.cuda.max_memory_allocated()/1024**2 if cfg['device']=='cuda' else None,claim_status=None)
+    result=dict(schema_version=2,run_id=cfg['run_id'],status='completed',validation_status='valid',phase=cfg['phase'],method=cfg['method'],git_commit=store.row['git_commit'],device_uuid=store.row['gpu_uuid'],contract=contract,contract_sha256=object_hash(contract),book_ids=[b['book_id'] for b in per_book],per_book=per_book,**aggregate(per_book),elapsed_seconds=elapsed,predictions_per_second=sum(b['input_tokens']-1 for b in per_book)/elapsed,peak_gpu_memory_mb=torch.cuda.max_memory_allocated()/1024**2 if cfg['device']=='cuda' else None,claim_status=None)
     write_json(store.directory/'result.json',result)
     print(json.dumps({k:result[k] for k in ('run_id','macro_book_nll','micro_token_nll','scored_tokens','elapsed_seconds','predictions_per_second')},indent=2))
 

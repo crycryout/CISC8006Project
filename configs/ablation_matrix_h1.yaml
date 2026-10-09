@@ -1,13 +1,14 @@
-protocol_id: reproduction-v2-candidate
-estimated_predictions_per_second: 24.192010683941557
+protocol_id: reproduction-v2-owner-authorized
+estimated_predictions_per_second: 15.0
 setup_seconds: 60
-selected_gpu: 0
-config_overrides: {}
+selected_gpu: MIG-e6fc2d29-df53-531c-bfda-84767274c8a2
+config_overrides:
+  environment_id: h800-mig2g20-torch214-transformers433
 preconditions:
 - environment/verification/assets.json
 - results/diagnostics/summary.json
 - results/pilots/comparison.csv
-matrix_id: A-h1-v2-20261008
+matrix_id: A-h1-v2-mig-20261009
 phase: ablation
 split: dev
 methods:
@@ -22,3 +23,8 @@ seeds:
 - 1
 - 2
 cap: 8192
+seed_devices:
+  0: MIG-e6fc2d29-df53-531c-bfda-84767274c8a2
+  1: MIG-0ac25523-86e7-5277-bfb8-0d8f3b6175d7
+  2: MIG-c3be06c6-cf04-5d8b-85a3-617a77291100
+max_parallel: 3

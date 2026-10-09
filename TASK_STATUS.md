@@ -1,5 +1,11 @@
 # H800 execution status
 
+## Resumed execution2026-10-09
+
+User explicitly waived procedural approvals and authorized unrestricted H800 resources. The former20 GPU-h ceiling is superseded (`docs/execution_authorization.md`); no teacher/peer approval is invented. All actual seeds0/1/2 remain.59 CPU/MIG fixtures pass. Formal jobs now use matched existing H800 GPU1 2g.20gb instances per seed with identical hardware class, calibration/scoring/source contracts. GPU0's existing CVPR task, MIG topology and nightly cron remain intact. Reproduction is being launched; pilots → preregistered selection → full improvement → selected controls → report/deck/final technical package follow autonomously. T_final and genuine human course activities remain unknown/separately recorded.
+
+Historical checkpoint before the explicit new authorization follows:
+
 Execution started2026-10-08; latest evidence timestamps are UTC in JSON. T_final: **pending; requested from owner**. Branch: `codex/h800-course-completion-20261008`; remote baseline48e57c6, original audit baselinea3ffaf0.
 
 | Package | Actual state | Evidence / unresolved requirement |

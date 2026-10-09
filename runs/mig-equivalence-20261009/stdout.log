@@ -1,0 +1,11 @@
+StartRecentKVCache: 4, 1020
+{"run_id": "mig-equivalence-20261009", "book": "10146", "step": 0}
+{"book": "10146", "nll": 1.9768825479422696, "scored": 174}
+{
+  "run_id": "mig-equivalence-20261009",
+  "macro_book_nll": 1.9768825479422696,
+  "micro_token_nll": 1.9768825479422696,
+  "scored_tokens": 174,
+  "elapsed_seconds": 53.87585867103189,
+  "predictions_per_second": 22.254865714923284
+}

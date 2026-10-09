@@ -68,7 +68,7 @@ class RunStore:
             model_revision=cfg["model_revision"],seed=cfg["seed"],hardware=hardware or {},
             gpu_uuid=(hardware or {}).get("uuid"),environment_id=cfg["environment_id"],command=[sys.executable]+sys.argv,
             runtime_seconds=None,gpu_hours=None,reserved_gpu_hours=cfg["max_gpu_seconds"]/3600 if cfg["device"]=="cuda" else 0,
-            cost="not separately metered; allocated one device times wall seconds",artifact_path=str(self.directory.relative_to(ROOT)) if self.directory.is_relative_to(ROOT) else str(self.directory),
+            cost="not separately metered; one selected full-GPU or MIG device instance times wall seconds; not normalized full-GPU billing",artifact_path=str(self.directory.relative_to(ROOT)) if self.directory.is_relative_to(ROOT) else str(self.directory),
             parent_run_id=cfg["parent_run_id"],exit_code=None,numerical_source_sha256=src_hash,numerical_files_sha256=src_files,**launch_git)
         write_json(self.directory/"config_used.json",cfg)
         write_json(self.directory/"registration.json",self.row)
@@ -78,7 +78,7 @@ class RunStore:
             fcntl.flock(lock,fcntl.LOCK_EX)
             if cfg["run_id"] in states(self.registry): raise ValueError("run ID already registered")
             limit=ceiling()
-            if spent(self.registry)+self.row["reserved_gpu_hours"]>limit:
+            if limit is not None and spent(self.registry)+self.row["reserved_gpu_hours"]>limit:
                 self.row.update(status="failed",exit_code=2,runtime_seconds=0,gpu_hours=0,error=f"{limit:g} GPU-h reservation exceeded")
                 write_json(self.directory/"metadata.json",self.row); event(self.row,self.registry)
                 raise ValueError(f"{limit:g} GPU-h reservation exceeded")

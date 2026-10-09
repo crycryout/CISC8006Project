@@ -20,6 +20,11 @@ def validate_result(r,manifest,split="test",formal=True):
     if any(c[k]!=manifest[k] for k in ("model","model_revision","tokenizer_revision")): raise ValueError("wrong model/tokenizer revision")
     if c["split"]!=split or c["cache_budget"]!=1024 or c["min_scored_idx"]!=1025 or c["add_special_tokens"] is not True or c["eviction"]!="after_forward": raise ValueError("wrong split/budget/mask/tokenization/eviction")
     if formal and (c["position_policy"]!="cache_relative" or c["scorer_precision"]!="fp32" or c["precision"]!="fp16"): raise ValueError("formal numerical mismatch")
+    if formal and c["protocol_id"]=="reproduction-v2-owner-authorized":
+        if not r.get("device_uuid") or not c.get("hardware_class"):
+            raise ValueError("formal hardware contract missing")
+        if c.get("calibration_protocol")!=dict(start=64,end=512,selection_threshold=0.90):
+            raise ValueError("frozen calibration protocol changed")
     for b in books:
         exp=expected[b["book_id"]]; length=min(exp["full_token_length"],c["max_tokens_per_book"])
         if b["text_sha256"]!=exp["text_sha256"] or b["input_tokens"]!=length or b["scored_tokens"]!=scored_count(length) or b["scored_tokens"]<=0: raise ValueError("text/length/scored mask mismatch")
@@ -50,6 +55,7 @@ def analyze_pairs(windows,streams,manifest,split="test",formal=True,bootstrap_se
         wr,sr=wseed[seed],sseed[seed]
         w=validate_result(wr,manifest,split,formal); s=validate_result(sr,manifest,split,formal)
         if list(w)!=list(s) or wr["contract"]!=sr["contract"]: raise ValueError("paired contract/book list differs")
+        if formal and wr.get("device_uuid")!=sr.get("device_uuid"): raise ValueError("paired CUDA device differs")
         base={k:v for k,v in wr["contract"].items() if k!="seed"}
         if across_seed is not None and across_seed!=base: raise ValueError("non-seed factors changed across repeats")
         across_seed=base

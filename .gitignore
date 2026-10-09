@@ -21,5 +21,6 @@ runs/**/*.log.tmp
 .DS_Store
 .pytest_cache/
 experiments/*.lock
+experiments/device_leases/*.lock
 *.egg-info/
 build/

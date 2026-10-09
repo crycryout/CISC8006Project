@@ -1,0 +1,16 @@
+{
+  "verified_at": "2026-10-09T06:06:27.334577+00:00",
+  "purpose": "explicit hardware comparison on historically exposed smoke prefix; not a formal claim or bitwise equivalence",
+  "input_tokens": 1200,
+  "scored_tokens": 174,
+  "old_run": "D-S1-20261008",
+  "new_run": "mig-equivalence-20261009",
+  "bitwise_equal": false,
+  "max_abs_position_nll_diff": 0.3867567777633667,
+  "mean_abs_position_nll_diff": 0.010900250636041164,
+  "scored_mean_shift": 0.0004888492707919043,
+  "full_gpu_scored_mean": 1.9763936986714778,
+  "mig_scored_mean": 1.9768825479422696,
+  "same_model_text_tokenizer_and_position_mechanism": true,
+  "note": "FP16 hardware execution is not bitwise identical. All formal paired methods will use the same MIG device per seed and hardware class across seeds; do not mix full-GPU and MIG results in a pair."
+}

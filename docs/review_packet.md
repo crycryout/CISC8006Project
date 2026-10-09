@@ -1,3 +1,9 @@
+# Execution authorized by user
+
+The current user explicitly waived procedural approval and authorized unrestricted H800 use on2026-10-09. See `docs/execution_authorization.md`. No further permission is needed to execute the registered complete scientific plan or apply its predetermined pilot-selection rule. Actual T_final, roster and independent peer/individual course activities are still unknown; no signatures or activities are invented.
+
+The previous concrete review packet below documents the pre-authorization evidence and estimate; its approval/budget requests have been resolved by the user's instruction.
+
 # Concrete decisions required before scientific execution
 
 Engineering evidence:55 independent CPU/H800 tests pass; original10 books verified; four full-model position diagnostics completed; fresh pinned environment reproduces all1199 prefix NLLs bitwise; actual failure/new-ID retry verified and original files retained. Formal reproduction has not started.

@@ -10,3 +10,4 @@ matplotlib==3.10.7
 reportlab==4.4.4
 python-pptx==1.0.2
 wheel==0.45.1
+nvidia-ml-py==13.615.71

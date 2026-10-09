@@ -49,6 +49,7 @@ def validate_run(directory):
         metrics=json.loads((directory/"books"/row["book_id"]/"metrics.json").read_text())
         if metrics!=row: raise ValueError("per-book artifact inconsistent with result")
     if result["git_commit"]!=metadata["git_commit"] or result["contract"]["numerical_source_sha256"]!=metadata["numerical_source_sha256"]: raise ValueError("launch/source mapping mismatch")
+    if result.get("device_uuid") is not None and result["device_uuid"]!=metadata["gpu_uuid"]: raise ValueError("selected CUDA device differs from launch")
     return dict(run_id=result["run_id"],validation_status="valid",books=len(result["per_book"]),result_sha256=file_hash(directory/"result.json"))
 
 
