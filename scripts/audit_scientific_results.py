@@ -79,7 +79,9 @@ def audit(stage,spec):
             close(float(np.mean(means)),summary[label]["macro_book_nll"],label+" macro NLL")
             close(float(np.mean(micros)),summary[label]["micro_token_nll"],label+" micro NLL")
             close(float(np.exp(np.mean(micros))),summary[label]["micro_token_ppl"],label+" pooled PPL")
-        same=all(np.array_equal(runs[0][book]["raw_nll"],run[book]["raw_nll"]) for run in runs[1:] for book in runs[0])
+        def same_bits(left,right):
+            return left.dtype==right.dtype and left.shape==right.shape and left.tobytes()==right.tobytes()
+        same=all(same_bits(runs[0][book]["raw_nll"],run[book]["raw_nll"]) for run in runs[1:] for book in runs[0])
         seed_spread[label]=dict(actual_seeds=[0,1,2],macro_nll_range=float(max(means)-min(means)),all_position_losses_bitwise_identical=same)
     verdict="supported" if interval[1]<0 else "not_supported" if interval[0]>0 else "inconclusive"
     if verdict!=summary["claim_status"]: raise ValueError("raw verdict differs")

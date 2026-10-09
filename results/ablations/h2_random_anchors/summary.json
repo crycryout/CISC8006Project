@@ -1,0 +1,33 @@
+{
+  "paired_macro_delta_nll": 0.016332538930496663,
+  "bootstrap_ci95": [
+    0.0004496071362821337,
+    0.03045400735325791
+  ],
+  "claim_status": "not_supported",
+  "n_books": 3,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "primary": "equal-book seed-paired NLL difference",
+  "baseline": {
+    "macro_book_nll": 2.6120866861388117,
+    "macro_derived_ppl": 13.627457430243684,
+    "micro_token_nll": 2.6120866861388117,
+    "micro_token_ppl": 13.627457430243684,
+    "peak_gpu_memory_mb": 6445.85009765625,
+    "predictions_per_second": 21.2151887122815,
+    "runtime_seconds": 1187.1493065863226
+  },
+  "candidate": {
+    "macro_book_nll": 2.628419225069308,
+    "macro_derived_ppl": 13.85185591957487,
+    "micro_token_nll": 2.628419225069308,
+    "micro_token_ppl": 13.85185591957487,
+    "peak_gpu_memory_mb": 6445.85009765625,
+    "predictions_per_second": 21.09777350075983,
+    "runtime_seconds": 1193.3980699367821
+  }
+}

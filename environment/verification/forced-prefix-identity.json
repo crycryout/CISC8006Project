@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-09T13:45:36.104424+00:00",
+  "checked_at": "2026-10-09T14:11:02.977818+00:00",
   "status": "pass",
   "purpose": "full-checkpoint forced-prefix control versus fixed-four development baseline, exact saved NPZ identity; agent engineering verification",
   "input_manifest_sha256": "949baedf46b437178111626a11b828bfe342f6b7a7d01ec694a63b01e5dc35af",
@@ -202,5 +202,6 @@
       "baseline_result_sha256": "6555caf5360c98571118d2ca7a3fa52a57fe6ff0019db0751c53071d21d38dc3",
       "candidate_result_sha256": "28373e7ac8c4ef9f733ba5de49f2985e46c18a420f3a651586496ee5f777364d"
     }
-  ]
+  ],
+  "bitwise_check": "equal dtype, shape and C-order array bytes; not only float value equality"
 }

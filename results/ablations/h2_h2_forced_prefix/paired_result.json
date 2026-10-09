@@ -1,0 +1,156 @@
+{
+  "validation_status": "valid",
+  "provenance": [
+    {
+      "seed": 0,
+      "baseline_run": "P-v2-mig-20261009-streaming-s0",
+      "candidate_run": "A-h2-v2-mig-20261009-h2_forced_prefix-s0"
+    },
+    {
+      "seed": 1,
+      "baseline_run": "P-v2-mig-20261009-streaming-s1",
+      "candidate_run": "A-h2-v2-mig-20261009-h2_forced_prefix-s1"
+    },
+    {
+      "seed": 2,
+      "baseline_run": "P-v2-mig-20261009-streaming-s2",
+      "candidate_run": "A-h2-v2-mig-20261009-h2_forced_prefix-s2"
+    }
+  ],
+  "per_book": [
+    {
+      "book_id": "1022",
+      "baseline_nll": 2.6662909568686968,
+      "candidate_nll": 2.6662909568686968,
+      "delta": 0.0,
+      "seed_delta_min": 0.0,
+      "seed_delta_max": 0.0,
+      "scored_tokens": 7166
+    },
+    {
+      "book_id": "11155",
+      "baseline_nll": 2.852686879919036,
+      "candidate_nll": 2.852686879919036,
+      "delta": 0.0,
+      "seed_delta_min": 0.0,
+      "seed_delta_max": 0.0,
+      "scored_tokens": 7166
+    },
+    {
+      "book_id": "13089",
+      "baseline_nll": 2.3172822216287017,
+      "candidate_nll": 2.3172822216287017,
+      "delta": 0.0,
+      "seed_delta_min": 0.0,
+      "seed_delta_max": 0.0,
+      "scored_tokens": 7166
+    }
+  ],
+  "seed_results": {
+    "1022": [
+      {
+        "seed": 0,
+        "baseline_nll": 2.6662909568686968,
+        "candidate_nll": 2.6662909568686968,
+        "delta": 0.0,
+        "scored_tokens": 7166
+      },
+      {
+        "seed": 1,
+        "baseline_nll": 2.6662909568686968,
+        "candidate_nll": 2.6662909568686968,
+        "delta": 0.0,
+        "scored_tokens": 7166
+      },
+      {
+        "seed": 2,
+        "baseline_nll": 2.6662909568686968,
+        "candidate_nll": 2.6662909568686968,
+        "delta": 0.0,
+        "scored_tokens": 7166
+      }
+    ],
+    "11155": [
+      {
+        "seed": 0,
+        "baseline_nll": 2.852686879919036,
+        "candidate_nll": 2.852686879919036,
+        "delta": 0.0,
+        "scored_tokens": 7166
+      },
+      {
+        "seed": 1,
+        "baseline_nll": 2.852686879919036,
+        "candidate_nll": 2.852686879919036,
+        "delta": 0.0,
+        "scored_tokens": 7166
+      },
+      {
+        "seed": 2,
+        "baseline_nll": 2.852686879919036,
+        "candidate_nll": 2.852686879919036,
+        "delta": 0.0,
+        "scored_tokens": 7166
+      }
+    ],
+    "13089": [
+      {
+        "seed": 0,
+        "baseline_nll": 2.3172822216287017,
+        "candidate_nll": 2.3172822216287017,
+        "delta": 0.0,
+        "scored_tokens": 7166
+      },
+      {
+        "seed": 1,
+        "baseline_nll": 2.3172822216287017,
+        "candidate_nll": 2.3172822216287017,
+        "delta": 0.0,
+        "scored_tokens": 7166
+      },
+      {
+        "seed": 2,
+        "baseline_nll": 2.3172822216287017,
+        "candidate_nll": 2.3172822216287017,
+        "delta": 0.0,
+        "scored_tokens": 7166
+      }
+    ]
+  },
+  "uncertainty_unit": "book; seed-paired deltas averaged within book before bootstrap",
+  "paired_macro_delta_nll": 0.0,
+  "bootstrap_ci95": [
+    0.0,
+    0.0
+  ],
+  "claim_status": "inconclusive",
+  "bootstrap_seed": 0,
+  "n_boot": 10000,
+  "n_books": 3,
+  "inputs": [
+    {
+      "path": "runs/P-v2-mig-20261009-streaming-s0/result.json",
+      "sha256": "4e34bf3196aabfddcdaf9816c712c7c2f336500eeba9f31b2dc6d12834021246"
+    },
+    {
+      "path": "runs/P-v2-mig-20261009-streaming-s1/result.json",
+      "sha256": "a0a38a7e3dec8f6a99953bb4945b87c4be9cd550c54ff0b6e068a08738831c69"
+    },
+    {
+      "path": "runs/P-v2-mig-20261009-streaming-s2/result.json",
+      "sha256": "6555caf5360c98571118d2ca7a3fa52a57fe6ff0019db0751c53071d21d38dc3"
+    },
+    {
+      "path": "runs/A-h2-v2-mig-20261009-h2_forced_prefix-s0/result.json",
+      "sha256": "e404f4b75f8fc5dd223defd03a07d8fe5088521c4b1cfed1f1fa79a7de55d89e"
+    },
+    {
+      "path": "runs/A-h2-v2-mig-20261009-h2_forced_prefix-s1/result.json",
+      "sha256": "c040ea09d75693c3aee3bceb3637296e2daa895bb2b1313769768b3bbfc4ed96"
+    },
+    {
+      "path": "runs/A-h2-v2-mig-20261009-h2_forced_prefix-s2/result.json",
+      "sha256": "28373e7ac8c4ef9f733ba5de49f2985e46c18a420f3a651586496ee5f777364d"
+    }
+  ]
+}

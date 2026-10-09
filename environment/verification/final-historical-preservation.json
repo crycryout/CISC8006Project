@@ -1,0 +1,88 @@
+{
+  "checked_at": "2026-10-09T14:02:19.117895+00:00",
+  "status": "pass",
+  "inventory_sha256": "64cf694598256ff422450d3a264e2dbeacea59cf3b5665024ee2e9124a9bfde8",
+  "historical_files": 16,
+  "files": [
+    {
+      "path": "runs/.gitkeep",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "runs/R0001/streaming_stdout.log",
+      "expected_sha256": "c898739459f7b9a8b4ae761808f090f1953f46ae509be548cc07544e2b83e71a",
+      "actual_sha256": "c898739459f7b9a8b4ae761808f090f1953f46ae509be548cc07544e2b83e71a"
+    },
+    {
+      "path": "runs/R0001/window_stdout.log",
+      "expected_sha256": "932a6456e122090e4973f70ebf175be3ec4ec91368c10daba796cffea3537ae6",
+      "actual_sha256": "932a6456e122090e4973f70ebf175be3ec4ec91368c10daba796cffea3537ae6"
+    },
+    {
+      "path": "runs/R0001/metadata.json",
+      "expected_sha256": "77f70c326b9a288f414560b32c924c0258673d3967c18a48103733c5a8c64dd3",
+      "actual_sha256": "77f70c326b9a288f414560b32c924c0258673d3967c18a48103733c5a8c64dd3"
+    },
+    {
+      "path": "runs/R0001/streaming/config_used.json",
+      "expected_sha256": "34aa82c615df960eb91b5b8b15e312259bc7410d9060bad3641489251a897f6e",
+      "actual_sha256": "34aa82c615df960eb91b5b8b15e312259bc7410d9060bad3641489251a897f6e"
+    },
+    {
+      "path": "runs/R0001/streaming/result.json",
+      "expected_sha256": "d9e6a8b55b7faeebe45f4e1379ceb164c19572d275ff75131c18779b4a20493e",
+      "actual_sha256": "d9e6a8b55b7faeebe45f4e1379ceb164c19572d275ff75131c18779b4a20493e"
+    },
+    {
+      "path": "runs/R0001/streaming/position_nll.json",
+      "expected_sha256": "b0bd2b2f8bda20f6942ab8c1d30ff440925795eccc562fe30413494403ecf1c5",
+      "actual_sha256": "b0bd2b2f8bda20f6942ab8c1d30ff440925795eccc562fe30413494403ecf1c5"
+    },
+    {
+      "path": "runs/R0001/window/config_used.json",
+      "expected_sha256": "22ea968243ec9c518d3a045b41e5baebecdb0940a9a9a78401d595ef6fafbba6",
+      "actual_sha256": "22ea968243ec9c518d3a045b41e5baebecdb0940a9a9a78401d595ef6fafbba6"
+    },
+    {
+      "path": "runs/R0001/window/result.json",
+      "expected_sha256": "f9e2d240904b1a90d0849fa1354162ab16dbffc9d96c4d3181b4cc14bf34ad9e",
+      "actual_sha256": "f9e2d240904b1a90d0849fa1354162ab16dbffc9d96c4d3181b4cc14bf34ad9e"
+    },
+    {
+      "path": "runs/R0001/window/position_nll.json",
+      "expected_sha256": "ef217909293946a3e1a6d070f40784e3a0c9688f606e59116fec55484bc5e113",
+      "actual_sha256": "ef217909293946a3e1a6d070f40784e3a0c9688f606e59116fec55484bc5e113"
+    },
+    {
+      "path": "runs/R0000-harnesscheck/streaming/config_used.json",
+      "expected_sha256": "bfa9efd0002976426a4e1878e018d60f52feb321740b6cfb756ddbfecd0b2441",
+      "actual_sha256": "bfa9efd0002976426a4e1878e018d60f52feb321740b6cfb756ddbfecd0b2441"
+    },
+    {
+      "path": "runs/R0000-harnesscheck/streaming/result.json",
+      "expected_sha256": "73d44688d3e8806225168155290bd465cc138f46595db437bf8766c6318ae11b",
+      "actual_sha256": "73d44688d3e8806225168155290bd465cc138f46595db437bf8766c6318ae11b"
+    },
+    {
+      "path": "runs/R0000-harnesscheck/streaming/position_nll.json",
+      "expected_sha256": "fcb3b6253b7dd916b14a55dcdc6f23f5da258ffff2c09e913ed7027626f982f8",
+      "actual_sha256": "fcb3b6253b7dd916b14a55dcdc6f23f5da258ffff2c09e913ed7027626f982f8"
+    },
+    {
+      "path": "runs/R0000-harnesscheck/window/config_used.json",
+      "expected_sha256": "55416c4d1222d702310b81c22a01c829dd6a04edfa7382cf346f79700977cc64",
+      "actual_sha256": "55416c4d1222d702310b81c22a01c829dd6a04edfa7382cf346f79700977cc64"
+    },
+    {
+      "path": "runs/R0000-harnesscheck/window/result.json",
+      "expected_sha256": "83e9c313ce2a6ce7795efc2d2984919e754868c80cb565dae6fee094b32f7ecb",
+      "actual_sha256": "83e9c313ce2a6ce7795efc2d2984919e754868c80cb565dae6fee094b32f7ecb"
+    },
+    {
+      "path": "runs/R0000-harnesscheck/window/position_nll.json",
+      "expected_sha256": "095bfc7e5bee7d7640875d6e0c911a7070664409efc7354512388d2ea171d835",
+      "actual_sha256": "095bfc7e5bee7d7640875d6e0c911a7070664409efc7354512388d2ea171d835"
+    }
+  ]
+}

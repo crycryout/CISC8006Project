@@ -1,0 +1,243 @@
+[
+  {
+    "run_id": "D-W0-20261008",
+    "validation_status": "valid",
+    "books": 1,
+    "result_sha256": "9bf8ddb2edf5c1d8372c93e2eb289edd31791aa911550785e5cdac73ea365166"
+  },
+  {
+    "run_id": "smoke-cpu-a-20261008",
+    "validation_status": "valid_cpu_fixture"
+  },
+  {
+    "run_id": "smoke-cpu-b-20261008",
+    "validation_status": "valid_cpu_fixture"
+  },
+  {
+    "run_id": "D-S0-20261008",
+    "validation_status": "valid",
+    "books": 1,
+    "result_sha256": "4383a4485fe5c0b8740b9a28cb2a5c413a64ae33691b087a53caddb79a4ef708"
+  },
+  {
+    "run_id": "D-W1-20261008",
+    "validation_status": "valid",
+    "books": 1,
+    "result_sha256": "31c825d25ea7a0fbb6b9dd4957015e94f34ccead737b57b1e3b925b44cf90402"
+  },
+  {
+    "run_id": "D-S1-20261008",
+    "validation_status": "valid",
+    "books": 1,
+    "result_sha256": "ea903b2374e6c90d0243b98c9b352a92d65e8693f6a3ee534b87b8f5e66f08c2"
+  },
+  {
+    "run_id": "scorer-legacy-20261008",
+    "validation_status": "valid",
+    "books": 1,
+    "result_sha256": "9bc7383ad49cc71068140531ced82bfbc844d106c9781ff0f193686f0e36d907"
+  },
+  {
+    "run_id": "recovery-failed-20261008",
+    "validation_status": "invalid_failed_attempt_preserved",
+    "error": "RuntimeError: injected failure for recovery verification"
+  },
+  {
+    "run_id": "fixtures-h800-11f7e21a9a8a",
+    "validation_status": "valid_accounted_fixture"
+  },
+  {
+    "run_id": "R0000-harnesscheck",
+    "validation_status": "legacy_evidence_only_not_v2"
+  },
+  {
+    "run_id": "R0001",
+    "validation_status": "legacy_evidence_only_not_v2"
+  },
+  {
+    "run_id": "smoke-gpu-clean-s1-20261008",
+    "validation_status": "valid",
+    "books": 1,
+    "result_sha256": "202a1e3b8a63c3fe9d412c570fced9eaba0b6d97267f8feb1b35869895ca2400"
+  },
+  {
+    "run_id": "recovery-retry-20261009",
+    "validation_status": "valid",
+    "books": 2,
+    "result_sha256": "faab3a885051914ca687097a799651f1149e2e9760ceae024f913ec805bd0a35"
+  },
+  {
+    "run_id": "smoke-cpu-a29b6758c903",
+    "validation_status": "valid_cpu_fixture"
+  },
+  {
+    "run_id": "smoke-cpu-clean-checkout-20261009",
+    "validation_status": "valid_cpu_fixture"
+  },
+  {
+    "run_id": "smoke-cpu-ca8f7f22e8f0",
+    "validation_status": "valid_cpu_fixture"
+  },
+  {
+    "run_id": "fixtures-h800-aa78139f486f",
+    "validation_status": "valid_accounted_fixture"
+  },
+  {
+    "run_id": "mig-equivalence-20261009",
+    "validation_status": "valid",
+    "books": 1,
+    "result_sha256": "84cbe4de555cb182734f355223dc017f8d52ccdf746353729e1e27bf7fef31ec"
+  },
+  {
+    "run_id": "fixtures-h800-3effa8171396",
+    "validation_status": "valid_accounted_fixture"
+  },
+  {
+    "run_id": "R-v2-mig-20261009-window-s0",
+    "validation_status": "valid",
+    "books": 10,
+    "result_sha256": "a09ed5ea0dd8b9f434c334a810d84ca592355d9320fd5b56f77507452be9bc29"
+  },
+  {
+    "run_id": "R-v2-mig-20261009-window-s2",
+    "validation_status": "valid",
+    "books": 10,
+    "result_sha256": "d827106ebe04371ee09245805109ce055778b76f851f41a82c6dd19197a55540"
+  },
+  {
+    "run_id": "R-v2-mig-20261009-window-s1",
+    "validation_status": "valid",
+    "books": 10,
+    "result_sha256": "24f49478fb4ba7bebca657839db0ccb277d560e093f58ef1880d53b2986a4ff5"
+  },
+  {
+    "run_id": "smoke-cpu-owner-clean-20261009",
+    "validation_status": "valid_cpu_fixture"
+  },
+  {
+    "run_id": "R-v2-mig-20261009-streaming-s2",
+    "validation_status": "valid",
+    "books": 10,
+    "result_sha256": "a98f1eee984f57c34371d545e2682b9e281d190a95424de30502c14d7c4e3621"
+  },
+  {
+    "run_id": "R-v2-mig-20261009-streaming-s1",
+    "validation_status": "valid",
+    "books": 10,
+    "result_sha256": "cf97d107d96d590e99365b4803471c1f8833d25c631285a3f6c34aafb27279ee"
+  },
+  {
+    "run_id": "R-v2-mig-20261009-streaming-s0",
+    "validation_status": "valid",
+    "books": 10,
+    "result_sha256": "4b3feca009d688f96d0c61b0c866e8d5fd665e150dfcff4f21eaf72dc138f6e7"
+  },
+  {
+    "run_id": "P-v2-mig-20261009-streaming-s2",
+    "validation_status": "valid",
+    "books": 3,
+    "result_sha256": "6555caf5360c98571118d2ca7a3fa52a57fe6ff0019db0751c53071d21d38dc3"
+  },
+  {
+    "run_id": "P-v2-mig-20261009-streaming-s0",
+    "validation_status": "valid",
+    "books": 3,
+    "result_sha256": "4e34bf3196aabfddcdaf9816c712c7c2f336500eeba9f31b2dc6d12834021246"
+  },
+  {
+    "run_id": "P-v2-mig-20261009-streaming-s1",
+    "validation_status": "valid",
+    "books": 3,
+    "result_sha256": "a0a38a7e3dec8f6a99953bb4945b87c4be9cd550c54ff0b6e068a08738831c69"
+  },
+  {
+    "run_id": "P-v2-mig-20261009-h1_adaptive_sink-s1",
+    "validation_status": "valid",
+    "books": 3,
+    "result_sha256": "b87f6b5bcb2f5ed6923561edf350d54f09a3757f96a8db7c16597875fdb5df3c"
+  },
+  {
+    "run_id": "P-v2-mig-20261009-h1_adaptive_sink-s2",
+    "validation_status": "valid",
+    "books": 3,
+    "result_sha256": "a8017d7e95a274e0b161949790a6f30e985b2f7711471c0683d55a90cc663111"
+  },
+  {
+    "run_id": "P-v2-mig-20261009-h1_adaptive_sink-s0",
+    "validation_status": "valid",
+    "books": 3,
+    "result_sha256": "ed063395f0d1cbe0dec5e854528ea3d4d6498661ff2993ed33590778df338d09"
+  },
+  {
+    "run_id": "P-v2-mig-20261009-h2_sink_selection-s2",
+    "validation_status": "valid",
+    "books": 3,
+    "result_sha256": "6e452b55ff66aab5f38389b318b95ab10bd99e8876c2ad8b960a487c222b57c5"
+  },
+  {
+    "run_id": "P-v2-mig-20261009-h2_sink_selection-s0",
+    "validation_status": "valid",
+    "books": 3,
+    "result_sha256": "4cba41955278a6b41f2bfcc6ea29faa0707fc35ac7c07bb3f3a716ed365cb03a"
+  },
+  {
+    "run_id": "P-v2-mig-20261009-h2_sink_selection-s1",
+    "validation_status": "valid",
+    "books": 3,
+    "result_sha256": "6b2861504ffefab35e0970ca48a26554c849316f345b3b7f4ea135066a050362"
+  },
+  {
+    "run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s1",
+    "validation_status": "valid",
+    "books": 10,
+    "result_sha256": "7a597a85da3b47afa26d075c0e2c6ab23f5f6b4a4641c2017d1e4c3df3378475"
+  },
+  {
+    "run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s0",
+    "validation_status": "valid",
+    "books": 10,
+    "result_sha256": "f5f9cbdf5543851c8dfb5e48bc9bf79482f3b8288c6d7d7e5c2388453da69966"
+  },
+  {
+    "run_id": "I-h2-v2-mig-20261009-h2_sink_selection-s2",
+    "validation_status": "valid",
+    "books": 10,
+    "result_sha256": "f0934025633a873c40cf8b711bce1e816ad11bb573b9d9968a96c7932e1f7a7f"
+  },
+  {
+    "run_id": "A-h2-v2-mig-20261009-h2_forced_prefix-s1",
+    "validation_status": "valid",
+    "books": 3,
+    "result_sha256": "c040ea09d75693c3aee3bceb3637296e2daa895bb2b1313769768b3bbfc4ed96"
+  },
+  {
+    "run_id": "A-h2-v2-mig-20261009-h2_forced_prefix-s2",
+    "validation_status": "valid",
+    "books": 3,
+    "result_sha256": "28373e7ac8c4ef9f733ba5de49f2985e46c18a420f3a651586496ee5f777364d"
+  },
+  {
+    "run_id": "A-h2-v2-mig-20261009-h2_forced_prefix-s0",
+    "validation_status": "valid",
+    "books": 3,
+    "result_sha256": "e404f4b75f8fc5dd223defd03a07d8fe5088521c4b1cfed1f1fa79a7de55d89e"
+  },
+  {
+    "run_id": "A-h2-v2-mig-20261009-random_anchors-s2",
+    "validation_status": "valid",
+    "books": 3,
+    "result_sha256": "b12cdd8e7408d9502d3f41d61753b88243c4c98da50adad587f9cc38d5565b11"
+  },
+  {
+    "run_id": "A-h2-v2-mig-20261009-random_anchors-s0",
+    "validation_status": "valid",
+    "books": 3,
+    "result_sha256": "dab7b5e0959587b8c9dd2d132fd0f8c7f00a05225a597baed702e51af95b8fb0"
+  },
+  {
+    "run_id": "A-h2-v2-mig-20261009-random_anchors-s1",
+    "validation_status": "valid",
+    "books": 3,
+    "result_sha256": "54687c2ab566ddba6e77b558f90e7c2800b366fdbeed0f6d359777250ddc6a82"
+  }
+]

@@ -19,6 +19,13 @@ The observed runtime ratio is0.9957065142 and memory ratio1.0; unlocked clocks, 
 
 Descriptive failure cases: book22424 has the largest unfavorable delta+0.000822374 with frozen anchors[0,1,52,54]; book10321 follows at+0.000272643 with[0,1,29,57]. Book10356 has the largest favorable delta−0.000312895 with[0,1,59,63]. These cases do not identify the cause of the loss change and do not trigger further test tuning. Late-position curves retain exact512-step bin coverage rather than zero-padding short books.
 
-Required H2 controls are forced positions0..3 with the same prefix collection, and position0 plus three seeded random anchors. Both use the original three development books and actual seeds0/1/2. The six runs started after the full test completed and are currently running; their verdicts are pending. H1 controls remain unused proposals; only the selected family's two controls are required.
+Both required H2 controls completed by14:00 UTC on the original three development books and actual seeds0/1/2. H1 controls remain unused proposals; only the selected family's two controls were required and executed. These three-book controls are not ten-book test effects.
 
-Registered-run duration includes model loading/inference/failures and has the exact boundary in `compute_budget.md`. Full cost ratios, book-cluster CI, late-position coverage and worst-book cases come from actual outputs; the selected controls will be added after completion. All failures and negative/inconclusive outcomes are retained. The user authorized execution without further approval; genuine human course activities remain separately recorded.
+| Control | ΔNLL vs fixed-four | Book95% CI | Tri-state verdict | Runtime ratio |
+|---|---:|---|---|---:|
+| Forced positions0..3, same prefix collection |0.0|[0.0,0.0]|inconclusive|1.0081189166|
+| Position0 plus three seeded random anchors |+0.0163325389|[+0.0004496071,+0.0304540074]|not_supported|1.0052636710|
+
+Both peak-memory ratios are1.0. The forced-prefix control matches baseline NLL/input/mask arrays bitwise for all nine book-seed pairs, maximum absolute NLL difference0. This verifies implementation identity rather than a positive quality effect. Exact receipt: `environment/verification/forced-prefix-identity.json`; registered result key is `h2_h2_forced_prefix`. Random anchors worsen the development mean in this comparison. Their actual seeded outcomes are retained, not discarded or retuned. Full six-stage NPZ reconstruction passes in `environment/verification/scientific-raw-reconstruction.json`.
+
+Registered-run duration includes model loading/inference/failures and has the exact boundary in `compute_budget.md`. Full cost ratios, book-cluster CI, late-position coverage, worst-book cases and both controls come from actual outputs. All failures and negative/inconclusive outcomes are retained. The user authorized execution without further approval; genuine human course activities remain separately recorded.

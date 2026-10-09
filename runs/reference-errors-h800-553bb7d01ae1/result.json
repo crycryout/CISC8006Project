@@ -1,0 +1,7 @@
+{
+  "run_id": "reference-errors-h800-553bb7d01ae1",
+  "status": "completed",
+  "artifact_kind": "fixture",
+  "purpose": "independent tiny-model GPU error distributions with unchanged preset tolerances",
+  "claim_status": null
+}

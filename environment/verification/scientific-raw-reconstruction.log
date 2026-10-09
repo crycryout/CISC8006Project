@@ -1,0 +1,158 @@
+[
+  {
+    "stage": "reproduction",
+    "status": "pass",
+    "n_books": 10,
+    "claim_status": "supported",
+    "seed_spread": {
+      "baseline": {
+        "actual_seeds": [
+          0,
+          1,
+          2
+        ],
+        "macro_nll_range": 0.0,
+        "all_position_losses_bitwise_identical": true
+      },
+      "candidate": {
+        "actual_seeds": [
+          0,
+          1,
+          2
+        ],
+        "macro_nll_range": 0.0,
+        "all_position_losses_bitwise_identical": true
+      }
+    }
+  },
+  {
+    "stage": "pilots/h1_adaptive_sink",
+    "status": "pass",
+    "n_books": 3,
+    "claim_status": "inconclusive",
+    "seed_spread": {
+      "baseline": {
+        "actual_seeds": [
+          0,
+          1,
+          2
+        ],
+        "macro_nll_range": 0.0,
+        "all_position_losses_bitwise_identical": true
+      },
+      "candidate": {
+        "actual_seeds": [
+          0,
+          1,
+          2
+        ],
+        "macro_nll_range": 0.0,
+        "all_position_losses_bitwise_identical": true
+      }
+    }
+  },
+  {
+    "stage": "pilots/h2_sink_selection",
+    "status": "pass",
+    "n_books": 3,
+    "claim_status": "supported",
+    "seed_spread": {
+      "baseline": {
+        "actual_seeds": [
+          0,
+          1,
+          2
+        ],
+        "macro_nll_range": 0.0,
+        "all_position_losses_bitwise_identical": true
+      },
+      "candidate": {
+        "actual_seeds": [
+          0,
+          1,
+          2
+        ],
+        "macro_nll_range": 0.0,
+        "all_position_losses_bitwise_identical": true
+      }
+    }
+  },
+  {
+    "stage": "improvement",
+    "status": "pass",
+    "n_books": 10,
+    "claim_status": "inconclusive",
+    "seed_spread": {
+      "baseline": {
+        "actual_seeds": [
+          0,
+          1,
+          2
+        ],
+        "macro_nll_range": 0.0,
+        "all_position_losses_bitwise_identical": true
+      },
+      "candidate": {
+        "actual_seeds": [
+          0,
+          1,
+          2
+        ],
+        "macro_nll_range": 0.0,
+        "all_position_losses_bitwise_identical": true
+      }
+    }
+  },
+  {
+    "stage": "ablations/h2_h2_forced_prefix",
+    "status": "pass",
+    "n_books": 3,
+    "claim_status": "inconclusive",
+    "seed_spread": {
+      "baseline": {
+        "actual_seeds": [
+          0,
+          1,
+          2
+        ],
+        "macro_nll_range": 0.0,
+        "all_position_losses_bitwise_identical": true
+      },
+      "candidate": {
+        "actual_seeds": [
+          0,
+          1,
+          2
+        ],
+        "macro_nll_range": 0.0,
+        "all_position_losses_bitwise_identical": true
+      }
+    }
+  },
+  {
+    "stage": "ablations/h2_random_anchors",
+    "status": "pass",
+    "n_books": 3,
+    "claim_status": "not_supported",
+    "seed_spread": {
+      "baseline": {
+        "actual_seeds": [
+          0,
+          1,
+          2
+        ],
+        "macro_nll_range": 0.0,
+        "all_position_losses_bitwise_identical": true
+      },
+      "candidate": {
+        "actual_seeds": [
+          0,
+          1,
+          2
+        ],
+        "macro_nll_range": 0.0009196586716844202,
+        "all_position_losses_bitwise_identical": false
+      }
+    }
+  }
+]

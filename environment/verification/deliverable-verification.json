@@ -1,0 +1,125 @@
+{
+  "checked_at": "2026-10-09T14:05:12.314459+00:00",
+  "status": "pass",
+  "scope": "Agent content/structure verification; no Office visual rendering or human rehearsal claimed",
+  "verification_script_sha256": "3c2c71da240ef22ca5abf7827adebfa57caedf373b6a1ad82dec8f72f8db1cba",
+  "pdf_pages": 5,
+  "deck_slides": 12,
+  "comparisons": [
+    {
+      "stage": "reproduction",
+      "visible_slide": 5,
+      "metrics_match": true,
+      "summary_sha256": "c8d55d6962823e3eb7298cf56118138ebe0f2dc259fbd36dc31ab4fe822192cc"
+    },
+    {
+      "stage": "improvement",
+      "visible_slide": 9,
+      "metrics_match": true,
+      "summary_sha256": "e9a509e4d17d0bfb07c66f946465d5601ecd61a1052d2e7a2485644243aa3c13"
+    },
+    {
+      "stage": "ablations/h2_h2_forced_prefix",
+      "visible_slide": 10,
+      "metrics_match": true,
+      "summary_sha256": "fb56266e5b96224a2e53341e3e30990a2c693ead1261ac2991ac221df45471d6"
+    },
+    {
+      "stage": "ablations/h2_random_anchors",
+      "visible_slide": 10,
+      "metrics_match": true,
+      "summary_sha256": "5000ae251c03cb11f9b02ab8f589c886af5161ff5f6f37990d76daf8a581313e"
+    }
+  ],
+  "pilots_present": true,
+  "embedded_figures": [
+    {
+      "path": "figures/reproduction_per_book_delta.png",
+      "sha256": "d1c02c7038da2d25caaf0a3738ac599dfa6d08440c92cf595d68f1779add6a8a"
+    },
+    {
+      "path": "figures/diagnostic_nll_vs_position.png",
+      "sha256": "accd39af8b6d0e1ceb7cbff8777379af848601df602643b4167b8e8bea4d64c3"
+    },
+    {
+      "path": "figures/improvement_quality_cost.png",
+      "sha256": "e0c22c7b4ceaa1a776e3b97c4a420dbf71170fa31fe0f2b8ee88da8017135b65"
+    }
+  ],
+  "slides": [
+    {
+      "slide": 1,
+      "notes_characters": 1102,
+      "all_shapes_within_bounds": true
+    },
+    {
+      "slide": 2,
+      "notes_characters": 422,
+      "all_shapes_within_bounds": true
+    },
+    {
+      "slide": 3,
+      "notes_characters": 426,
+      "all_shapes_within_bounds": true
+    },
+    {
+      "slide": 4,
+      "notes_characters": 1177,
+      "all_shapes_within_bounds": true
+    },
+    {
+      "slide": 5,
+      "notes_characters": 1307,
+      "all_shapes_within_bounds": true
+    },
+    {
+      "slide": 6,
+      "notes_characters": 639,
+      "all_shapes_within_bounds": true
+    },
+    {
+      "slide": 7,
+      "notes_characters": 695,
+      "all_shapes_within_bounds": true
+    },
+    {
+      "slide": 8,
+      "notes_characters": 2619,
+      "all_shapes_within_bounds": true
+    },
+    {
+      "slide": 9,
+      "notes_characters": 2619,
+      "all_shapes_within_bounds": true
+    },
+    {
+      "slide": 10,
+      "notes_characters": 2713,
+      "all_shapes_within_bounds": true
+    },
+    {
+      "slide": 11,
+      "notes_characters": 1914,
+      "all_shapes_within_bounds": true
+    },
+    {
+      "slide": 12,
+      "notes_characters": 995,
+      "all_shapes_within_bounds": true
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "report/report.md",
+      "sha256": "5a73d9dfc0962bdc94b2b95aca65d61433927a93e891f38cc870c9125ed138c1"
+    },
+    {
+      "path": "report/report.pdf",
+      "sha256": "6095a41059a1db5bcc5db55a81656fededc478237268f3891e0a4504063b7327"
+    },
+    {
+      "path": "presentation/defense.pptx",
+      "sha256": "0cad8075e4ddfe1b1981b82e79f3628925cdf48d51e81b2bcc210c8a916601be"
+    }
+  ]
+}

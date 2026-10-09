@@ -1,0 +1,26 @@
+StartRecentKVCache: 4, 1020
+{"run_id": "A-h2-v2-mig-20261009-random_anchors-s1", "book": "1022", "step": 0}
+{"run_id": "A-h2-v2-mig-20261009-random_anchors-s1", "book": "1022", "step": 2048}
+{"run_id": "A-h2-v2-mig-20261009-random_anchors-s1", "book": "1022", "step": 4096}
+{"run_id": "A-h2-v2-mig-20261009-random_anchors-s1", "book": "1022", "step": 6144}
+{"book": "1022", "nll": 2.697180295765152, "scored": 7166}
+StartRecentKVCache: 4, 1020
+{"run_id": "A-h2-v2-mig-20261009-random_anchors-s1", "book": "11155", "step": 0}
+{"run_id": "A-h2-v2-mig-20261009-random_anchors-s1", "book": "11155", "step": 2048}
+{"run_id": "A-h2-v2-mig-20261009-random_anchors-s1", "book": "11155", "step": 4096}
+{"run_id": "A-h2-v2-mig-20261009-random_anchors-s1", "book": "11155", "step": 6144}
+{"book": "11155", "nll": 2.852854980594706, "scored": 7166}
+StartRecentKVCache: 4, 1020
+{"run_id": "A-h2-v2-mig-20261009-random_anchors-s1", "book": "13089", "step": 0}
+{"run_id": "A-h2-v2-mig-20261009-random_anchors-s1", "book": "13089", "step": 2048}
+{"run_id": "A-h2-v2-mig-20261009-random_anchors-s1", "book": "13089", "step": 4096}
+{"run_id": "A-h2-v2-mig-20261009-random_anchors-s1", "book": "13089", "step": 6144}
+{"book": "13089", "nll": 2.336113209902535, "scored": 7166}
+{
+  "run_id": "A-h2-v2-mig-20261009-random_anchors-s1",
+  "macro_book_nll": 2.628716162087464,
+  "micro_token_nll": 2.628716162087464,
+  "scored_tokens": 21498,
+  "elapsed_seconds": 1163.9542204998434,
+  "predictions_per_second": 21.111655052419053
+}

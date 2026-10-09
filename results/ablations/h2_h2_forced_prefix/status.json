@@ -1,9 +1,11 @@
 {
-  "state": "pending",
-  "missing": [
-    "runs/A-h2-v2-mig-20261009-h2_forced_prefix-s0/result.json",
-    "runs/A-h2-v2-mig-20261009-h2_forced_prefix-s1/result.json",
-    "runs/A-h2-v2-mig-20261009-h2_forced_prefix-s2/result.json"
+  "state": "complete",
+  "claim_status": "inconclusive",
+  "n_books": 3,
+  "seeds": [
+    0,
+    1,
+    2
   ],
-  "claim_status": null
+  "paired_result_sha256": "14968d0adf6a45212337018b53e40528756211773d3df2c34439e86448a587d1"
 }

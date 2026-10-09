@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-09T14:00:30.957017+00:00",
+  "study_id": "owner-h800-20261009",
+  "stage": "scientific_execution",
+  "status": "completed",
+  "numerical_source_sha256": "a6dbe103b2e9416295807cd481a9ff1660fbfede9c26b68e7db65d230e6229ef",
+  "completed_stages": [
+    "reproduction",
+    "pilots",
+    "improvement",
+    "controls"
+  ],
+  "device_instance_hours": 23.88215355552772,
+  "selected_method": "h2_sink_selection",
+  "next_step": "verify current clean checkout, presentation/demo and freeze the measured technical delivery; human course activities separately recorded"
+}

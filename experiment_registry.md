@@ -39,8 +39,15 @@ Machine events: `experiments/registry.jsonl`. Historical Markdown preserved in `
 | P-v2-mig-20261009-h2_sink_selection-s2 | pilot / 2 | completed | `10616458` | 1193.780 / 0.331606 | `runs/P-v2-mig-20261009-h2_sink_selection-s2` |
 | P-v2-mig-20261009-h2_sink_selection-s0 | pilot / 0 | completed | `10616458` | 1200.386 / 0.333440 | `runs/P-v2-mig-20261009-h2_sink_selection-s0` |
 | P-v2-mig-20261009-h2_sink_selection-s1 | pilot / 1 | completed | `10616458` | 1197.282 / 0.332578 | `runs/P-v2-mig-20261009-h2_sink_selection-s1` |
-| I-h2-v2-mig-20261009-h2_sink_selection-s1 | improvement / 1 | running | `10616458` | unknown / pending | `runs/I-h2-v2-mig-20261009-h2_sink_selection-s1` |
-| I-h2-v2-mig-20261009-h2_sink_selection-s0 | improvement / 0 | running | `10616458` | unknown / pending | `runs/I-h2-v2-mig-20261009-h2_sink_selection-s0` |
-| I-h2-v2-mig-20261009-h2_sink_selection-s2 | improvement / 2 | running | `10616458` | unknown / pending | `runs/I-h2-v2-mig-20261009-h2_sink_selection-s2` |
+| I-h2-v2-mig-20261009-h2_sink_selection-s1 | improvement / 1 | completed | `10616458` | 7249.791 / 2.013831 | `runs/I-h2-v2-mig-20261009-h2_sink_selection-s1` |
+| I-h2-v2-mig-20261009-h2_sink_selection-s0 | improvement / 0 | completed | `10616458` | 7397.372 / 2.054826 | `runs/I-h2-v2-mig-20261009-h2_sink_selection-s0` |
+| I-h2-v2-mig-20261009-h2_sink_selection-s2 | improvement / 2 | completed | `10616458` | 7281.592 / 2.022664 | `runs/I-h2-v2-mig-20261009-h2_sink_selection-s2` |
+| A-h2-v2-mig-20261009-h2_forced_prefix-s1 | ablation / 1 | completed | `a0d655c7` | 1205.486 / 0.334857 | `runs/A-h2-v2-mig-20261009-h2_forced_prefix-s1` |
+| A-h2-v2-mig-20261009-h2_forced_prefix-s2 | ablation / 2 | completed | `a0d655c7` | 1187.704 / 0.329918 | `runs/A-h2-v2-mig-20261009-h2_forced_prefix-s2` |
+| A-h2-v2-mig-20261009-h2_forced_prefix-s0 | ablation / 0 | completed | `a0d655c7` | 1197.173 / 0.332548 | `runs/A-h2-v2-mig-20261009-h2_forced_prefix-s0` |
+| A-h2-v2-mig-20261009-random_anchors-s2 | ablation / 2 | completed | `52a24010` | 1188.901 / 0.330250 | `runs/A-h2-v2-mig-20261009-random_anchors-s2` |
+| A-h2-v2-mig-20261009-random_anchors-s0 | ablation / 0 | completed | `52a24010` | 1198.699 / 0.332972 | `runs/A-h2-v2-mig-20261009-random_anchors-s0` |
+| A-h2-v2-mig-20261009-random_anchors-s1 | ablation / 1 | completed | `52a24010` | 1192.594 / 0.331276 | `runs/A-h2-v2-mig-20261009-random_anchors-s1` |
+| reference-errors-h800-553bb7d01ae1 | smoke / 17 | completed | `90b962b0` | 2.784 / 0.000773 | `runs/reference-errors-h800-553bb7d01ae1` |
 
-Spent/reserved charge: 26.697345 device-instance hours. This includes historical0.25h plus0.02h conservative prior uninstrumented H800-fixture reserve. Full-GPU and MIG instance wall-hours are not normalized full-GPU billing or currency cost. New attempts use whole-process wall-clock timing. The user authorized resources without the old20h ceiling. Failed attempts remain visible and never enter claim inference.
+Spent/reserved charge: 23.882927 device-instance hours. This includes historical0.25h plus0.02h conservative prior uninstrumented H800-fixture reserve. Full-GPU and MIG instance wall-hours are not normalized full-GPU billing or currency cost. New attempts use whole-process wall-clock timing. The user authorized resources without the old20h ceiling. Failed attempts remain visible and never enter claim inference.

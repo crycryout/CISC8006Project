@@ -1,0 +1,17 @@
+/home/renjie/CISC8006Project/.venv-verified/lib/python3.10/site-packages/transformers/utils/generic.py:311: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/home/renjie/CISC8006Project/.venv-verified/lib/python3.10/site-packages/transformers/utils/generic.py:311: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+StartRecentKVCache: 0, 8
+StartRecentKVCache: 0, 8
+StartRecentKVCache: 2, 6
+StartRecentKVCache: 2, 6
+StartRecentKVCache: 2, 6
+StartRecentKVCache: 2, 6
+StartRecentKVCache: 0, 8
+StartRecentKVCache: 0, 8
+StartRecentKVCache: 2, 6
+StartRecentKVCache: 2, 6
+StartRecentKVCache: 2, 6
+StartRecentKVCache: 2, 6
+{"run_id": "reference-errors-h800-553bb7d01ae1", "exit_code": 0, "gpu_hours": 0.0007734186047067245, "error": null}

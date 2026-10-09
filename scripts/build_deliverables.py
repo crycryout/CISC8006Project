@@ -70,7 +70,10 @@ def sections():
     reproduction=read_optional("results/reproduction/summary.json")
     improvement=read_optional("results/improvement/summary.json")
     reference=read_optional("environment/verification/reference-error-distributions.json")
-    reference_status="Measured tiny-fixture GPU error distributions are recorded separately; they do not bound all full-model errors." if reference and reference.get("status")=="pass" else "The preset-tolerance GPU error-distribution capture is pending as a separate engineering release check."
+    reference_status="The preset-tolerance GPU error-distribution capture is pending as a separate engineering release check."
+    if reference and reference.get("status")=="pass":
+        largest=max(row["errors"]["logits"]["max_abs"] for row in reference["cases"])
+        reference_status=f"All {len(reference['cases'])} FP16/BF16 GPU reference cases pass unchanged preset tolerances; largest absolute logits error {largest:.9g}. Per-case K/V/attention/logits maxima and p50/p95/p99 are in environment/verification/reference-error-distributions.json. These tiny-fixture results do not bound all full-model errors."
     decisions=json.loads((ROOT/"docs/approval_decisions.json").read_text())
     selected=decisions["selected_improvement"].get("method")
     pilot_rows=[]

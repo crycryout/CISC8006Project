@@ -1,0 +1,12 @@
+{
+  "registered_at": "2026-10-09T13:40:15.280673+00:00",
+  "matrix_sha256": "e02810e0a3bf44f2c823ef494bac5e753efe860b2dc9e32ac69cd5ab3e793e8e",
+  "command": [
+    "/home/renjie/CISC8006Project/.venv-verified/bin/python",
+    "/home/renjie/CISC8006Project/scripts/eval_ppl.py",
+    "--config",
+    "/home/renjie/CISC8006Project/experiments/plans/A-h2-v2-mig-20261009-random_anchors-s2/config.yaml"
+  ],
+  "selected_device": "MIG-c3be06c6-cf04-5d8b-85a3-617a77291100",
+  "numerical_source_sha256": "a6dbe103b2e9416295807cd481a9ff1660fbfede9c26b68e7db65d230e6229ef"
+}

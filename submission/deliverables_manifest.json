@@ -1,23 +1,23 @@
 {
-  "built_at": "2026-10-09T13:24:55.952450+00:00",
-  "state": "execution_progress",
+  "built_at": "2026-10-09T14:05:12.142435+00:00",
+  "state": "scientific_complete_owner_authorized",
   "command": [
     "/home/renjie/CISC8006Project/.venv-verified/bin/python",
     "scripts/build_deliverables.py"
   ],
-  "builder_sha256": "a7e846d1f720396ec081b447e3bf05b319db595346b80a08f16b44b9f0dc2b34",
+  "builder_sha256": "b545be6e460dd50b553971ce2b2c6646aca176bc17093cc907444a3db95ee956",
   "artifacts": [
     {
-      "path": "report/report_draft.md",
-      "sha256": "1cb24ec534b1fa9a4df3c674076372db5bffa53d16df10ccd4b42a7a46fd5b61"
+      "path": "report/report.md",
+      "sha256": "5a73d9dfc0962bdc94b2b95aca65d61433927a93e891f38cc870c9125ed138c1"
     },
     {
-      "path": "report/report_draft.pdf",
-      "sha256": "1ccfe6d24a8de0daeee75032aaa9c4418b91464067dacbfa99065bffab7398a3"
+      "path": "report/report.pdf",
+      "sha256": "6095a41059a1db5bcc5db55a81656fededc478237268f3891e0a4504063b7327"
     },
     {
-      "path": "presentation/defense_draft.pptx",
-      "sha256": "540c8e04d282e898a405214489b73021903d4b1431f83957011d6ff0883e5aaf"
+      "path": "presentation/defense.pptx",
+      "sha256": "0cad8075e4ddfe1b1981b82e79f3628925cdf48d51e81b2bcc210c8a916601be"
     }
   ],
   "input_manifest_sha256": "949baedf46b437178111626a11b828bfe342f6b7a7d01ec694a63b01e5dc35af"
