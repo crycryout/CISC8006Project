@@ -286,7 +286,7 @@ def main():
     for folder in ["results","figures","tables"]:
         for path in sorted((ROOT/folder).rglob("*")):
             if path.is_file() and path.name!="build_provenance.json": artifacts.append(dict(path=str(path.relative_to(ROOT)),sha256=file_hash(path)))
-    write_json(ROOT/"results/build_provenance.json",dict(command=[sys.executable]+sys.argv,input_runs=spec,artifacts=artifacts,aggregation="equal-book512-step bins starting1025; late-bin book coverage CSV",parameters=dict(bin_size=512,bootstrap_seed=0,n_boot=10000)))
+    write_json(ROOT/"results/build_provenance.json",dict(command=[sys.executable]+sys.argv,builder_sha256=file_hash(Path(__file__)),input_manifest_sha256=file_hash(a.manifest),input_runs=spec,artifacts=artifacts,aggregation="equal-book512-step bins starting1025; late-bin book coverage CSV",parameters=dict(bin_size=512,bootstrap_seed=0,n_boot=10000)))
     print(json.dumps(status,indent=2))
 
 

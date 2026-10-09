@@ -139,6 +139,8 @@ def main():
                 for raw in row["raw_files"]:
                     if file_hash(ROOT/raw["path"])!=raw["sha256"]: missing.append("audited raw array checksum: "+raw["path"])
         provenance=json.loads((ROOT/"results/build_provenance.json").read_text())
+        if provenance.get("builder_sha256")!=file_hash(ROOT/"scripts/build_results.py") or provenance.get("input_manifest_sha256")!=file_hash(ROOT/"results/final_input_manifest.json"):
+            missing.append("current result/table/figure builder and input manifest")
         for artifact in provenance["artifacts"]:
             if not (ROOT/artifact["path"]).is_file() or file_hash(ROOT/artifact["path"])!=artifact["sha256"]:
                 missing.append("result/table/figure provenance checksum: "+artifact["path"])
@@ -152,7 +154,7 @@ def main():
                     if result["contract"]["numerical_source_sha256"]!=numeric:
                         missing.append("current inference source differs from frozen run: "+rel)
         delivery=json.loads((ROOT/"submission/deliverables_manifest.json").read_text())
-        if delivery.get("state")!="scientific_complete_owner_authorized" or delivery.get("input_manifest_sha256")!=file_hash(ROOT/"results/final_input_manifest.json"):
+        if delivery.get("state")!="scientific_complete_owner_authorized" or delivery.get("input_manifest_sha256")!=file_hash(ROOT/"results/final_input_manifest.json") or delivery.get("builder_sha256")!=file_hash(ROOT/"scripts/build_deliverables.py"):
             missing.append("complete deliverables manifest / input contract")
         for artifact in delivery.get("artifacts",[]):
             if not (ROOT/artifact["path"]).is_file() or file_hash(ROOT/artifact["path"])!=artifact["sha256"]:

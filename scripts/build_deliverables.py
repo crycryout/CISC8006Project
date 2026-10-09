@@ -250,7 +250,7 @@ def main():
         footer_box=slide.shapes.add_textbox(Inches(.7),Inches(7.02),Inches(12),Inches(.28)); footer_box.text="Exact inputs in results/build_provenance.json | owner-authorized execution | human activities separately recorded"; footer_box.text_frame.paragraphs[0].font.size=Pt(10)
     presentation.save(ROOT/("presentation/"+deck_name))
     outputs=[ROOT/("report/"+stem+".md"),ROOT/("report/"+stem+".pdf"),ROOT/("presentation/"+deck_name)]
-    write_json(ROOT/"submission/deliverables_manifest.json",dict(built_at=now(),state="scientific_complete_owner_authorized" if ready else "execution_progress",command=[sys.executable]+sys.argv,artifacts=[dict(path=str(path.relative_to(ROOT)),sha256=file_hash(path)) for path in outputs],input_manifest_sha256=file_hash(ROOT/"results/final_input_manifest.json")))
+    write_json(ROOT/"submission/deliverables_manifest.json",dict(built_at=now(),state="scientific_complete_owner_authorized" if ready else "execution_progress",command=[sys.executable]+sys.argv,builder_sha256=file_hash(Path(__file__)),artifacts=[dict(path=str(path.relative_to(ROOT)),sha256=file_hash(path)) for path in outputs],input_manifest_sha256=file_hash(ROOT/"results/final_input_manifest.json")))
     print("Built "+", ".join(str(path.relative_to(ROOT)) for path in outputs))
 
 
