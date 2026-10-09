@@ -1,0 +1,39 @@
+{
+  "checked_at": "2026-10-09T08:28:40.245880+00:00",
+  "status": "pass",
+  "scope": "first completed book only; full ten-book paired verdict remains pending",
+  "initial_pre_eviction_losses_bitwise_match": true,
+  "streaming_three_seed_losses_bitwise_identical": true,
+  "rows": [
+    {
+      "seed": 0,
+      "book_id": "10146",
+      "scored_tokens": 15358,
+      "window_nll": 3.0544324157796967,
+      "streaming_nll": 2.2227205363871443,
+      "delta": -0.8317118793925524,
+      "raw_path": "runs/R-v2-mig-20261009-streaming-s0/books/10146/position_nll.npz",
+      "raw_sha256": "5fb88bf833d965ee54170bd4ac0f94e35872e22361a6f66fd48e5fbfb5ddc0ba"
+    },
+    {
+      "seed": 1,
+      "book_id": "10146",
+      "scored_tokens": 15358,
+      "window_nll": 3.0544324157796967,
+      "streaming_nll": 2.2227205363871443,
+      "delta": -0.8317118793925524,
+      "raw_path": "runs/R-v2-mig-20261009-streaming-s1/books/10146/position_nll.npz",
+      "raw_sha256": "5fb88bf833d965ee54170bd4ac0f94e35872e22361a6f66fd48e5fbfb5ddc0ba"
+    },
+    {
+      "seed": 2,
+      "book_id": "10146",
+      "scored_tokens": 15358,
+      "window_nll": 3.0544324157796967,
+      "streaming_nll": 2.2227205363871443,
+      "delta": -0.8317118793925524,
+      "raw_path": "runs/R-v2-mig-20261009-streaming-s2/books/10146/position_nll.npz",
+      "raw_sha256": "5fb88bf833d965ee54170bd4ac0f94e35872e22361a6f66fd48e5fbfb5ddc0ba"
+    }
+  ]
+}
