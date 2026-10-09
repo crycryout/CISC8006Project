@@ -194,7 +194,7 @@ def main():
     stem="report" if ready else "report_draft"
     deck_name="defense.pptx" if ready else "defense_draft.pptx"
     md="# "+report_title+"\n\n"+subtitle+"\n\n"+"\n\n".join("## "+section+"\n\n"+body for section,body in content)+"\n\n"+markdown_tables()+"\n"
-    (ROOT/("report/"+stem+".md")).write_text(md)
+    (ROOT/("report/"+stem+".md")).write_text(md.rstrip()+"\n")
     from reportlab.lib import colors
     from reportlab.lib.pagesizes import A4
     from reportlab.lib.styles import getSampleStyleSheet

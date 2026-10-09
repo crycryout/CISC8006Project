@@ -41,7 +41,9 @@ def manifest(kind):
     paths=subprocess.check_output(["git","ls-files","-z"],cwd=ROOT).decode().split("\0")
     artifacts=[]
     for rel in sorted(filter(None,paths)):
-        if rel in {"submission/release_manifest.json","submission/candidate_manifest.json","submission/technical_final_manifest.json"}: continue
+        excluded={"submission/release_manifest.json","submission/technical_final_manifest.json"}
+        if kind=="review_candidate_not_final_freeze": excluded.add("submission/candidate_manifest.json")
+        if rel in excluded: continue
         path=ROOT/rel
         if path.is_file(): artifacts.append(dict(path=rel,sha256=file_hash(path),bytes=path.stat().st_size))
     return dict(created_at=now(),state=kind,artifact_commit="record after commit in external receipt or immutable annotated tag; no self reference",assets_in_git="weights/raw text excluded; token/NLL traces included",artifacts=artifacts)

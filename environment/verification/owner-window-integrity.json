@@ -1,0 +1,55 @@
+{
+  "checked_at": "2026-10-09T08:16:03.950851+00:00",
+  "status": "pass",
+  "scope": "three complete window arms; no paired scientific verdict until streaming completes",
+  "run_validations": [
+    {
+      "run_id": "R-v2-mig-20261009-window-s0",
+      "validation_status": "valid",
+      "books": 10,
+      "result_sha256": "a09ed5ea0dd8b9f434c334a810d84ca592355d9320fd5b56f77507452be9bc29"
+    },
+    {
+      "run_id": "R-v2-mig-20261009-window-s1",
+      "validation_status": "valid",
+      "books": 10,
+      "result_sha256": "24f49478fb4ba7bebca657839db0ccb277d560e093f58ef1880d53b2986a4ff5"
+    },
+    {
+      "run_id": "R-v2-mig-20261009-window-s2",
+      "validation_status": "valid",
+      "books": 10,
+      "result_sha256": "d827106ebe04371ee09245805109ce055778b76f851f41a82c6dd19197a55540"
+    }
+  ],
+  "seed_arrays_bitwise_identical": true,
+  "macro_nll_by_seed": [
+    3.1516350059974445,
+    3.1516350059974445,
+    3.1516350059974445
+  ],
+  "micro_ppl_by_seed": [
+    23.958109295542496,
+    23.958109295542496,
+    23.958109295542496
+  ],
+  "scored_tokens_per_seed": 144337,
+  "books": [
+    "10146",
+    "10321",
+    "10356",
+    "10762",
+    "12204",
+    "15562",
+    "22424",
+    "24553",
+    "2544",
+    "25646"
+  ],
+  "source_commits": [
+    "aa76de10d803a610cb719f0a8e5cffebed6ede21",
+    "aa76de10d803a610cb719f0a8e5cffebed6ede21",
+    "aa76de10d803a610cb719f0a8e5cffebed6ede21"
+  ],
+  "numerical_source_sha256": "a6dbe103b2e9416295807cd481a9ff1660fbfede9c26b68e7db65d230e6229ef"
+}
