@@ -222,7 +222,7 @@ def build_tables(spec,status):
         for ax in axes:
             ax.axhline(0,color="gray",linewidth=1); ax.axvline(1,color="gray",linewidth=1,linestyle="--")
             ax.set_ylabel("candidate − fixed-four NLL (nats/token)")
-        axes[0].set_xlabel("whole-process runtime / matched baseline"); axes[1].set_xlabel("peak allocated memory / matched baseline")
+        axes[0].set_xlabel("registered-run runtime / matched baseline"); axes[1].set_xlabel("peak allocated memory / matched baseline")
         axes[0].legend(fontsize=7); fig.suptitle("Full test and development controls (different book sets)",fontsize=10)
         fig.tight_layout(); fig.savefig(ROOT/"figures/improvement_quality_cost.png",dpi=180); plt.close(fig)
     if spec.get("improvement") and status["improvement"]["state"]=="complete":

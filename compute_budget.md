@@ -4,6 +4,8 @@ On2026-10-09 the user explicitly instructed: “不需要审批，H800的GPU资�
 
 Three existing idle H800 2g.20gb MIG instances run independent seed workers. Both methods for a seed run on the same instance. NVML records actual30 SMs, memory, UUID/parent, driver and clock/power snapshots. Device-instance wall-hours are conservative usage accounting, not normalized full-GPU billing. A full-GPU/MIG smoke comparison is not bitwise identical and is recorded; all formal comparisons use the common MIG hardware class. No other project is stopped, topology/cron is unchanged.
 
+Actual timer boundary: `src/run_store.py` starts after the launch Git snapshot and run-directory creation, before model loading/inference; it stops at `finish()` before checksum generation and process exit. The stored registered-run interval includes loading, inference and failures, but excludes short preflight/startup/Git-snapshot/checksum/exit tails. Runtime ratios and the frozen1.10 pilot cost gate use these unchanged `metadata.runtime_seconds` values. Historical wording “whole-process” is qualified by this exact boundary; no duration, threshold or selection parameter is retroactively changed. Calibration host intervals include normal prefix inference and are not added again as extra GPU charge.
+
 The full-GPU historical forecast was21.186h. New matrices use a conservative15predictions/s planning rate versus the measured22.255 solo MIG rate, reserve a per-job hard timeout and execute3 devices in parallel. The new total and wall-time forecast will be recalibrated from actual first-book progress. GPU1 instances are unaffected by GPU0's nightly MIG cron.
 
 Historical policy (preserved below; superseded only by the explicit instruction above):
